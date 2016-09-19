@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EDD50B77-4B5E-476C-8A66-583B7FD3FE4A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Octopus.Server.Extensibility</RootNamespace>
+    <AssemblyName>Octopus.Server.Extensibility</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nancy, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Nancy.1.2.0\lib\net40\Nancy.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nancy.Serialization.JsonNet, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Nancy.Serialization.JsonNet.1.2.0\lib\net40\Nancy.Serialization.JsonNet.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NuGet.Versioning, Version=3.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\NuGet.Versioning.3.4.3\lib\net45\NuGet.Versioning.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Solution Items\SolutionInfo.cs">
+      <Link>Properties\SolutionInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Solution Items\VersionInfo.cs">
+      <Link>Properties\VersionInfo.cs</Link>
+    </Compile>
+    <Compile Include="Extensions\Infrastructure\Resources\AuthenticationProviderElement.cs" />
+    <Compile Include="Extensions\Infrastructure\Resources\AuthenticationProviderThatSupportsGroups.cs" />
+    <Compile Include="Extensions\Contracts\Authentication\IAuthenticationProviderWithGroupSupport.cs" />
+    <Compile Include="Extensions\Infrastructure\Configuration\IExtensionConfigurationStore.cs" />
+    <Compile Include="Extensions\Infrastructure\Web\Api\IApiAction.cs" />
+    <Compile Include="Extensions\Infrastructure\Web\Api\IApiActionModelBinder.cs" />
+    <Compile Include="Extensions\Infrastructure\Web\Api\IApiActionResponseCreator.cs" />
+    <Compile Include="Extensions\Infrastructure\Web\Api\IAsyncApiAction.cs" />
+    <Compile Include="Extensions\Infrastructure\Web\Api\SecuredActionInvoker.cs" />
+    <Compile Include="Extensions\Infrastructure\Web\Api\SecuredAsyncActionInvoker.cs" />
+    <Compile Include="Extensions\Infrastructure\Web\Api\WhenEnabledActionInvoker.cs" />
+    <Compile Include="Extensions\Infrastructure\Web\Api\WhenEnabledAsyncActionInvoker.cs" />
+    <Compile Include="HostServices\Web\IUserMapper.cs" />
+    <Compile Include="Extensions\Infrastructure\Web\Content\IContributesStaticContentFolders.cs" />
+    <Compile Include="Extensions\Infrastructure\Web\Content\StaticContentEmbeddedResourcesFolder.cs" />
+    <Compile Include="HostServices\Authentication\AuthenticationMode.cs" />
+    <Compile Include="HostServices\Authentication\AuthorizationResult.cs" />
+    <Compile Include="HostServices\Authentication\ExternalSecurityGroup.cs" />
+    <Compile Include="HostServices\Authentication\IAuthenticationConfigurationStore.cs" />
+    <Compile Include="Extensions\Contracts\Authentication\IAuthenticationSchemeProvider.cs" />
+    <Compile Include="HostServices\Authentication\IAuthCookieCreator.cs" />
+    <Compile Include="Extensions\Contracts\Authentication\IExternalGroupsChecker.cs" />
+    <Compile Include="HostServices\Authentication\IInvalidLoginTracker.cs" />
+    <Compile Include="HostServices\Authentication\ILoginRecorder.cs" />
+    <Compile Include="HostServices\Authentication\InvalidLoginAction.cs" />
+    <Compile Include="Extensions\Contracts\Authentication\ISupportsAutoUserCreationFromPrincipal.cs" />
+    <Compile Include="HostServices\Configuration\ConfigurationValue.cs" />
+    <Compile Include="HostServices\Configuration\ConfigureCommandOption.cs" />
+    <Compile Include="HostServices\Configuration\IConfigurationDocumentMapper.cs" />
+    <Compile Include="HostServices\Configuration\IContributeToConfigureCommand.cs" />
+    <Compile Include="Extensions\Contracts\Authentication\IAuthenticationProvider.cs" />
+    <Compile Include="HostServices\Configuration\IHasConfigurationSettings.cs" />
+    <Compile Include="HostServices\Configuration\IKeyValueStore.cs" />
+    <Compile Include="HostServices\Configuration\IModifiableConfiguration.cs" />
+    <Compile Include="HostServices\Authentication\IOctopusPrincipal.cs" />
+    <Compile Include="HostServices\Diagnostics\ILog.cs" />
+    <Compile Include="HostServices\Diagnostics\LogCategory.cs" />
+    <Compile Include="HostServices\Infrastructure\EnumerableExtensions.cs" />
+    <Compile Include="Extensions\IOctopusExtension.cs" />
+    <Compile Include="Extensions\IOctopusExtensionMetadata.cs" />
+    <Compile Include="HostServices\Model\ApiKeyDescriptor.cs" />
+    <Compile Include="HostServices\Model\IConfigurationStore.cs" />
+    <Compile Include="HostServices\Model\IId.cs" />
+    <Compile Include="HostServices\Model\IOverridableId.cs" />
+    <Compile Include="HostServices\Model\IUser.cs" />
+    <Compile Include="HostServices\Model\IUserStore.cs" />
+    <Compile Include="HostServices\Model\ResourceMapperMode.cs" />
+    <Compile Include="HostServices\Model\User.cs" />
+    <Compile Include="Extensions\OctopusPluginAttribute.cs" />
+    <Compile Include="HostServices\Model\UserCreateOrUpdateResult.cs" />
+    <Compile Include="HostServices\Web\Commands\LoginCommand.cs" />
+    <Compile Include="HostServices\Web\IErrorResponseFactory.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="HostServices\Time\IClock.cs" />
+    <Compile Include="HostServices\Time\ISleep.cs" />
+    <Compile Include="HostServices\Web\IHomeLinksContributor.cs" />
+    <Compile Include="HostServices\Web\IWebPortalConfigurationStore.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="HostServices\Serialization\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

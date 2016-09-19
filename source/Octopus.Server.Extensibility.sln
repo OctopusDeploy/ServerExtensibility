@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Octopus.Server.Extensibility", "Octopus.Server.Extensibility\Octopus.Server.Extensibility.csproj", "{EDD50B77-4B5E-476C-8A66-583B7FD3FE4A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E9834D94-8483-4ACF-A9AA-3F062746A8D0}"
+	ProjectSection(SolutionItems) = preProject
+		Solution Items\SolutionInfo.cs = Solution Items\SolutionInfo.cs
+		Solution Items\VersionInfo.cs = Solution Items\VersionInfo.cs
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EDD50B77-4B5E-476C-8A66-583B7FD3FE4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDD50B77-4B5E-476C-8A66-583B7FD3FE4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDD50B77-4B5E-476C-8A66-583B7FD3FE4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDD50B77-4B5E-476C-8A66-583B7FD3FE4A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
