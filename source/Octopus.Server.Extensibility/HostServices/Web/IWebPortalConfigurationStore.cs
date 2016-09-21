@@ -18,5 +18,8 @@ namespace Octopus.Server.Extensibility.HostServices.Web
 
         string GetXFrameOptionAllowFrom();
         void SetXFrameOptionAllowFrom(string xFrameOptionAllowFrom);
+
+        bool GetIsAutoLoginEnabled();
+        void SetIsAutoLoginEnabled(bool isAutoLoginEnabled);
     }
 }
