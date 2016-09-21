@@ -20,6 +20,7 @@ var publishDir = "./publish";
 var artifactsDir = "./artifacts";
 var assetDir = "./BuildAssets";
 var globalAssemblyFile = "./source/Solution Items/VersionInfo.cs";
+var solutionToBuild = "./source/Octopus.Server.Extensibility.sln";
 var fileToPublish = "./source/Octopus.Server.Extensibility/bin/Release/Octopus.Server.Extensibility.dll";
 var isContinuousIntegrationBuild = !BuildSystem.IsLocalBuild;
 
@@ -48,6 +49,7 @@ Teardown(context =>
 
 Task("__Default")
     .IsDependentOn("__Clean")
+    .IsDependentOn("__Restore")
     .IsDependentOn("__UpdateAssemblyVersionInformation")
     .IsDependentOn("__Build")
     .IsDependentOn("__PackNuget");
@@ -61,6 +63,9 @@ Task("__Clean")
     CleanDirectories("./source/**/obj");
 });
 
+Task("__Restore")
+    .Does(() => NuGetRestore(solutionToBuild));
+	
 Task("__UpdateAssemblyVersionInformation")
     .WithCriteria(isContinuousIntegrationBuild)
     .Does(() =>
@@ -83,7 +88,7 @@ Task("__Build")
     .IsDependentOn("__UpdateAssemblyVersionInformation")
     .Does(() =>
 {
-    DotNetBuild("./source/Octopus.Server.Extensibility.sln", settings => settings.SetConfiguration(configuration));
+    DotNetBuild(solutionToBuild, settings => settings.SetConfiguration(configuration));
 });
 
 
