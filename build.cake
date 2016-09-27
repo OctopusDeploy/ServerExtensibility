@@ -22,6 +22,7 @@ var assetDir = "./BuildAssets";
 var globalAssemblyFile = "./source/Solution Items/VersionInfo.cs";
 var solutionToBuild = "./source/Octopus.Server.Extensibility.sln";
 var fileToPublish = "./source/Octopus.Server.Extensibility/bin/Release/Octopus.Server.Extensibility.dll";
+
 var isContinuousIntegrationBuild = !BuildSystem.IsLocalBuild;
 
 var gitVersionInfo = GitVersion(new GitVersionSettings {
@@ -52,7 +53,8 @@ Task("__Default")
     .IsDependentOn("__Restore")
     .IsDependentOn("__UpdateAssemblyVersionInformation")
     .IsDependentOn("__Build")
-    .IsDependentOn("__PackNuget");
+    .IsDependentOn("__Pack")
+	.IsDependentOn("__Publish");
 
 Task("__Clean")
     .Does(() =>
@@ -78,10 +80,6 @@ Task("__UpdateAssemblyVersionInformation")
     Information("AssemblyVersion -> {0}", gitVersionInfo.AssemblySemVer);
     Information("AssemblyFileVersion -> {0}", $"{gitVersionInfo.MajorMinorPatch}.0");
     Information("AssemblyInformationalVersion -> {0}", gitVersionInfo.InformationalVersion);
-    if(BuildSystem.IsRunningOnTeamCity)
-        BuildSystem.TeamCity.SetBuildNumber(gitVersionInfo.NuGetVersion);
-    if(BuildSystem.IsRunningOnAppVeyor)
-        AppVeyor.UpdateBuildVersion(gitVersionInfo.NuGetVersion);
 });
 
 Task("__Build")
@@ -92,7 +90,7 @@ Task("__Build")
 });
 
 
-Task("__PackNuget")
+Task("__Pack")
     .Does(() => {
         var nugetPackDir = Path.Combine(publishDir, "nuget");
         var nuspecFile = "Octopus.Server.Extensibility.nuspec";
@@ -106,6 +104,39 @@ Task("__PackNuget")
             OutputDirectory = artifactsDir
         });
     });
+
+Task("__Publish")
+    .WithCriteria(isContinuousIntegrationBuild)
+    .Does(() =>
+{
+    var isPullRequest = !String.IsNullOrEmpty(EnvironmentVariable("APPVEYOR_PULL_REQUEST_NUMBER"));
+    var isMasterBranch = EnvironmentVariable("APPVEYOR_REPO_BRANCH") == "master" && !isPullRequest;
+    var shouldPushToMyGet = !BuildSystem.IsLocalBuild;
+    var shouldPushToNuGet = !BuildSystem.IsLocalBuild && isMasterBranch;
+
+    if (shouldPushToMyGet)
+    {
+        NuGetPush("artifacts/Octopus.Server.Extensibility." + nugetVersion + ".nupkg", new NuGetPushSettings {
+            Source = "https://octopus.myget.org/F/octopus-dependencies/api/v3/index.json",
+            ApiKey = EnvironmentVariable("MyGetApiKey")
+        });
+        NuGetPush("artifacts/Octopus.Server.Extensibility." + nugetVersion + ".symbols.nupkg", new NuGetPushSettings {
+            Source = "https://octopus.myget.org/F/octopus-dependencies/api/v3/index.json",
+            ApiKey = EnvironmentVariable("MyGetApiKey")
+        });
+    }
+    if (shouldPushToNuGet)
+    {
+        NuGetPush("artifacts/Octopus.Server.Extensibility." + nugetVersion + ".nupkg", new NuGetPushSettings {
+            Source = "https://www.nuget.org/api/v2/package",
+            ApiKey = EnvironmentVariable("NuGetApiKey")
+        });
+        NuGetPush("artifacts/Octopus.Server.Extensibility." + nugetVersion + ".symbols.nupkg", new NuGetPushSettings {
+            Source = "https://www.nuget.org/api/v2/package",
+            ApiKey = EnvironmentVariable("NuGetApiKey")
+        });
+    }
+});
 
 
 //////////////////////////////////////////////////////////////////////

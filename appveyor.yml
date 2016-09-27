@@ -1,6 +1,11 @@
 version: '{build}'
 configuration: Release
 platform: Any CPU
+environment:
+  MyGetApiKey:
+    secure: Q+iI2zIAHw6dJXbLiyQTsiWlHiVXkN6EmZT6WW/lYqpeLM1xA5vmpVN6MGpgiOXp
+  NuGetApiKey:
+    secure: q9La9jo/n4BAKG+i40e+4klCMWEhXrHKywqU3/VKJeBynTeGRh0kylVjTv8Nlbg4
 build_script:
 - cmd: build.cmd
 artifacts:
