@@ -120,18 +120,10 @@ Task("__Publish")
             Source = "https://octopus.myget.org/F/octopus-dependencies/api/v3/index.json",
             ApiKey = EnvironmentVariable("MyGetApiKey")
         });
-        NuGetPush("artifacts/Octopus.Server.Extensibility." + nugetVersion + ".symbols.nupkg", new NuGetPushSettings {
-            Source = "https://octopus.myget.org/F/octopus-dependencies/api/v3/index.json",
-            ApiKey = EnvironmentVariable("MyGetApiKey")
-        });
     }
     if (shouldPushToNuGet)
     {
         NuGetPush("artifacts/Octopus.Server.Extensibility." + nugetVersion + ".nupkg", new NuGetPushSettings {
-            Source = "https://www.nuget.org/api/v2/package",
-            ApiKey = EnvironmentVariable("NuGetApiKey")
-        });
-        NuGetPush("artifacts/Octopus.Server.Extensibility." + nugetVersion + ".symbols.nupkg", new NuGetPushSettings {
             Source = "https://www.nuget.org/api/v2/package",
             ApiKey = EnvironmentVariable("NuGetApiKey")
         });
