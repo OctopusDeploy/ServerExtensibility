@@ -82,6 +82,7 @@
     <Compile Include="Extensions\Infrastructure\Web\Api\SecuredAsyncActionInvoker.cs" />
     <Compile Include="Extensions\Infrastructure\Web\Api\WhenEnabledActionInvoker.cs" />
     <Compile Include="Extensions\Infrastructure\Web\Api\WhenEnabledAsyncActionInvoker.cs" />
+    <Compile Include="Extensions\Infrastructure\Configuration\IHandleLegacyWebAuthenticationModeConfigurationCommand.cs" />
     <Compile Include="HostServices\Model\Href.cs" />
     <Compile Include="HostServices\Model\LinkCollection.cs" />
     <Compile Include="HostServices\Model\LinkCollectionExtensions.cs" />
@@ -98,12 +99,12 @@
     <Compile Include="HostServices\Authentication\ILoginRecorder.cs" />
     <Compile Include="HostServices\Authentication\InvalidLoginAction.cs" />
     <Compile Include="Extensions\Contracts\Authentication\ISupportsAutoUserCreationFromPrincipal.cs" />
-    <Compile Include="HostServices\Configuration\ConfigurationValue.cs" />
-    <Compile Include="HostServices\Configuration\ConfigureCommandOption.cs" />
-    <Compile Include="HostServices\Configuration\IConfigurationDocumentMapper.cs" />
-    <Compile Include="HostServices\Configuration\IContributeToConfigureCommand.cs" />
+    <Compile Include="Extensions\Infrastructure\Configuration\ConfigurationValue.cs" />
+    <Compile Include="Extensions\Infrastructure\Configuration\ConfigureCommandOption.cs" />
+    <Compile Include="Extensions\Infrastructure\Configuration\IConfigurationDocumentMapper.cs" />
+    <Compile Include="Extensions\Infrastructure\Configuration\IContributeToConfigureCommand.cs" />
     <Compile Include="Extensions\Contracts\Authentication\IAuthenticationProvider.cs" />
-    <Compile Include="HostServices\Configuration\IHasConfigurationSettings.cs" />
+    <Compile Include="Extensions\Infrastructure\Configuration\IHasConfigurationSettings.cs" />
     <Compile Include="HostServices\Configuration\IKeyValueStore.cs" />
     <Compile Include="HostServices\Configuration\IModifiableConfiguration.cs" />
     <Compile Include="HostServices\Authentication\IOctopusPrincipal.cs" />

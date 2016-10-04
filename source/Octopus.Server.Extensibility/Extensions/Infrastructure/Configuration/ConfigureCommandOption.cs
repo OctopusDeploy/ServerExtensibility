@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Octopus.Server.Extensibility.HostServices.Configuration
+namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration
 {
     public class ConfigureCommandOption
     {

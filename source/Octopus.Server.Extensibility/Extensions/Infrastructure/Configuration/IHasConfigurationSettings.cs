@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace Octopus.Server.Extensibility.HostServices.Configuration
+namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration
 {
     public interface IHasConfigurationSettings
     {
