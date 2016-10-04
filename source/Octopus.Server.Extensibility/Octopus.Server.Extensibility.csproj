@@ -82,6 +82,9 @@
     <Compile Include="Extensions\Infrastructure\Web\Api\SecuredAsyncActionInvoker.cs" />
     <Compile Include="Extensions\Infrastructure\Web\Api\WhenEnabledActionInvoker.cs" />
     <Compile Include="Extensions\Infrastructure\Web\Api\WhenEnabledAsyncActionInvoker.cs" />
+    <Compile Include="HostServices\Model\Href.cs" />
+    <Compile Include="HostServices\Model\LinkCollection.cs" />
+    <Compile Include="HostServices\Model\LinkCollectionExtensions.cs" />
     <Compile Include="HostServices\Web\IUserMapper.cs" />
     <Compile Include="Extensions\Infrastructure\Web\Content\IContributesStaticContentFolders.cs" />
     <Compile Include="Extensions\Infrastructure\Web\Content\StaticContentEmbeddedResourcesFolder.cs" />
