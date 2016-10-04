@@ -29,7 +29,7 @@ var gitVersionInfo = GitVersion(new GitVersionSettings {
     OutputType = GitVersionOutput.Json
 });
 
-var nugetVersion = gitVersionInfo.NuGetVersion;
+var nugetVersion = isContinuousIntegrationBuild ? gitVersionInfo.NuGetVersion : "0.0.0";
 
 ///////////////////////////////////////////////////////////////////////////////
 // SETUP / TEARDOWN
