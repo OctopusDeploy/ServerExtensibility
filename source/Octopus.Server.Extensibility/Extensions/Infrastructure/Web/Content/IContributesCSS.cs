@@ -5,6 +5,6 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Content
 {
     public interface IContributesCSS
     {
-        IEnumerable<string> GetCSSUris();
+        IEnumerable<string> GetCSSUris(string siteBaseUri);
     }
 }

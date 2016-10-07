@@ -4,6 +4,6 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Content
 {
     public interface IContributesJavascript
     {
-        IEnumerable<string> GetJavascriptUris();
+        IEnumerable<string> GetJavascriptUris(string siteBaseUri);
     }
 }
