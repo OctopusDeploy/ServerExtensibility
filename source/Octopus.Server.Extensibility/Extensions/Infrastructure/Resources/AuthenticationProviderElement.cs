@@ -23,6 +23,6 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Resources
 
         public string LinkHtml { get; set; }
 
-        LinkCollection Links { get; set; }
+        public LinkCollection Links { get; set; }
     }
 }
