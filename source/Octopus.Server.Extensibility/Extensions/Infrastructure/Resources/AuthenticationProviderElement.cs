@@ -1,9 +1,18 @@
 ﻿using System;
+using Octopus.Server.Extensibility.HostServices.Model;
 
 namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Resources
 {
     public class AuthenticationProviderElement
     {
+        public static string FormsAuthenticateLinkName = "FormsAuthenticate";
+        public static string AuthenticateLinkName = "Authenticate";
+
+        public AuthenticationProviderElement()
+        {
+            Links = new LinkCollection();
+        }
+
         public string Name { get; set; }
 
         public bool IsGuestProvider { get; set; }
@@ -12,10 +21,8 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Resources
 
         public string FormsUsernameIdentifier { get; set; }
 
-        public string FormsAuthenticateUri { get; set; }
-
-        public string AuthenticateUri { get; set; }
-
         public string LinkHtml { get; set; }
+
+        LinkCollection Links { get; set; }
     }
 }
