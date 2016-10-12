@@ -8,11 +8,10 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration
         {
         }
 
-        protected ExtensionConfigurationDocument(string name, string extensionAuthor, string extensionVersion)
+        protected ExtensionConfigurationDocument(string name, string extensionAuthor)
         {
             Name = name;
             ExtensionAuthor = extensionAuthor;
-            ExtensionVersion = extensionVersion;
         }
 
         public string Id { get; protected set; }
@@ -20,7 +19,5 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration
         public string Name { get; set; }
 
         public string ExtensionAuthor { get; set; }
-
-        public string ExtensionVersion { get; set; }
     }
 }
