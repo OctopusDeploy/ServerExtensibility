@@ -70,6 +70,7 @@
     <Compile Include="..\Solution Items\VersionInfo.cs">
       <Link>Properties\VersionInfo.cs</Link>
     </Compile>
+    <Compile Include="Extensions\Infrastructure\Configuration\ExtensionConfigurationDocument.cs" />
     <Compile Include="Extensions\Infrastructure\Resources\AuthenticationProviderElement.cs" />
     <Compile Include="Extensions\Infrastructure\Resources\AuthenticationProviderThatSupportsGroups.cs" />
     <Compile Include="Extensions\Contracts\Authentication\IAuthenticationProviderWithGroupSupport.cs" />
@@ -86,6 +87,8 @@
     <Compile Include="Extensions\Infrastructure\Web\Content\IContributesCSS.cs" />
     <Compile Include="Extensions\Infrastructure\Web\Content\IContributesJavascript.cs" />
     <Compile Include="HostServices\Model\Href.cs" />
+    <Compile Include="HostServices\Model\IDocument.cs" />
+    <Compile Include="HostServices\Model\INamed.cs" />
     <Compile Include="HostServices\Model\LinkCollection.cs" />
     <Compile Include="HostServices\Model\LinkCollectionExtensions.cs" />
     <Compile Include="HostServices\Web\IUserMapper.cs" />
