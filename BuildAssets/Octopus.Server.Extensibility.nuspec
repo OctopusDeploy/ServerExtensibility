@@ -18,6 +18,13 @@
     <iconUrl>http://i.octopusdeploy.com/resources/Avatar3_360.png</iconUrl>
     <tags>automation deployment</tags>
     <developmentDependency>true</developmentDependency>
+    <dependencies>
+      <dependency id="Autofac" version="3.5.2" />
+      <dependency id="Nancy" version="1.2.0" />
+      <dependency id="Nancy.Serialization.JsonNet" version="1.2.0" />
+      <dependency id="Newtonsoft.Json" version="9.0.1" />
+      <dependency id="NuGet.Versioning" version="3.4.3" />
+    </dependencies>
   </metadata>
   <files>
     <file src="*" target="lib\net45" />
