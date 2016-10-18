@@ -113,8 +113,6 @@
     <Compile Include="HostServices\Configuration\IKeyValueStore.cs" />
     <Compile Include="HostServices\Configuration\IModifiableConfiguration.cs" />
     <Compile Include="HostServices\Authentication\IOctopusPrincipal.cs" />
-    <Compile Include="HostServices\Diagnostics\ILog.cs" />
-    <Compile Include="HostServices\Diagnostics\LogCategory.cs" />
     <Compile Include="HostServices\Infrastructure\EnumerableExtensions.cs" />
     <Compile Include="Extensions\IOctopusExtension.cs" />
     <Compile Include="Extensions\IOctopusExtensionMetadata.cs" />
@@ -139,9 +137,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="HostServices\Serialization\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
