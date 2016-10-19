@@ -53,8 +53,8 @@
       <HintPath>..\packages\NuGet.Versioning.3.4.3\lib\net45\NuGet.Versioning.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Octopus.Data, Version=1.0.8.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Octopus.Data.1.0.8\lib\netstandard1.0\Octopus.Data.dll</HintPath>
+    <Reference Include="Octopus.Data, Version=1.0.11.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Octopus.Data.1.0.11\lib\netstandard1.0\Octopus.Data.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
