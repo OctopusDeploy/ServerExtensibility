@@ -76,9 +76,6 @@
       <Link>Properties\VersionInfo.cs</Link>
     </Compile>
     <Compile Include="Extensions\Infrastructure\Configuration\ExtensionConfigurationDocument.cs" />
-    <Compile Include="Extensions\Infrastructure\Resources\AuthenticationProviderElement.cs" />
-    <Compile Include="Extensions\Infrastructure\Resources\AuthenticationProviderThatSupportsGroups.cs" />
-    <Compile Include="Extensions\Contracts\Authentication\IAuthenticationProviderWithGroupSupport.cs" />
     <Compile Include="Extensions\Infrastructure\Configuration\IExtensionConfigurationStore.cs" />
     <Compile Include="Extensions\Infrastructure\Web\Api\IApiAction.cs" />
     <Compile Include="Extensions\Infrastructure\Web\Api\IApiActionModelBinder.cs" />
@@ -94,28 +91,15 @@
     <Compile Include="HostServices\Web\IUserMapper.cs" />
     <Compile Include="Extensions\Infrastructure\Web\Content\IContributesStaticContentFolders.cs" />
     <Compile Include="Extensions\Infrastructure\Web\Content\StaticContentEmbeddedResourcesFolder.cs" />
-    <Compile Include="HostServices\Authentication\AuthorizationResult.cs" />
-    <Compile Include="HostServices\Authentication\ExternalSecurityGroup.cs" />
-    <Compile Include="HostServices\Authentication\IAuthenticationConfigurationStore.cs" />
-    <Compile Include="Extensions\Contracts\Authentication\IAuthenticationSchemeProvider.cs" />
-    <Compile Include="HostServices\Authentication\IAuthCookieCreator.cs" />
-    <Compile Include="Extensions\Contracts\Authentication\IExternalGroupsChecker.cs" />
-    <Compile Include="HostServices\Authentication\IInvalidLoginTracker.cs" />
-    <Compile Include="HostServices\Authentication\ILoginRecorder.cs" />
-    <Compile Include="HostServices\Authentication\InvalidLoginAction.cs" />
-    <Compile Include="Extensions\Contracts\Authentication\ISupportsAutoUserCreationFromPrincipal.cs" />
     <Compile Include="Extensions\Infrastructure\Configuration\ConfigurationValue.cs" />
     <Compile Include="Extensions\Infrastructure\Configuration\ConfigureCommandOption.cs" />
     <Compile Include="Extensions\Infrastructure\Configuration\IConfigurationDocumentMapper.cs" />
     <Compile Include="Extensions\Infrastructure\Configuration\IContributeToConfigureCommand.cs" />
-    <Compile Include="Extensions\Contracts\Authentication\IAuthenticationProvider.cs" />
     <Compile Include="Extensions\Infrastructure\Configuration\IHasConfigurationSettings.cs" />
-    <Compile Include="HostServices\Authentication\IOctopusPrincipal.cs" />
     <Compile Include="HostServices\Infrastructure\EnumerableExtensions.cs" />
     <Compile Include="Extensions\IOctopusExtension.cs" />
     <Compile Include="Extensions\IOctopusExtensionMetadata.cs" />
     <Compile Include="Extensions\OctopusPluginAttribute.cs" />
-    <Compile Include="HostServices\Web\Commands\LoginCommand.cs" />
     <Compile Include="HostServices\Web\IErrorResponseFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="HostServices\Web\IHomeLinksContributor.cs" />
