@@ -21,8 +21,9 @@ var localPackagesDir = "../LocalPackages";
 var artifactsDir = "./artifacts";
 var assetDir = "./BuildAssets";
 var globalAssemblyFile = "./source/Solution Items/VersionInfo.cs";
-var solutionToBuild = "./source/Octopus.Server.Extensibility.sln";
+var solutionToBuild = "./source/OctopusServerExtensibility.sln";
 var fileToPublish = "./source/Octopus.Server.Extensibility/bin/Release/Octopus.Server.Extensibility.dll";
+var cleanups = new List<IDisposable>(); 
 
 var isContinuousIntegrationBuild = !BuildSystem.IsLocalBuild;
 
@@ -42,6 +43,10 @@ Setup(context =>
 
 Teardown(context =>
 {
+    Information("Cleaning up");
+    foreach(var item in cleanups)
+        item.Dispose();
+
     Information("Finished running tasks.");
 });
 
@@ -73,7 +78,9 @@ Task("__Restore")
 Task("__UpdateAssemblyVersionInformation")
     .Does(() =>
 {
-     GitVersion(new GitVersionSettings {
+    cleanups.Add(new AutoRestoreFile(globalAssemblyFile));
+
+	GitVersion(new GitVersionSettings {
         UpdateAssemblyInfo = true,
         UpdateAssemblyInfoFilePath = globalAssemblyFile
     });
@@ -89,7 +96,6 @@ Task("__Build")
 {
     DotNetBuild(solutionToBuild, settings => settings.SetConfiguration(configuration));
 });
-
 
 Task("__Pack")
     .Does(() => {
@@ -139,6 +145,19 @@ Task("__CopyToLocalPackages")
     CreateDirectory(localPackagesDir);
     CopyFileToDirectory(Path.Combine(artifactsDir, $"Octopus.Server.Extensibility.{nugetVersion}.nupkg"), localPackagesDir);
 });
+
+private class AutoRestoreFile : IDisposable
+{
+	private byte[] _contents;
+	private string _filename;
+	public AutoRestoreFile(string filename)
+	{
+		_filename = filename;
+		_contents = IO.File.ReadAllBytes(filename);
+	}
+
+	public void Dispose() => IO.File.WriteAllBytes(_filename, _contents);
+}
 
 //////////////////////////////////////////////////////////////////////
 // TASKS
