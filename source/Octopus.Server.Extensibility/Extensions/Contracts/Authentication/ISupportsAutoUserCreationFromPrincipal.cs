@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Security.Principal;
-using Octopus.Server.Extensibility.HostServices.Model;
+using Octopus.Data.Storage.User;
 
 namespace Octopus.Server.Extensibility.Extensions.Contracts.Authentication
 {

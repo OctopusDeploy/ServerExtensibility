@@ -53,7 +53,12 @@
       <HintPath>..\packages\NuGet.Versioning.3.4.3\lib\net45\NuGet.Versioning.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Octopus.Data, Version=1.0.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Octopus.Data.1.0.6\lib\netstandard1.0\Octopus.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Numerics" />
@@ -86,11 +91,6 @@
     <Compile Include="Extensions\Infrastructure\Configuration\IHandleLegacyWebAuthenticationModeConfigurationCommand.cs" />
     <Compile Include="Extensions\Infrastructure\Web\Content\IContributesCSS.cs" />
     <Compile Include="Extensions\Infrastructure\Web\Content\IContributesJavascript.cs" />
-    <Compile Include="HostServices\Model\Href.cs" />
-    <Compile Include="HostServices\Model\IDocument.cs" />
-    <Compile Include="HostServices\Model\INamed.cs" />
-    <Compile Include="HostServices\Model\LinkCollection.cs" />
-    <Compile Include="HostServices\Model\LinkCollectionExtensions.cs" />
     <Compile Include="HostServices\Web\IUserMapper.cs" />
     <Compile Include="Extensions\Infrastructure\Web\Content\IContributesStaticContentFolders.cs" />
     <Compile Include="Extensions\Infrastructure\Web\Content\StaticContentEmbeddedResourcesFolder.cs" />
@@ -110,27 +110,14 @@
     <Compile Include="Extensions\Infrastructure\Configuration\IContributeToConfigureCommand.cs" />
     <Compile Include="Extensions\Contracts\Authentication\IAuthenticationProvider.cs" />
     <Compile Include="Extensions\Infrastructure\Configuration\IHasConfigurationSettings.cs" />
-    <Compile Include="HostServices\Configuration\IKeyValueStore.cs" />
-    <Compile Include="HostServices\Configuration\IModifiableConfiguration.cs" />
     <Compile Include="HostServices\Authentication\IOctopusPrincipal.cs" />
     <Compile Include="HostServices\Infrastructure\EnumerableExtensions.cs" />
     <Compile Include="Extensions\IOctopusExtension.cs" />
     <Compile Include="Extensions\IOctopusExtensionMetadata.cs" />
-    <Compile Include="HostServices\Model\ApiKeyDescriptor.cs" />
-    <Compile Include="HostServices\Model\IConfigurationStore.cs" />
-    <Compile Include="HostServices\Model\IId.cs" />
-    <Compile Include="HostServices\Model\IOverridableId.cs" />
-    <Compile Include="HostServices\Model\IUser.cs" />
-    <Compile Include="HostServices\Model\IUserStore.cs" />
-    <Compile Include="HostServices\Model\ResourceMapperMode.cs" />
-    <Compile Include="HostServices\Model\User.cs" />
     <Compile Include="Extensions\OctopusPluginAttribute.cs" />
-    <Compile Include="HostServices\Model\UserCreateOrUpdateResult.cs" />
     <Compile Include="HostServices\Web\Commands\LoginCommand.cs" />
     <Compile Include="HostServices\Web\IErrorResponseFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="HostServices\Time\IClock.cs" />
-    <Compile Include="HostServices\Time\ISleep.cs" />
     <Compile Include="HostServices\Web\IHomeLinksContributor.cs" />
     <Compile Include="HostServices\Web\IWebPortalConfigurationStore.cs" />
   </ItemGroup>
