@@ -1,4 +1,4 @@
-﻿using Octopus.Data.Model;
+﻿using Nevermore.Contracts;
 
 namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration
 {
