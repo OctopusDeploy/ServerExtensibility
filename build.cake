@@ -25,8 +25,6 @@ var solutionToBuild = "./source/OctopusServerExtensibility.sln";
 var fileToPublish = "./source/Octopus.Server.Extensibility/bin/Release/Octopus.Server.Extensibility.dll";
 var cleanups = new List<IDisposable>(); 
 
-var isContinuousIntegrationBuild = !BuildSystem.IsLocalBuild;
-
 var gitVersionInfo = GitVersion(new GitVersionSettings {
     OutputType = GitVersionOutput.Json
 });
@@ -38,6 +36,11 @@ var nugetVersion = gitVersionInfo.NuGetVersion;
 ///////////////////////////////////////////////////////////////////////////////
 Setup(context =>
 {
+    if(BuildSystem.IsRunningOnTeamCity)
+        BuildSystem.TeamCity.SetBuildNumber(gitVersionInfo.NuGetVersion);
+    if(BuildSystem.IsRunningOnAppVeyor)
+        AppVeyor.UpdateBuildVersion(gitVersionInfo.NuGetVersion);
+
     Information("Building Octopus.Server.Extensibility v{0}", nugetVersion);
 });
 
@@ -112,30 +115,26 @@ Task("__Pack")
         });
     });
 
+
 Task("__Publish")
-    .WithCriteria(isContinuousIntegrationBuild)
+    .WithCriteria(BuildSystem.IsRunningOnTeamCity)
     .Does(() =>
 {
-    var isPullRequest = !String.IsNullOrEmpty(EnvironmentVariable("APPVEYOR_PULL_REQUEST_NUMBER"));
-    var isMasterBranch = EnvironmentVariable("APPVEYOR_REPO_BRANCH") == "master" && !isPullRequest;
-    var shouldPushToMyGet = !BuildSystem.IsLocalBuild;
-    var shouldPushToNuGet = !BuildSystem.IsLocalBuild && isMasterBranch;
-
-    if (shouldPushToMyGet)
+    NuGetPush($"{artifactsDir}/Octopus.Server.Extensibility.{nugetVersion}.nupkg", new NuGetPushSettings {
+		Source = "https://octopus.myget.org/F/octopus-dependencies/api/v3/index.json",
+		ApiKey = EnvironmentVariable("MyGetApiKey")
+	});
+	
+    if (gitVersionInfo.PreReleaseTag == "")
     {
-        NuGetPush($"artifacts/Octopus.Server.Extensibility.{nugetVersion}.nupkg", new NuGetPushSettings {
-            Source = "https://octopus.myget.org/F/octopus-dependencies/api/v3/index.json",
-            ApiKey = EnvironmentVariable("MyGetApiKey")
-        });
-    }
-    if (shouldPushToNuGet)
-    {
-        NuGetPush($"artifacts/Octopus.Server.Extensibility.{nugetVersion}.nupkg", new NuGetPushSettings {
+        NuGetPush($"{artifactsDir}/Octopus.Server.Extensibility.{nugetVersion}.nupkg", new NuGetPushSettings {
             Source = "https://www.nuget.org/api/v2/package",
             ApiKey = EnvironmentVariable("NuGetApiKey")
         });
     }
 });
+
+
 
 Task("__CopyToLocalPackages")
     .WithCriteria(BuildSystem.IsLocalBuild)
