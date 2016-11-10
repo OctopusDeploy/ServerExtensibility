@@ -1,4 +1,5 @@
-﻿using Nancy;
+﻿using System.Linq;
+using Nancy;
 
 namespace Octopus.Server.Extensibility.HostServices.Web
 {
@@ -11,7 +12,17 @@ namespace Octopus.Server.Extensibility.HostServices.Web
         /// <returns>The full virtual directory path.</returns>
         public static string DirectoryPath(this Request request)
         {
-            return request.Url.SiteBase + request.Url.BasePath;
+            var urlSiteBase = request.Url.SiteBase;
+
+            var forwardedHost = request.Headers["X-Forwarded-Host"].FirstOrDefault();
+            if (forwardedHost != null)
+            {
+                var forwardedProto = request.Headers["X-Forwarded-Proto"].FirstOrDefault();
+
+                urlSiteBase = $"{forwardedProto}://{forwardedHost}";
+            }
+
+            return urlSiteBase + request.Url.BasePath;
         }
     }
 }
