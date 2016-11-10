@@ -90,6 +90,7 @@
     <Compile Include="Extensions\Infrastructure\Configuration\IHandleLegacyWebAuthenticationModeConfigurationCommand.cs" />
     <Compile Include="Extensions\Infrastructure\Web\Content\IContributesCSS.cs" />
     <Compile Include="Extensions\Infrastructure\Web\Content\IContributesJavascript.cs" />
+    <Compile Include="HostServices\Web\DirectoryPathResult.cs" />
     <Compile Include="HostServices\Web\IUserMapper.cs" />
     <Compile Include="Extensions\Infrastructure\Web\Content\IContributesStaticContentFolders.cs" />
     <Compile Include="Extensions\Infrastructure\Web\Content\StaticContentEmbeddedResourcesFolder.cs" />
