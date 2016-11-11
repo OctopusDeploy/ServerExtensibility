@@ -16,7 +16,7 @@ namespace Octopus.Server.Extensibility.HostServices.Web
         /// <param name="request">The request.</param>
         /// <returns>A result representing full virtual directory path, if it could be determined; otherwise a result explaining 
         /// why it couldn't be determined.</returns>
-        public static DirectoryPathResult DirectoryPath(this Request request)
+        public static DirectoryPathResult AbsoluteVirtualDirectoryPath(this Request request)
         {
             var urlSiteBase = request.Url.SiteBase;
 
