@@ -16,8 +16,8 @@ namespace Octopus.Server.Extensibility.HostServices.Web
         string GetCorsWhitelist();
         void SetCorsWhitelist(string corsWhitelist);
 
-        string GetTrustedRedirectUrls();
-        void SetTrustedRedirectUrls(string trustedRedirectUrls);
+        string[] GetTrustedRedirectUrls();
+        void SetTrustedRedirectUrls(string[] trustedRedirectUrls);
 
         string GetXFrameOptionAllowFrom();
         void SetXFrameOptionAllowFrom(string xFrameOptionAllowFrom);
