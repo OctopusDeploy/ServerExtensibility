@@ -104,7 +104,6 @@
     <Compile Include="Extensions\IOctopusExtensionMetadata.cs" />
     <Compile Include="Extensions\OctopusPluginAttribute.cs" />
     <Compile Include="HostServices\Web\IErrorResponseFactory.cs" />
-    <Compile Include="HostServices\Web\NancyRequestExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="HostServices\Web\IHomeLinksContributor.cs" />
     <Compile Include="HostServices\Web\IWebPortalConfigurationStore.cs" />
