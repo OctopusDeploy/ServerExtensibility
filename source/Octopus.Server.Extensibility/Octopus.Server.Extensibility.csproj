@@ -88,6 +88,7 @@
     <Compile Include="Extensions\Infrastructure\Web\Api\WhenEnabledActionInvoker.cs" />
     <Compile Include="Extensions\Infrastructure\Web\Api\WhenEnabledAsyncActionInvoker.cs" />
     <Compile Include="Extensions\Infrastructure\Configuration\IHandleLegacyWebAuthenticationModeConfigurationCommand.cs" />
+    <Compile Include="Extensions\Infrastructure\Web\Content\IContributesAngularModules.cs" />
     <Compile Include="Extensions\Infrastructure\Web\Content\IContributesCSS.cs" />
     <Compile Include="Extensions\Infrastructure\Web\Content\IContributesJavascript.cs" />
     <Compile Include="HostServices\Web\DirectoryPathResult.cs" />
