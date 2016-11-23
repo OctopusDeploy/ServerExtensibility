@@ -1,11 +1,12 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Nancy;
+using Nancy.Validation;
 
 namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
 {
     public interface IApiActionResponseCreator
     {
+        Response BadRequest(ModelValidationResult modelValidationResult);
         Response BadRequest(params string[] errors);
         Response BadRequest(HttpStatusCode statusCode, params string[] errors);
 
