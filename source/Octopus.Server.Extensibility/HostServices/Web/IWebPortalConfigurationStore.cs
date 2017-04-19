@@ -22,9 +22,6 @@ namespace Octopus.Server.Extensibility.HostServices.Web
         string GetXFrameOptionAllowFrom();
         void SetXFrameOptionAllowFrom(string xFrameOptionAllowFrom);
 
-        bool GetXContentTypeOptionsEnableNoSniff();
-        void SetXContentTypeOptionsEnableNoSniff(bool xContentTypeOptionsEnableNoSniff);
-
         bool GetIsAutoLoginEnabled();
         void SetIsAutoLoginEnabled(bool isAutoLoginEnabled);
     }
