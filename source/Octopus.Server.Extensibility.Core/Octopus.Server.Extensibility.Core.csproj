@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netcoreapp1.1;netstandard1.2</TargetFrameworks>
+    <RootNamespace>Octopus.Server.Extensibility</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="4.6.0" />
+    <PackageReference Include="Nevermore.Contracts" Version="3.1.1-enh-odcm0002" />
+    <PackageReference Include="Octopus.Data" Version="1.0.24" />
+  </ItemGroup>
+
+</Project>
