@@ -77,8 +77,6 @@
     <Compile Include="..\Solution Items\VersionInfo.cs">
       <Link>Properties\VersionInfo.cs</Link>
     </Compile>
-    <Compile Include="Extensions\Infrastructure\Configuration\ExtensionConfigurationDocument.cs" />
-    <Compile Include="Extensions\Infrastructure\Configuration\IExtensionConfigurationStore.cs" />
     <Compile Include="Extensions\Infrastructure\Web\Api\IApiAction.cs" />
     <Compile Include="Extensions\Infrastructure\Web\Api\IApiActionModelBinder.cs" />
     <Compile Include="Extensions\Infrastructure\Web\Api\IApiActionResponseCreator.cs" />
@@ -87,31 +85,22 @@
     <Compile Include="Extensions\Infrastructure\Web\Api\SecuredAsyncActionInvoker.cs" />
     <Compile Include="Extensions\Infrastructure\Web\Api\WhenEnabledActionInvoker.cs" />
     <Compile Include="Extensions\Infrastructure\Web\Api\WhenEnabledAsyncActionInvoker.cs" />
-    <Compile Include="Extensions\Infrastructure\Configuration\IHandleLegacyWebAuthenticationModeConfigurationCommand.cs" />
     <Compile Include="Extensions\Infrastructure\Web\Content\IContributesAngularModules.cs" />
-    <Compile Include="Extensions\Infrastructure\Web\Content\IContributesCSS.cs" />
-    <Compile Include="Extensions\Infrastructure\Web\Content\IContributesJavascript.cs" />
-    <Compile Include="HostServices\Web\DirectoryPathResult.cs" />
-    <Compile Include="HostServices\Web\IUserMapper.cs" />
-    <Compile Include="Extensions\Infrastructure\Web\Content\IContributesStaticContentFolders.cs" />
-    <Compile Include="Extensions\Infrastructure\Web\Content\StaticContentEmbeddedResourcesFolder.cs" />
-    <Compile Include="Extensions\Infrastructure\Configuration\ConfigurationValue.cs" />
-    <Compile Include="Extensions\Infrastructure\Configuration\ConfigureCommandOption.cs" />
-    <Compile Include="Extensions\Infrastructure\Configuration\IConfigurationDocumentMapper.cs" />
-    <Compile Include="Extensions\Infrastructure\Configuration\IContributeToConfigureCommand.cs" />
-    <Compile Include="Extensions\Infrastructure\Configuration\IHasConfigurationSettings.cs" />
-    <Compile Include="HostServices\Infrastructure\EnumerableExtensions.cs" />
-    <Compile Include="Extensions\IOctopusExtension.cs" />
-    <Compile Include="Extensions\IOctopusExtensionMetadata.cs" />
-    <Compile Include="Extensions\OctopusPluginAttribute.cs" />
     <Compile Include="HostServices\Web\IErrorResponseFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="HostServices\Web\IHomeLinksContributor.cs" />
-    <Compile Include="HostServices\Web\IWebPortalConfigurationStore.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Octopus.Server.Extensibility.Core\Octopus.Server.Extensibility.Core.csproj">
+      <Project>{7b791c6f-cd6e-47f6-adfa-ee4cd01e8c49}</Project>
+      <Name>Octopus.Server.Extensibility.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="HostServices\Infrastructure\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
