@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Octopus.Server.Extensibility.Extensions
+namespace Octopus.Node.Extensibility.Extensions
 {
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
     public class OctopusPluginAttribute : Attribute, IOctopusExtensionMetadata

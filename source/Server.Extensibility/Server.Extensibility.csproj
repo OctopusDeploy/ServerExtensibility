@@ -5,7 +5,14 @@
     <TargetFrameworks>net451</TargetFrameworks>
     <RootNamespace>Octopus.Server.Extensibility</RootNamespace>
     <AssemblyName>Octopus.Server.Extensibility</AssemblyName>
-    <Description>Octopus Deploy: Extensibility</Description>
+    <Description>Provides the agreed contracts between Octopus Server and Octopus Server extensions.</Description>
+    <NeutralLanguage>en-US</NeutralLanguage>
+    <VersionPrefix>0.0.0</VersionPrefix>
+    <Authors>Octopus Deploy</Authors>
+    <PackageId>Octopus.Server.Extensibility</PackageId>
+    <PackageIconUrl>http://i.octopusdeploy.com/resources/Avatar3_360.png</PackageIconUrl>
+    <PackageLicenseUrl>https://octopus.com/</PackageLicenseUrl>
+    <PackageProjectUrl>https://octopus.com/</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Server.Extensibility.Core\Server.Extensibility.Core.csproj" />
+    <ProjectReference Include="..\Node.Extensibility\Node.Extensibility.csproj" />
   </ItemGroup>
 
   </Project>

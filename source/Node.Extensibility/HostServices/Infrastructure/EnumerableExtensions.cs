@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Octopus.Server.Extensibility.HostServices.Infrastructure
+namespace Octopus.Node.Extensibility.HostServices.Infrastructure
 {
     public static class EnumerableExtensions
     {

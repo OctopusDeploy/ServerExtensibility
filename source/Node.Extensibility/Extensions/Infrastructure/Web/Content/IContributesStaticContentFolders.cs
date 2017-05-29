@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Content
+namespace Octopus.Node.Extensibility.Extensions.Infrastructure.Web.Content
 {
     public interface IContributesStaticContentFolders
     {

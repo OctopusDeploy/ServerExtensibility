@@ -1,6 +1,6 @@
 using System.Net;
 using Microsoft.AspNetCore.Http;
-using Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration;
+using Octopus.Node.Extensibility.Extensions.Infrastructure.Configuration;
 
 namespace ODCM.Server.Extensibility.HostServices.Infrastructure.Web.Api
 {

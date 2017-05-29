@@ -1,6 +1,6 @@
 ﻿using Octopus.Data.Model.User;
 
-namespace Octopus.Server.Extensibility.HostServices.Web
+namespace Octopus.Node.Extensibility.HostServices.Web
 {
     public interface IUserMapper
     {

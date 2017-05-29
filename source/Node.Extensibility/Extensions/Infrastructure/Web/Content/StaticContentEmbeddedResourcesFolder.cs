@@ -1,7 +1,6 @@
-﻿using System;
-using System.Reflection;
+﻿using System.Reflection;
 
-namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Content
+namespace Octopus.Node.Extensibility.Extensions.Infrastructure.Web.Content
 {
     public class StaticContentEmbeddedResourcesFolder
     {

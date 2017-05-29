@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netcoreapp1.1;netstandard1.2</TargetFrameworks>
+    <AssemblyName>Octopus.Node.Extensibility</AssemblyName>
+    <RootNamespace>Octopus.Node.Extensibility</RootNamespace>
+    <Description>Provides the agreed contracts between Octopus server side extensions.</Description>
+    <NeutralLanguage>en-US</NeutralLanguage>
+    <VersionPrefix>0.0.0</VersionPrefix>
+    <Authors>Octopus Deploy</Authors>
+    <PackageId>Octopus.Node.Extensibility</PackageId>
+    <PackageIconUrl>http://i.octopusdeploy.com/resources/Avatar3_360.png</PackageIconUrl>
+    <PackageLicenseUrl>https://octopus.com/</PackageLicenseUrl>
+    <PackageProjectUrl>https://octopus.com/</PackageProjectUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="4.6.0" />
+    <PackageReference Include="Nevermore.Contracts" Version="3.1.1-enh-odcm0002" />
+    <PackageReference Include="Octopus.Data" Version="1.0.24" />
+  </ItemGroup>
+
+</Project>

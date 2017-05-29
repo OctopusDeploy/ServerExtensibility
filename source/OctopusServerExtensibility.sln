@@ -11,7 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Solution Items\VersionInfo.cs = Solution Items\VersionInfo.cs
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server.Extensibility.Core", "Server.Extensibility.Core\Server.Extensibility.Core.csproj", "{7B791C6F-CD6E-47F6-ADFA-EE4CD01E8C49}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Node.Extensibility", "Node.Extensibility\Node.Extensibility.csproj", "{7B791C6F-CD6E-47F6-ADFA-EE4CD01E8C49}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataCenterManager.Extensibility", "DataCenterManager.Extensibility\DataCenterManager.Extensibility.csproj", "{B70EBEB8-CD34-45C0-A737-069962CB8C63}"
 EndProject

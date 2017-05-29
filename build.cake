@@ -19,14 +19,6 @@ var configuration = Argument("configuration", "Release");
 var publishDir = "./publish";
 var localPackagesDir = "../LocalPackages";
 var artifactsDir = "./artifacts";
-var assetDir = "./BuildAssets";
-var globalAssemblyFile = "./source/Solution Items/VersionInfo.cs";
-var solutionToBuild = "./source/OctopusServerExtensibility.sln";
-var fileToPublish = "./source/Server.Extensibility/bin/Release/net451/Octopus.Server.Extensibility.dll";
-var coreFileToPublish = "./source/Server.Extensibility/bin/Release/net451/Octopus.Server.Extensibility.Core.dll";
-var odcmFileToPublish = "./source/DataCenterManager.Extensibility/bin/Release/netcoreapp1.1/Octopus.DataCenterManager.Extensibility.dll";
-var odcmCoreFileToPublish = "./source/DataCenterManager.Extensibility/bin/Release/netcoreapp1.1/Octopus.Server.Extensibility.Core.dll";
-var cleanups = new List<IDisposable>(); 
 
 var gitVersionInfo = GitVersion(new GitVersionSettings {
     OutputType = GitVersionOutput.Json
@@ -49,10 +41,6 @@ Setup(context =>
 
 Teardown(context =>
 {
-    Information("Cleaning up");
-    foreach(var item in cleanups)
-        item.Dispose();
-
     Information("Finished running tasks.");
 });
 
@@ -63,7 +51,6 @@ Teardown(context =>
 Task("__Default")
     .IsDependentOn("__Clean")
     .IsDependentOn("__Restore")
-    .IsDependentOn("__UpdateAssemblyVersionInformation")
     .IsDependentOn("__Build")
     .IsDependentOn("__Pack")
     .IsDependentOn("__Publish")
@@ -80,24 +67,8 @@ Task("__Clean")
 
 Task("__Restore")
     .Does(() => DotNetCoreRestore("source"));
-    
-Task("__UpdateAssemblyVersionInformation")
-    .Does(() =>
-{
-    cleanups.Add(new AutoRestoreFile(globalAssemblyFile));
-
-    GitVersion(new GitVersionSettings {
-        UpdateAssemblyInfo = true,
-        UpdateAssemblyInfoFilePath = globalAssemblyFile
-    });
-
-    Information("AssemblyVersion -> {0}", gitVersionInfo.AssemblySemVer);
-    Information("AssemblyFileVersion -> {0}", $"{gitVersionInfo.MajorMinorPatch}.0");
-    Information("AssemblyInformationalVersion -> {0}", gitVersionInfo.InformationalVersion);
-});
 
 Task("__Build")
-    .IsDependentOn("__UpdateAssemblyVersionInformation")
     .Does(() =>
 {
     DotNetCoreBuild("./source", new DotNetCoreBuildSettings
@@ -109,32 +80,13 @@ Task("__Build")
 
 Task("__Pack")
     .Does(() => {
-        var nugetPackDir = Path.Combine(publishDir, "nuget");
-        var nuspecFile = "Octopus.Server.Extensibility.nuspec";
-        
-        CreateDirectory(nugetPackDir);
-        CopyFileToDirectory(Path.Combine(assetDir, nuspecFile), nugetPackDir);
-        CopyFileToDirectory(fileToPublish, nugetPackDir);
-        CopyFileToDirectory(coreFileToPublish, nugetPackDir);        
-
-        NuGetPack(Path.Combine(nugetPackDir, nuspecFile), new NuGetPackSettings {
-            Version = nugetVersion,
-            OutputDirectory = artifactsDir
+        DotNetCorePack("source", new DotNetCorePackSettings
+        {
+            Configuration = configuration,
+            OutputDirectory = artifactsDir,
+            NoBuild = true,
+            ArgumentCustomization = args => args.Append($"/p:Version={nugetVersion}")
         });
-
-        var odcmNugetPackDir = Path.Combine(publishDir, "odcm");
-        var odcmNuspecFile = "Octopus.DataCenterManager.Extensibility.nuspec";
-
-        CreateDirectory(odcmNugetPackDir);
-        CopyFileToDirectory(Path.Combine(assetDir, odcmNuspecFile), odcmNugetPackDir);
-        CopyFileToDirectory(odcmFileToPublish, odcmNugetPackDir);
-        CopyFileToDirectory(odcmCoreFileToPublish, odcmNugetPackDir);        
-
-        NuGetPack(Path.Combine(odcmNugetPackDir, odcmNuspecFile), new NuGetPackSettings {
-            Version = nugetVersion,
-            OutputDirectory = artifactsDir
-        });
-
 });
 
 
@@ -142,6 +94,11 @@ Task("__Publish")
     .WithCriteria(BuildSystem.IsRunningOnTeamCity)
     .Does(() =>
 {
+    NuGetPush($"{artifactsDir}/Octopus.Node.Extensibility.{nugetVersion}.nupkg", new NuGetPushSettings {
+        Source = "https://octopus.myget.org/F/octopus-dependencies/api/v3/index.json",
+        ApiKey = EnvironmentVariable("MyGetApiKey")
+    });
+
     NuGetPush($"{artifactsDir}/Octopus.Server.Extensibility.{nugetVersion}.nupkg", new NuGetPushSettings {
         Source = "https://octopus.myget.org/F/octopus-dependencies/api/v3/index.json",
         ApiKey = EnvironmentVariable("MyGetApiKey")
@@ -154,6 +111,11 @@ Task("__Publish")
 
     if (gitVersionInfo.PreReleaseLabel == "")
     {
+        NuGetPush($"{artifactsDir}/Octopus.Node.Extensibility.{nugetVersion}.nupkg", new NuGetPushSettings {
+            Source = "https://www.nuget.org/api/v2/package",
+            ApiKey = EnvironmentVariable("NuGetApiKey")
+        });
+
         NuGetPush($"{artifactsDir}/Octopus.Server.Extensibility.{nugetVersion}.nupkg", new NuGetPushSettings {
             Source = "https://www.nuget.org/api/v2/package",
             ApiKey = EnvironmentVariable("NuGetApiKey")
@@ -174,6 +136,7 @@ Task("__CopyToLocalPackages")
     .Does(() =>
 {
     CreateDirectory(localPackagesDir);
+    CopyFileToDirectory(Path.Combine(artifactsDir, $"Octopus.Node.Extensibility.{nugetVersion}.nupkg"), localPackagesDir);
     CopyFileToDirectory(Path.Combine(artifactsDir, $"Octopus.Server.Extensibility.{nugetVersion}.nupkg"), localPackagesDir);
     CopyFileToDirectory(Path.Combine(artifactsDir, $"Octopus.DataCenterManager.Extensibility.{nugetVersion}.nupkg"), localPackagesDir);
 });

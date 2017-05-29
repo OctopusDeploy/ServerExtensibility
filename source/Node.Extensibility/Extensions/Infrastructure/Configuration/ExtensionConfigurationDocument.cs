@@ -1,6 +1,6 @@
 ﻿using Nevermore.Contracts;
 
-namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration
+namespace Octopus.Node.Extensibility.Extensions.Infrastructure.Configuration
 {
     public abstract class ExtensionConfigurationDocument : IDocument
     {

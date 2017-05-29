@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration
+namespace Octopus.Node.Extensibility.Extensions.Infrastructure.Configuration
 {
     public interface IHasConfigurationSettings
     {

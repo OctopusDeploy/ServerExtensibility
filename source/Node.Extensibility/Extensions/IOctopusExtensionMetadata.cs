@@ -1,6 +1,4 @@
-using System;
-
-namespace Octopus.Server.Extensibility.Extensions
+namespace Octopus.Node.Extensibility.Extensions
 {
     public interface IOctopusExtensionMetadata
     {

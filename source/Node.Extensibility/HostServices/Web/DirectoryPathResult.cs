@@ -1,4 +1,4 @@
-﻿namespace Octopus.Server.Extensibility.HostServices.Web
+﻿namespace Octopus.Node.Extensibility.HostServices.Web
 {
     public class DirectoryPathResult
     {

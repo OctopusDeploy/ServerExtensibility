@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace Octopus.Server.Extensibility.HostServices.Web
+namespace Octopus.Node.Extensibility.HostServices.Web
 {
     public interface IHomeLinksContributor
     {

@@ -4,6 +4,13 @@
     <TargetFramework>netcoreapp1.1</TargetFramework>
     <RootNamespace>Octopus.DataCenterManager.Extensibility</RootNamespace>
     <AssemblyName>Octopus.DataCenterManager.Extensibility</AssemblyName>
+    <NeutralLanguage>en-US</NeutralLanguage>
+    <VersionPrefix>0.0.0</VersionPrefix>
+    <Authors>Octopus Deploy</Authors>
+    <PackageId>Octopus.DataCenterManager.Extensibility</PackageId>
+    <PackageIconUrl>http://i.octopusdeploy.com/resources/Avatar3_360.png</PackageIconUrl>
+    <PackageLicenseUrl>https://octopus.com/</PackageLicenseUrl>
+    <PackageProjectUrl>https://octopus.com/</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>
@@ -14,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Server.Extensibility.Core\Server.Extensibility.Core.csproj" />
+    <ProjectReference Include="..\Node.Extensibility\Node.Extensibility.csproj" />
   </ItemGroup>
 
 </Project>

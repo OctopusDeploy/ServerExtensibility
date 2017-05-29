@@ -1,7 +1,6 @@
-﻿using System;
-using Autofac;
+﻿using Autofac;
 
-namespace Octopus.Server.Extensibility.Extensions
+namespace Octopus.Node.Extensibility.Extensions
 {
     public interface IOctopusExtension
     {
