@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net451</TargetFrameworks>
+    <RootNamespace>Octopus.Server.Extensibility</RootNamespace>
+    <AssemblyName>Octopus.Server.Extensibility</AssemblyName>
+    <Description>Octopus Deploy: Extensibility</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="4.6.0" />
+    <PackageReference Include="Nancy" Version="1.2.0" />
+    <PackageReference Include="Nancy.Serialization.JsonNet" Version="1.2.0" />
+    <PackageReference Include="Nevermore.Contracts" Version="3.1.1-enh-odcm0002" />
+    <PackageReference Include="Octopus.Data" Version="1.0.24" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Server.Extensibility.Core\Server.Extensibility.Core.csproj" />
+  </ItemGroup>
+
+  </Project>

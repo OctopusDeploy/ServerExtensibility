@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp1.1</TargetFramework>
+    <RootNamespace>Octopus.DataCenterManager.Extensibility</RootNamespace>
+    <AssemblyName>Octopus.DataCenterManager.Extensibility</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
@@ -12,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Octopus.Server.Extensibility.Core\Octopus.Server.Extensibility.Core.csproj" />
+    <ProjectReference Include="..\Server.Extensibility.Core\Server.Extensibility.Core.csproj" />
   </ItemGroup>
 
 </Project>
