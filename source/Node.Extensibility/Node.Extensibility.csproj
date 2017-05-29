@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp1.1;netstandard1.2</TargetFrameworks>
+    <TargetFrameworks>netstandard1.2</TargetFrameworks>
     <AssemblyName>Octopus.Node.Extensibility</AssemblyName>
     <RootNamespace>Octopus.Node.Extensibility</RootNamespace>
     <Description>Provides the agreed contracts between Octopus server side extensions.</Description>
