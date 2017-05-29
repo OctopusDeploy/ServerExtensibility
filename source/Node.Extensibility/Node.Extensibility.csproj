@@ -16,7 +16,6 @@
 
   <ItemGroup>
     <PackageReference Include="Autofac" Version="4.6.0" />
-    <PackageReference Include="Nevermore.Contracts" Version="3.1.1-enh-odcm0002" />
     <PackageReference Include="Octopus.Data" Version="1.0.24" />
   </ItemGroup>
 
