@@ -2,12 +2,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net451</TargetFrameworks>
+    <TargetFramework>net451</TargetFramework>
     <RootNamespace>Octopus.Server.Extensibility</RootNamespace>
     <AssemblyName>Octopus.Server.Extensibility</AssemblyName>
     <Description>Provides the agreed contracts between Octopus Server and Octopus Server extensions.</Description>
     <NeutralLanguage>en-US</NeutralLanguage>
-    <VersionPrefix>0.0.0</VersionPrefix>
     <Authors>Octopus Deploy</Authors>
     <PackageId>Octopus.Server.Extensibility</PackageId>
     <PackageIconUrl>http://i.octopusdeploy.com/resources/Avatar3_360.png</PackageIconUrl>
@@ -19,7 +18,6 @@
     <PackageReference Include="Autofac" Version="4.6.0" />
     <PackageReference Include="Nancy" Version="1.2.0" />
     <PackageReference Include="Nancy.Serialization.JsonNet" Version="1.2.0" />
-    <PackageReference Include="Nevermore.Contracts" Version="3.1.1-enh-odcm0002" />
     <PackageReference Include="Octopus.Data" Version="1.0.24" />
   </ItemGroup>
 
