@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Content
+namespace Octopus.Node.Extensibility.Extensions.Infrastructure.Web.Content
 {
     /// <summary>
     /// Implemented by extensions that are providing their own Angular Modules.  The module's JS code

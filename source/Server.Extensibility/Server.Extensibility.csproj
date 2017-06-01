@@ -25,4 +25,8 @@
     <ProjectReference Include="..\Node.Extensibility\Node.Extensibility.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Extensions\Infrastructure\Web\Content\" />
+  </ItemGroup>
+
   </Project>
