@@ -70,7 +70,7 @@ Task("__Restore")
     {
         ArgumentCustomization = args => args.Append($"/p:Version={nugetVersion}")
     })
-
+);
 Task("__Build")
     .Does(() =>
 {
