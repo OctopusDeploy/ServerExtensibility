@@ -15,7 +15,7 @@
 
   <ItemGroup>
     <PackageReference Include="Autofac" Version="4.6.0" />
-    <PackageReference Include="Octopus.Data" Version="1.0.26-enh-identity0012" />
+    <PackageReference Include="Octopus.Data" Version="1.0.26-enh-identity0014" />
   </ItemGroup>
 
 </Project>
