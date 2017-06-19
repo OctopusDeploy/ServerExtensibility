@@ -18,7 +18,7 @@
     <PackageReference Include="Autofac" Version="4.6.0" />
     <PackageReference Include="Nancy" Version="1.2.0" />
     <PackageReference Include="Nancy.Serialization.JsonNet" Version="1.2.0" />
-    <PackageReference Include="Octopus.Data" Version="1.0.26-enh-odcm0022" />
+    <PackageReference Include="Octopus.Data" Version="2.0.0-enh-odcm0024" />
   </ItemGroup>
 
   <ItemGroup>
