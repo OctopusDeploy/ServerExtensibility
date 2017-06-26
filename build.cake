@@ -33,8 +33,6 @@ Setup(context =>
 {
     if(BuildSystem.IsRunningOnTeamCity)
         BuildSystem.TeamCity.SetBuildNumber(gitVersionInfo.NuGetVersion);
-    if(BuildSystem.IsRunningOnAppVeyor)
-        AppVeyor.UpdateBuildVersion(gitVersionInfo.NuGetVersion);
 
     Information("Building Octopus.Server.Extensibility v{0}", nugetVersion);
 });
