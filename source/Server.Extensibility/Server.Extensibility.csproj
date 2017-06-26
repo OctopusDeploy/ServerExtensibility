@@ -15,6 +15,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Extensions\Infrastructure\Web\Content\**" />
+    <EmbeddedResource Remove="Extensions\Infrastructure\Web\Content\**" />
+    <None Remove="Extensions\Infrastructure\Web\Content\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Autofac" Version="4.6.0" />
     <PackageReference Include="Nancy" Version="1.2.0" />
     <PackageReference Include="Nancy.Serialization.JsonNet" Version="1.2.0" />
@@ -23,10 +29,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Node.Extensibility\Node.Extensibility.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Extensions\Infrastructure\Web\Content\" />
   </ItemGroup>
 
   </Project>
