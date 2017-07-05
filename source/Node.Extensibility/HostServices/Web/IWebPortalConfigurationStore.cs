@@ -22,5 +22,8 @@
 
         bool GetIsAutoLoginEnabled();
         void SetIsAutoLoginEnabled(bool isAutoLoginEnabled);
+
+        string GetPublicBaseUrl();
+        void SetPublicBaseUrl(string publicBaseUrl);
     }
 }
