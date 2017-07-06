@@ -1,4 +1,4 @@
-﻿using System.Net;
+﻿using System;
 using Octopus.Node.Extensibility.HostServices.Web;
 
 namespace Octopus.DataCenterManager.Extensibility.HostServices.Web
@@ -7,12 +7,12 @@ namespace Octopus.DataCenterManager.Extensibility.HostServices.Web
     {
         public string UrlEncode(string value)
         {
-            return WebUtility.UrlEncode(value);
+            return Uri.EscapeDataString(value);
         }
 
         public string UrlDecode(string value)
         {
-            return WebUtility.UrlDecode(value);
+            return Uri.UnescapeDataString(value);
         }
     }
 }
