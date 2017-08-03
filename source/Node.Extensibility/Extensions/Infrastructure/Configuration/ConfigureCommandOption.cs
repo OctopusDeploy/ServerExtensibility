@@ -13,11 +13,19 @@ namespace Octopus.Node.Extensibility.Extensions.Infrastructure.Configuration
         }
 
         public ConfigureCommandOption(string prototype, string description, Action<string> action, bool hide)
+            // ReSharper disable once IntroduceOptionalParameters.Global - this ctor is part of the public interface
+            : this(prototype, description, action, hide: false, requiresRestart: false)
+        {
+
+        }
+
+        public ConfigureCommandOption(string prototype, string description, Action<string> action, bool hide, bool requiresRestart)
         {
             Prototype = prototype;
             Description = description;
             Action = action;
             Hide = hide;
+            RequiresRestart = requiresRestart;
         }
 
         public string Prototype { get; set; }
@@ -27,5 +35,7 @@ namespace Octopus.Node.Extensibility.Extensions.Infrastructure.Configuration
         public Action<string> Action { get; set; }
 
         public bool Hide { get; set; }
+
+        public bool RequiresRestart { get; set; }
     }
 }
