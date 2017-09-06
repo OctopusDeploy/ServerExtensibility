@@ -23,7 +23,6 @@
       <dependency id="Nancy" version="1.2.0" />
       <dependency id="Nancy.Serialization.JsonNet" version="1.2.0" />
       <dependency id="Newtonsoft.Json" version="9.0.1" />
-      <dependency id="NuGet.Versioning" version="3.4.3" />
       <dependency id="Octopus.Data" version="1.0.0" />
     </dependencies>
   </metadata>
