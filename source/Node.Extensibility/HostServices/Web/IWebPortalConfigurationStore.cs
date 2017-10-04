@@ -2,7 +2,7 @@
 {
     public interface IWebPortalConfigurationStore
     {
-        string GetListenPrefixes();
+        string[] GetListenPrefixes();
 
         bool GetForceSSL();
 
