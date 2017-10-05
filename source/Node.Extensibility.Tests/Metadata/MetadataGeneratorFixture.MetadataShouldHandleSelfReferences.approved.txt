@@ -1,0 +1,45 @@
+{
+  "Types": [
+    {
+      "Name": "SelfReferencingResource",
+      "Properties": [
+        {
+          "Name": "Name",
+          "Type": "string",
+          "DisplayInfo": {
+            "Required": false,
+            "Sensitive": false,
+            "Label": "Name",
+            "Description": null,
+            "Options": null,
+            "ListApi": null
+          }
+        },
+        {
+          "Name": "SelfReference",
+          "Type": "SelfReferencingResource",
+          "DisplayInfo": {
+            "Required": false,
+            "Sensitive": false,
+            "Label": "SelfReference",
+            "Description": null,
+            "Options": null,
+            "ListApi": null
+          }
+        },
+        {
+          "Name": "SomeValue",
+          "Type": "string",
+          "DisplayInfo": {
+            "Required": false,
+            "Sensitive": false,
+            "Label": "SomeValue",
+            "Description": null,
+            "Options": null,
+            "ListApi": null
+          }
+        }
+      ]
+    }
+  ]
+}

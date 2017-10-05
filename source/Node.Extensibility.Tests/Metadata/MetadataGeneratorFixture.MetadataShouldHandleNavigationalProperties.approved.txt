@@ -1,0 +1,62 @@
+{
+  "Types": [
+    {
+      "Name": "ParentResource",
+      "Properties": [
+        {
+          "Name": "Children",
+          "Type": "ChildResource[]",
+          "DisplayInfo": {
+            "Required": false,
+            "Sensitive": false,
+            "Label": "Children",
+            "Description": null,
+            "Options": null,
+            "ListApi": null
+          }
+        },
+        {
+          "Name": "SomeValue",
+          "Type": "string",
+          "DisplayInfo": {
+            "Required": false,
+            "Sensitive": false,
+            "Label": "SomeValue",
+            "Description": null,
+            "Options": null,
+            "ListApi": null
+          }
+        }
+      ]
+    },
+    {
+      "Name": "ChildResource",
+      "Properties": [
+        {
+          "Name": "Parent",
+          "Type": "ParentResource",
+          "DisplayInfo": {
+            "Required": false,
+            "Sensitive": false,
+            "Label": "Parent",
+            "Description": null,
+            "Options": null,
+            "ListApi": null
+          }
+        },
+        {
+          "Name": "ChildIntProperty",
+          "Type": "int",
+          "DisplayInfo": {
+            "Required": false,
+            "Sensitive": false,
+            "Label": "ChildIntProperty",
+            "Description": null,
+            "Options": null,
+            "ListApi": null
+          }
+        }
+      ]
+    }
+  ]
+}

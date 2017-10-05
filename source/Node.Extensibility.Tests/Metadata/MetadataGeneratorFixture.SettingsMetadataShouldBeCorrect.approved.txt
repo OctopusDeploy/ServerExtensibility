@@ -1,0 +1,209 @@
+{
+  "Types": [
+    {
+      "Name": "TopLevelResource",
+      "Properties": [
+        {
+          "Name": "SecondLevelResource",
+          "Type": "SecondLevelResource",
+          "DisplayInfo": {
+            "Required": false,
+            "Sensitive": false,
+            "Label": "SecondLevelResource",
+            "Description": null,
+            "Options": null,
+            "ListApi": null
+          }
+        },
+        {
+          "Name": "DuplicateSecondLevelResource",
+          "Type": "SecondLevelResource",
+          "DisplayInfo": {
+            "Required": false,
+            "Sensitive": false,
+            "Label": "Duplicated 2nd Level",
+            "Description": "This 2nd-level resource has been duplicated",
+            "Options": null,
+            "ListApi": null
+          }
+        },
+        {
+          "Name": "NullableDateTimeProperty",
+          "Type": "DateTime?",
+          "DisplayInfo": {
+            "Required": true,
+            "Sensitive": false,
+            "Label": "NullableDateTimeProperty",
+            "Description": null,
+            "Options": null,
+            "ListApi": null
+          }
+        },
+        {
+          "Name": "DateTimeOffsetProperty",
+          "Type": "DateTimeOffset",
+          "DisplayInfo": {
+            "Required": false,
+            "Sensitive": false,
+            "Label": "DateTimeOffsetProperty",
+            "Description": null,
+            "Options": null,
+            "ListApi": null
+          }
+        },
+        {
+          "Name": "IntProperty",
+          "Type": "int",
+          "DisplayInfo": {
+            "Required": false,
+            "Sensitive": false,
+            "Label": "IntProperty",
+            "Description": null,
+            "Options": {
+              "MultiSelect": true,
+              "Values": null
+            },
+            "ListApi": null
+          }
+        },
+        {
+          "Name": "EnumProp",
+          "Type": "TestEnum",
+          "DisplayInfo": {
+            "Required": false,
+            "Sensitive": false,
+            "Label": "EnumProp",
+            "Description": null,
+            "Options": {
+              "MultiSelect": false,
+              "Values": {
+                "5": "First",
+                "7": "Second",
+                "11": "Third",
+                "12": "Fourth"
+              }
+            },
+            "ListApi": null
+          }
+        },
+        {
+          "Name": "NullableIntProperty",
+          "Type": "int?",
+          "DisplayInfo": {
+            "Required": false,
+            "Sensitive": false,
+            "Label": "NullableIntProperty",
+            "Description": null,
+            "Options": null,
+            "ListApi": null
+          }
+        },
+        {
+          "Name": "ListOfStringProperty",
+          "Type": "string[]",
+          "DisplayInfo": {
+            "Required": false,
+            "Sensitive": false,
+            "Label": "ListOfStringProperty",
+            "Description": null,
+            "Options": null,
+            "ListApi": null
+          }
+        },
+        {
+          "Name": "NullableDateTimeArray",
+          "Type": "DateTime?[]",
+          "DisplayInfo": {
+            "Required": false,
+            "Sensitive": false,
+            "Label": "NullableDateTimeArray",
+            "Description": null,
+            "Options": null,
+            "ListApi": null
+          }
+        },
+        {
+          "Name": "SomeValue",
+          "Type": "string",
+          "DisplayInfo": {
+            "Required": false,
+            "Sensitive": false,
+            "Label": "SomeValue",
+            "Description": null,
+            "Options": null,
+            "ListApi": null
+          }
+        }
+      ]
+    },
+    {
+      "Name": "SecondLevelResource",
+      "Properties": [
+        {
+          "Name": "StringProperty",
+          "Type": "string",
+          "DisplayInfo": {
+            "Required": false,
+            "Sensitive": true,
+            "Label": "StringProperty",
+            "Description": null,
+            "Options": null,
+            "ListApi": null
+          }
+        },
+        {
+          "Name": "NullableDateTimeOffsetProperty",
+          "Type": "DateTimeOffset?",
+          "DisplayInfo": {
+            "Required": false,
+            "Sensitive": false,
+            "Label": "NullableDateTimeOffsetProperty",
+            "Description": null,
+            "Options": null,
+            "ListApi": null
+          }
+        },
+        {
+          "Name": "BoolProperty",
+          "Type": "bool",
+          "DisplayInfo": {
+            "Required": false,
+            "Sensitive": false,
+            "Label": "BoolProperty",
+            "Description": null,
+            "Options": null,
+            "ListApi": null
+          }
+        },
+        {
+          "Name": "StringArrayProperty",
+          "Type": "string[]",
+          "DisplayInfo": {
+            "Required": false,
+            "Sensitive": false,
+            "Label": "StringArrayProperty",
+            "Description": null,
+            "Options": null,
+            "ListApi": {
+              "MultiSelect": true
+            }
+          }
+        },
+        {
+          "Name": "IntArrayProperty",
+          "Type": "int[]",
+          "DisplayInfo": {
+            "Required": false,
+            "Sensitive": false,
+            "Label": "IntArrayProperty",
+            "Description": null,
+            "Options": null,
+            "ListApi": {
+              "MultiSelect": false
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
