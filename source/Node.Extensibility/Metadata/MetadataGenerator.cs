@@ -36,17 +36,13 @@ namespace Octopus.Node.Extensibility.Metadata
                 Types = new List<TypeMetadata>(),
             };
         }
+
         public Metadata GetMetadata<T>()
         {
             return GetMetadata(typeof(T));
         }
 
-        public Metadata GetMetadata<T>(T obj)
-        {
-            return GetMetadata(obj.GetType());
-        }
-
-        private Metadata GetMetadata(Type objectType)
+        public Metadata GetMetadata(Type objectType)
         {
             Generate(objectType);
 

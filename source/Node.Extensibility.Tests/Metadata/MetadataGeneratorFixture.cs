@@ -15,7 +15,7 @@ namespace Node.Extensibility.Tests.Metadata
         {
             IGenerateMetadata generator = new MetadataGenerator();
 
-            var metadata = generator.GetMetadata<TopLevelResource>();
+            var metadata = generator.GetMetadata(typeof(TopLevelResource));
 
             var serializerSettings = new JsonSerializerSettings
             {

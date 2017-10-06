@@ -1,8 +1,10 @@
-﻿namespace Octopus.Node.Extensibility.Metadata
+﻿using System;
+
+namespace Octopus.Node.Extensibility.Metadata
 {
     public interface IGenerateMetadata
     {
-        Metadata GetMetadata<T>(T config);
+        Metadata GetMetadata(Type objectType);
 
         Metadata GetMetadata<T>();
     }
