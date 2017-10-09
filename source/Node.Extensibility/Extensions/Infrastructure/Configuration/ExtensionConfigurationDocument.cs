@@ -14,7 +14,7 @@ namespace Octopus.Node.Extensibility.Extensions.Infrastructure.Configuration
             ExtensionAuthor = extensionAuthor;
         }
 
-        public string Id { get; protected set; }
+        public string Id { get; set; }
 
         public string Name { get; set; }
 
