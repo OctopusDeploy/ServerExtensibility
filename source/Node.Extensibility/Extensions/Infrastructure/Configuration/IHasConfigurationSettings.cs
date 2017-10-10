@@ -13,6 +13,10 @@ namespace Octopus.Node.Extensibility.Extensions.Infrastructure.Configuration
 
         Type MetadataResourceType { get; }
 
+        object GetConfiguration();
+
+        void SetConfiguration(object config);
+
         IEnumerable<ConfigurationValue> GetConfigurationValues();
     }
 }
