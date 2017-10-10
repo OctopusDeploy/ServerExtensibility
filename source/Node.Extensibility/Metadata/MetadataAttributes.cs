@@ -8,6 +8,9 @@ namespace Octopus.Node.Extensibility.Metadata
     public class SensitiveAttribute : Attribute
     { }
 
+    public class ReadOnlyAttribute : Attribute
+    { }
+
     public class DescriptionAttribute : Attribute
     {
         public readonly string Description;

@@ -144,6 +144,9 @@ namespace Node.Extensibility.Tests.Metadata
             public List<string> ListOfStringProperty { get; set; }
 
             public DateTime?[] NullableDateTimeArray { get; set; }
+
+            [ReadOnly]
+            public string HandsOff { get; set; }
         }
 
         public class SecondLevelResource

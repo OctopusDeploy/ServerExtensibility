@@ -82,6 +82,7 @@ namespace Octopus.Node.Extensibility.Metadata
                         {
                             Required = prop.IsDefined(typeof(RequiredAttribute)),
                             Sensitive = prop.IsDefined(typeof(SensitiveAttribute)),
+                            ReadOnly = prop.IsDefined(typeof(ReadOnlyAttribute)),
                             Label = prop.GetCustomAttribute<DisplayLabelAttribute>()?.Label ?? prop.Name,
                             Description = prop.GetCustomAttribute<DescriptionAttribute>()?.Description,
                         }
