@@ -47,7 +47,7 @@ namespace Octopus.Node.Extensibility.Extensions.Infrastructure.Configuration
             return GetProperty(doc => doc.IsEnabled);
         }
 
-        public void SetIsEnabled(bool isEnabled)
+        public virtual void SetIsEnabled(bool isEnabled)
         {
             SetProperty(doc => doc.IsEnabled = isEnabled);
         }
