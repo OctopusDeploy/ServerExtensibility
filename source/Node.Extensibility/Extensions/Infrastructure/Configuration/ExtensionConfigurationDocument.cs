@@ -9,10 +9,11 @@ namespace Octopus.Node.Extensibility.Extensions.Infrastructure.Configuration
         {
         }
 
-        protected ExtensionConfigurationDocument(string name, string extensionAuthor)
+        protected ExtensionConfigurationDocument(string name, string extensionAuthor, string configurationSchemaVersion)
         {
             Name = name;
             ExtensionAuthor = extensionAuthor;
+            ConfigurationSchemaVersion = configurationSchemaVersion;
         }
 
         public string Id { get; set; }
