@@ -23,6 +23,9 @@ namespace Octopus.Node.Extensibility.Extensions.Infrastructure.Configuration
         [ReadOnly]
         public string ExtensionAuthor { get; set; }
 
+        [ReadOnly]
+        public string ConfigurationSchemaVersion { get; set; }
+
         public bool IsEnabled { get; set; }
     }
 }
