@@ -26,7 +26,6 @@ namespace Octopus.Node.Extensibility.Metadata
         {
             "LastModifiedBy",
             "LastModifiedOn",
-            "Id"
         };
 
         public MetadataGenerator()
