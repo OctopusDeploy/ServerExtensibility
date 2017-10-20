@@ -40,6 +40,8 @@ namespace Octopus.Node.Extensibility.Metadata
 
         public bool Sensitive { get; set; }
 
+        public bool ReadOnly { get; set; }
+
         public string Label { get; set; }
 
         public string Description { get; set; }

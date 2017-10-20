@@ -9,6 +9,7 @@
           "DisplayInfo": {
             "Required": false,
             "Sensitive": false,
+            "ReadOnly": false,
             "Label": "Children",
             "Description": null,
             "Options": null,
@@ -21,6 +22,7 @@
           "DisplayInfo": {
             "Required": false,
             "Sensitive": false,
+            "ReadOnly": false,
             "Label": "SomeValue",
             "Description": null,
             "Options": null,
@@ -38,6 +40,7 @@
           "DisplayInfo": {
             "Required": false,
             "Sensitive": false,
+            "ReadOnly": false,
             "Label": "Parent",
             "Description": null,
             "Options": null,
@@ -50,6 +53,7 @@
           "DisplayInfo": {
             "Required": false,
             "Sensitive": false,
+            "ReadOnly": false,
             "Label": "ChildIntProperty",
             "Description": null,
             "Options": null,

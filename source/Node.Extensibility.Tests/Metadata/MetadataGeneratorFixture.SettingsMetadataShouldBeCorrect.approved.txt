@@ -9,6 +9,7 @@
           "DisplayInfo": {
             "Required": false,
             "Sensitive": false,
+            "ReadOnly": false,
             "Label": "SecondLevelResource",
             "Description": null,
             "Options": null,
@@ -21,6 +22,7 @@
           "DisplayInfo": {
             "Required": false,
             "Sensitive": false,
+            "ReadOnly": false,
             "Label": "Duplicated 2nd Level",
             "Description": "This 2nd-level resource has been duplicated",
             "Options": null,
@@ -33,6 +35,7 @@
           "DisplayInfo": {
             "Required": true,
             "Sensitive": false,
+            "ReadOnly": false,
             "Label": "NullableDateTimeProperty",
             "Description": null,
             "Options": null,
@@ -45,6 +48,7 @@
           "DisplayInfo": {
             "Required": false,
             "Sensitive": false,
+            "ReadOnly": false,
             "Label": "DateTimeOffsetProperty",
             "Description": null,
             "Options": null,
@@ -57,6 +61,7 @@
           "DisplayInfo": {
             "Required": false,
             "Sensitive": false,
+            "ReadOnly": false,
             "Label": "IntProperty",
             "Description": null,
             "Options": {
@@ -72,6 +77,7 @@
           "DisplayInfo": {
             "Required": false,
             "Sensitive": false,
+            "ReadOnly": false,
             "Label": "EnumProp",
             "Description": null,
             "Options": {
@@ -92,6 +98,7 @@
           "DisplayInfo": {
             "Required": false,
             "Sensitive": false,
+            "ReadOnly": false,
             "Label": "NullableIntProperty",
             "Description": null,
             "Options": null,
@@ -104,6 +111,7 @@
           "DisplayInfo": {
             "Required": false,
             "Sensitive": false,
+            "ReadOnly": false,
             "Label": "ListOfStringProperty",
             "Description": null,
             "Options": null,
@@ -116,7 +124,21 @@
           "DisplayInfo": {
             "Required": false,
             "Sensitive": false,
+            "ReadOnly": false,
             "Label": "NullableDateTimeArray",
+            "Description": null,
+            "Options": null,
+            "ListApi": null
+          }
+        },
+        {
+          "Name": "HandsOff",
+          "Type": "string",
+          "DisplayInfo": {
+            "Required": false,
+            "Sensitive": false,
+            "ReadOnly": true,
+            "Label": "HandsOff",
             "Description": null,
             "Options": null,
             "ListApi": null
@@ -128,6 +150,7 @@
           "DisplayInfo": {
             "Required": false,
             "Sensitive": false,
+            "ReadOnly": false,
             "Label": "SomeValue",
             "Description": null,
             "Options": null,
@@ -145,6 +168,7 @@
           "DisplayInfo": {
             "Required": false,
             "Sensitive": true,
+            "ReadOnly": false,
             "Label": "StringProperty",
             "Description": null,
             "Options": null,
@@ -157,6 +181,7 @@
           "DisplayInfo": {
             "Required": false,
             "Sensitive": false,
+            "ReadOnly": false,
             "Label": "NullableDateTimeOffsetProperty",
             "Description": null,
             "Options": null,
@@ -169,6 +194,7 @@
           "DisplayInfo": {
             "Required": false,
             "Sensitive": false,
+            "ReadOnly": false,
             "Label": "BoolProperty",
             "Description": null,
             "Options": null,
@@ -181,6 +207,7 @@
           "DisplayInfo": {
             "Required": false,
             "Sensitive": false,
+            "ReadOnly": false,
             "Label": "StringArrayProperty",
             "Description": null,
             "Options": null,
@@ -195,6 +222,7 @@
           "DisplayInfo": {
             "Required": false,
             "Sensitive": false,
+            "ReadOnly": false,
             "Label": "IntArrayProperty",
             "Description": null,
             "Options": null,
