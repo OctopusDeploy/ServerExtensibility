@@ -7,7 +7,7 @@ namespace Octopus.Node.Extensibility.HostServices.Web
         /// <summary>
         /// Returns the web portal configuration for the current Node.
         /// </summary>
-        NodeWebPortalConfiguration GetNodeWebPortalConfiguration();
+        NodeWebPortalConfiguration GetCurrentNodeWebPortalConfiguration();
 
         /// <summary>
         /// Returns the web portal configuration for all Nodes.
