@@ -1,10 +1,10 @@
-﻿namespace Octopus.Node.Extensibility.HostServices.Web
+﻿using System.Collections.Generic;
+
+namespace Octopus.Node.Extensibility.HostServices.Web
 {
     public interface IWebPortalConfigurationStore
     {
-        string[] GetListenPrefixes();
-
-        bool GetForceSSL();
+        IDictionary<string, NodeWebPortalConfiguration> GetNodeWebPortalConfigurations();
 
         string GetPublicBaseUrl();
     }
