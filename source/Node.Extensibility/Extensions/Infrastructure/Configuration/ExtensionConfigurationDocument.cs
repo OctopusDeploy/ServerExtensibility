@@ -21,12 +21,19 @@ namespace Octopus.Node.Extensibility.Extensions.Infrastructure.Configuration
         [ReadOnly]
         public string Name { get; set; }
 
+        [DisplayLabel("Author")]
+        [Description("The author of this extension")]
         [ReadOnly]
         public string ExtensionAuthor { get; set; }
 
+        [DisplayLabel("Configuration Schema Version")]
+        [Description("The schema version of this configuration document")]
         [ReadOnly]
         public string ConfigurationSchemaVersion { get; set; }
 
+        [DisplayLabel("Is Enabled")]
+        [Description("Whether or not this extension is enabled")]
+        [Required]
         public bool IsEnabled { get; set; }
     }
 }
