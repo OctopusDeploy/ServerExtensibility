@@ -2,24 +2,24 @@
 
 namespace Octopus.Node.Extensibility.Metadata
 {
-    public class RequiredAttribute : Attribute
-    { }
+    //public class RequiredAttribute : Attribute
+    //{ }
 
     public class SensitiveAttribute : Attribute
     { }
 
-    public class ReadOnlyAttribute : Attribute
-    { }
+    //public class ReadOnlyAttribute : Attribute
+    //{ }
 
-    public class DescriptionAttribute : Attribute
-    {
-        public readonly string Description;
+    //public class DescriptionAttribute : Attribute
+    //{
+    //    public readonly string Description;
 
-        public DescriptionAttribute(string description)
-        {
-            this.Description = description;
-        }
-    }
+    //    public DescriptionAttribute(string description)
+    //    {
+    //        this.Description = description;
+    //    }
+    //}
 
     public class DisplayLabelAttribute : Attribute
     {
