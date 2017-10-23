@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using Assent;
 using Newtonsoft.Json;
 using NUnit.Framework;
@@ -124,7 +126,7 @@ namespace Node.Extensibility.Tests.Metadata
             public SecondLevelResource SecondLevelResource { get; set; }
 
             [DisplayLabel("Duplicated 2nd Level")]
-            [Octopus.Node.Extensibility.Metadata.Description("This 2nd-level resource has been duplicated")]
+            [System.ComponentModel.Description("This 2nd-level resource has been duplicated")]
             public SecondLevelResource DuplicateSecondLevelResource { get; set; }
 
             [Required]
@@ -145,7 +147,7 @@ namespace Node.Extensibility.Tests.Metadata
 
             public DateTime?[] NullableDateTimeArray { get; set; }
 
-            [ReadOnly]
+            [ReadOnly(true)]
             public string HandsOff { get; set; }
         }
 
