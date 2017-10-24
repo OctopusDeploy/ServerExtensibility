@@ -15,6 +15,8 @@ namespace Octopus.Node.Extensibility.Extensions.Infrastructure.Configuration
 
         object GetConfiguration();
 
+        object GetConfigurationDocument();
+
         void SetConfiguration(object config);
 
         IEnumerable<ConfigurationValue> GetConfigurationValues();
