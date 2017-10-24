@@ -22,6 +22,11 @@ namespace Octopus.Node.Extensibility.Extensions.Infrastructure.Configuration
             return MapToResource(doc);
         }
 
+        public object GetConfigurationDocument()
+        {
+            return configurationStore.Get<TConfiguration>(Id);
+        }
+
         protected abstract TResource MapToResource(TConfiguration doc);
 
         public void SetConfiguration(object config)
