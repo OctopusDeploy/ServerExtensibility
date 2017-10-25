@@ -4,7 +4,7 @@ using Octopus.Data.Storage.Configuration;
 
 namespace Octopus.Node.Extensibility.Extensions.Infrastructure.Configuration
 {
-    public abstract class ExtensionConfigurationStore<TConfiguration, TResource> : ConfigurationDocumentStore<TConfiguration, TResource>, IExtensionConfigurationStore, IHasConfigurationSettings
+    public abstract class ExtensionConfigurationStore<TConfiguration, TResource> : ConfigurationDocumentStore<TConfiguration, TResource>, IExtensionConfigurationStore
         where TConfiguration : ExtensionConfigurationDocument
         where TResource : IId
     {
