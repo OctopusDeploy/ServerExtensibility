@@ -1,4 +1,4 @@
-namespace Octopus.Node.Extensibility.Extensions.Infrastructure.Configuration
+namespace Octopus.Node.Extensibility.Mapping
 {
     public interface IResourceMappingContext
     {

@@ -1,6 +1,6 @@
 using Octopus.Data.Resources;
 
-namespace Octopus.Node.Extensibility.Extensions.Infrastructure.Configuration
+namespace Octopus.Node.Extensibility.Mapping
 {
     public interface IResourceMappingFactory
     {

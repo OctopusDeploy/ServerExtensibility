@@ -1,7 +1,8 @@
 ﻿using Octopus.Data.Model;
 using Octopus.Data.Resources;
+using Octopus.Node.Extensibility.Mapping;
 
-namespace Octopus.Node.Extensibility.Extensions.Infrastructure.Configuration
+namespace Octopus.Node.Extensibility.Mapping
 {
     public interface IContributeMappings
     {
