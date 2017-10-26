@@ -13,14 +13,23 @@ namespace Octopus.Node.Extensibility.Mapping
     public class FooConfigStore : IContributeMappings
     {
         private readonly IResourceMappingFactory factory;
+        private readonly IAcceptMappings mapper;
 
-        public FooConfigStore(IResourceMappingFactory factory)
+        public FooConfigStore(IResourceMappingFactory factory, IAcceptMappings mapper)
         {
             this.factory = factory;
+            this.mapper = mapper;
         }
 
         public IResourceMapping GetMapping()
         {
+            mapper.Map<ResourceFoo, ModelFoo>()
+                .DoNotMap(r => r.Bar)
+                .EnrichModel((model, resource) =>
+                {
+                    model.Bar = resource.Bar;
+                });
+
             var mapping = factory.Create<ResourceFoo, ModelFoo>()
                 .DoNotMap(r => r.Bar);
 
