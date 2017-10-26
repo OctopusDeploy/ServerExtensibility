@@ -5,6 +5,8 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
 using Octopus.Data.Model;
+using Octopus.Data.Resources;
+using Octopus.Data.Resources.Attributes;
 
 namespace Octopus.Node.Extensibility.Metadata
 {
@@ -20,7 +22,8 @@ namespace Octopus.Node.Extensibility.Metadata
             {typeof(DateTime), "DateTime"},
             {typeof(DateTimeOffset), "DateTimeOffset" },
             {typeof(bool), "bool" },
-            {typeof(long), "long" }
+            {typeof(long), "long" },
+            {typeof(SensitiveValue), "string" }
         };
 
         //property names to be ignored on any object
@@ -64,18 +67,13 @@ namespace Octopus.Node.Extensibility.Metadata
 
             metadata.Types.Add(rootType);
 
-            //get properties
             var props = type.GetRuntimeProperties();
 
-            //for each prop
             foreach (var prop in props)
             {
                 //skip these
                 if (prop.PropertyType != typeof(LinkCollection) && !ignoreProperties.Contains(prop.Name))
                 {
-
-                    //construct a property entry
-                    //assign name + attributes
                     var propMetadata = new PropertyMetadata
                     {
                         Name = prop.Name,
@@ -83,45 +81,72 @@ namespace Octopus.Node.Extensibility.Metadata
                         DisplayInfo = new DisplayInfo
                         {
                             Required = prop.IsDefined(typeof(RequiredAttribute)),
-                            Sensitive = prop.IsDefined(typeof(SensitiveAttribute)),
-                            ReadOnly = prop.IsDefined(typeof(ReadOnlyAttribute)),
-                            Label = prop.GetCustomAttribute<DisplayLabelAttribute>()?.Label ?? prop.Name,
+                            Sensitive = prop.PropertyType == typeof(SensitiveValue),
                             Description = prop.GetCustomAttribute<DescriptionAttribute>()?.Description,
                         }
                     };
 
-                    if (prop.IsDefined(typeof(HasOptionsAttribute)))
+                    //accepts [DisplayName()] or [Display(Name=)] -> defaults to property name
+                    if (prop.IsDefined(typeof(DisplayNameAttribute)))
                     {
-                        propMetadata.DisplayInfo.Options = new OptionsMetadata
-                        {
-                            MultiSelect = prop.IsDefined(typeof(MultiSelectAttribute)),
-                        };
-
-                        if (prop.PropertyType.GetTypeInfo().IsEnum)
-                        {
-                            var enumType = prop.PropertyType;
-
-                            propMetadata.DisplayInfo.Options.Values = ProjectEnum(enumType);
-                        }
+                        propMetadata.DisplayInfo.Label = prop.GetCustomAttribute<DisplayNameAttribute>()?.DisplayName;
                     }
-                    else if (prop.IsDefined(typeof(ListApiAttribute)))
+                    else if (prop.IsDefined(typeof(DisplayAttribute)))
                     {
-                        propMetadata.DisplayInfo.ListApi = new ListApiMetadata
-                        {
-                            MultiSelect = prop.IsDefined(typeof(MultiSelectAttribute)),
-                        };
+                        propMetadata.DisplayInfo.Label = prop.GetCustomAttribute<DisplayAttribute>()?.Name;
                     }
                     else
                     {
-                        if (prop.IsDefined(typeof(MultiSelectAttribute)))
-                        {
-                            throw new Exception("MultiSelect property must expose ListApi or HasOptions");
-                        }
+                        propMetadata.DisplayInfo.Label = prop.Name;
                     }
 
+                    //accepts [ReadOnly()] or [Writeable] -> defaults to true (Read Only)
+                    if (prop.IsDefined(typeof(ReadOnlyAttribute)))
+                    {
+                        propMetadata.DisplayInfo.ReadOnly = prop.GetCustomAttribute<ReadOnlyAttribute>().IsReadOnly;
+                    }
+                    else if (prop.IsDefined(typeof(WriteableAttribute)))
+                    {
+                        propMetadata.DisplayInfo.ReadOnly = false;
+                    }
+                    else
+                    {
+                        propMetadata.DisplayInfo.ReadOnly = true;
+                    }
+
+                    //selectable metadata is not currently supported in the UI
+                    if (prop.IsDefined(typeof(SelectableAttribute)))
+                    {
+                        if (prop.IsDefined(typeof(HasOptionsAttribute)))
+                        {
+                            var optionsAttr = prop.GetCustomAttribute<HasOptionsAttribute>();
+
+                            propMetadata.DisplayInfo.Options = new OptionsMetadata
+                            {
+                                SelectMode = optionsAttr.SelectMode.ToString()
+                            };
+
+                            if (prop.PropertyType.GetTypeInfo().IsEnum)
+                            {
+                                var enumType = prop.PropertyType;
+
+                                propMetadata.DisplayInfo.Options.Values = ProjectEnum(enumType);
+                            }
+                        }
+                        else if (prop.IsDefined(typeof(ListApiAttribute)))
+                        {
+                            var listApiAttr = prop.GetCustomAttribute<ListApiAttribute>();
+
+                            propMetadata.DisplayInfo.ListApi = new ListApiMetadata
+                            {
+                                SelectMode = listApiAttr.SelectMode.ToString(),
+                                ApiEndpoint = listApiAttr.ApiEndpoint,
+                            };
+                        }
+
+                    }
 
                     rootType.Properties.Add(propMetadata);
-
                 }
 
             }

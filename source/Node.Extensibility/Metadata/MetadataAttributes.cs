@@ -1,34 +1,39 @@
 ﻿using System;
+using Octopus.Data.Model;
 
 namespace Octopus.Node.Extensibility.Metadata
 {
-    public class SensitiveAttribute : Attribute
-    { }
-
-    public class DisplayLabelAttribute : Attribute
+    public abstract class SelectableAttribute : Attribute
     {
-        public readonly string Label;
+        public readonly SelectMode SelectMode;
 
-        public DisplayLabelAttribute(string label)
+        protected SelectableAttribute(SelectMode selectMode)
         {
-            Label = label;
+            SelectMode = selectMode;
         }
     }
 
-    public class ListApiAttribute : Attribute
+    public class ListApiAttribute : SelectableAttribute
     {
-        string apiEndpoint;
+        public readonly Href ApiEndpoint;
 
-        public ListApiAttribute(string apiEndpoint)
+        public ListApiAttribute(SelectMode selectMode, Href apiEndpoint)
+            : base(selectMode)
         {
-            this.apiEndpoint = apiEndpoint;
+            ApiEndpoint = apiEndpoint;
         }
     }
 
-    public class MultiSelectAttribute : Attribute
-    { }
+    public class HasOptionsAttribute : SelectableAttribute
+    {
+        public HasOptionsAttribute(SelectMode selectMode) 
+            : base(selectMode)
+        { }
+    }
 
-    public class HasOptionsAttribute : Attribute
-    { }
+    public enum SelectMode
+    {
+        Single, Multiple
+    }
 
 }

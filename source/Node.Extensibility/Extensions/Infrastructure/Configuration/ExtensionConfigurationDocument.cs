@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using Nevermore.Contracts;
+using Octopus.Data.Resources.Attributes;
 using Octopus.Node.Extensibility.Metadata;
 
 namespace Octopus.Node.Extensibility.Extensions.Infrastructure.Configuration
@@ -20,22 +21,20 @@ namespace Octopus.Node.Extensibility.Extensions.Infrastructure.Configuration
 
         public string Id { get; set; }
 
-        [ReadOnly(true)]
         public string Name { get; set; }
 
-        [DisplayLabel("Author")]
+        [DisplayName("Author")]
         [Description("The author of this extension")]
-        [ReadOnly(true)]
         public string ExtensionAuthor { get; set; }
 
-        [DisplayLabel("Configuration Schema Version")]
+        [DisplayName("Configuration Schema Version")]
         [Description("The schema version of this configuration document")]
-        [ReadOnly(true)]
         public string ConfigurationSchemaVersion { get; set; }
 
-        [DisplayLabel("Is Enabled")]
+        [DisplayName("Is Enabled")]
         [Description("Whether or not this extension is enabled")]
         [Required]
+        [Writeable]
         public bool IsEnabled { get; set; }
     }
 }

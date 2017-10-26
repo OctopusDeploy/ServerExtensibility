@@ -14,8 +14,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Metadata\MetadataAttributes.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Autofac" Version="4.6.0" />
-    <PackageReference Include="Octopus.Data" Version="2.1.0-alpha0042" />
+    <PackageReference Include="Octopus.Data" Version="2.1.0-alpha0043" />
   </ItemGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard1.2' ">

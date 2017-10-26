@@ -64,10 +64,7 @@
             "ReadOnly": false,
             "Label": "IntProperty",
             "Description": null,
-            "Options": {
-              "MultiSelect": true,
-              "Values": null
-            },
+            "Options": null,
             "ListApi": null
           }
         },
@@ -81,7 +78,7 @@
             "Label": "EnumProp",
             "Description": null,
             "Options": {
-              "MultiSelect": false,
+              "SelectMode": "Single",
               "Values": {
                 "5": "First",
                 "7": "Second",
@@ -163,13 +160,13 @@
       "Name": "SecondLevelResource",
       "Properties": [
         {
-          "Name": "StringProperty",
+          "Name": "SensitiveStringProperty",
           "Type": "string",
           "DisplayInfo": {
             "Required": false,
             "Sensitive": true,
             "ReadOnly": false,
-            "Label": "StringProperty",
+            "Label": "SensitiveStringProperty",
             "Description": null,
             "Options": null,
             "ListApi": null
@@ -211,9 +208,7 @@
             "Label": "StringArrayProperty",
             "Description": null,
             "Options": null,
-            "ListApi": {
-              "MultiSelect": true
-            }
+            "ListApi": null
           }
         },
         {
@@ -226,9 +221,7 @@
             "Label": "IntArrayProperty",
             "Description": null,
             "Options": null,
-            "ListApi": {
-              "MultiSelect": false
-            }
+            "ListApi": null
           }
         }
       ]

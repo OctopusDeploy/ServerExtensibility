@@ -2,7 +2,7 @@ using System;
 using System.Linq.Expressions;
 using Octopus.Data.Resources;
 
-namespace Octopus.Node.Extensibility.Mapping
+namespace Octopus.Node.Extensibility.HostServices.Mapping
 {
     public interface IResourceMapping
     {
@@ -10,7 +10,7 @@ namespace Octopus.Node.Extensibility.Mapping
         Type ResourceType { get; }
     }
 
-    public interface IResourceMapping<TResource, TModel, TContext> : IResourceMapping
+    public interface IResourceMapping<TResource, TModel, out TContext> : IResourceMapping
         where TResource : IResource
     {
         IResourceMapping<TResource, TModel, TContext> EnrichResource(Action<TModel, TResource, TContext> callback);
@@ -30,10 +30,10 @@ namespace Octopus.Node.Extensibility.Mapping
             where TResourceSub : class, TResource where TModelSub : class, TModel;
     }
 
-    public interface IAcceptMappings
-    {
-        IResourceMapping<TResource, TModel, IResourceMappingContext> Map<TResource, TModel>()
-            where TResource : class, IResource
-            where TModel : class;
-    }
+    //public interface IAcceptMappings
+    //{
+    //    IResourceMapping<TResource, TModel, IResourceMappingContext> Map<TResource, TModel>()
+    //        where TResource : class, IResource
+    //        where TModel : class;
+    //}
 }

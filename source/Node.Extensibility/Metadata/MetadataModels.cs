@@ -51,16 +51,17 @@ namespace Octopus.Node.Extensibility.Metadata
         public ListApiMetadata ListApi { get; set; }
     }
 
-
     public class OptionsMetadata
     {
-        public bool MultiSelect { get; set; }
+        public string SelectMode { get; set; }
 
         public Dictionary<string, string> Values { get; set; }
     }
 
     public class ListApiMetadata
     {
-        public bool MultiSelect { get; set; }
+        public string SelectMode { get; set; }
+
+        public string ApiEndpoint { get; set; }
     }
 }

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Nevermore.Contracts;
 
-namespace Octopus.Node.Extensibility.Mapping
+namespace Octopus.Node.Extensibility.HostServices.Mapping
 {
     public interface ICanonicalActionNameMapper
     {

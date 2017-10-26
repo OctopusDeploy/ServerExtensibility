@@ -5,6 +5,9 @@ using System.ComponentModel.DataAnnotations;
 using Assent;
 using Newtonsoft.Json;
 using NUnit.Framework;
+using Octopus.Data.Model;
+using Octopus.Data.Resources;
+using Octopus.Data.Resources.Attributes;
 using Octopus.Node.Extensibility.Metadata;
 
 namespace Node.Extensibility.Tests.Metadata
@@ -70,7 +73,7 @@ namespace Node.Extensibility.Tests.Metadata
             {
                 SecondLevelResource = new SecondLevelResource()
                 {
-                    StringProperty = "String value",
+                    SensitiveStringProperty = "String value",
                     BoolProperty = false,
                     IntArrayProperty = new[] { 1, 2, 3 },
                     NullableDateTimeOffsetProperty = null,
@@ -125,7 +128,7 @@ namespace Node.Extensibility.Tests.Metadata
         {
             public SecondLevelResource SecondLevelResource { get; set; }
 
-            [DisplayLabel("Duplicated 2nd Level")]
+            [DisplayName("Duplicated 2nd Level")]
             [System.ComponentModel.Description("This 2nd-level resource has been duplicated")]
             public SecondLevelResource DuplicateSecondLevelResource { get; set; }
 
@@ -134,11 +137,9 @@ namespace Node.Extensibility.Tests.Metadata
 
             public DateTimeOffset DateTimeOffsetProperty { get; set; }
 
-            [HasOptions]
-            [MultiSelect]
             public int IntProperty { get; set; }
 
-            [HasOptions]
+            [HasOptions(SelectMode.Single)]
             public TestEnum EnumProp { get; set; }
 
             public int? NullableIntProperty { get; set; }
@@ -152,19 +153,15 @@ namespace Node.Extensibility.Tests.Metadata
         }
 
         public class SecondLevelResource
-        {
-            [Sensitive]
-            public string StringProperty { get; set; }
+        { 
+            public SensitiveValue SensitiveStringProperty { get; set; }
 
             public DateTimeOffset? NullableDateTimeOffsetProperty { get; set; }
 
             public bool BoolProperty { get; set; }
 
-            [ListApi("")]
-            [MultiSelect]
             public string[] StringArrayProperty { get; set; }
 
-            [ListApi("")]
             public int[] IntArrayProperty { get; set; }
         }
     }
