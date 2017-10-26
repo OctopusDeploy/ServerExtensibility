@@ -2,7 +2,6 @@
 using System.ComponentModel.DataAnnotations;
 using Nevermore.Contracts;
 using Octopus.Data.Resources.Attributes;
-using Octopus.Node.Extensibility.Metadata;
 
 namespace Octopus.Node.Extensibility.Extensions.Infrastructure.Configuration
 {
