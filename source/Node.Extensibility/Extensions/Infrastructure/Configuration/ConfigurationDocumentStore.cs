@@ -19,30 +19,17 @@ namespace Octopus.Node.Extensibility.Extensions.Infrastructure.Configuration
         public object GetConfiguration()
         {
             var doc = configurationStore.Get<TConfiguration>(Id);
-            return MapToResource(doc);
+            return doc;
         }
-
-        public object GetConfigurationDocument()
-        {
-            return configurationStore.Get<TConfiguration>(Id);
-        }
-
-        protected abstract TResource MapToResource(TConfiguration doc);
 
         public void SetConfiguration(object config)
         {
-            if (config is TResource == false)
+            if (config is TConfiguration == false)
             {
-                throw new ArgumentException($"Given config type is {config.GetType()}, but {typeof(TResource)} was expected");
+                throw new ArgumentException($"Given config type is {config.GetType()}, but {typeof(TConfiguration)} was expected");
             }
 
-            var resource = (TResource)config;
-            if (resource.Id != Id)
-            {
-                throw new ArgumentException($"The given Id of {resource.Id} is not valid, {Id} was expected");
-            }
-            var newDoc = MapFromResource(resource);
-            configurationStore.Update(newDoc);
+            configurationStore.Update((TConfiguration)config);
         }
 
         protected abstract TConfiguration MapFromResource(TResource resource);
