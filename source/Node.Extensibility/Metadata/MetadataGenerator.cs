@@ -81,7 +81,6 @@ namespace Octopus.Node.Extensibility.Metadata
                         DisplayInfo = new DisplayInfo
                         {
                             Required = prop.IsDefined(typeof(RequiredAttribute)),
-                            Sensitive = prop.PropertyType == typeof(SensitiveValue),
                             Description = prop.GetCustomAttribute<DescriptionAttribute>()?.Description,
                         }
                     };
