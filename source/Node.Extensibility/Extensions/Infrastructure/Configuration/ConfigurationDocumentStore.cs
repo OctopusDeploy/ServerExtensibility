@@ -1,13 +1,14 @@
 using System;
 using System.Collections.Generic;
 using Nevermore.Contracts;
+using Octopus.Data.Resources;
 using Octopus.Data.Storage.Configuration;
 
 namespace Octopus.Node.Extensibility.Extensions.Infrastructure.Configuration
 {
     public abstract class ConfigurationDocumentStore<TConfiguration, TResource> : IHasConfigurationSettings
         where TConfiguration : class, IId
-        where TResource : IId
+        where TResource : IResource, IId
     {
         readonly IConfigurationStore configurationStore;
 

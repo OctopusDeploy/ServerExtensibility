@@ -1,6 +1,3 @@
-using System;
-using Nevermore.Contracts;
-using Octopus.Data.Resources;
 using Octopus.Data.Storage.Configuration;
 using Octopus.Node.Extensibility.Extensions.Mappings;
 using Octopus.Node.Extensibility.HostServices.Mapping;
@@ -9,7 +6,7 @@ namespace Octopus.Node.Extensibility.Extensions.Infrastructure.Configuration
 {
     public abstract class ExtensionConfigurationStore<TConfiguration, TResource> : ConfigurationDocumentStore<TConfiguration, TResource>, IExtensionConfigurationStore, IContributeMappings
         where TConfiguration : ExtensionConfigurationDocument
-        where TResource : IId
+        where TResource : ExtensionConfigurationResource
     {
         protected IResourceMappingFactory ResourceMappingFactory;
 
