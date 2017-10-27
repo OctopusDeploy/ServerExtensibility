@@ -23,7 +23,7 @@ namespace Octopus.Node.Extensibility.Metadata
             {typeof(DateTimeOffset), "DateTimeOffset" },
             {typeof(bool), "bool" },
             {typeof(long), "long" },
-            {typeof(SensitiveValue), "string" }
+            {typeof(SensitiveValue), "SensitiveValue" }
         };
 
         //property names to be ignored on any object
