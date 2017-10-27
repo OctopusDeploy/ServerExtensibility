@@ -32,8 +32,6 @@ namespace Octopus.Node.Extensibility.Extensions.Infrastructure.Configuration
             configurationStore.Update((TConfiguration)config);
         }
 
-        protected abstract TConfiguration MapFromResource(TResource resource);
-
         protected TProperty GetProperty<TProperty>(Func<TConfiguration, TProperty> prop)
         {
             var doc = configurationStore.Get<TConfiguration>(Id);
