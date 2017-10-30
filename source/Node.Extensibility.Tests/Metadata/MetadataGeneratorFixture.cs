@@ -5,7 +5,6 @@ using System.ComponentModel.DataAnnotations;
 using Assent;
 using Newtonsoft.Json;
 using NUnit.Framework;
-using Octopus.Data.Model;
 using Octopus.Data.Resources;
 using Octopus.Data.Resources.Attributes;
 using Octopus.Node.Extensibility.Metadata;
