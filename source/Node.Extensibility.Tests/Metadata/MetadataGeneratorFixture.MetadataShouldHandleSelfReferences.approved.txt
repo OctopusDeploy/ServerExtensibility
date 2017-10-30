@@ -8,8 +8,7 @@
           "Type": "string",
           "DisplayInfo": {
             "Required": false,
-            "Sensitive": false,
-            "ReadOnly": false,
+            "ReadOnly": true,
             "Label": "Name",
             "Description": null,
             "Options": null,
@@ -21,8 +20,7 @@
           "Type": "SelfReferencingResource",
           "DisplayInfo": {
             "Required": false,
-            "Sensitive": false,
-            "ReadOnly": false,
+            "ReadOnly": true,
             "Label": "SelfReference",
             "Description": null,
             "Options": null,
@@ -34,8 +32,7 @@
           "Type": "string",
           "DisplayInfo": {
             "Required": false,
-            "Sensitive": false,
-            "ReadOnly": false,
+            "ReadOnly": true,
             "Label": "SomeValue",
             "Description": null,
             "Options": null,
