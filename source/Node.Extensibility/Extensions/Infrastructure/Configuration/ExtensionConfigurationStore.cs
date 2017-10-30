@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Octopus.Data.Storage.Configuration;
 using Octopus.Node.Extensibility.Extensions.Mappings;
 using Octopus.Node.Extensibility.HostServices.Mapping;
@@ -20,7 +21,7 @@ namespace Octopus.Node.Extensibility.Extensions.Infrastructure.Configuration
             return GetProperty(doc => doc.IsEnabled);
         }
 
-        public abstract IResourceMapping GetMapping();
+        public abstract IEnumerable<IResourceMapping> GetMappings();
 
         public virtual void SetIsEnabled(bool isEnabled)
         {
