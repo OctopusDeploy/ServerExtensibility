@@ -8,8 +8,7 @@
           "Type": "SecondLevelResource",
           "DisplayInfo": {
             "Required": false,
-            "Sensitive": false,
-            "ReadOnly": false,
+            "ReadOnly": true,
             "Label": "SecondLevelResource",
             "Description": null,
             "Options": null,
@@ -21,8 +20,7 @@
           "Type": "SecondLevelResource",
           "DisplayInfo": {
             "Required": false,
-            "Sensitive": false,
-            "ReadOnly": false,
+            "ReadOnly": true,
             "Label": "Duplicated 2nd Level",
             "Description": "This 2nd-level resource has been duplicated",
             "Options": null,
@@ -34,8 +32,7 @@
           "Type": "DateTime?",
           "DisplayInfo": {
             "Required": true,
-            "Sensitive": false,
-            "ReadOnly": false,
+            "ReadOnly": true,
             "Label": "NullableDateTimeProperty",
             "Description": null,
             "Options": null,
@@ -47,8 +44,7 @@
           "Type": "DateTimeOffset",
           "DisplayInfo": {
             "Required": false,
-            "Sensitive": false,
-            "ReadOnly": false,
+            "ReadOnly": true,
             "Label": "DateTimeOffsetProperty",
             "Description": null,
             "Options": null,
@@ -60,8 +56,7 @@
           "Type": "int",
           "DisplayInfo": {
             "Required": false,
-            "Sensitive": false,
-            "ReadOnly": false,
+            "ReadOnly": true,
             "Label": "IntProperty",
             "Description": null,
             "Options": null,
@@ -73,8 +68,7 @@
           "Type": "string",
           "DisplayInfo": {
             "Required": false,
-            "Sensitive": false,
-            "ReadOnly": false,
+            "ReadOnly": true,
             "Label": "EnumProp",
             "Description": null,
             "Options": {
@@ -94,8 +88,7 @@
           "Type": "int?",
           "DisplayInfo": {
             "Required": false,
-            "Sensitive": false,
-            "ReadOnly": false,
+            "ReadOnly": true,
             "Label": "NullableIntProperty",
             "Description": null,
             "Options": null,
@@ -107,8 +100,7 @@
           "Type": "string[]",
           "DisplayInfo": {
             "Required": false,
-            "Sensitive": false,
-            "ReadOnly": false,
+            "ReadOnly": true,
             "Label": "ListOfStringProperty",
             "Description": null,
             "Options": null,
@@ -120,8 +112,7 @@
           "Type": "DateTime?[]",
           "DisplayInfo": {
             "Required": false,
-            "Sensitive": false,
-            "ReadOnly": false,
+            "ReadOnly": true,
             "Label": "NullableDateTimeArray",
             "Description": null,
             "Options": null,
@@ -133,7 +124,6 @@
           "Type": "string",
           "DisplayInfo": {
             "Required": false,
-            "Sensitive": false,
             "ReadOnly": true,
             "Label": "HandsOff",
             "Description": null,
@@ -146,8 +136,7 @@
           "Type": "string",
           "DisplayInfo": {
             "Required": false,
-            "Sensitive": false,
-            "ReadOnly": false,
+            "ReadOnly": true,
             "Label": "SomeValue",
             "Description": null,
             "Options": null,
@@ -161,11 +150,10 @@
       "Properties": [
         {
           "Name": "SensitiveStringProperty",
-          "Type": "string",
+          "Type": "SensitiveValue",
           "DisplayInfo": {
             "Required": false,
-            "Sensitive": true,
-            "ReadOnly": false,
+            "ReadOnly": true,
             "Label": "SensitiveStringProperty",
             "Description": null,
             "Options": null,
@@ -177,8 +165,7 @@
           "Type": "DateTimeOffset?",
           "DisplayInfo": {
             "Required": false,
-            "Sensitive": false,
-            "ReadOnly": false,
+            "ReadOnly": true,
             "Label": "NullableDateTimeOffsetProperty",
             "Description": null,
             "Options": null,
@@ -190,8 +177,7 @@
           "Type": "bool",
           "DisplayInfo": {
             "Required": false,
-            "Sensitive": false,
-            "ReadOnly": false,
+            "ReadOnly": true,
             "Label": "BoolProperty",
             "Description": null,
             "Options": null,
@@ -203,8 +189,7 @@
           "Type": "string[]",
           "DisplayInfo": {
             "Required": false,
-            "Sensitive": false,
-            "ReadOnly": false,
+            "ReadOnly": true,
             "Label": "StringArrayProperty",
             "Description": null,
             "Options": null,
@@ -216,8 +201,7 @@
           "Type": "int[]",
           "DisplayInfo": {
             "Required": false,
-            "Sensitive": false,
-            "ReadOnly": false,
+            "ReadOnly": true,
             "Label": "IntArrayProperty",
             "Description": null,
             "Options": null,

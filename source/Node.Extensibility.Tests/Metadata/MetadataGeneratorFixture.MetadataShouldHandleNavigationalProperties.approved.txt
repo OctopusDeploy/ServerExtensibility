@@ -8,8 +8,7 @@
           "Type": "ChildResource[]",
           "DisplayInfo": {
             "Required": false,
-            "Sensitive": false,
-            "ReadOnly": false,
+            "ReadOnly": true,
             "Label": "Children",
             "Description": null,
             "Options": null,
@@ -21,8 +20,7 @@
           "Type": "string",
           "DisplayInfo": {
             "Required": false,
-            "Sensitive": false,
-            "ReadOnly": false,
+            "ReadOnly": true,
             "Label": "SomeValue",
             "Description": null,
             "Options": null,
@@ -39,8 +37,7 @@
           "Type": "ParentResource",
           "DisplayInfo": {
             "Required": false,
-            "Sensitive": false,
-            "ReadOnly": false,
+            "ReadOnly": true,
             "Label": "Parent",
             "Description": null,
             "Options": null,
@@ -52,8 +49,7 @@
           "Type": "int",
           "DisplayInfo": {
             "Required": false,
-            "Sensitive": false,
-            "ReadOnly": false,
+            "ReadOnly": true,
             "Label": "ChildIntProperty",
             "Description": null,
             "Options": null,
