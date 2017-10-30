@@ -70,7 +70,7 @@
         },
         {
           "Name": "EnumProp",
-          "Type": "TestEnum",
+          "Type": "string",
           "DisplayInfo": {
             "Required": false,
             "Sensitive": false,

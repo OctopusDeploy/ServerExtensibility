@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="cd7dade3-c21c-4255-98ba-6313e8a4cfc0" name="slewi@SHANNONXPS 2017-10-30 11:57:13" runUser="SHANNONXPS\slewi" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2017-10-30T11:57:13.3956767+10:00" queuing="2017-10-30T11:57:13.3956858+10:00" start="2017-10-30T11:57:11.4411491+10:00" finish="2017-10-30T11:57:13.4307294+10:00" />
+  <TestSettings name="default" id="cbb7638a-d4a8-493f-a577-e4c28628bcbe">
+    <Deployment runDeploymentRoot="slewi_SHANNONXPS 2017-10-30 11_57_13" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="264b4904-66e3-4668-a6a6-76640e5efcbf" testId="548435a0-cc52-4546-9a4f-06bf068706d7" testName="MetadataShouldHandleNavigationalProperties" computerName="SHANNONXPS" duration="00:00:00.0420000" startTime="2017-10-30T11:57:12.0000000+10:00" endTime="2017-10-30T11:57:12.0000000+10:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="264b4904-66e3-4668-a6a6-76640e5efcbf">
+      <Output>
+        <ErrorInfo>
+          <Message>System.IO.FileLoadException : Could not load file or assembly 'System.ComponentModel.Primitives, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' or one of its dependencies. The located assembly's manifest definition does not match the assembly reference. (Exception from HRESULT: 0x80131040)</Message>
+          <StackTrace>   at Octopus.Node.Extensibility.Metadata.MetadataGenerator.Generate(Type type)
+   at Octopus.Node.Extensibility.Metadata.MetadataGenerator.GetMetadata[T]()
+   at Node.Extensibility.Tests.Metadata.MetadataGeneratorFixture.MetadataShouldHandleNavigationalProperties() in C:\Source\Octopus\ServerExtensibility\source\Node.Extensibility.Tests\Metadata\MetadataGeneratorFixture.cs:line 57</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="9c3565a6-921e-4570-9d4e-f1b07d907dde" testId="d0de63b7-97b5-4b91-912e-44895b78128d" testName="MetadataShouldHandleSelfReferences" computerName="SHANNONXPS" duration="00:00:00.0010000" startTime="2017-10-30T11:57:12.0000000+10:00" endTime="2017-10-30T11:57:12.0000000+10:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9c3565a6-921e-4570-9d4e-f1b07d907dde">
+      <Output>
+        <ErrorInfo>
+          <Message>System.IO.FileLoadException : Could not load file or assembly 'System.ComponentModel.Primitives, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' or one of its dependencies. The located assembly's manifest definition does not match the assembly reference. (Exception from HRESULT: 0x80131040)</Message>
+          <StackTrace>   at Octopus.Node.Extensibility.Metadata.MetadataGenerator.Generate(Type type)
+   at Octopus.Node.Extensibility.Metadata.MetadataGenerator.GetMetadata[T]()
+   at Node.Extensibility.Tests.Metadata.MetadataGeneratorFixture.MetadataShouldHandleSelfReferences() in C:\Source\Octopus\ServerExtensibility\source\Node.Extensibility.Tests\Metadata\MetadataGeneratorFixture.cs:line 40</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="3248808d-a06b-4173-ba61-8ad7e4f1c735" testId="e2c361e5-7590-4dba-9bc0-bfdde31c0391" testName="SettingsMetadataShouldBeCorrect" computerName="SHANNONXPS" duration="00:00:00.0010000" startTime="2017-10-30T11:57:12.0000000+10:00" endTime="2017-10-30T11:57:12.0000000+10:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3248808d-a06b-4173-ba61-8ad7e4f1c735">
+      <Output>
+        <ErrorInfo>
+          <Message>System.IO.FileLoadException : Could not load file or assembly 'System.ComponentModel.Primitives, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' or one of its dependencies. The located assembly's manifest definition does not match the assembly reference. (Exception from HRESULT: 0x80131040)</Message>
+          <StackTrace>   at Octopus.Node.Extensibility.Metadata.MetadataGenerator.Generate(Type type)
+   at Octopus.Node.Extensibility.Metadata.MetadataGenerator.GetMetadata(Type objectType)
+   at Node.Extensibility.Tests.Metadata.MetadataGeneratorFixture.SettingsMetadataShouldBeCorrect() in C:\Source\Octopus\ServerExtensibility\source\Node.Extensibility.Tests\Metadata\MetadataGeneratorFixture.cs:line 22</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="MetadataShouldHandleNavigationalProperties" storage="c:\source\octopus\serverextensibility\source\node.extensibility.tests\bin\release\net451\node.extensibility.tests.dll" id="548435a0-cc52-4546-9a4f-06bf068706d7">
+      <Execution id="264b4904-66e3-4668-a6a6-76640e5efcbf" />
+      <TestMethod codeBase="C:\Source\Octopus\ServerExtensibility\source\Node.Extensibility.Tests\bin\Release\net451\Node.Extensibility.Tests.dll" executorUriOfAdapter="executor://nunit3testexecutor/" className="Node.Extensibility.Tests.Metadata.MetadataGeneratorFixture" name="MetadataShouldHandleNavigationalProperties" />
+    </UnitTest>
+    <UnitTest name="MetadataShouldHandleSelfReferences" storage="c:\source\octopus\serverextensibility\source\node.extensibility.tests\bin\release\net451\node.extensibility.tests.dll" id="d0de63b7-97b5-4b91-912e-44895b78128d">
+      <Execution id="9c3565a6-921e-4570-9d4e-f1b07d907dde" />
+      <TestMethod codeBase="C:\Source\Octopus\ServerExtensibility\source\Node.Extensibility.Tests\bin\Release\net451\Node.Extensibility.Tests.dll" executorUriOfAdapter="executor://nunit3testexecutor/" className="Node.Extensibility.Tests.Metadata.MetadataGeneratorFixture" name="MetadataShouldHandleSelfReferences" />
+    </UnitTest>
+    <UnitTest name="SettingsMetadataShouldBeCorrect" storage="c:\source\octopus\serverextensibility\source\node.extensibility.tests\bin\release\net451\node.extensibility.tests.dll" id="e2c361e5-7590-4dba-9bc0-bfdde31c0391">
+      <Execution id="3248808d-a06b-4173-ba61-8ad7e4f1c735" />
+      <TestMethod codeBase="C:\Source\Octopus\ServerExtensibility\source\Node.Extensibility.Tests\bin\Release\net451\Node.Extensibility.Tests.dll" executorUriOfAdapter="executor://nunit3testexecutor/" className="Node.Extensibility.Tests.Metadata.MetadataGeneratorFixture" name="SettingsMetadataShouldBeCorrect" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="548435a0-cc52-4546-9a4f-06bf068706d7" executionId="264b4904-66e3-4668-a6a6-76640e5efcbf" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d0de63b7-97b5-4b91-912e-44895b78128d" executionId="9c3565a6-921e-4570-9d4e-f1b07d907dde" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e2c361e5-7590-4dba-9bc0-bfdde31c0391" executionId="3248808d-a06b-4173-ba61-8ad7e4f1c735" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="3" executed="3" passed="0" failed="3" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>NUnit Adapter 3.8.0.0: Test execution startedRunning all tests in C:\Source\Octopus\ServerExtensibility\source\Node.Extensibility.Tests\bin\Release\net451\Node.Extensibility.Tests.dllNUnit3TestExecutor converted 3 of 3 NUnit test casesNUnit Adapter 3.8.0.0: Test execution complete</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>

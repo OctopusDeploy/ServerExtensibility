@@ -12,6 +12,7 @@ using Cake.Common.Tools;
 //////////////////////////////////////////////////////////////////////
 var target = Argument("target", "Default");
 var configuration = Argument("configuration", "Release");
+var testFilter = Argument("where", "");
 
 ///////////////////////////////////////////////////////////////////////////////
 // GLOBAL VARIABLES
@@ -80,8 +81,8 @@ Task("__Build")
     });
 });
 
-Task("Test")
-    .IsDependentOn("Build")
+Task("__Test")
+    .IsDependentOn("__Build")
     .Does(() => {
 		var projects = GetFiles("./source/**/*Tests.csproj");
 		foreach(var project in projects)

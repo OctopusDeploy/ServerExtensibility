@@ -219,8 +219,9 @@ namespace Octopus.Node.Extensibility.Metadata
             //Enum
             if (type.GetTypeInfo().IsEnum)
             {
-                //for enums, we will map the values into the property itself
-                return type.Name;
+                //for enums, we will map the values into the property itself and assume a
+                // string on the wire
+                return "string";
             }
 
             //approved primitive / value-type mappings
