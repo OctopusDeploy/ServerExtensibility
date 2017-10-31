@@ -164,7 +164,7 @@ namespace Octopus.Node.Extensibility.Metadata
 
             foreach (var item in Enum.GetValues(enumType))
             {
-                values.Add(((int)item).ToString(), item.ToString());
+                values.Add(item.ToString(), EnumExtensions.GetDescription(enumType, item));
             }
 
             return values;
@@ -242,6 +242,5 @@ namespace Octopus.Node.Extensibility.Metadata
             //otherwise we just return the already mapped name :)
             return type.Name;
         }
-
     }
 }

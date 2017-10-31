@@ -74,10 +74,10 @@
             "Options": {
               "SelectMode": "Single",
               "Values": {
-                "5": "First",
-                "7": "Second",
-                "11": "Third",
-                "12": "Fourth"
+                "First": "First",
+                "Second": "2nd",
+                "Third": "Third",
+                "Fourth": "Fourth"
               }
             },
             "ListApi": null

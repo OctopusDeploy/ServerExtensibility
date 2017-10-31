@@ -88,7 +88,11 @@ namespace Node.Extensibility.Tests.Metadata
 
         public enum TestEnum
         {
-            First = 5, Second = 7, Third = 11, Fourth
+            First = 5,
+            [System.ComponentModel.Description("2nd")]
+            Second = 7,
+            Third = 11,
+            Fourth
         }
 
         public abstract class SettingsResource 
