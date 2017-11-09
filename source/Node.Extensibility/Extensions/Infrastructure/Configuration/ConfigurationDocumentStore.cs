@@ -31,6 +31,7 @@ namespace Octopus.Node.Extensibility.Extensions.Infrastructure.Configuration
             }
 
             configurationStore.Update((TConfiguration)config);
+            OnConfigurationChanged();
         }
 
         protected TProperty GetProperty<TProperty>(Func<TConfiguration, TProperty> prop)
@@ -50,7 +51,11 @@ namespace Octopus.Node.Extensibility.Extensions.Infrastructure.Configuration
 
             callback(doc);
             configurationStore.Update(doc);
+            OnConfigurationChanged();
         }
+
+        protected virtual void OnConfigurationChanged()
+        { }
 
         public abstract string Id { get; }
 
