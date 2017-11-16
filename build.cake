@@ -133,15 +133,15 @@ Task("__Publish")
 
     if (gitVersionInfo.PreReleaseLabel == "")
     {
-        //NuGetPush($"{artifactsDir}/Octopus.Node.Extensibility.{nugetVersion}.nupkg", new NuGetPushSettings {
-        //    Source = "https://www.nuget.org/api/v2/package",
-        //    ApiKey = EnvironmentVariable("NuGetApiKey")
-        //});
+        NuGetPush($"{artifactsDir}/Octopus.Node.Extensibility.{nugetVersion}.nupkg", new NuGetPushSettings {
+            Source = "https://www.nuget.org/api/v2/package",
+            ApiKey = EnvironmentVariable("NuGetApiKey")
+        });
 
-        //NuGetPush($"{artifactsDir}/Octopus.Server.Extensibility.{nugetVersion}.nupkg", new NuGetPushSettings {
-        //    Source = "https://www.nuget.org/api/v2/package",
-        //    ApiKey = EnvironmentVariable("NuGetApiKey")
-        //});
+        NuGetPush($"{artifactsDir}/Octopus.Server.Extensibility.{nugetVersion}.nupkg", new NuGetPushSettings {
+            Source = "https://www.nuget.org/api/v2/package",
+            ApiKey = EnvironmentVariable("NuGetApiKey")
+        });
 
         NuGetPush($"{artifactsDir}/Octopus.Client.Extensibility.{nugetVersion}.nupkg", new NuGetPushSettings {
             Source = "https://www.nuget.org/api/v2/package",
