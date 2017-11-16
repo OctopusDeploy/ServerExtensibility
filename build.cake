@@ -116,12 +116,12 @@ Task("__Publish")
     .WithCriteria(BuildSystem.IsRunningOnTeamCity)
     .Does(() =>
 {
-    NuGetPush($"{artifactsDir}/Octopus.Node.Extensibility.{nugetVersion}.nupkg", new NuGetPushSettings {
+    NuGetPush($"{artifactsDir}/Octopus.Client.Extensibility.{nugetVersion}.nupkg", new NuGetPushSettings {
         Source = "https://octopus.myget.org/F/octopus-dependencies/api/v3/index.json",
         ApiKey = EnvironmentVariable("MyGetApiKey")
     });
-
-    NuGetPush($"{artifactsDir}/Octopus.Node.Extensibility.Resources.{nugetVersion}.nupkg", new NuGetPushSettings {
+    
+    NuGetPush($"{artifactsDir}/Octopus.Node.Extensibility.{nugetVersion}.nupkg", new NuGetPushSettings {
         Source = "https://octopus.myget.org/F/octopus-dependencies/api/v3/index.json",
         ApiKey = EnvironmentVariable("MyGetApiKey")
     });
@@ -143,7 +143,7 @@ Task("__Publish")
         //    ApiKey = EnvironmentVariable("NuGetApiKey")
         //});
 
-        NuGetPush($"{artifactsDir}/Octopus.Node.Extensibility.Resources.{nugetVersion}.nupkg", new NuGetPushSettings {
+        NuGetPush($"{artifactsDir}/Octopus.Client.Extensibility.{nugetVersion}.nupkg", new NuGetPushSettings {
             Source = "https://www.nuget.org/api/v2/package",
             ApiKey = EnvironmentVariable("NuGetApiKey")
         });
@@ -158,8 +158,8 @@ Task("__CopyToLocalPackages")
     .Does(() =>
 {
     CreateDirectory(localPackagesDir);
+    CopyFileToDirectory(Path.Combine(artifactsDir, $"Octopus.Client.Extensibility.{nugetVersion}.nupkg"), localPackagesDir);
     CopyFileToDirectory(Path.Combine(artifactsDir, $"Octopus.Node.Extensibility.{nugetVersion}.nupkg"), localPackagesDir);
-    CopyFileToDirectory(Path.Combine(artifactsDir, $"Octopus.Node.Extensibility.Resources.{nugetVersion}.nupkg"), localPackagesDir);
     CopyFileToDirectory(Path.Combine(artifactsDir, $"Octopus.Server.Extensibility.{nugetVersion}.nupkg"), localPackagesDir);
 });
 
