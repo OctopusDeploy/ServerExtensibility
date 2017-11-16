@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using Octopus.Client.Extensibility;
+using Octopus.Client.Extensibility.Attributes;
 
 namespace Octopus.Client.Extensibility.Extensions.Infrastructure.Configuration
 {
@@ -11,7 +11,7 @@ namespace Octopus.Client.Extensibility.Extensions.Infrastructure.Configuration
         [DisplayName("Is Enabled")]
         [Description("Whether or not this extension is enabled")]
         [Required]
-        [ReadOnly(false)]
+        [Writeable]
         public bool IsEnabled { get; set; }
 
         public LinkCollection Links { get; set; }
