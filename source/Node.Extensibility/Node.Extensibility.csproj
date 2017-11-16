@@ -23,8 +23,4 @@
     <PackageReference Include="System.ComponentModel.Primitives" Version="4.3.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Client.Extensibility\Client.Extensibility.csproj" />
-  </ItemGroup>
-
 </Project>
