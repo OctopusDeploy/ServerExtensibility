@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Nevermore.Contracts;
-using Octopus.Client.Extensibility;
+using Octopus.Data.Resources;
 using Octopus.Data.Storage.Configuration;
 
 namespace Octopus.Node.Extensibility.Extensions.Infrastructure.Configuration

@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Octopus.Client.Extensibility.Extensions.Infrastructure.Configuration;
 using Octopus.Data.Storage.Configuration;
 using Octopus.Node.Extensibility.Extensions.Mappings;
 using Octopus.Node.Extensibility.HostServices.Mapping;
