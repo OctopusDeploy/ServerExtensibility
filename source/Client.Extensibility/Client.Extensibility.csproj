@@ -4,7 +4,7 @@
     <TargetFramework>netstandard1.2</TargetFramework>
     <AssemblyName>Octopus.Client.Extensibility</AssemblyName>
     <RootNamespace>Octopus.Client.Extensibility</RootNamespace>
-    <Description></Description>
+    <Description>Provides resources for Octopus Client extensions.</Description>
     <NeutralLanguage>en-US</NeutralLanguage>
     <Authors>Octopus Deploy</Authors>
     <PackageId>Octopus.Client.Extensibility</PackageId>
