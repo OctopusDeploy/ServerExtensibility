@@ -8,7 +8,7 @@ namespace Octopus.Node.Extensibility.Extensions.Infrastructure.Configuration
 {
     public abstract class ConfigurationDocumentStore<TConfiguration, TResource> : IHasConfigurationSettings
         where TConfiguration : class, IId
-        where TResource : IResource, IId
+        where TResource : IResource
     {
         readonly IConfigurationStore configurationStore;
 
