@@ -1,14 +1,11 @@
 using System;
-using System.Collections.Generic;
 using Nevermore.Contracts;
-using Octopus.Data.Resources;
 using Octopus.Data.Storage.Configuration;
 
 namespace Octopus.Node.Extensibility.Extensions.Infrastructure.Configuration
 {
-    public abstract class ConfigurationDocumentStore<TConfiguration, TResource> : IHasConfigurationSettings
+    public abstract class ConfigurationDocumentStore<TConfiguration>
         where TConfiguration : class, IId
-        where TResource : IResource
     {
         readonly IConfigurationStore configurationStore;
 
@@ -16,6 +13,10 @@ namespace Octopus.Node.Extensibility.Extensions.Infrastructure.Configuration
         {
             this.configurationStore = configurationStore;
         }
+
+        public abstract string Id { get; }
+
+        public abstract string ConfigurationSetName { get; }
 
         public object GetConfiguration()
         {
@@ -56,15 +57,5 @@ namespace Octopus.Node.Extensibility.Extensions.Infrastructure.Configuration
 
         protected virtual void OnConfigurationChanged()
         { }
-
-        public abstract string Id { get; }
-
-        public abstract string ConfigurationSetName { get; }
-
-        public abstract string Description { get; }
-
-        public Type MetadataResourceType => typeof(TResource);
-
-        public abstract IEnumerable<ConfigurationValue> GetConfigurationValues();
     }
 }

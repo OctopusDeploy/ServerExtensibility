@@ -5,7 +5,7 @@ using Octopus.Node.Extensibility.HostServices.Mapping;
 
 namespace Octopus.Node.Extensibility.Extensions.Infrastructure.Configuration
 {
-    public abstract class ExtensionConfigurationStore<TConfiguration, TResource> : ConfigurationDocumentStore<TConfiguration, TResource>, IExtensionConfigurationStore, IContributeMappings
+    public abstract class ExtensionConfigurationStore<TConfiguration, TResource> : ConfigurationSettings<TConfiguration, TResource>, IExtensionConfigurationStore, IContributeMappings
         where TConfiguration : ExtensionConfigurationDocument
         where TResource : ExtensionConfigurationResource
     {

@@ -1,4 +1,3 @@
-using Octopus.Data.Resources;
 
 namespace Octopus.Node.Extensibility.HostServices.Mapping
 {
