@@ -4,13 +4,14 @@ using Octopus.Node.Extensibility.HostServices.Mapping;
 
 namespace Octopus.Node.Extensibility.Extensions.Infrastructure.Configuration
 {
-    public abstract class ExtensionConfigurationSettings<TConfiguration, TResource> : ConfigurationSettings<TConfiguration, TResource>, IExtensionConfigurationSettings, IContributeMappings
+    public abstract class ExtensionConfigurationSettings<TConfiguration, TResource, TDocumentStore> : ConfigurationSettings<TConfiguration, TResource, TDocumentStore>, IExtensionConfigurationSettings, IContributeMappings
         where TConfiguration : ExtensionConfigurationDocument
         where TResource : ExtensionConfigurationResource
+        where TDocumentStore : IConfigurationDocumentStore<TConfiguration>
     {
         protected IResourceMappingFactory ResourceMappingFactory;
 
-        protected ExtensionConfigurationSettings(IExtensionConfigurationStore<TConfiguration> configurationDocumentStore, IResourceMappingFactory factory) : base(configurationDocumentStore)
+        protected ExtensionConfigurationSettings(TDocumentStore configurationDocumentStore, IResourceMappingFactory factory) : base(configurationDocumentStore)
         {
             ResourceMappingFactory = factory;
         }

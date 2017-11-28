@@ -5,17 +5,17 @@ using Octopus.Data.Resources;
 
 namespace Octopus.Node.Extensibility.Extensions.Infrastructure.Configuration
 {
-    public abstract class ConfigurationSettings<TConfiguration, TResource> : IHasConfigurationSettings
+    public abstract class ConfigurationSettings<TConfiguration, TResource, TDocumentStore> : IHasConfigurationSettings
         where TConfiguration : class, IId
         where TResource : IResource
+        where TDocumentStore : IConfigurationDocumentStore<TConfiguration>
     {
-        protected ConfigurationSettings(IConfigurationDocumentStore<TConfiguration> configurationDocumentStore)
+        protected ConfigurationSettings(TDocumentStore configurationDocumentStore)
         {
             ConfigurationDocumentStore = configurationDocumentStore;
         }
 
-        protected IConfigurationDocumentStore<TConfiguration> ConfigurationDocumentStore { get; }
-
+        protected TDocumentStore ConfigurationDocumentStore { get; }
 
         public abstract string Id { get; }
         public abstract string ConfigurationSetName { get; }
