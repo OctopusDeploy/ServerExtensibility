@@ -10,7 +10,7 @@ namespace Octopus.Node.Extensibility.Extensions.Infrastructure.Configuration
     {
         protected IResourceMappingFactory ResourceMappingFactory;
 
-        protected ExtensionConfigurationSettings(IConfigurationDocumentStore<TConfiguration> configurationDocumentStore, IResourceMappingFactory factory) : base(configurationDocumentStore)
+        protected ExtensionConfigurationSettings(IExtensionConfigurationStore<TConfiguration> configurationDocumentStore, IResourceMappingFactory factory) : base(configurationDocumentStore)
         {
             ResourceMappingFactory = factory;
         }
