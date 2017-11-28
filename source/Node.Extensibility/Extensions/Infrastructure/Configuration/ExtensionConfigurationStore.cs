@@ -1,13 +1,10 @@
-using System.Collections.Generic;
 using Octopus.Data.Storage.Configuration;
-using Octopus.Node.Extensibility.Extensions.Mappings;
 using Octopus.Node.Extensibility.HostServices.Mapping;
 
 namespace Octopus.Node.Extensibility.Extensions.Infrastructure.Configuration
 {
-    public abstract class ExtensionConfigurationStore<TConfiguration, TResource> : ConfigurationSettings<TConfiguration, TResource>, IExtensionConfigurationStore, IContributeMappings
+    public abstract class ExtensionConfigurationStore<TConfiguration> : ConfigurationDocumentStore<TConfiguration>, IExtensionConfigurationStore<TConfiguration>
         where TConfiguration : ExtensionConfigurationDocument
-        where TResource : ExtensionConfigurationResource
     {
         protected IResourceMappingFactory ResourceMappingFactory;
 
@@ -20,8 +17,6 @@ namespace Octopus.Node.Extensibility.Extensions.Infrastructure.Configuration
         {
             return GetProperty(doc => doc.IsEnabled);
         }
-
-        public abstract IEnumerable<IResourceMapping> GetMappings();
 
         public virtual void SetIsEnabled(bool isEnabled)
         {
