@@ -4,7 +4,7 @@ using Octopus.Data.Storage.Configuration;
 
 namespace Octopus.Node.Extensibility.Extensions.Infrastructure.Configuration
 {
-    public abstract class ConfigurationDocumentStore<TConfiguration>
+    public abstract class ConfigurationDocumentStore<TConfiguration> : IConfigurationDocumentStore<TConfiguration>
         where TConfiguration : class, IId
     {
         readonly IConfigurationStore configurationStore;
@@ -15,8 +15,6 @@ namespace Octopus.Node.Extensibility.Extensions.Infrastructure.Configuration
         }
 
         public abstract string Id { get; }
-
-        public abstract string ConfigurationSetName { get; }
 
         public object GetConfiguration()
         {
@@ -39,7 +37,7 @@ namespace Octopus.Node.Extensibility.Extensions.Infrastructure.Configuration
         {
             var doc = configurationStore.Get<TConfiguration>(Id);
             if (doc == null)
-                throw new InvalidOperationException($"{ConfigurationSetName} configuration initialization has not executed");
+                throw new InvalidOperationException($"{Id} configuration initialization has not executed");
 
             return prop(doc);
         }
@@ -48,7 +46,7 @@ namespace Octopus.Node.Extensibility.Extensions.Infrastructure.Configuration
         {
             var doc = configurationStore.Get<TConfiguration>(Id);
             if (doc == null)
-                throw new InvalidOperationException($"{ConfigurationSetName} configuration initialization has not executed");
+                throw new InvalidOperationException($"{Id} configuration initialization has not executed");
 
             callback(doc);
             configurationStore.Update(doc);

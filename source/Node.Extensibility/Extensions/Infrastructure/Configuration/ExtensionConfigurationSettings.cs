@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Octopus.Data.Storage.Configuration;
 using Octopus.Node.Extensibility.Extensions.Mappings;
 using Octopus.Node.Extensibility.HostServices.Mapping;
 
@@ -11,7 +10,7 @@ namespace Octopus.Node.Extensibility.Extensions.Infrastructure.Configuration
     {
         protected IResourceMappingFactory ResourceMappingFactory;
 
-        protected ExtensionConfigurationSettings(IConfigurationStore configurationStore, IResourceMappingFactory factory) : base(configurationStore)
+        protected ExtensionConfigurationSettings(IConfigurationDocumentStore<TConfiguration> configurationDocumentStore, IResourceMappingFactory factory) : base(configurationDocumentStore)
         {
             ResourceMappingFactory = factory;
         }
