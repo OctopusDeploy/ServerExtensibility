@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Nevermore.Contracts;
 using Octopus.Data.Resources;
+using Octopus.Node.Extensibility.HostServices.Mapping;
 
 namespace Octopus.Node.Extensibility.Extensions.Infrastructure.Configuration
 {
@@ -33,6 +34,8 @@ namespace Octopus.Node.Extensibility.Extensions.Infrastructure.Configuration
         }
 
         public abstract IEnumerable<ConfigurationValue> GetConfigurationValues();
+
+        public abstract IEnumerable<IResourceMapping> GetMappings();
     }
 
     public abstract class ConfigurationSettings<TResource> : IHasAggregatedConfigurationSettings
