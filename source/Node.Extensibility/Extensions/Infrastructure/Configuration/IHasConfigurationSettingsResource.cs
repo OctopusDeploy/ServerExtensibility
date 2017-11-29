@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Octopus.Node.Extensibility.Extensions.Infrastructure.Configuration
 {
@@ -11,5 +12,7 @@ namespace Octopus.Node.Extensibility.Extensions.Infrastructure.Configuration
         string Description { get; }
 
         Type MetadataResourceType { get; }
+
+        IEnumerable<ConfigurationValue> GetConfigurationValues();
     }
 }

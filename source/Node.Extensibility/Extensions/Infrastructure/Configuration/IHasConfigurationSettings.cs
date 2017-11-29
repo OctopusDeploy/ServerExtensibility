@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Octopus.Node.Extensibility.Extensions.Mappings;
+﻿using Octopus.Node.Extensibility.Extensions.Mappings;
 
 namespace Octopus.Node.Extensibility.Extensions.Infrastructure.Configuration
 {
@@ -8,7 +7,5 @@ namespace Octopus.Node.Extensibility.Extensions.Infrastructure.Configuration
         object GetConfiguration();
 
         void SetConfiguration(object config);
-
-        IEnumerable<ConfigurationValue> GetConfigurationValues();
     }
 }
