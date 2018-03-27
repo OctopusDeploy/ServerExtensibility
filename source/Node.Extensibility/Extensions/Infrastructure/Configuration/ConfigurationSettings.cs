@@ -35,7 +35,7 @@ namespace Octopus.Node.Extensibility.Extensions.Infrastructure.Configuration
 
         public abstract IEnumerable<ConfigurationValue> GetConfigurationValues();
 
-        public abstract IEnumerable<IResourceMapping> GetMappings();
+        public abstract void BuildMappings(IResourceMappingsBuilder builder);
     }
 
     public abstract class ConfigurationSettings<TResource> : IHasAggregatedConfigurationSettings

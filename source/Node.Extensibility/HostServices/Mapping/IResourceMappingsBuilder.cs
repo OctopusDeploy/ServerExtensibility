@@ -1,9 +1,9 @@
 
 namespace Octopus.Node.Extensibility.HostServices.Mapping
 {
-    public interface IResourceMappingFactory
+    public interface IResourceMappingsBuilder
     {
-        IResourceMapping<TResource, TModel, IResourceMappingContext> Create<TResource, TModel>()
+        IResourceMappingBuilder<TResource, TModel> Map<TResource, TModel>()
             where TResource : class
             where TModel : class;
     }

@@ -7,11 +7,8 @@ namespace Octopus.Node.Extensibility.Extensions.Infrastructure.Configuration
         where TResource : ExtensionConfigurationResource
         where TDocumentStore : IConfigurationDocumentStore<TConfiguration>
     {
-        protected IResourceMappingFactory ResourceMappingFactory;
-
-        protected ExtensionConfigurationSettings(TDocumentStore configurationDocumentStore, IResourceMappingFactory factory) : base(configurationDocumentStore)
+        protected ExtensionConfigurationSettings(TDocumentStore configurationDocumentStore) : base(configurationDocumentStore)
         {
-            ResourceMappingFactory = factory;
         }
     }
 }

@@ -6,11 +6,8 @@ namespace Octopus.Node.Extensibility.Extensions.Infrastructure.Configuration
     public abstract class ExtensionConfigurationStore<TConfiguration> : ConfigurationDocumentStore<TConfiguration>, IExtensionConfigurationStore<TConfiguration>
         where TConfiguration : ExtensionConfigurationDocument
     {
-        protected IResourceMappingFactory ResourceMappingFactory;
-
-        protected ExtensionConfigurationStore(IConfigurationStore configurationStore, IResourceMappingFactory factory) : base(configurationStore)
+        protected ExtensionConfigurationStore(IConfigurationStore configurationStore) : base(configurationStore)
         {
-            ResourceMappingFactory = factory;
         }
 
         public bool GetIsEnabled()
