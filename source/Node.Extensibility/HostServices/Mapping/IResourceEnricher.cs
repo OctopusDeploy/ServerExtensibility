@@ -1,6 +1,6 @@
 namespace Octopus.Node.Extensibility.HostServices.Mapping
 {
-    public interface IResourceEnricher<in TModel, in TResource>
+    public interface IResourceEnricher<in TResource, in TModel>
         where TModel : class
         where TResource : class
     {
