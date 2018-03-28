@@ -10,12 +10,12 @@ namespace Octopus.Node.Extensibility.HostServices.Mapping
         IResourceMappingBuilder<TResource, TModel> EnrichResource(Action<TModel, TResource> callback);
 
         IResourceMappingBuilder<TResource, TModel> EnrichResource<TResourceEnricher>() 
-            where TResourceEnricher : IResourceEnricher<TModel, TResource>;
+            where TResourceEnricher : IResourceEnricher<TResource, TModel>;
 
         IResourceMappingBuilder<TResource, TModel> EnrichModel(Action<TModel, TResource> callback);
 
         IResourceMappingBuilder<TResource, TModel> EnrichModel<TModelEnricher>() 
-            where TModelEnricher : IModelEnricher<TModel, TResource>;
+            where TModelEnricher : IModelEnricher<TResource, TModel>;
 
         IResourceMappingBuilder<TResource, TModel> DoNotMap<TProperty>(Expression<Func<TModel, TProperty>> propertyAccessor);
 
