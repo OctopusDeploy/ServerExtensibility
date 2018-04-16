@@ -3,25 +3,26 @@ using System.Linq.Expressions;
 
 namespace Octopus.Node.Extensibility.HostServices.Mapping
 {
-    public interface IResourceMapping
-    { }
-
-    public interface IResourceMapping<TResource, TModel, out TContext> : IResourceMapping
+    public interface IResourceMappingBuilder<TResource, TModel>
+        where TModel : class
+        where TResource : class
     {
-        IResourceMapping<TResource, TModel, TContext> EnrichResource(Action<TModel, TResource, TContext> callback);
+        IResourceMappingBuilder<TResource, TModel> EnrichResource(Action<TModel, TResource> callback);
 
-        IResourceMapping<TResource, TModel, TContext> EnrichResource(Action<TModel, TResource> callback);
+        IResourceMappingBuilder<TResource, TModel> EnrichResource<TResourceEnricher>() 
+            where TResourceEnricher : IResourceEnricher<TResource, TModel>;
 
-        IResourceMapping<TResource, TModel, TContext> EnrichModel(Action<TModel, TResource> callback);
+        IResourceMappingBuilder<TResource, TModel> EnrichModel(Action<TModel, TResource> callback);
 
-        IResourceMapping<TResource, TModel, TContext> EnrichModel(Action<TModel, TResource, TContext> callback);
+        IResourceMappingBuilder<TResource, TModel> EnrichModel<TModelEnricher>() 
+            where TModelEnricher : IModelEnricher<TResource, TModel>;
 
-        IResourceMapping<TResource, TModel, TContext> DoNotMap<TProperty>(Expression<Func<TModel, TProperty>> propertyAccessor);
+        IResourceMappingBuilder<TResource, TModel> DoNotMap<TProperty>(Expression<Func<TModel, TProperty>> propertyAccessor);
 
-        IResourceMapping<TResource, TModel, TContext> AllowReuseExisting<TProperty>(
+        IResourceMappingBuilder<TResource, TModel> AllowReuseExisting<TProperty>(
             Expression<Func<TModel, TProperty>> propertyAccessor);
 
-        IResourceMapping<TResource, TModel, TContext> IncludeSubType<TResourceSub, TModelSub>(Action<IResourceMapping<TResourceSub, TModelSub, TContext>> config = null)
+        IResourceMappingBuilder<TResource, TModel> IncludeSubType<TResourceSub, TModelSub>()
             where TResourceSub : class, TResource where TModelSub : class, TModel;
     }
 }
