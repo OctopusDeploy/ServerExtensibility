@@ -10,5 +10,7 @@ namespace Octopus.Node.Extensibility.Metadata
         }
 
         public List<TypeMetadata> Types { get; set; }
+
+        public string Description { get; set; }
     }
 }
