@@ -211,5 +211,5 @@
       ]
     }
   ],
-  "Description": null
+  "Description": "This is a resource level description"
 }

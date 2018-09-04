@@ -126,7 +126,7 @@ namespace Node.Extensibility.Tests.Metadata
             public int ChildIntProperty { get; set; }
         }
 
-
+        [System.ComponentModel.Description("This is a resource level description")]
         public class TopLevelResource : SettingsResource
         {
             public SecondLevelResource SecondLevelResource { get; set; }

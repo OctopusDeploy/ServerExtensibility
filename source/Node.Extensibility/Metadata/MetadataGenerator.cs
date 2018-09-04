@@ -50,7 +50,7 @@ namespace Octopus.Node.Extensibility.Metadata
         public Metadata GetMetadata(Type objectType)
         {
             Generate(objectType);
-
+            metadata.Description = objectType.GetTypeInfo().GetCustomAttribute<DescriptionAttribute>()?.Description;
             return metadata;
         }
 
