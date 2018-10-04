@@ -2,7 +2,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net451</TargetFramework>
+    <TargetFramework>netstandard1.3</TargetFramework>
     <RootNamespace>Octopus.Server.Extensibility</RootNamespace>
     <AssemblyName>Octopus.Server.Extensibility</AssemblyName>
     <Description>Provides the agreed contracts between Octopus Server and Octopus Server extensions.</Description>
@@ -23,6 +23,7 @@
   <ItemGroup>
     <PackageReference Include="Autofac" Version="4.6.0" />
     <PackageReference Include="Microsoft.Extensions.Primitives" Version="1.1.0" />
+    <PackageReference Include="System.Security.Claims" Version="4.3.0" />
   </ItemGroup>
 
   <ItemGroup>
