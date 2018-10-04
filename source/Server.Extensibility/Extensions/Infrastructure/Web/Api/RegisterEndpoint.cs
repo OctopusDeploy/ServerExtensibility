@@ -7,9 +7,11 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
     {
         readonly List<EndpointRegistration> registrations = new List<EndpointRegistration>();
 
+        public List<EndpointRegistration> Registrations => registrations;
+
         protected void Add(string method, string path, Action<OctoContext> handler)
         {
-            registrations.Add(new EndpointRegistration(method, path, handler));
+            Registrations.Add(new EndpointRegistration(method, path, handler));
         }
 
         public class EndpointRegistration
