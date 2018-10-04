@@ -6,7 +6,7 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
 {
     public class OctoRequest
     {
-        public OctoRequest(string scheme, bool isHttps, string host, string pathBase, string path, string protocol, Stream body, IDictionary<string, StringValues> headers, IDictionary<string, StringValues> query)
+        public OctoRequest(string scheme, bool isHttps, string host, string pathBase, string path, string protocol, Stream body, IDictionary<string, StringValues> headers, IDictionary<string, StringValues> query, IDictionary<string, StringValues> form, IDictionary<string, string> cookies)
         {
             Scheme = scheme;
             IsHttps = isHttps;
@@ -17,6 +17,8 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
             Body = body;
             Headers = headers;
             Query = query;
+            Form = form;
+            Cookies = cookies;
         }
 
         public string Scheme { get; }
@@ -28,5 +30,7 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
         public Stream Body { get; }
         public IDictionary<string, StringValues> Headers { get; }
         public IDictionary<string, StringValues> Query { get; }
+        public IDictionary<string, StringValues> Form { get; }
+        public IDictionary<string, string> Cookies { get; }
     }
 }
