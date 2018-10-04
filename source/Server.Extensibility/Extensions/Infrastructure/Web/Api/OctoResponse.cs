@@ -31,7 +31,7 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
             return this;
         }
 
-        public virtual void BadRequest(int statusCode = 400, params string[] errors)
+        public virtual void BadRequest(params string[] errors)
         {
             
         }
