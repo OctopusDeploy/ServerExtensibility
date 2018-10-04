@@ -15,12 +15,19 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
             return this;
         }
 
-        public virtual void Redirect(string location)
+        public virtual OctoResponse Redirect(string location)
         {
+            return this;
         }
 
         public virtual OctoResponse WithCookie(OctoCookie cookie)
         {
+            return this;
+        }
+
+        public virtual OctoResponse WithHeader(string name, StringValues value)
+        {
+            Headers[name] = value;
             return this;
         }
 
