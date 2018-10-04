@@ -15,14 +15,18 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
             return this;
         }
 
-        public virtual OctoResponse Redirect(string location)
+        public virtual void Redirect(string location)
         {
-            return this;
         }
 
         public virtual OctoResponse WithCookie(OctoCookie cookie)
         {
             return this;
+        }
+
+        public virtual void BadRequest(int statusCode = 400, params string[] errors)
+        {
+            
         }
     }
 }
