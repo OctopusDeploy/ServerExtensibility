@@ -22,8 +22,7 @@
 
   <ItemGroup>
     <PackageReference Include="Autofac" Version="4.6.0" />
-    <PackageReference Include="Nancy" Version="1.2.0" />
-    <PackageReference Include="Nancy.Serialization.JsonNet" Version="1.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Primitives" Version="1.1.0" />
   </ItemGroup>
 
   <ItemGroup>

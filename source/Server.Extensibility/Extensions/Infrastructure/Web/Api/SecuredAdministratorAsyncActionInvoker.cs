@@ -1,6 +1,5 @@
 using System;
 using System.Threading.Tasks;
-using Nancy;
 using Octopus.Node.Extensibility.Extensions.Infrastructure.Configuration;
 using Octopus.Node.Extensibility.HostServices.Authorization;
 
@@ -10,26 +9,26 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
         where TAction : IAsyncApiAction
         where TConfigurationStore : IExtensionConfigurationStore
     {
-        readonly IApiActionResponseCreator responseCreator;
         private readonly Lazy<IAuthorizationChecker> authorizationChecker;
 
         public SecuredAdministratorAsyncActionInvoker(
             TAction action,
             TConfigurationStore configurationStore, 
-            IApiActionResponseCreator responseCreator,
-            Lazy<IAuthorizationChecker> authorizationChecker) : base(action, configurationStore, responseCreator)
+            Lazy<IAuthorizationChecker> authorizationChecker) : base(action, configurationStore)
         {
-            this.responseCreator = responseCreator;
             this.authorizationChecker = authorizationChecker;
         }
 
-        public override Task<Response> ExecuteAsync(NancyContext context, IResponseFormatter response)
+        public override Task ExecuteAsync(OctoContext context)
         {
-            if (context.CurrentUser == null ||
+            if (context.User == null ||
                 !authorizationChecker.Value.IsCurrentUserAdministrator())
-                return responseCreator.AsStatusCodeAsync(HttpStatusCode.Unauthorized);
+            {
+                context.Response.StatusCode = 401;
+                return Task.FromResult(0);
+            }
 
-            return base.ExecuteAsync(context, response);
+            return base.ExecuteAsync(context);
         }
     }
 }
