@@ -1,4 +1,4 @@
-﻿using System.Security.Claims;
+﻿using System.Security.Principal;
 
 namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
 {
@@ -6,6 +6,6 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
     {
         public virtual OctoRequest Request { get; }
         public virtual OctoResponse Response { get; }
-        public virtual ClaimsPrincipal User { get; }
+        public virtual IPrincipal User { get; }
     }
 }
