@@ -1,7 +1,7 @@
 using System;
 using System.Threading.Tasks;
-using Octopus.Node.Extensibility.Extensions.Infrastructure.Configuration;
-using Octopus.Node.Extensibility.HostServices.Authorization;
+using Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration;
+using Octopus.Server.Extensibility.HostServices.Authorization;
 
 namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
 {

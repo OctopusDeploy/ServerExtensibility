@@ -1,5 +1,4 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFrameworks>net451;netstandard1.2</TargetFrameworks>
     <AssemblyName>Octopus.Node.Extensibility</AssemblyName>
@@ -12,15 +11,15 @@
     <PackageLicenseUrl>https://octopus.com/</PackageLicenseUrl>
     <PackageProjectUrl>https://octopus.com/</PackageProjectUrl>
   </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="Autofac" Version="4.6.0" />
     <PackageReference Include="Octopus.Data" Version="3.1.0" />
   </ItemGroup>
-
   <ItemGroup>
     <PackageReference Include="System.ComponentModel.Annotations" Version="4.3.0" />
     <PackageReference Include="System.ComponentModel.Primitives" Version="4.3.0" />
   </ItemGroup>
-
+  <ItemGroup>
+    <Folder Include="Extensions\Infrastructure\Web" />
+  </ItemGroup>
 </Project>

@@ -116,11 +116,6 @@ Task("__Publish")
     .WithCriteria(BuildSystem.IsRunningOnTeamCity)
     .Does(() =>
 {
-    NuGetPush($"{artifactsDir}/Octopus.Node.Extensibility.{nugetVersion}.nupkg", new NuGetPushSettings {
-        Source = "https://f.feedz.io/octopus-deploy/dependencies/nuget",
-        ApiKey = EnvironmentVariable("FeedzIoApiKey")
-    });
-
     NuGetPush($"{artifactsDir}/Octopus.Server.Extensibility.{nugetVersion}.nupkg", new NuGetPushSettings {
         Source = "https://f.feedz.io/octopus-deploy/dependencies/nuget",
         ApiKey = EnvironmentVariable("FeedzIoApiKey")
@@ -128,10 +123,6 @@ Task("__Publish")
 
     if (gitVersionInfo.PreReleaseLabel == "")
     {
-        NuGetPush($"{artifactsDir}/Octopus.Node.Extensibility.{nugetVersion}.nupkg", new NuGetPushSettings {
-            Source = "https://www.nuget.org/api/v2/package",
-            ApiKey = EnvironmentVariable("NuGetApiKey")
-        });
 
         NuGetPush($"{artifactsDir}/Octopus.Server.Extensibility.{nugetVersion}.nupkg", new NuGetPushSettings {
             Source = "https://www.nuget.org/api/v2/package",
@@ -148,7 +139,6 @@ Task("__CopyToLocalPackages")
     .Does(() =>
 {
     CreateDirectory(localPackagesDir);
-    CopyFileToDirectory(Path.Combine(artifactsDir, $"Octopus.Node.Extensibility.{nugetVersion}.nupkg"), localPackagesDir);
     CopyFileToDirectory(Path.Combine(artifactsDir, $"Octopus.Server.Extensibility.{nugetVersion}.nupkg"), localPackagesDir);
 });
 

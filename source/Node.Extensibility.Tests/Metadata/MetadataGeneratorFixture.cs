@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 using NUnit.Framework;
 using Octopus.Data.Resources;
 using Octopus.Data.Resources.Attributes;
-using Octopus.Node.Extensibility.Metadata;
+using Octopus.Server.Extensibility.Metadata;
 
 namespace Node.Extensibility.Tests.Metadata
 {

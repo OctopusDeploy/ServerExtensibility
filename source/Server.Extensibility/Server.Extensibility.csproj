@@ -12,21 +12,22 @@
     <PackageLicenseUrl>https://octopus.com/</PackageLicenseUrl>
     <PackageProjectUrl>https://octopus.com/</PackageProjectUrl>
   </PropertyGroup>
-
   <ItemGroup>
     <Compile Remove="Extensions\Infrastructure\Web\Content\**" />
+    <Compile Include="Extensions\Infrastructure\Web\Content\IContributesAngularModules.cs" />
+    <Compile Include="Extensions\Infrastructure\Web\Content\IContributesCSS.cs" />
+    <Compile Include="Extensions\Infrastructure\Web\Content\IContributesJavascript.cs" />
+    <Compile Include="Extensions\Infrastructure\Web\Content\IContributesStaticContentFolders.cs" />
+    <Compile Include="Extensions\Infrastructure\Web\Content\StaticContentEmbeddedResourcesFolder.cs" />
     <EmbeddedResource Remove="Extensions\Infrastructure\Web\Content\**" />
     <None Remove="Extensions\Infrastructure\Web\Content\**" />
   </ItemGroup>
-
   <ItemGroup>
     <PackageReference Include="Autofac" Version="4.6.0" />
     <PackageReference Include="Microsoft.Extensions.Primitives" Version="1.1.0" />
     <PackageReference Include="System.Security.Principal" Version="4.3.0" />
+    <PackageReference Include="Octopus.Data" Version="3.1.0" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="4.3.0" />
+    <PackageReference Include="System.ComponentModel.Primitives" Version="4.3.0" />
   </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Node.Extensibility\Node.Extensibility.csproj" />
-  </ItemGroup>
-
-  </Project>
+</Project>

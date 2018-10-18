@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Octopus.Node.Extensibility.Extensions.Infrastructure.Configuration;
+using Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration;
 
 namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
 {
