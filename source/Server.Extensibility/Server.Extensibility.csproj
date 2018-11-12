@@ -9,8 +9,8 @@
     <Authors>Octopus Deploy</Authors>
     <PackageId>Octopus.Server.Extensibility</PackageId>
     <PackageIconUrl>http://i.octopusdeploy.com/resources/Avatar3_360.png</PackageIconUrl>
-    <PackageLicenseUrl>https://octopus.com/</PackageLicenseUrl>
-    <PackageProjectUrl>https://octopus.com/</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/OctopusDeploy/ServerExtensibility/blob/master/LICENSE.txt</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/OctopusDeploy/ServerExtensibility</PackageProjectUrl>
   </PropertyGroup>
   <ItemGroup>
     <Compile Remove="Extensions\Infrastructure\Web\Content\**" />
