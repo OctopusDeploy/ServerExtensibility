@@ -14,7 +14,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Octopus.Data" Version="3.0.0" />
+    <PackageReference Include="Octopus.Data" Version="3.1.2" />
   </ItemGroup>
 
   <ItemGroup>
