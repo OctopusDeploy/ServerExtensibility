@@ -7,6 +7,7 @@ using System.Reflection;
 using Octopus.Data.Model;
 using Octopus.Data.Resources;
 using Octopus.Data.Resources.Attributes;
+using Octopus.Server.Extensibility.HostServices.Model.Projects;
 
 namespace Octopus.Server.Extensibility.Metadata
 {
@@ -23,7 +24,8 @@ namespace Octopus.Server.Extensibility.Metadata
             {typeof(DateTimeOffset), "DateTimeOffset" },
             {typeof(bool), "bool" },
             {typeof(long), "long" },
-            {typeof(SensitiveValue), "SensitiveValue" }
+            {typeof(SensitiveValue), "SensitiveValue" },
+            {typeof(DeploymentActionPackage), "DeploymentActionPackage" }
         };
 
         //property names to be ignored on any object
