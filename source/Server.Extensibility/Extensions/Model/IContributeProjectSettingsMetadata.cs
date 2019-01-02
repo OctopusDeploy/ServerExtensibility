@@ -5,7 +5,7 @@ namespace Octopus.Server.Extensibility.Extensions.Model
 {
     public interface IContributeProjectSettingsMetadata
     {
-        string ExtensionId { get; set; }
-        List<PropertyMetadata> Properties { get; set; }
+        string ExtensionId { get; }
+        List<PropertyMetadata> Properties { get; }
     }
 }
