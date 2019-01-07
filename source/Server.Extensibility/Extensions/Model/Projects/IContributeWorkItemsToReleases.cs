@@ -1,9 +1,9 @@
-﻿using Octopus.Server.Extensibility.HostServices.Model.Projects;
+﻿using Octopus.Server.Extensibility.Resources;
 
 namespace Octopus.Server.Extensibility.Extensions.Model.Projects
 {
     public interface IContributeWorkItemsToReleases
     {
-        DeploymentActionPackage GetDeploymentAction(string projectId);
+        DeploymentActionPackageResource GetDeploymentAction(string projectId);
     }
 }
