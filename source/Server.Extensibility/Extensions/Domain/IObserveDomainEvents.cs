@@ -1,5 +1,4 @@
-﻿using Octopus.Server.Extensibility.HostServices.Domain;
-using Octopus.Server.Extensibility.HostServices.Domain.Events;
+﻿using Octopus.Server.Extensibility.HostServices.Domain.Events;
 
 namespace Octopus.Server.Extensibility.Extensions.Domain
 {
@@ -7,7 +6,7 @@ namespace Octopus.Server.Extensibility.Extensions.Domain
     {
     }
 
-    public interface IObserveDomainEvents<in TEvent>
+    public interface IObserveDomainEvents<in TEvent> : IObserveDomainEvents
         where TEvent: DomainEvent
     {
         void Handle(TEvent @event);
