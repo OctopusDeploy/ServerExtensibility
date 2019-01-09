@@ -23,6 +23,8 @@ namespace Octopus.Server.Extensibility.HostServices.Model.Projects
         string EnvironmentId { get; }
         string TenantId { get; }
 
+        string ReleaseId { get; }
+
         string TaskId { get; }
 
         string DeploymentProcessId { get; }
