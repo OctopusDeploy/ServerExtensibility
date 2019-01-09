@@ -6,7 +6,7 @@ namespace Octopus.Server.Extensibility.Extensions.Domain
     {
     }
 
-    public interface IObserveDomainEvents<in TEvent> : IObserveDomainEvents
+    public interface IObserveDomainEvent<in TEvent> : IObserveDomainEvents
         where TEvent: DomainEvent
     {
         void Handle(TEvent @event);
