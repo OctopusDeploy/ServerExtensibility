@@ -8,7 +8,6 @@ namespace Octopus.Server.Extensibility.HostServices.Model.IssueTrackers
         public string IssueTrackerId { get; set; }
         public string LinkUrl { get; set; }
         public string LinkText { get; set; }
-        public string ReleaseNotes { get; set; }
 
         public override bool Equals(object obj)
         {
