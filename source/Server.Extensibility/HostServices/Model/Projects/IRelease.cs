@@ -8,7 +8,6 @@ namespace Octopus.Server.Extensibility.HostServices.Model.Projects
     public interface IRelease
     {
         string Id { get; }
-        string Name { get; }
 
         string ProjectId { get; }
         string ChannelId { get; }
