@@ -1,4 +1,5 @@
-﻿using Octopus.Server.Extensibility.HostServices.Model.Projects;
+﻿using Octopus.Server.Extensibility.HostServices.Domain.Events;
+using Octopus.Server.Extensibility.HostServices.Model.Projects;
 
 namespace Octopus.Server.Extensibility.Domain.Releases
 {
@@ -8,7 +9,7 @@ namespace Octopus.Server.Extensibility.Domain.Releases
         Deleted
     }
 
-    public class ReleaseEvent
+    public class ReleaseEvent : DomainEvent
     {
         public ReleaseEvent(ReleaseEventType eventType, IRelease release)
         {
