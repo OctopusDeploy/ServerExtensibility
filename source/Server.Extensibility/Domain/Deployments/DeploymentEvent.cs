@@ -1,7 +1,7 @@
 ﻿using Octopus.Server.Extensibility.HostServices.Domain.Events;
 using Octopus.Server.Extensibility.HostServices.Model.Projects;
 
-namespace Octopus.Server.Extensibility.Extensions.Domain
+namespace Octopus.Server.Extensibility.Domain.Deployments
 {
     public enum DeploymentEventType
     {
@@ -21,7 +21,7 @@ namespace Octopus.Server.Extensibility.Extensions.Domain
             Deployment = deployment;
         }
 
-        public DeploymentEventType EventType { get; set; }
-        public IDeployment Deployment { get; set; }
+        public DeploymentEventType EventType { get; }
+        public IDeployment Deployment { get; }
     }
 }
