@@ -9,6 +9,8 @@ namespace Octopus.Server.Extensibility.HostServices.Model.Projects
     {
         string Id { get; }
 
+        string SpaceId { get; }
+
         string ProjectId { get; }
         string ChannelId { get; }
 

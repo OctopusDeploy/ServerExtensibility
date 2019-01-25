@@ -18,6 +18,8 @@ namespace Octopus.Server.Extensibility.HostServices.Model.Projects
         ReferenceCollection ExcludedMachineIds { get; }
         bool UseGuidedFailure { get; }
 
+        string SpaceId { get; }
+
         string ProjectId { get; }
         string ChannelId { get; }
         string EnvironmentId { get; }
