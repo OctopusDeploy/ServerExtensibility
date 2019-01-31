@@ -2,6 +2,6 @@
 {
     public interface IProvideDeploymentEnvironmentSettingsValues
     {
-        T GetSettings<T>(string extensionId, string projectId);
+        T GetSettings<T>(string extensionId, string deploymentEnvironmentId);
     }
 }
