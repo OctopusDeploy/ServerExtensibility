@@ -2,8 +2,7 @@
 
 namespace Octopus.Server.Extensibility.HostServices.Domain.Environments
 {
-    public interface IDeploymentEnvironmentStore
+    public interface IDeploymentEnvironmentStore : IStore<IDeploymentEnvironment>
     {
-        IDeploymentEnvironment GetDeploymentEnvironment(string id);
     }
 }

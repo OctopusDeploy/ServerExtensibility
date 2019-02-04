@@ -5,10 +5,8 @@ using Octopus.Server.Extensibility.HostServices.Model.IssueTrackers;
 
 namespace Octopus.Server.Extensibility.HostServices.Model.Projects
 {
-    public interface IDeployment
+    public interface IDeployment : IDocument, IHaveSpace
     {
-        string Id { get; }
-        string Name { get; }
         DateTimeOffset Created { get; }
         bool ForcePackageDownload { get; }
         bool ForcePackageRedeployment { get; }
@@ -17,8 +15,6 @@ namespace Octopus.Server.Extensibility.HostServices.Model.Projects
         ReferenceCollection SpecificMachineIds { get; }
         ReferenceCollection ExcludedMachineIds { get; }
         bool UseGuidedFailure { get; }
-
-        string SpaceId { get; }
 
         string ProjectId { get; }
         string ChannelId { get; }

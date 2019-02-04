@@ -2,7 +2,7 @@
 
 namespace Octopus.Server.Extensibility.HostServices.Domain.Projects
 {
-    public interface IProjectStore : IStore<IProject>
+    public interface IReleaseStore : IStore<IRelease>
     {
     }
 }
