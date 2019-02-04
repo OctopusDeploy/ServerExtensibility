@@ -93,8 +93,7 @@ namespace Octopus.Server.Extensibility.HostServices.Model
         /// This was the least-bad option that let the migrator do it's thing when migrating project
         /// release-creation-strategy and versioning-strategy.
         /// </summary>
-        internal PackageReference(string id)
-            : this()
+        public PackageReference(string id) : this()
         {
             if (!string.IsNullOrEmpty(id))
             {
