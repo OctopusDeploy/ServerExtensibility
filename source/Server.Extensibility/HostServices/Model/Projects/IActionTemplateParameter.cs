@@ -4,11 +4,11 @@ namespace Octopus.Server.Extensibility.HostServices.Model.Projects
 {
     public interface IActionTemplateParameter
     {
-        string Id { get; set; }
-        string Name { get; set; }
-        string Label { get; set; }
-        string HelpText { get; set; }
-        PropertyValue DefaultValue { get; set; }
-        IDictionary<string, string> DisplaySettings { get; set; }
+        string Id { get; }
+        string Name { get; }
+        string Label { get; }
+        string HelpText { get; }
+        PropertyValue DefaultValue { get; }
+        IDictionary<string, string> DisplaySettings { get; }
     }
 }
