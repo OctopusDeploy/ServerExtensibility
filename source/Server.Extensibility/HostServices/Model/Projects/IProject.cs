@@ -22,12 +22,12 @@ namespace Octopus.Server.Extensibility.HostServices.Model.Projects
         bool CanPerformTenantedDeployments { get; }
         bool CanPerformUntenantedDeployments { get; }
 
-        IVersioningStrategy VersioningStrategy { get; }
+        VersioningStrategy VersioningStrategy { get; }
         GuidedFailureMode DefaultGuidedFailureMode { get; }
-        IList<IActionTemplateParameter> Templates { get; }
+        IList<ActionTemplateParameter> Templates { get; }
         ReleaseCreationStrategy ReleaseCreationStrategy { get; }
-        IProjectConnectivityPolicy ProjectConnectivityPolicy { get; }
-        ISet<IAutoDeployReleaseOverride> AutoDeployReleaseOverrides { get; }
+        ProjectConnectivityPolicy ProjectConnectivityPolicy { get; }
+        ISet<AutoDeployReleaseOverride> AutoDeployReleaseOverrides { get; }
 
         List<DeploymentActionPackage> WorkItemPackages { get; }
         bool AppendWorkItemDetailsToReleaseNotes { get; }
