@@ -1,6 +1,6 @@
 ﻿namespace Octopus.Server.Extensibility.HostServices.Configuration
 {
-    public interface IServerConfigurationProvider
+    public interface IServerConfigurationStore
     {
         string GetServerUri();
     }

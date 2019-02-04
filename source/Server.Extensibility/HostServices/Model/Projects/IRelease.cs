@@ -5,12 +5,8 @@ using Octopus.Server.Extensibility.HostServices.Model.Variables;
 
 namespace Octopus.Server.Extensibility.HostServices.Model.Projects
 {
-    public interface IRelease
+    public interface IRelease : IDocument, ISpaceScopedDocument
     {
-        string Id { get; }
-
-        string SpaceId { get; }
-
         string ProjectId { get; }
         string ChannelId { get; }
 
