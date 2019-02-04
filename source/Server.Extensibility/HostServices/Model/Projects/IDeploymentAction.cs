@@ -23,6 +23,6 @@ namespace Octopus.Server.Extensibility.HostServices.Model.Projects
 
         ReferenceCollection TenantTags { get; }
 
-        IPackageReferenceCollection Packages { get; }
+        PackageReferenceCollection Packages { get; }
     }
 }
