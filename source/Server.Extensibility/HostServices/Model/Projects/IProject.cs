@@ -6,6 +6,8 @@ namespace Octopus.Server.Extensibility.HostServices.Model.Projects
 {
     public interface IProject : IDocument, IHaveSpace
     {
+        string Slug { get; }
+
         string Description { get; }
 
         bool IsDisabled { get; }
