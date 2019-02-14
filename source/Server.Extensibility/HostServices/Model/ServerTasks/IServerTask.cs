@@ -6,23 +6,31 @@ namespace Octopus.Server.Extensibility.HostServices.Model.ServerTasks
 {
     public interface IServerTask : IDocument, IHaveSpace
     {
-        string Description { get; set; }
-        DateTimeOffset QueueTime { get; set; }
-        TimeSpan QueueTimeExpiry { get; set; }
-        TimeSpan ExecutionTimeExpiry { get; set; }
-        DateTimeOffset? StartTime { get; set; }
-        DateTimeOffset? LastUpdatedTime { get; set; }
-        DateTimeOffset? CompletedTime { get; set; }
-        string ErrorMessage { get; set; }
-        string ConcurrencyTag { get; set; }
-        TaskState State { get; set; }
-        bool HasPendingInterruptions { get; set; }
-        bool HasWarningsOrErrors { get; set; }
-        string ServerVersion { get; set; }
-        string ServerNodeId { get; set; }
-        string LogDifferentiationToken { get; set; }
-        string AdditionalDescription { get; set; }
-        int DurationSeconds { get; set; }
-        int ChildTaskCount { get; set; }
+        string ProjectId { get; }
+        string EnvironmentId { get; }
+        string TenantId { get; }
+
+        string Description { get; }
+        DateTimeOffset QueueTime { get; }
+        TimeSpan QueueTimeExpiry { get; }
+        TimeSpan ExecutionTimeExpiry { get; }
+        DateTimeOffset? StartTime { get; }
+        DateTimeOffset? LastUpdatedTime { get; }
+        DateTimeOffset? CompletedTime { get; }
+        string ErrorMessage { get; }
+        string ConcurrencyTag { get; }
+        TaskState State { get; }
+        bool HasPendingInterruptions { get; }
+        bool HasWarningsOrErrors { get; }
+        string ServerVersion { get; }
+        string ServerNodeId { get; }
+        string LogDifferentiationToken { get; }
+        string AdditionalDescription { get; }
+        int DurationSeconds { get; }
+        int ChildTaskCount { get; }
+
+        DateTimeOffset QueueTimeExpiryDateTimeOffset { get; }
+
+        string GetCorrelationId();
     }
 }
