@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Nevermore.Contracts;
-using Octopus.Server.Extensibility.HostServices.Model.IssueTrackers;
+using Octopus.Server.Extensibility.HostServices.Model.PackageMetadata;
 using Octopus.Server.Extensibility.HostServices.Model.Variables;
 
 namespace Octopus.Server.Extensibility.HostServices.Model.Projects
@@ -15,7 +15,7 @@ namespace Octopus.Server.Extensibility.HostServices.Model.Projects
         DateTimeOffset Assembled { get; }
 
         string ReleaseNotes { get; }
-        IList<WorkItem> WorkItems { get; }
+        IList<OctopusPackageMetadata> PackageMetadata { get; }
         
         string ProjectVariableSetSnapshotId { get; }
         string ProjectDeploymentProcessSnapshotId { get; }

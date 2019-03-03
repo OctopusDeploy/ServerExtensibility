@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Nevermore.Contracts;
-using Octopus.Server.Extensibility.HostServices.Model.IssueTrackers;
+using Octopus.Server.Extensibility.HostServices.Model.PackageMetadata;
 
 namespace Octopus.Server.Extensibility.HostServices.Model.Projects
 {
@@ -38,6 +38,6 @@ namespace Octopus.Server.Extensibility.HostServices.Model.Projects
 
         ReferenceCollection DeployedToMachineIds { get; }
 
-        IList<WorkItem> WorkItems { get; }
+        IList<OctopusPackageMetadata> PackageMetadata { get; }
     }
 }

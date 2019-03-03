@@ -5,6 +5,7 @@ namespace Octopus.Server.Extensibility.HostServices.Model.IssueTrackers
     public class WorkItem : IEquatable<WorkItem>
     {
         public string Id { get; set; }
+        public string LinkData { get; set; }
         public string LinkText { get; set; }
 
         public override bool Equals(object obj)
