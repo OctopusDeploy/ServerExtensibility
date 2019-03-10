@@ -38,6 +38,6 @@ namespace Octopus.Server.Extensibility.HostServices.Model.Projects
 
         ReferenceCollection DeployedToMachineIds { get; }
 
-        IList<OctopusPackageMetadata> PackageMetadata { get; }
+        IList<OctopusPackageVersionMetadata> PackageMetadata { get; }
     }
 }
