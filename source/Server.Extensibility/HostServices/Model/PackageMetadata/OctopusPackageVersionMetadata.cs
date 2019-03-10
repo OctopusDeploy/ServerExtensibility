@@ -2,6 +2,11 @@
 {
     public class OctopusPackageVersionMetadata
     {
+        public OctopusPackageVersionMetadata()
+        {
+            OctopusPackageMetadata = new OctopusPackageMetadata();
+        }
+
         public string PackageId { get; set; }
 
         public string Version { get; set; }
