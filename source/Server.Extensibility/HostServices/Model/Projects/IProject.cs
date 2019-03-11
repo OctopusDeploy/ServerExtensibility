@@ -32,7 +32,6 @@ namespace Octopus.Server.Extensibility.HostServices.Model.Projects
         ISet<AutoDeployReleaseOverride> AutoDeployReleaseOverrides { get; }
 
         List<DeploymentActionPackage> WorkItemPackages { get; }
-        bool AppendWorkItemDetailsToReleaseNotes { get; }
 
         IList<ExtensionSettingsValues> ExtensionSettings { get; }
     }
