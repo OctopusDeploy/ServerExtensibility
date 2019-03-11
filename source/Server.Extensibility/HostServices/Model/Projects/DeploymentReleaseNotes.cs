@@ -6,6 +6,6 @@ namespace Octopus.Server.Extensibility.HostServices.Model.Projects
     {
         public string Version { get; set; }
         public string ReleaseNotes { get; set; }
-        public OctopusPackageVersionMetadata VersionMetadata { get; set; }
+        public OctopusPackageVersionMetadata[] VersionMetadata { get; set; }
     }
 }
