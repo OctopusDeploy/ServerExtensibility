@@ -37,6 +37,6 @@ namespace Octopus.Server.Extensibility.HostServices.Model.Projects
 
         ReferenceCollection DeployedToMachineIds { get; }
 
-        IList<DeploymentReleaseNotes> DeploymentReleaseNotes { get; }
+        IList<ReleaseChanges> Changes { get; }
     }
 }

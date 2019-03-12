@@ -2,9 +2,9 @@
 
 namespace Octopus.Server.Extensibility.HostServices.Model.Projects
 {
-    public class DeploymentReleaseNotes
+    public class ReleaseChanges
     {
-        public DeploymentReleaseNotes()
+        public ReleaseChanges()
         {
             VersionMetadata = new OctopusPackageVersionMetadata[0];
         }
