@@ -1,6 +1,6 @@
 ﻿namespace Octopus.Server.Extensibility.HostServices.Model.PackageMetadata
 {
-    public class OctopusPackageVersionMetadata
+    public class OctopusPackageVersionMetadata : IPackageVersionMetadata
     {
         public OctopusPackageVersionMetadata()
         {
