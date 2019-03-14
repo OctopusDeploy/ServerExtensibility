@@ -33,7 +33,7 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration
             ConfigurationDocumentStore.SetConfiguration(config);
         }
 
-        public abstract IEnumerable<ConfigurationValue> GetConfigurationValues();
+        public abstract IEnumerable<IConfigurationValue> GetConfigurationValues();
 
         public abstract void BuildMappings(IResourceMappingsBuilder builder);
     }
@@ -49,7 +49,7 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration
 
         public Type MetadataResourceType => typeof(TResource);
 
-        public abstract IEnumerable<ConfigurationValue> GetConfigurationValues();
+        public abstract IEnumerable<IConfigurationValue> GetConfigurationValues();
 
         public abstract object GetConfigurationResource();
     }
