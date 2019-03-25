@@ -2,18 +2,17 @@
 
 namespace Octopus.Server.Extensibility.HostServices.Model.IssueTrackers
 {
-    public class WorkItem : IEquatable<WorkItem>
+    public class Commit : IEquatable<Commit>
     {
         public string Id { get; set; }
-        public string LinkData { get; set; }
-        public string LinkText { get; set; }
+        public string Comment { get; set; }
 
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((WorkItem) obj);
+            return Equals((Commit) obj);
         }
 
         public override int GetHashCode()
@@ -21,7 +20,7 @@ namespace Octopus.Server.Extensibility.HostServices.Model.IssueTrackers
             return (Id != null ? Id.GetHashCode() : 0);
         }
 
-        public bool Equals(WorkItem other)
+        public bool Equals(Commit other)
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;

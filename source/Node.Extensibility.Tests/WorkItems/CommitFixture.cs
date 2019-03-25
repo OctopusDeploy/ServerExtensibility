@@ -6,16 +6,16 @@ using Octopus.Server.Extensibility.HostServices.Model.IssueTrackers;
 namespace Node.Extensibility.Tests.WorkItems
 {
     [TestFixture]
-    public class WorkItemFixture
+    public class CommitFixture
     {
         [Test]
         public void DistinctWorkItemsBehavesCorrectly()
         {
-            var listWithDupes = new List<WorkItem>
+            var listWithDupes = new List<Commit>
             {
-                new WorkItem { Id = "test1" },
-                new WorkItem { Id = "test2" },
-                new WorkItem { Id = "test1" },
+                new Commit { Id = "test1" },
+                new Commit { Id = "test2" },
+                new Commit { Id = "test1" },
             };
 
             var distinctWorkItems = listWithDupes.Distinct();
