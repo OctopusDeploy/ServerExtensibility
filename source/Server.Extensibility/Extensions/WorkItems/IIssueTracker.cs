@@ -13,9 +13,9 @@
         bool IsEnabled { get; }
 
         /// <summary>
-        /// The Id for this tracker, used by the build extensions to identify which baseUrl to prefix the linkUrl with.
+        /// The CommentParser of this tracker, used by the build extensions to identify which baseUrl to prefix the linkUrl with.
         /// </summary>
-        string IssueTrackerId { get; }
+        string CommentParser { get; }
 
         /// <summary>
         /// The base Url to prefix the work item's linkUrl with.

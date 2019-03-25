@@ -5,7 +5,7 @@ namespace Octopus.Server.Extensibility.Extensions.WorkItems
 {
     public interface IWorkItemLinkMapper
     {
-        string IssueTrackerId { get; }
+        string CommentParser { get; }
         bool IsEnabled { get; }
 
         WorkItemLink[] Map(OctopusPackageMetadata packageMetadata);
