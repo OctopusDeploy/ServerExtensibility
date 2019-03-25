@@ -31,8 +31,6 @@ namespace Octopus.Server.Extensibility.HostServices.Model.Projects
         ProjectConnectivityPolicy ProjectConnectivityPolicy { get; }
         ISet<AutoDeployReleaseOverride> AutoDeployReleaseOverrides { get; }
 
-        List<DeploymentActionPackage> WorkItemPackages { get; }
-
         IList<ExtensionSettingsValues> ExtensionSettings { get; }
     }
 }
