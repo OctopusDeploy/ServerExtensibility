@@ -84,6 +84,7 @@ namespace Octopus.Server.Extensibility.Metadata
                         {
                             Required = prop.IsDefined(typeof(RequiredAttribute)),
                             Description = prop.GetCustomAttribute<DescriptionAttribute>()?.Description,
+                            ShowCopyToClipboard = prop.IsDefined(typeof(AllowCopyToClipboardAttribute)),
                         }
                     };
 

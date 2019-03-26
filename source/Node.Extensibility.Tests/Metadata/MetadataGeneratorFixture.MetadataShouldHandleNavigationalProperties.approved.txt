@@ -12,7 +12,8 @@
             "Label": "Children",
             "Description": null,
             "Options": null,
-            "ListApi": null
+            "ListApi": null,
+            "ShowCopyToClipboard": false
           }
         },
         {
@@ -24,7 +25,8 @@
             "Label": "SomeValue",
             "Description": null,
             "Options": null,
-            "ListApi": null
+            "ListApi": null,
+            "ShowCopyToClipboard": false
           }
         }
       ]
@@ -41,7 +43,8 @@
             "Label": "Parent",
             "Description": null,
             "Options": null,
-            "ListApi": null
+            "ListApi": null,
+            "ShowCopyToClipboard": false
           }
         },
         {
@@ -53,7 +56,8 @@
             "Label": "ChildIntProperty",
             "Description": null,
             "Options": null,
-            "ListApi": null
+            "ListApi": null,
+            "ShowCopyToClipboard": false
           }
         }
       ]
