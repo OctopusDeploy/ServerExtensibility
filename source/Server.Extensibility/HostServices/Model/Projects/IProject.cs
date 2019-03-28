@@ -30,6 +30,7 @@ namespace Octopus.Server.Extensibility.HostServices.Model.Projects
         ReleaseCreationStrategy ReleaseCreationStrategy { get; }
         ProjectConnectivityPolicy ProjectConnectivityPolicy { get; }
         ISet<AutoDeployReleaseOverride> AutoDeployReleaseOverrides { get; }
+        string ReleaseNotesTemplate { get; set; }
 
         IList<ExtensionSettingsValues> ExtensionSettings { get; }
     }
