@@ -2,6 +2,14 @@
 
 namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration
 {
+    public interface IConfigurationValue
+    {
+        string Key { get; set; }
+        object Value { get; }
+        bool ShowInPortalSummary { get; set; }
+        string Description { get; set; }
+        bool IsSensitive { get; set; }
+    }
 
     public class ConfigurationValue<T> : IConfigurationValue
     {
@@ -24,14 +32,5 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration
         public bool ShowInPortalSummary { get; set; }
         public string Description { get; set; }
         public bool IsSensitive { get; set; }
-    }
-
-    public interface IConfigurationValue
-    {
-        string Key { get; set; }
-        object Value { get; }
-        bool ShowInPortalSummary { get; set; }
-        string Description { get; set; }
-        bool IsSensitive { get; set; }
     }
 }
