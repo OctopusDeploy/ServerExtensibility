@@ -7,6 +7,7 @@ using System.Reflection;
 using Octopus.Data.Model;
 using Octopus.Data.Resources;
 using Octopus.Data.Resources.Attributes;
+using Octopus.Server.Extensibility.Resources;
 
 namespace Octopus.Server.Extensibility.Metadata
 {
@@ -23,7 +24,8 @@ namespace Octopus.Server.Extensibility.Metadata
             {typeof(DateTimeOffset), "DateTimeOffset" },
             {typeof(bool), "bool" },
             {typeof(long), "long" },
-            {typeof(SensitiveValue), "SensitiveValue" }
+            {typeof(SensitiveValue), "SensitiveValue" },
+            {typeof(DeploymentActionPackageResource), "DeploymentActionPackage" }
         };
 
         //property names to be ignored on any object
@@ -82,6 +84,7 @@ namespace Octopus.Server.Extensibility.Metadata
                         {
                             Required = prop.IsDefined(typeof(RequiredAttribute)),
                             Description = prop.GetCustomAttribute<DescriptionAttribute>()?.Description,
+                            ShowCopyToClipboard = prop.IsDefined(typeof(AllowCopyToClipboardAttribute)),
                         }
                     };
 

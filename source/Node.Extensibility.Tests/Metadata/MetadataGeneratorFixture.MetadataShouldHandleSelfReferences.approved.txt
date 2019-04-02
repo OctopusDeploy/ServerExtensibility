@@ -12,7 +12,8 @@
             "Label": "Name",
             "Description": null,
             "Options": null,
-            "ListApi": null
+            "ListApi": null,
+            "ShowCopyToClipboard": false
           }
         },
         {
@@ -24,7 +25,8 @@
             "Label": "SelfReference",
             "Description": null,
             "Options": null,
-            "ListApi": null
+            "ListApi": null,
+            "ShowCopyToClipboard": false
           }
         },
         {
@@ -36,7 +38,8 @@
             "Label": "SomeValue",
             "Description": null,
             "Options": null,
-            "ListApi": null
+            "ListApi": null,
+            "ShowCopyToClipboard": false
           }
         }
       ]

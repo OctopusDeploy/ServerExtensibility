@@ -13,5 +13,7 @@
         public OptionsMetadata Options { get; set; }
 
         public ListApiMetadata ListApi { get; set; }
+        
+        public bool ShowCopyToClipboard { get; set; }
     }
 }
