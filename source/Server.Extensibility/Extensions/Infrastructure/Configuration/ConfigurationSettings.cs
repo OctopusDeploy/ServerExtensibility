@@ -23,6 +23,8 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration
         public abstract string Description { get; }
         public Type MetadataResourceType => typeof(TResource);
 
+        public Type ConfigurationType => typeof(TConfiguration);
+
         public virtual object GetConfiguration()
         {
             return ConfigurationDocumentStore.GetConfiguration();
