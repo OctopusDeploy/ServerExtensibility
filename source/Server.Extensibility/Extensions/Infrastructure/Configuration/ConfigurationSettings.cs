@@ -51,6 +51,8 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration
 
         public Type MetadataResourceType => typeof(TResource);
 
+        public Type ModelType => null;
+
         public abstract IEnumerable<IConfigurationValue> GetConfigurationValues();
 
         public abstract object GetConfigurationResource();
