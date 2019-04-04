@@ -14,7 +14,6 @@ namespace Octopus.Server.Extensibility.HostServices.Model.Projects
         bool IsRequired { get; }
 
         bool CanBeUsedForProjectVersioning { get; }
-        bool CanBeUsedForContributingWorkItems { get; }
 
         ReferenceCollection Environments { get; }
         ReferenceCollection ExcludedEnvironments { get; }
