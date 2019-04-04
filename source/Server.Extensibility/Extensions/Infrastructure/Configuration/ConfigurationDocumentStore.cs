@@ -29,7 +29,12 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration
                 throw new ArgumentException($"Given config type is {config.GetType()}, but {typeof(TConfiguration)} was expected");
             }
 
-            configurationStore.Update((TConfiguration)config);
+            var existingConfig = configurationStore.Get<TConfiguration>(Id);
+            if (existingConfig == null)
+                configurationStore.Update((TConfiguration) config);
+            else
+                configurationStore.Create((TConfiguration) config);
+
             OnConfigurationChanged();
         }
 
