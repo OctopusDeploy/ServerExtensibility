@@ -13,8 +13,6 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration
 
         Type MetadataResourceType { get; }
 
-        Type ModelType { get; }
-
         IEnumerable<IConfigurationValue> GetConfigurationValues();
     }
 }

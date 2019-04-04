@@ -5,7 +5,7 @@ using Octopus.Data.Storage.Configuration;
 namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration
 {
     public abstract class ConfigurationDocumentStore<TConfiguration> : IConfigurationDocumentStore<TConfiguration>
-        where TConfiguration : class, IId
+        where TConfiguration : class, IId, new()
     {
         readonly IConfigurationStore configurationStore;
 
@@ -19,7 +19,7 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration
         public object GetConfiguration()
         {
             var doc = configurationStore.Get<TConfiguration>(Id);
-            return doc;
+            return doc ?? new TConfiguration();
         }
 
         public void SetConfiguration(object config)
