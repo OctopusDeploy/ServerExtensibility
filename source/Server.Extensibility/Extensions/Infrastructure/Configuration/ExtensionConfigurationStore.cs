@@ -6,18 +6,18 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration
         where TConfiguration : ExtensionConfigurationDocument, new()
 
     {
-    protected ExtensionConfigurationStore(IConfigurationStore configurationStore) : base(configurationStore)
-    {
-    }
+        protected ExtensionConfigurationStore(IConfigurationStore configurationStore) : base(configurationStore)
+        {
+        }
 
-    public bool GetIsEnabled()
-    {
-        return GetProperty(doc => doc.IsEnabled);
-    }
+        public bool GetIsEnabled()
+        {
+            return GetProperty(doc => doc.IsEnabled);
+        }
 
-    public virtual void SetIsEnabled(bool isEnabled)
-    {
-        SetProperty(doc => doc.IsEnabled = isEnabled);
-    }
+        public virtual void SetIsEnabled(bool isEnabled)
+        {
+            SetProperty(doc => doc.IsEnabled = isEnabled);
+        }
     }
 }
