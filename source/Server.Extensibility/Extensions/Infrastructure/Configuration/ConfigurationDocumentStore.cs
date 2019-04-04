@@ -31,9 +31,9 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration
 
             var existingConfig = configurationStore.Get<TConfiguration>(Id);
             if (existingConfig == null)
-                configurationStore.Update((TConfiguration) config);
-            else
                 configurationStore.Create((TConfiguration) config);
+            else
+                configurationStore.Update((TConfiguration) config);
 
             OnConfigurationChanged();
         }
