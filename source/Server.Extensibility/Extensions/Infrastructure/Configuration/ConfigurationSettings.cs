@@ -23,8 +23,6 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration
         public abstract string Description { get; }
         public Type MetadataResourceType => typeof(TResource);
 
-        public Type ModelType => typeof(TConfiguration);
-
         public virtual object GetConfiguration()
         {
             return ConfigurationDocumentStore.GetConfiguration();
@@ -50,8 +48,6 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration
         public abstract string Description { get; }
 
         public Type MetadataResourceType => typeof(TResource);
-
-        public Type ModelType => null;
 
         public abstract IEnumerable<IConfigurationValue> GetConfigurationValues();
 
