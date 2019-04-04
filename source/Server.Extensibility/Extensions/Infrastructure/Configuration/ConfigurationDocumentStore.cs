@@ -5,7 +5,7 @@ using Octopus.Data.Storage.Configuration;
 namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration
 {
     public abstract class ConfigurationDocumentStore<TConfiguration> : IConfigurationDocumentStore<TConfiguration>
-        where TConfiguration : class, IId
+        where TConfiguration : class, IId, new()
     {
         readonly IConfigurationStore configurationStore;
 
@@ -19,7 +19,7 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration
         public object GetConfiguration()
         {
             var doc = configurationStore.Get<TConfiguration>(Id);
-            return doc;
+            return doc ?? new TConfiguration();
         }
 
         public void SetConfiguration(object config)
@@ -29,7 +29,12 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration
                 throw new ArgumentException($"Given config type is {config.GetType()}, but {typeof(TConfiguration)} was expected");
             }
 
-            configurationStore.Update((TConfiguration)config);
+            var existingConfig = configurationStore.Get<TConfiguration>(Id);
+            if (existingConfig == null)
+                configurationStore.Create((TConfiguration) config);
+            else
+                configurationStore.Update((TConfiguration) config);
+
             OnConfigurationChanged();
         }
 

@@ -7,7 +7,7 @@ using Octopus.Server.Extensibility.HostServices.Mapping;
 namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration
 {
     public abstract class ConfigurationSettings<TConfiguration, TResource, TDocumentStore> : IHasConfigurationSettings
-        where TConfiguration : class, IId
+        where TConfiguration : class, IId, new()
         where TResource : IResource
         where TDocumentStore : IConfigurationDocumentStore<TConfiguration>
     {
