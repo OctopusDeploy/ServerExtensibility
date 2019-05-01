@@ -12,7 +12,7 @@ namespace Octopus.Server.Extensibility.Resources.IssueTrackers
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            return string.Equals(Id, other.Id);
+            return string.Equals(Id, other.Id, StringComparison.OrdinalIgnoreCase);
         }
 
         public override bool Equals(object obj)
@@ -25,7 +25,7 @@ namespace Octopus.Server.Extensibility.Resources.IssueTrackers
 
         public override int GetHashCode()
         {
-            return (Id != null ? Id.GetHashCode() : 0);
+            return (Id != null ? Id.ToUpperInvariant().GetHashCode() : 0);
         }
     }
 }
