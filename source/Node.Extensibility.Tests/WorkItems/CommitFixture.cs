@@ -9,7 +9,7 @@ namespace Node.Extensibility.Tests.WorkItems
     public class CommitFixture
     {
         [Test]
-        public void DistinctWorkItemsBehavesCorrectly()
+        public void DistinctCommitsBehavesCorrectly()
         {
             var listWithDupes = new List<Commit>
             {
@@ -24,7 +24,7 @@ namespace Node.Extensibility.Tests.WorkItems
         }
 
         [Test]
-        public void DistinctWorkItemsBehavesCorrectlyWithDifferentCasing()
+        public void DistinctCommitsBehavesCorrectlyWithDifferentCasing()
         {
             var listWithDupes = new List<Commit>
             {
