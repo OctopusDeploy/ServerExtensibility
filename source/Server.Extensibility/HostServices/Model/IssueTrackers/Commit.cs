@@ -17,14 +17,14 @@ namespace Octopus.Server.Extensibility.HostServices.Model.IssueTrackers
 
         public override int GetHashCode()
         {
-            return (Id != null ? Id.GetHashCode() : 0);
+            return (Id != null ? Id.ToUpperInvariant().GetHashCode() : 0);
         }
 
         public bool Equals(Commit other)
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            return string.Equals(Id, other.Id);
+            return string.Equals(Id, other.Id, StringComparison.OrdinalIgnoreCase);
         }
     }
 }

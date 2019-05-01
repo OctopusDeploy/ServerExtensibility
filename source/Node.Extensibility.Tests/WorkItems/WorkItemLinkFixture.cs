@@ -1,21 +1,21 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
-using Octopus.Server.Extensibility.HostServices.Model.IssueTrackers;
+using Octopus.Server.Extensibility.Resources.IssueTrackers;
 
 namespace Node.Extensibility.Tests.WorkItems
 {
     [TestFixture]
-    public class CommitFixture
+    public class WorkItemLinkFixture
     {
         [Test]
         public void DistinctWorkItemsBehavesCorrectly()
         {
-            var listWithDupes = new List<Commit>
+            var listWithDupes = new List<WorkItemLink>
             {
-                new Commit { Id = "test1" },
-                new Commit { Id = "test2" },
-                new Commit { Id = "test1" },
+                new WorkItemLink { Id = "test1" },
+                new WorkItemLink { Id = "test2" },
+                new WorkItemLink { Id = "test1" },
             };
 
             var distinctWorkItems = listWithDupes.Distinct();
@@ -26,11 +26,11 @@ namespace Node.Extensibility.Tests.WorkItems
         [Test]
         public void DistinctWorkItemsBehavesCorrectlyWithDifferentCasing()
         {
-            var listWithDupes = new List<Commit>
+            var listWithDupes = new List<WorkItemLink>
             {
-                new Commit { Id = "test1" },
-                new Commit { Id = "test2" },
-                new Commit { Id = "Test1" },
+                new WorkItemLink { Id = "test1" },
+                new WorkItemLink { Id = "test2" },
+                new WorkItemLink { Id = "Test1" },
             };
 
             var distinctWorkItems = listWithDupes.Distinct();
