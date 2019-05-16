@@ -9,7 +9,7 @@ namespace Node.Extensibility.Tests.Extensions.Infrastructure.Configuration
     public class ConfigurationValueFixture
     {
         [Test]
-        public void SerializeObject_WithEnumValue_AsString()
+        public void EnumValuesShouldBeSerializedAsStrings()
         {
             var toSerialize = new ConfigurationValue<SomeEnum>("Some.Key", SomeEnum.SomeEnumValue, true, "Some description");
 
