@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 
 namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration
 {
@@ -27,13 +26,9 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration
         }
 
         public string Key { get; set; }
-
-        [JsonConverter(typeof(StringEnumConverter))]
         public object Value => TypedValue;
-
         [JsonIgnore]
         public T TypedValue { get; set; }
-
         public bool ShowInPortalSummary { get; set; }
         public string Description { get; set; }
         public bool IsSensitive { get; set; }
