@@ -145,7 +145,18 @@ namespace Octopus.Server.Extensibility.Metadata
                                 ApiEndpoint = listApiAttr.ApiEndpoint,
                             };
                         }
+                    }
 
+                    if (prop.IsDefined(typeof(PropertyApplicabilityAttribute)))
+                    {
+                        var applicableAttr = prop.GetCustomAttribute<PropertyApplicabilityAttribute>();
+                        
+                        propMetadata.DisplayInfo.PropertyApplicability = new PropertyApplicability
+                        {
+                            Mode = applicableAttr.Mode,
+                            DependsOnPropertyName = applicableAttr.PropertyName,
+                            DependsOnPropertyValue = applicableAttr.PropertyValue
+                        };
                     }
 
                     rootType.Properties.Add(propMetadata);
