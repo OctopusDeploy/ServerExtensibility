@@ -13,7 +13,8 @@
             "Description": null,
             "Options": null,
             "ListApi": null,
-            "ShowCopyToClipboard": false
+            "ShowCopyToClipboard": false,
+            "PropertyApplicability": null
           }
         },
         {
@@ -26,7 +27,8 @@
             "Description": "This 2nd-level resource has been duplicated",
             "Options": null,
             "ListApi": null,
-            "ShowCopyToClipboard": false
+            "ShowCopyToClipboard": false,
+            "PropertyApplicability": null
           }
         },
         {
@@ -39,7 +41,8 @@
             "Description": null,
             "Options": null,
             "ListApi": null,
-            "ShowCopyToClipboard": false
+            "ShowCopyToClipboard": false,
+            "PropertyApplicability": null
           }
         },
         {
@@ -52,7 +55,8 @@
             "Description": null,
             "Options": null,
             "ListApi": null,
-            "ShowCopyToClipboard": false
+            "ShowCopyToClipboard": false,
+            "PropertyApplicability": null
           }
         },
         {
@@ -65,7 +69,8 @@
             "Description": null,
             "Options": null,
             "ListApi": null,
-            "ShowCopyToClipboard": false
+            "ShowCopyToClipboard": false,
+            "PropertyApplicability": null
           }
         },
         {
@@ -86,7 +91,8 @@
               }
             },
             "ListApi": null,
-            "ShowCopyToClipboard": false
+            "ShowCopyToClipboard": false,
+            "PropertyApplicability": null
           }
         },
         {
@@ -99,7 +105,8 @@
             "Description": null,
             "Options": null,
             "ListApi": null,
-            "ShowCopyToClipboard": false
+            "ShowCopyToClipboard": false,
+            "PropertyApplicability": null
           }
         },
         {
@@ -112,7 +119,8 @@
             "Description": null,
             "Options": null,
             "ListApi": null,
-            "ShowCopyToClipboard": false
+            "ShowCopyToClipboard": false,
+            "PropertyApplicability": null
           }
         },
         {
@@ -125,7 +133,8 @@
             "Description": null,
             "Options": null,
             "ListApi": null,
-            "ShowCopyToClipboard": false
+            "ShowCopyToClipboard": false,
+            "PropertyApplicability": null
           }
         },
         {
@@ -138,7 +147,8 @@
             "Description": null,
             "Options": null,
             "ListApi": null,
-            "ShowCopyToClipboard": false
+            "ShowCopyToClipboard": false,
+            "PropertyApplicability": null
           }
         },
         {
@@ -151,7 +161,8 @@
             "Description": null,
             "Options": null,
             "ListApi": null,
-            "ShowCopyToClipboard": false
+            "ShowCopyToClipboard": false,
+            "PropertyApplicability": null
           }
         }
       ]
@@ -169,7 +180,8 @@
             "Description": null,
             "Options": null,
             "ListApi": null,
-            "ShowCopyToClipboard": false
+            "ShowCopyToClipboard": false,
+            "PropertyApplicability": null
           }
         },
         {
@@ -182,7 +194,8 @@
             "Description": null,
             "Options": null,
             "ListApi": null,
-            "ShowCopyToClipboard": false
+            "ShowCopyToClipboard": false,
+            "PropertyApplicability": null
           }
         },
         {
@@ -195,7 +208,8 @@
             "Description": null,
             "Options": null,
             "ListApi": null,
-            "ShowCopyToClipboard": false
+            "ShowCopyToClipboard": false,
+            "PropertyApplicability": null
           }
         },
         {
@@ -208,7 +222,8 @@
             "Description": null,
             "Options": null,
             "ListApi": null,
-            "ShowCopyToClipboard": false
+            "ShowCopyToClipboard": false,
+            "PropertyApplicability": null
           }
         },
         {
@@ -221,7 +236,8 @@
             "Description": null,
             "Options": null,
             "ListApi": null,
-            "ShowCopyToClipboard": false
+            "ShowCopyToClipboard": false,
+            "PropertyApplicability": null
           }
         }
       ]

@@ -13,7 +13,8 @@
             "Description": null,
             "Options": null,
             "ListApi": null,
-            "ShowCopyToClipboard": false
+            "ShowCopyToClipboard": false,
+            "PropertyApplicability": null
           }
         },
         {
@@ -26,7 +27,8 @@
             "Description": null,
             "Options": null,
             "ListApi": null,
-            "ShowCopyToClipboard": false
+            "ShowCopyToClipboard": false,
+            "PropertyApplicability": null
           }
         }
       ]
@@ -44,7 +46,8 @@
             "Description": null,
             "Options": null,
             "ListApi": null,
-            "ShowCopyToClipboard": false
+            "ShowCopyToClipboard": false,
+            "PropertyApplicability": null
           }
         },
         {
@@ -57,7 +60,8 @@
             "Description": null,
             "Options": null,
             "ListApi": null,
-            "ShowCopyToClipboard": false
+            "ShowCopyToClipboard": false,
+            "PropertyApplicability": null
           }
         }
       ]
