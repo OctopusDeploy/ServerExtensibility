@@ -1,0 +1,42 @@
+{
+  "Types": [
+    {
+      "Name": "DependentPropertiesResource",
+      "Properties": [
+        {
+          "Name": "PropertyA",
+          "Type": "string",
+          "DisplayInfo": {
+            "Required": false,
+            "ReadOnly": true,
+            "Label": "PropertyA",
+            "Description": null,
+            "Options": null,
+            "ListApi": null,
+            "ShowCopyToClipboard": false,
+            "PropertyApplicability": null
+          }
+        },
+        {
+          "Name": "PropertyB",
+          "Type": "string",
+          "DisplayInfo": {
+            "Required": false,
+            "ReadOnly": true,
+            "Label": "PropertyB",
+            "Description": null,
+            "Options": null,
+            "ListApi": null,
+            "ShowCopyToClipboard": false,
+            "PropertyApplicability": {
+              "Mode": "ApplicableIfSpecificValue",
+              "DependsOnPropertyName": "PropertyA",
+              "DependsOnPropertyValue": "Foo"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "Description": null
+}

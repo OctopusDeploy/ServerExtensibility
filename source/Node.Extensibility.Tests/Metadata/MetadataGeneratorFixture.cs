@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using Assent;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using NUnit.Framework;
 using Octopus.Data.Resources;
 using Octopus.Data.Resources.Attributes;
@@ -59,6 +60,24 @@ namespace Node.Extensibility.Tests.Metadata
             var serializerSettings = new JsonSerializerSettings
             {
                 Formatting = Formatting.Indented,
+            };
+
+            var json = JsonConvert.SerializeObject(metadata, serializerSettings);
+
+            this.Assent(json);
+        }
+
+        [Test]
+        public void MetadataShouldHandleDependentProperties()
+        {
+            IGenerateMetadata generator = new MetadataGenerator();
+
+            var metadata = generator.GetMetadata<DependentPropertiesResource>();
+
+            var serializerSettings = new JsonSerializerSettings
+            {
+                Formatting = Formatting.Indented,
+                Converters = new List<JsonConverter> { new StringEnumConverter() }
             };
 
             var json = JsonConvert.SerializeObject(metadata, serializerSettings);
@@ -166,6 +185,14 @@ namespace Node.Extensibility.Tests.Metadata
             public string[] StringArrayProperty { get; set; }
 
             public int[] IntArrayProperty { get; set; }
+        }
+
+        public class DependentPropertiesResource
+        {
+            public string PropertyA { get; set; }
+            
+            [ApplicableWhenSpecificValue(nameof(PropertyA), "Foo")]
+            public string PropertyB { get; set; }
         }
     }
 }

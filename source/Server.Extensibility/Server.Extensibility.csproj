@@ -26,7 +26,7 @@
     <PackageReference Include="Autofac" Version="4.6.0" />
     <PackageReference Include="Microsoft.Extensions.Primitives" Version="1.1.0" />
     <PackageReference Include="System.Security.Principal" Version="4.3.0" />
-    <PackageReference Include="Octopus.Data" Version="3.2.0" />
+    <PackageReference Include="Octopus.Data" Version="4.1.0" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="4.3.0" />
     <PackageReference Include="System.ComponentModel.Primitives" Version="4.3.0" />
   </ItemGroup>
