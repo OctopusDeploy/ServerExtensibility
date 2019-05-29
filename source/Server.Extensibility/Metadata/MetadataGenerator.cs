@@ -154,8 +154,8 @@ namespace Octopus.Server.Extensibility.Metadata
                         propMetadata.DisplayInfo.PropertyApplicability = new PropertyApplicability
                         {
                             Mode = applicableAttr.Mode,
-                            DependsOnPropertyName = applicableAttr.PropertyName,
-                            DependsOnPropertyValue = applicableAttr.PropertyValue
+                            DependsOnPropertyName = applicableAttr.DependsOnPropertyName,
+                            DependsOnPropertyValue = applicableAttr.DependsOnPropertyValue
                         };
                     }
 
