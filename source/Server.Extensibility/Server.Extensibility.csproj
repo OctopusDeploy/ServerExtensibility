@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net452;netstandard1.3</TargetFrameworks>
+    <TargetFrameworks>net462;netstandard2.0</TargetFrameworks>
     <RootNamespace>Octopus.Server.Extensibility</RootNamespace>
     <AssemblyName>Octopus.Server.Extensibility</AssemblyName>
     <Description>Provides the agreed contracts between Octopus Server and Octopus Server extensions.</Description>
@@ -24,7 +24,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Autofac" Version="4.6.0" />
-    <PackageReference Include="Microsoft.Extensions.Primitives" Version="1.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Primitives" Version="2.1.1" />
     <PackageReference Include="System.Security.Principal" Version="4.3.0" />
     <PackageReference Include="Octopus.Data" Version="4.1.0" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="4.3.0" />
