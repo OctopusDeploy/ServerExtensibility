@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using Microsoft.Extensions.Primitives;
 
 namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
 {
     public class OctoRequest
     {
-        public OctoRequest(string scheme, bool isHttps, string host, string pathBase, string path, string protocol, Stream body, IDictionary<string, StringValues> headers, IDictionary<string, StringValues> query, IDictionary<string, StringValues> form, IDictionary<string, string> cookies)
+        public OctoRequest(string scheme, bool isHttps, string host, string pathBase, string path, string protocol, Stream body, IDictionary<string, IEnumerable<string>> headers, IDictionary<string, IEnumerable<string>> query, IDictionary<string, IEnumerable<string>> form, IDictionary<string, string> cookies)
         {
             Scheme = scheme;
             IsHttps = isHttps;
@@ -28,9 +27,9 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
         public string Path { get; }
         public string Protocol { get; }
         public Stream Body { get; }
-        public IDictionary<string, StringValues> Headers { get; }
-        public IDictionary<string, StringValues> Query { get; }
-        public IDictionary<string, StringValues> Form { get; }
+        public IDictionary<string, IEnumerable<string>> Headers { get; }
+        public IDictionary<string, IEnumerable<string>> Query { get; }
+        public IDictionary<string, IEnumerable<string>> Form { get; }
         public IDictionary<string, string> Cookies { get; }
     }
 }

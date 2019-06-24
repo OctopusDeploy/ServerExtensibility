@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using Microsoft.Extensions.Primitives;
 
 namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
 {
@@ -8,7 +7,7 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
     {
         public int StatusCode { get; set; }
         public Stream Body { get; set; }
-        public IDictionary<string, StringValues> Headers { get; set; }
+        public IDictionary<string, IEnumerable<string>> Headers { get; set; }
 
         public virtual OctoResponse AsOctopusJson(object model)
         {
@@ -25,7 +24,7 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
             return this;
         }
 
-        public virtual OctoResponse WithHeader(string name, StringValues value)
+        public virtual OctoResponse WithHeader(string name, IEnumerable<string> value)
         {
             Headers[name] = value;
             return this;
