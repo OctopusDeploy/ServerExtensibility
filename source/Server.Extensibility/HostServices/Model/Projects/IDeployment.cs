@@ -27,8 +27,6 @@ namespace Octopus.Server.Extensibility.HostServices.Model.Projects
         string DeploymentProcessId { get; }
         string ManifestVariableSetId { get; }
 
-        string ProjectGroupId { get; }
-
         string DeployedBy { get; }
 
         string DeployedById { get; }
