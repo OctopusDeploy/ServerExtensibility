@@ -9,6 +9,14 @@ namespace Octopus.Server.Extensibility.Extensions
         string FailureReason { get; }
     }
 
+    public interface IExtResult<out T> : IExtResult
+    {
+        // Note: be careful about using `IExtResult<T>` as a return type, since it's a reference type that introduces another possibility of a null,
+        // inhibits the implicit casts that make `ExtResult<T>` easier to use, and is only marginally more flexible.
+
+        T Value { get; }
+    }
+
     public struct FailureResult : IExtResult
     {
         public bool Succeeded => false;
@@ -20,7 +28,7 @@ namespace Octopus.Server.Extensibility.Extensions
         }
     }
 
-    public struct ExtResult<T> : IExtResult
+    public struct ExtResult<T> : IExtResult<T>
     {
         public bool Succeeded { get; private set; }
         public string FailureReason { get; private set; }
