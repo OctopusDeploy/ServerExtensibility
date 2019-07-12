@@ -3,70 +3,70 @@ using System.Linq;
 
 namespace Octopus.Server.Extensibility.Extensions
 {
-    public interface IExtResult
+    public interface ISuccessOrErrorResult
     {
         bool Succeeded { get; }
         string FailureReason { get; }
     }
 
-    public interface IExtResult<out T> : IExtResult
+    public interface ISuccessOrErrorResult<out T> : ISuccessOrErrorResult
     {
-        // Note: be careful about using `IExtResult<T>` as a return type, since it's a reference type that introduces another possibility of a null,
-        // inhibits the implicit casts that make `ExtResult<T>` easier to use, and is only marginally more flexible.
+        // Note: be careful about using `ISuccessOrErrorResult<T>` as a return type, since it's a reference type that introduces another possibility of a null,
+        // inhibits the implicit casts that make `SuccessOrErrorResult<T>` easier to use, and is only marginally more flexible.
 
         T Value { get; }
     }
 
-    public struct FailureResult : IExtResult
+    public struct ErrorResult : ISuccessOrErrorResult
     {
         public bool Succeeded => false;
         public string FailureReason { get; }
 
-        public FailureResult(string failureReason)
+        public ErrorResult(string failureReason)
         {
             FailureReason = failureReason;
         }
     }
 
-    public struct ExtResult<T> : IExtResult<T>
+    public struct SuccessOrErrorResult<T> : ISuccessOrErrorResult<T>
     {
         public bool Succeeded { get; private set; }
         public string FailureReason { get; private set; }
         public T Value { get; private set; }
 
-        public static ExtResult<T> Success(T value)
+        public static SuccessOrErrorResult<T> Success(T value)
         {
-            return new ExtResult<T> {Succeeded = true, Value = value};
+            return new SuccessOrErrorResult<T> {Succeeded = true, Value = value};
         }
 
-        public static ExtResult<T> Failure(string reason, T partialValue = default(T))
+        public static SuccessOrErrorResult<T> Failure(string reason, T partialValue = default(T))
         {
-            return new ExtResult<T> {Succeeded = false, FailureReason = reason, Value = partialValue};
+            return new SuccessOrErrorResult<T> {Succeeded = false, FailureReason = reason, Value = partialValue};
         }
 
-        public static implicit operator ExtResult<T>(T value)
+        public static implicit operator SuccessOrErrorResult<T>(T value)
         {
             return Success(value);
         }
 
-        public static implicit operator ExtResult<T>(FailureResult result)
+        public static implicit operator SuccessOrErrorResult<T>(ErrorResult result)
         {
-            return new ExtResult<T> {Succeeded = result.Succeeded, FailureReason = result.FailureReason};
+            return new SuccessOrErrorResult<T> {Succeeded = result.Succeeded, FailureReason = result.FailureReason};
         }
     }
 
     public static class ExtResult
     {
-        public static ExtResult<T> Success<T>(T value) => ExtResult<T>.Success(value);
+        public static SuccessOrErrorResult<T> Success<T>(T value) => SuccessOrErrorResult<T>.Success(value);
 
-        public static FailureResult Failure(string reason) => new FailureResult(reason);
+        public static ErrorResult Failure(string reason) => new ErrorResult(reason);
 
-        public static FailureResult Failure(IExtResult result) => new FailureResult(result.FailureReason);
+        public static ErrorResult Failure(ISuccessOrErrorResult result) => new ErrorResult(result.FailureReason);
 
-        public static ExtResult<T> Failure<T>(string reason, T partialValue)
-            => ExtResult<T>.Failure(reason, partialValue);
+        public static SuccessOrErrorResult<T> Failure<T>(string reason, T partialValue)
+            => SuccessOrErrorResult<T>.Failure(reason, partialValue);
 
-        public static ExtResult<T> Conditional<T>(T value, IEnumerable<IExtResult> dependencies)
+        public static SuccessOrErrorResult<T> Conditional<T>(T value, IEnumerable<ISuccessOrErrorResult> dependencies)
         {
             var anyFailure = dependencies.FirstOrDefault(d => !d.Succeeded);
             return anyFailure == null
@@ -74,10 +74,10 @@ namespace Octopus.Server.Extensibility.Extensions
                 : Failure(anyFailure.FailureReason, value);
         }
 
-        public static ExtResult<T> Conditional<T, TDep>(T value, IEnumerable<ExtResult<TDep>> dependencies)
-            => Conditional(value, dependencies.Cast<IExtResult>());
+        public static SuccessOrErrorResult<T> Conditional<T, TDep>(T value, IEnumerable<SuccessOrErrorResult<TDep>> dependencies)
+            => Conditional(value, dependencies.Cast<ISuccessOrErrorResult>());
 
-        public static ExtResult<T> Conditional<T>(T value, params IExtResult[] dependencies)
-            => Conditional(value, (IEnumerable<IExtResult>) dependencies);
+        public static SuccessOrErrorResult<T> Conditional<T>(T value, params ISuccessOrErrorResult[] dependencies)
+            => Conditional(value, (IEnumerable<ISuccessOrErrorResult>) dependencies);
     }
 }
