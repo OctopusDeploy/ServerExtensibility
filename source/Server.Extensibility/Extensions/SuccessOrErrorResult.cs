@@ -55,7 +55,7 @@ namespace Octopus.Server.Extensibility.Extensions
         }
     }
 
-    public static class ExtResult
+    public static class SuccessOrErrorResult
     {
         public static SuccessOrErrorResult<T> Success<T>(T value) => SuccessOrErrorResult<T>.Success(value);
 
