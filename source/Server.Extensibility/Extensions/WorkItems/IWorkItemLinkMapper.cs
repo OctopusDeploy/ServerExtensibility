@@ -8,6 +8,6 @@ namespace Octopus.Server.Extensibility.Extensions.WorkItems
         string CommentParser { get; }
         bool IsEnabled { get; }
 
-        WorkItemLink[] Map(OctopusPackageMetadata packageMetadata);
+        SuccessOrErrorResult<WorkItemLink[]> Map(OctopusPackageMetadata packageMetadata);
     }
 }
