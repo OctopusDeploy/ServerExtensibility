@@ -2,7 +2,7 @@ using Octopus.Server.Extensibility.HostServices.Licensing;
 
 namespace Octopus.Server.Extensibility.Extensions
 {
-    public interface IConstrainedToHostingEnvironments
+    public interface IAvailableInHostingEnvironments
     {
         OctopusHostingEnvironments[] HostingEnvironments { get; }
     }
