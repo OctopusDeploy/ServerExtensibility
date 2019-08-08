@@ -1,5 +1,3 @@
-using Octopus.Server.Extensibility.HostServices.Licensing;
-
 namespace Octopus.Server.Extensibility.Extensions
 {
     public interface IAvailableInHostingEnvironments

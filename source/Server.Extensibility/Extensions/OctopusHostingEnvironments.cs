@@ -1,4 +1,4 @@
-namespace Octopus.Server.Extensibility.HostServices.Licensing
+namespace Octopus.Server.Extensibility.Extensions
 {
     public enum OctopusHostingEnvironments
     {
