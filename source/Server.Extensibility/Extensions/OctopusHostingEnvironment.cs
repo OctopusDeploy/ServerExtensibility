@@ -1,6 +1,6 @@
 namespace Octopus.Server.Extensibility.Extensions
 {
-    public enum OctopusHostingEnvironments
+    public enum OctopusHostingEnvironment
     {
         SelfHosted,
         OctopusCloud
