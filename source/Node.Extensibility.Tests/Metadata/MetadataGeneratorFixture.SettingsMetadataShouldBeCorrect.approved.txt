@@ -14,7 +14,8 @@
             "Options": null,
             "ListApi": null,
             "ShowCopyToClipboard": false,
-            "PropertyApplicability": null
+            "PropertyApplicability": null,
+            "ConnectivityCheck": null
           }
         },
         {
@@ -28,7 +29,8 @@
             "Options": null,
             "ListApi": null,
             "ShowCopyToClipboard": false,
-            "PropertyApplicability": null
+            "PropertyApplicability": null,
+            "ConnectivityCheck": null
           }
         },
         {
@@ -42,7 +44,8 @@
             "Options": null,
             "ListApi": null,
             "ShowCopyToClipboard": false,
-            "PropertyApplicability": null
+            "PropertyApplicability": null,
+            "ConnectivityCheck": null
           }
         },
         {
@@ -56,7 +59,8 @@
             "Options": null,
             "ListApi": null,
             "ShowCopyToClipboard": false,
-            "PropertyApplicability": null
+            "PropertyApplicability": null,
+            "ConnectivityCheck": null
           }
         },
         {
@@ -70,7 +74,8 @@
             "Options": null,
             "ListApi": null,
             "ShowCopyToClipboard": false,
-            "PropertyApplicability": null
+            "PropertyApplicability": null,
+            "ConnectivityCheck": null
           }
         },
         {
@@ -92,7 +97,8 @@
             },
             "ListApi": null,
             "ShowCopyToClipboard": false,
-            "PropertyApplicability": null
+            "PropertyApplicability": null,
+            "ConnectivityCheck": null
           }
         },
         {
@@ -106,7 +112,8 @@
             "Options": null,
             "ListApi": null,
             "ShowCopyToClipboard": false,
-            "PropertyApplicability": null
+            "PropertyApplicability": null,
+            "ConnectivityCheck": null
           }
         },
         {
@@ -120,7 +127,8 @@
             "Options": null,
             "ListApi": null,
             "ShowCopyToClipboard": false,
-            "PropertyApplicability": null
+            "PropertyApplicability": null,
+            "ConnectivityCheck": null
           }
         },
         {
@@ -134,7 +142,8 @@
             "Options": null,
             "ListApi": null,
             "ShowCopyToClipboard": false,
-            "PropertyApplicability": null
+            "PropertyApplicability": null,
+            "ConnectivityCheck": null
           }
         },
         {
@@ -148,7 +157,8 @@
             "Options": null,
             "ListApi": null,
             "ShowCopyToClipboard": false,
-            "PropertyApplicability": null
+            "PropertyApplicability": null,
+            "ConnectivityCheck": null
           }
         },
         {
@@ -162,7 +172,8 @@
             "Options": null,
             "ListApi": null,
             "ShowCopyToClipboard": false,
-            "PropertyApplicability": null
+            "PropertyApplicability": null,
+            "ConnectivityCheck": null
           }
         }
       ]
@@ -181,7 +192,8 @@
             "Options": null,
             "ListApi": null,
             "ShowCopyToClipboard": false,
-            "PropertyApplicability": null
+            "PropertyApplicability": null,
+            "ConnectivityCheck": null
           }
         },
         {
@@ -195,7 +207,8 @@
             "Options": null,
             "ListApi": null,
             "ShowCopyToClipboard": false,
-            "PropertyApplicability": null
+            "PropertyApplicability": null,
+            "ConnectivityCheck": null
           }
         },
         {
@@ -209,7 +222,8 @@
             "Options": null,
             "ListApi": null,
             "ShowCopyToClipboard": false,
-            "PropertyApplicability": null
+            "PropertyApplicability": null,
+            "ConnectivityCheck": null
           }
         },
         {
@@ -223,7 +237,8 @@
             "Options": null,
             "ListApi": null,
             "ShowCopyToClipboard": false,
-            "PropertyApplicability": null
+            "PropertyApplicability": null,
+            "ConnectivityCheck": null
           }
         },
         {
@@ -237,7 +252,8 @@
             "Options": null,
             "ListApi": null,
             "ShowCopyToClipboard": false,
-            "PropertyApplicability": null
+            "PropertyApplicability": null,
+            "ConnectivityCheck": null
           }
         }
       ]

@@ -17,5 +17,7 @@
         public bool ShowCopyToClipboard { get; set; }
         
         public PropertyApplicability PropertyApplicability { get; set; }
+        
+        public ConnectivityCheck ConnectivityCheck { get; set; }
     }
 }

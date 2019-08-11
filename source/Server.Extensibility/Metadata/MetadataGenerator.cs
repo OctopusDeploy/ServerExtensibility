@@ -159,6 +159,17 @@ namespace Octopus.Server.Extensibility.Metadata
                         };
                     }
 
+                    if (prop.IsDefined(typeof(AllowConnectivityCheckAttribute)))
+                    {
+                        var allowConnectivityCheckAttr = prop.GetCustomAttribute<AllowConnectivityCheckAttribute>();
+                        propMetadata.DisplayInfo.ConnectivityCheck = new ConnectivityCheck
+                        {
+                            Title = allowConnectivityCheckAttr.ConnectivityCheckTitle,
+                            Url = allowConnectivityCheckAttr.ApiEndpoint,
+                            DependsOnPropertyNames = allowConnectivityCheckAttr.DependsOnPropertyNames
+                        };
+                    }
+
                     rootType.Properties.Add(propMetadata);
                 }
 
