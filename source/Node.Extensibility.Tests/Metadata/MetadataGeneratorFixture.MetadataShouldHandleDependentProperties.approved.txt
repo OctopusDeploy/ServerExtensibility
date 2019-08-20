@@ -14,7 +14,8 @@
             "Options": null,
             "ListApi": null,
             "ShowCopyToClipboard": false,
-            "PropertyApplicability": null
+            "PropertyApplicability": null,
+            "ConnectivityCheck": null
           }
         },
         {
@@ -32,7 +33,8 @@
               "Mode": "ApplicableIfSpecificValue",
               "DependsOnPropertyName": "PropertyA",
               "DependsOnPropertyValue": "Foo"
-            }
+            },
+            "ConnectivityCheck": null
           }
         }
       ]
