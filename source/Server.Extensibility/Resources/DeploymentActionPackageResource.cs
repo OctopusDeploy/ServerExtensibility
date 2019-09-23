@@ -10,6 +10,6 @@
         /// <summary>
         /// The name of ID of the package reference
         /// </summary>
-        public string PackageReference { get; set; }
+        public string PackageReference { get; set; } = "";
     }
 }
