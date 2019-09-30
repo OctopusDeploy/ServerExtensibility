@@ -1,10 +1,10 @@
 ﻿using Octopus.Server.Extensibility.Resources.IssueTrackers;
 
-namespace Octopus.Server.Extensibility.HostServices.Model.PackageMetadata
+namespace Octopus.Server.Extensibility.HostServices.Model.BuildInformation
 {
-    public class ReleasePackageVersionMetadata
+    public class ReleasePackageBuildInformation
     {
-        public ReleasePackageVersionMetadata()
+        public ReleasePackageBuildInformation()
         {
             WorkItems = new WorkItemLink[0];
             Commits = new CommitDetails[0];
@@ -17,6 +17,7 @@ namespace Octopus.Server.Extensibility.HostServices.Model.PackageMetadata
         public string CommentParser { get; set; }
         public string BuildNumber { get; set; }
         public string BuildUrl { get; set; }
+        public string Branch { get; set; }
         public string VcsType { get; set; }
         public string VcsRoot { get; set; }
         public string VcsCommitNumber { get; set; }
