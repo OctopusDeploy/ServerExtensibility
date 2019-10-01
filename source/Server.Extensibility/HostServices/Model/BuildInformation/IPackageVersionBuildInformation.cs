@@ -5,6 +5,5 @@ namespace Octopus.Server.Extensibility.HostServices.Model.BuildInformation
         string PackageId { get; }
         string Version { get; }
         OctopusBuildInformation OctopusBuildInformation { get; }
-
     }
 }

@@ -14,7 +14,6 @@ namespace Octopus.Server.Extensibility.HostServices.Model.BuildInformation
         public string Version { get; set; }
 
         public string BuildEnvironment { get; set; }
-        public string CommentParser { get; set; }
         public string BuildNumber { get; set; }
         public string BuildUrl { get; set; }
         public string Branch { get; set; }
