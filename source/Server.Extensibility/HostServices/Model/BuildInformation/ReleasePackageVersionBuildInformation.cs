@@ -2,9 +2,9 @@
 
 namespace Octopus.Server.Extensibility.HostServices.Model.BuildInformation
 {
-    public class ReleasePackageBuildInformation
+    public class ReleasePackageVersionBuildInformation
     {
-        public ReleasePackageBuildInformation()
+        public ReleasePackageVersionBuildInformation()
         {
             WorkItems = new WorkItemLink[0];
             Commits = new CommitDetails[0];

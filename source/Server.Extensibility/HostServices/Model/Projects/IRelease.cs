@@ -15,7 +15,7 @@ namespace Octopus.Server.Extensibility.HostServices.Model.Projects
         DateTimeOffset Assembled { get; }
 
         string ReleaseNotes { get; }
-        IList<ReleasePackageBuildInformation> BuildInformation { get; }
+        IList<ReleasePackageVersionBuildInformation> BuildInformation { get; }
         
         string ProjectVariableSetSnapshotId { get; }
         string ProjectDeploymentProcessSnapshotId { get; }
