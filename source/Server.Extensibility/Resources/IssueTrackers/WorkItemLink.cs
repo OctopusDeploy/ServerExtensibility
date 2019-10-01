@@ -6,6 +6,7 @@ namespace Octopus.Server.Extensibility.Resources.IssueTrackers
     {
         public string Id { get; set; }
         public string LinkUrl { get; set; }
+        public string Source { get; set; }
         public string Description { get; set; }
 
         public bool Equals(WorkItemLink other)
