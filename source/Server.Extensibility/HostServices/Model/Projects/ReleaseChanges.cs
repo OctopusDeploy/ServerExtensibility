@@ -1,4 +1,4 @@
-﻿using Octopus.Server.Extensibility.HostServices.Model.PackageMetadata;
+﻿using Octopus.Server.Extensibility.HostServices.Model.BuildInformation;
 
 namespace Octopus.Server.Extensibility.HostServices.Model.Projects
 {
@@ -6,11 +6,11 @@ namespace Octopus.Server.Extensibility.HostServices.Model.Projects
     {
         public ReleaseChanges()
         {
-            VersionMetadata = new ReleasePackageVersionMetadata[0];
+            VersionBuildInformation = new ReleasePackageVersionBuildInformation[0];
         }
 
         public string Version { get; set; }
         public string ReleaseNotes { get; set; }
-        public ReleasePackageVersionMetadata[] VersionMetadata { get; set; }
+        public ReleasePackageVersionBuildInformation[] VersionBuildInformation { get; set; }
     }
 }
