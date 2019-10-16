@@ -37,5 +37,31 @@ namespace Node.Extensibility.Tests.WorkItems
 
             Assert.AreEqual(2, distinctWorkItems.Count());
         }
+
+        [Test]
+        public void WorkItemsSortByNumericId()
+        {
+            var workItemLinks = new List<WorkItemLink>
+            {
+                new WorkItemLink {Id = "34"},
+                new WorkItemLink {Id = "5"},
+                new WorkItemLink {Id = "987"}
+            };
+            Assert.AreEqual("5,34,987",
+                string.Join(",", workItemLinks.OrderBy(x => x).Select(x => x.Id)));
+        }
+
+        [Test]
+        public void WorkItemsSortByPrefixedNumber()
+        {
+            var workItemLinks = new List<WorkItemLink>
+            {
+                new WorkItemLink {Id = "JIR7-34"},
+                new WorkItemLink {Id = "JIR7-5"},
+                new WorkItemLink {Id = "JIR7-987"}
+            };
+            Assert.AreEqual("JIR7-5,JIR7-34,JIR7-987",
+                string.Join(",", workItemLinks.OrderBy(x => x).Select(x => x.Id)));
+        }
     }
 }

@@ -1,9 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace Octopus.Server.Extensibility.Resources.IssueTrackers
 {
-    public class WorkItemLink : IEquatable<WorkItemLink>
+    public class WorkItemLink : IEquatable<WorkItemLink>, IComparable<WorkItemLink>
     {
+        static readonly Regex LastNumberRegex = new Regex(@"(\d+)$", RegexOptions.Compiled);
+
         public string Id { get; set; }
         public string LinkUrl { get; set; }
         public string Source { get; set; }
@@ -27,6 +31,17 @@ namespace Octopus.Server.Extensibility.Resources.IssueTrackers
         public override int GetHashCode()
         {
             return (Id != null ? Id.ToUpperInvariant().GetHashCode() : 0);
+        }
+
+        public int CompareTo(WorkItemLink other)
+        {
+            if (ReferenceEquals(this, other)) return 0;
+            if (ReferenceEquals(null, other)) return 1;
+            var thisIdMatch = LastNumberRegex.Match(Id);
+            var otherIdMatch = LastNumberRegex.Match(other.Id);
+            if (thisIdMatch.Success && otherIdMatch.Success)
+                return int.Parse(thisIdMatch.Groups[1].Value) - int.Parse(otherIdMatch.Groups[1].Value);
+            return string.Compare(Id, other.Id, StringComparison.OrdinalIgnoreCase);
         }
     }
 }
