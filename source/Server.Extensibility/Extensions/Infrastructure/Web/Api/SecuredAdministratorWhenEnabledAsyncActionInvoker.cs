@@ -5,13 +5,13 @@ using Octopus.Server.Extensibility.HostServices.Authorization;
 
 namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
 {
-    public class SecuredAdministratorAsyncActionInvoker<TAction, TConfigurationStore> : WhenEnabledAsyncActionInvoker<TAction, TConfigurationStore>
+    public class SecuredAdministratorWhenEnabledAsyncActionInvoker<TAction, TConfigurationStore> : WhenEnabledAsyncActionInvoker<TAction, TConfigurationStore>
         where TAction : IAsyncApiAction
         where TConfigurationStore : IExtensionConfigurationStore
     {
         private readonly Lazy<IAuthorizationChecker> authorizationChecker;
 
-        public SecuredAdministratorAsyncActionInvoker(
+        public SecuredAdministratorWhenEnabledAsyncActionInvoker(
             TAction action,
             TConfigurationStore configurationStore, 
             Lazy<IAuthorizationChecker> authorizationChecker) : base(action, configurationStore)
