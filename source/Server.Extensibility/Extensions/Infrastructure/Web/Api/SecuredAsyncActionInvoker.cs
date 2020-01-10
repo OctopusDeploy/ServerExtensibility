@@ -1,19 +1,18 @@
-﻿using System;
 using System.Threading.Tasks;
-using Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration;
 
 namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
 {
-    public class SecuredAsyncActionInvoker<TAction, TConfigurationStore> : WhenEnabledAsyncActionInvoker<TAction, TConfigurationStore>
+    public class SecuredAsyncActionInvoker<TAction>
         where TAction : IAsyncApiAction
-        where TConfigurationStore : IExtensionConfigurationStore
     {
+        protected readonly TAction Action;
 
-        public SecuredAsyncActionInvoker(TAction action, TConfigurationStore configurationStore) : base(action, configurationStore)
+        public SecuredAsyncActionInvoker(TAction action)
         {
+            Action = action;
         }
 
-        public override Task ExecuteAsync(OctoContext context)
+        public virtual Task ExecuteAsync(OctoContext context)
         {
             if (context.User == null)
             {
@@ -21,7 +20,7 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
                 return Task.FromResult(0);
             }
 
-            return base.ExecuteAsync(context);
+            return Action.ExecuteAsync(context);
         }
     }
 }
