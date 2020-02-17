@@ -1,3 +1,5 @@
+using System.Threading.Tasks;
+
 namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web
 {
     public interface IExecuteWhenWebHostStarts
@@ -5,16 +7,16 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web
         /// <summary>
         /// Will be called when the web host is about to start
         /// </summary>
-        void OnWebHostStarting();
+        Task OnWebHostStarting();
 
         /// <summary>
         /// Will be called when the web host has started
         /// </summary>
-        void OnWebHostStarted();
+        Task OnWebHostStarted();
 
         /// <summary>
         /// Will be called when the web host is stopping
         /// </summary>
-        void OnWebHostStopping();
+        Task OnWebHostStopping();
     }
 }
