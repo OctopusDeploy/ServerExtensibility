@@ -1,15 +1,15 @@
 namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web
 {
-    public interface IExecuteWhenServerStarts
+    public interface IExecuteWhenWebHostStarts
     {
         /// <summary>
         /// Will be called when the web host is about to start
         /// </summary>
-        void OnHostStarting();
+        void OnWebHostStarting();
 
         /// <summary>
         /// Will be called when the web host has started
         /// </summary>
-        void OnHostStarted();
+        void OnWebHostStarted();
     }
 }
