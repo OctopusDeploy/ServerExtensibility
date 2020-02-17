@@ -11,5 +11,10 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web
         /// Will be called when the web host has started
         /// </summary>
         void OnWebHostStarted();
+
+        /// <summary>
+        /// Will be called when the web host is stopping
+        /// </summary>
+        void OnWebHostStopping();
     }
 }
