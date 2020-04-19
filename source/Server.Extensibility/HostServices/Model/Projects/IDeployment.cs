@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using Nevermore.Contracts;
 
 namespace Octopus.Server.Extensibility.HostServices.Model.Projects
 {
-    public interface IDeployment : IDocument, IHaveSpace
+    public interface IDeployment : IHaveSpace
     {
         DateTimeOffset Created { get; }
         bool ForcePackageDownload { get; }

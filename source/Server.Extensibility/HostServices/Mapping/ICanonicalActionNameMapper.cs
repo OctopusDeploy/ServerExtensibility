@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Nevermore.Contracts;
 
 namespace Octopus.Server.Extensibility.HostServices.Mapping
 {

@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using Nevermore.Contracts;
 using Octopus.Server.Extensibility.HostServices.Model.BuildInformation;
 using Octopus.Server.Extensibility.HostServices.Model.Variables;
 
 namespace Octopus.Server.Extensibility.HostServices.Model.Projects
 {
-    public interface IRelease : IId, IHaveSpace
+    public interface IRelease : IHaveSpace
     {
         string ProjectId { get; }
         string ChannelId { get; }

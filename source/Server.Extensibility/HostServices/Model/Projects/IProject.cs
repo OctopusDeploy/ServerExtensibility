@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
-using Nevermore.Contracts;
+using Octopus.Data.Model;
 using Octopus.Server.Extensibility.HostServices.Model.Tenants;
 
 namespace Octopus.Server.Extensibility.HostServices.Model.Projects
 {
-    public interface IProject : IDocument, IHaveSpace
+    public interface IProject : INamed, IHaveSpace
     {
         string Slug { get; }
 

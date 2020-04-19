@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
-using Nevermore.Contracts;
 
 namespace Octopus.Server.Extensibility.HostServices.Model.Environments
 {
-    public interface IDeploymentEnvironment : IDocument, IHaveSpace
+    public interface IDeploymentEnvironment : IHaveSpace
     {
         string Description { get; }
         int SortOrder { get; }

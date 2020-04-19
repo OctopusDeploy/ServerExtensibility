@@ -1,10 +1,9 @@
 ﻿using System;
-using Nevermore.Contracts;
 using Octopus.Server.Extensibility.Resources;
 
 namespace Octopus.Server.Extensibility.HostServices.Model.ServerTasks
 {
-    public interface IServerTask : IDocument, IHaveSpace
+    public interface IServerTask : IHaveSpace
     {
         string ProjectId { get; }
         string EnvironmentId { get; }

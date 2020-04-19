@@ -1,13 +1,13 @@
 using System;
 using System.Collections.Generic;
-using Nevermore.Contracts;
+using Octopus.Data.Model.Configuration;
 using Octopus.Data.Resources;
 using Octopus.Server.Extensibility.HostServices.Mapping;
 
 namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration
 {
     public abstract class ConfigurationSettings<TConfiguration, TResource, TDocumentStore> : IHasConfigurationSettings
-        where TConfiguration : class, IId, new()
+        where TConfiguration : ConfigurationDocument, new()
         where TResource : IResource
         where TDocumentStore : IConfigurationDocumentStore<TConfiguration>
     {

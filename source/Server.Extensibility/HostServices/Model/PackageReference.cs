@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using Nevermore.Contracts;
 using Newtonsoft.Json;
+using Octopus.Data.Model;
 using Octopus.Server.Extensibility.Resources;
 
 namespace Octopus.Server.Extensibility.HostServices.Model
@@ -17,7 +17,7 @@ namespace Octopus.Server.Extensibility.HostServices.Model
     /// Storing collections of nested objects in the property-bag gets very messy, so package-references were moved into their own class
     /// and collection on the deployment actions.
     /// </history>
-    public class PackageReference : INamed, IId
+    public class PackageReference : INamed
     {
         string name;
 
