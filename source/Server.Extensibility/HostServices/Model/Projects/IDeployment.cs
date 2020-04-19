@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using Octopus.Data.Model;
 
 namespace Octopus.Server.Extensibility.HostServices.Model.Projects
 {
-    public interface IDeployment : IHaveSpace
+    public interface IDeployment : INamed, IHaveSpace
     {
         DateTimeOffset Created { get; }
         bool ForcePackageDownload { get; }
