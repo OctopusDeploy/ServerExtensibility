@@ -17,7 +17,7 @@ namespace Octopus.Server.Extensibility.HostServices.Model
     /// Storing collections of nested objects in the property-bag gets very messy, so package-references were moved into their own class
     /// and collection on the deployment actions.
     /// </history>
-    public class PackageReference : INamed
+    public class PackageReference : INamed, IId
     {
         string name;
 

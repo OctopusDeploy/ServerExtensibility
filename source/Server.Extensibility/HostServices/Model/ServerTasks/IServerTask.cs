@@ -1,9 +1,10 @@
 ﻿using System;
+using Octopus.Data.Model;
 using Octopus.Server.Extensibility.Resources;
 
 namespace Octopus.Server.Extensibility.HostServices.Model.ServerTasks
 {
-    public interface IServerTask : IHaveSpace
+    public interface IServerTask : IDocument, IHaveSpace
     {
         string ProjectId { get; }
         string EnvironmentId { get; }

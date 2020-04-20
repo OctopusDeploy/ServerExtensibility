@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
+using Octopus.Data.Model;
 
 namespace Octopus.Server.Extensibility.HostServices.Model.Environments
 {
-    public interface IDeploymentEnvironment : IHaveSpace
+    public interface IDeploymentEnvironment : IDocument, IHaveSpace
     {
         string Description { get; }
         int SortOrder { get; }
