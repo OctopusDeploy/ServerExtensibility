@@ -1,4 +1,6 @@
-﻿namespace Octopus.Server.Extensibility.HostServices.Model.Projects
+﻿using Octopus.Data.Model;
+
+namespace Octopus.Server.Extensibility.HostServices.Model.Projects
 {
     public interface IDeploymentAction
     {

@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using Octopus.Data.Model;
 using Octopus.Server.Extensibility.HostServices.Model.BuildInformation;
 using Octopus.Server.Extensibility.HostServices.Model.Variables;
 
 namespace Octopus.Server.Extensibility.HostServices.Model.Projects
 {
-    public interface IRelease : IHaveSpace
+    public interface IRelease : IId, IHaveSpace
     {
         string ProjectId { get; }
         string ChannelId { get; }

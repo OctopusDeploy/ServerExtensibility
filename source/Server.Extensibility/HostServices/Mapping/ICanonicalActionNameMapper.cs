@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Octopus.Data.Model;
 
 namespace Octopus.Server.Extensibility.HostServices.Mapping
 {

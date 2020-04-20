@@ -4,7 +4,7 @@ using Octopus.Data.Model;
 
 namespace Octopus.Server.Extensibility.HostServices.Model.Projects
 {
-    public interface IDeployment : INamed, IHaveSpace
+    public interface IDeployment : IDocument, IHaveSpace
     {
         DateTimeOffset Created { get; }
         bool ForcePackageDownload { get; }
