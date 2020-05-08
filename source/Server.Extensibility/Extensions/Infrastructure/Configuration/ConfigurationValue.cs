@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Octopus.Data.Model;
 
 namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration
 {
@@ -16,13 +17,13 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration
         protected ConfigurationValue()
         {}
 
-        public ConfigurationValue(string key, T value, bool showInPortalSummary, string description = "", bool isSensitive = false)
+        public ConfigurationValue(string key, T value, bool showInPortalSummary, string description = "")
         {
             Key = key;
             TypedValue = value;
             ShowInPortalSummary = showInPortalSummary;
             Description = description;
-            IsSensitive = isSensitive;
+            IsSensitive = typeof(SensitiveString).IsAssignableFrom(typeof(T));
         }
 
         public string Key { get; set; }
