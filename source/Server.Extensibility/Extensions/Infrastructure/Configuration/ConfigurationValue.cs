@@ -9,7 +9,7 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration
         object Value { get; }
         bool ShowInPortalSummary { get; set; }
         string Description { get; set; }
-        bool IsSensitive { get; set; }
+        bool IsSensitive { get; }
     }
 
     public class ConfigurationValue<T> : IConfigurationValue
@@ -30,9 +30,9 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration
         public object Value => IsSensitive ? (object)(TypedValue as SensitiveString)?.Value : TypedValue;
 
         [JsonIgnore]
-        public T TypedValue { get; set; }
+        public T TypedValue { get; }
         public bool ShowInPortalSummary { get; set; }
         public string Description { get; set; }
-        public bool IsSensitive { get; set; }
+        public bool IsSensitive { get; }
     }
 }
