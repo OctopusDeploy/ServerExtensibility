@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Nevermore.Contracts;
+using Octopus.Data.Model;
 using Octopus.Server.Extensibility.HostServices.Model.BuildInformation;
 using Octopus.Server.Extensibility.HostServices.Model.Variables;
 

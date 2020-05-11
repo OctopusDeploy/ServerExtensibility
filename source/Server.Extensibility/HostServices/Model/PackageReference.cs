@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using Nevermore.Contracts;
 using Newtonsoft.Json;
+using Octopus.Data.Model;
 using Octopus.Server.Extensibility.Resources;
 
 namespace Octopus.Server.Extensibility.HostServices.Model

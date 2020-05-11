@@ -1,4 +1,4 @@
-﻿using Nevermore.Contracts;
+﻿using Octopus.Data.Model;
 
 namespace Octopus.Server.Extensibility.HostServices.Domain
 {

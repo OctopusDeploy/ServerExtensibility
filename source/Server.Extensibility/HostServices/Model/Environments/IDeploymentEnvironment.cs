@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Nevermore.Contracts;
+using Octopus.Data.Model;
 
 namespace Octopus.Server.Extensibility.HostServices.Model.Environments
 {

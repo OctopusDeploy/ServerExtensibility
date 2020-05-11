@@ -1,5 +1,5 @@
 ﻿using System;
-using Nevermore.Contracts;
+using Octopus.Data.Model;
 using Octopus.Server.Extensibility.Resources;
 
 namespace Octopus.Server.Extensibility.HostServices.Model.ServerTasks
