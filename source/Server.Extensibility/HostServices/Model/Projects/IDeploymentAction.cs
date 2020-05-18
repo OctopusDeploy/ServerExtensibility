@@ -1,4 +1,5 @@
 ﻿using Octopus.Data.Model;
+using Octopus.Server.Extensibility.HostServices.Model.WorkerPools;
 
 namespace Octopus.Server.Extensibility.HostServices.Model.Projects
 {
@@ -8,7 +9,7 @@ namespace Octopus.Server.Extensibility.HostServices.Model.Projects
 
         string Name { get; }
         string ActionType { get; }
-        string WorkerPoolId { get; }
+        WorkerPoolIdOrName WorkerPoolIdOrName { get; }
 
         bool IsDisabled { get; }
         bool IsRequired { get; }
