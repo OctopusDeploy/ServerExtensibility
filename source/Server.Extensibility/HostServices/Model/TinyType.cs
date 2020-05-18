@@ -6,6 +6,11 @@ namespace Octopus.Server.Extensibility.HostServices.Model
     {
         protected TinyType(T value)
         {
+            if (value == null)
+                throw new ArgumentNullException(nameof(value),
+                    "Tiny type values should never be null. If the value you want to communicate is null then " +
+                    "just pass a null rather than a tiny type wrapping a null.");
+
             Value = value;
         }
 
@@ -21,6 +26,11 @@ namespace Octopus.Server.Extensibility.HostServices.Model
         public override int GetHashCode()
         {
             return Value.GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return Value?.ToString() ?? string.Empty;
         }
 
         public static TTinyType Create<TTinyType>(T value) where TTinyType : TinyType<T>
