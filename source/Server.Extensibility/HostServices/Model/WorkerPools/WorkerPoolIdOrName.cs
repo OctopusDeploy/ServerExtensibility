@@ -1,4 +1,5 @@
 ﻿using System;
+using Octopus.Server.Extensibility.TinyTypes;
 
 namespace Octopus.Server.Extensibility.HostServices.Model.WorkerPools
 {

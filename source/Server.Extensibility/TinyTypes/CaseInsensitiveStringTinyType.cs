@@ -1,4 +1,4 @@
-﻿namespace Octopus.Server.Extensibility.HostServices.Model
+﻿namespace Octopus.Server.Extensibility.TinyTypes
 {
     public abstract class CaseInsensitiveStringTinyType: TinyType<string>
     {
