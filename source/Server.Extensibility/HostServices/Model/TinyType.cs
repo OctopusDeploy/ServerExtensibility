@@ -23,6 +23,18 @@ namespace Octopus.Server.Extensibility.HostServices.Model
             return obj.GetHashCode() == GetHashCode();
         }
 
+        public static bool operator ==(TinyType<T> a, TinyType<T> b)
+        {
+            if (a == null && b == null) return true;
+            if (a == null) return false;
+            return a.Equals(b);
+        }
+
+        public static bool operator !=(TinyType<T> a, TinyType<T> b)
+        {
+            return !(a == b);
+        }
+
         public override int GetHashCode()
         {
             return Value.GetHashCode();
