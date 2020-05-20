@@ -53,7 +53,7 @@ namespace Octopus.Server.Extensibility.TinyTypes
 
         public override string ToString()
         {
-            return Value?.ToString() ?? string.Empty;
+            return Value.ToString();
         }
 
         public static TTinyType Create<TTinyType>(T value) where TTinyType : TinyType<T>
