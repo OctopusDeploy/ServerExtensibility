@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace Octopus.Server.Extensibility.TinyTypes
 {
@@ -12,6 +13,7 @@ namespace Octopus.Server.Extensibility.TinyTypes
     ///     used to coerce types between values that really shouldn't be coerced. The design decision at present is that tiny
     ///     types must be explicitly unwrapped and re-wrapped in order to minimise the likelihood of bugs' being created.
     /// </remarks>
+    [DebuggerDisplay("{Value}")]
     public abstract class TinyType<T>
     {
         protected TinyType(T value)
