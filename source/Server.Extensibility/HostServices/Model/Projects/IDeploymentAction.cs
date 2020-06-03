@@ -1,4 +1,5 @@
 ﻿using Octopus.Data.Model;
+using Octopus.Server.Extensibility.HostServices.Model.Environments;
 using Octopus.Server.Extensibility.HostServices.Model.WorkerPools;
 
 namespace Octopus.Server.Extensibility.HostServices.Model.Projects
@@ -16,8 +17,8 @@ namespace Octopus.Server.Extensibility.HostServices.Model.Projects
 
         bool CanBeUsedForProjectVersioning { get; }
 
-        ReferenceCollection Environments { get; }
-        ReferenceCollection ExcludedEnvironments { get; }
+        ReferenceCollection<DeploymentEnvironmentIdOrName> Environments { get; }
+        ReferenceCollection<DeploymentEnvironmentIdOrName> ExcludedEnvironments { get; }
 
         ReferenceCollection Channels { get; }
 
