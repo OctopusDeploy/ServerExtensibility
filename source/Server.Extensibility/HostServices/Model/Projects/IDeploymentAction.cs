@@ -1,6 +1,7 @@
 ﻿using Octopus.Data.Model;
 using Octopus.Server.Extensibility.HostServices.Model.Channels;
 using Octopus.Server.Extensibility.HostServices.Model.Environments;
+using Octopus.Server.Extensibility.HostServices.Model.Tenants;
 using Octopus.Server.Extensibility.HostServices.Model.WorkerPools;
 
 namespace Octopus.Server.Extensibility.HostServices.Model.Projects
@@ -20,11 +21,8 @@ namespace Octopus.Server.Extensibility.HostServices.Model.Projects
 
         ReferenceCollection<DeploymentEnvironmentIdOrName> Environments { get; }
         ReferenceCollection<DeploymentEnvironmentIdOrName> ExcludedEnvironments { get; }
-
         ReferenceCollection<ChannelIdOrName> Channels { get; }
-
-        ReferenceCollection TenantTags { get; }
-
+        ReferenceCollection<TenantTag> TenantTags { get; }
         PackageReferenceCollection Packages { get; }
     }
 }
