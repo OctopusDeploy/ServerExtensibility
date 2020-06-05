@@ -2,9 +2,9 @@
 
 namespace Octopus.Server.Extensibility.HostServices.Model.Tenants
 {
-    public class TenantTagIdOrName : CaseInsensitiveStringTinyType
+    public class TenantTagId : CaseInsensitiveStringTinyType
     {
-        public TenantTagIdOrName(string value) : base(value)
+        public TenantTagId(string value) : base(value)
         {
         }
     }
