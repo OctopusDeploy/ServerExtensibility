@@ -22,7 +22,7 @@ namespace Octopus.Server.Extensibility.HostServices.Model.Projects
         ReferenceCollection<DeploymentEnvironmentIdOrName> Environments { get; }
         ReferenceCollection<DeploymentEnvironmentIdOrName> ExcludedEnvironments { get; }
         ReferenceCollection<ChannelIdOrName> Channels { get; }
-        ReferenceCollection<TenantTag> TenantTags { get; }
+        ReferenceCollection<TenantTagIdOrName> TenantTags { get; }
         PackageReferenceCollection Packages { get; }
     }
 }
