@@ -1,14 +1,12 @@
 ﻿using System;
-using Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api;
 
-namespace Octopus.Server.Web.Infrastructure.Api
+namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
 {
     public interface IResponderParameter
     {
         string Name { get; }
         Type Type { get; }
         string Description { get; }
-        bool Required { get; }
     }
 
     public interface IResponderPathParameter : IResponderParameter
@@ -19,18 +17,21 @@ namespace Octopus.Server.Web.Infrastructure.Api
 
     public interface IOptionalParameter : IResponderParameter
     {}
+    public interface IOptionalParameter<T> : IOptionalParameter
+    {}
 
     public interface IRequiredParameter : IResponderParameter
+    {}
+    public interface IRequiredParameter<T> : IRequiredParameter
     {}
 
     public abstract class ParameterProperty<T> : IResponderParameter
     {
-        protected ParameterProperty(string name, string description, bool required)
+        protected ParameterProperty(string name, string description)
         {
             Name = name;
             Type = typeof(T);
             Description = description;
-            Required = required;
         }
 
         public string Name { get; }
@@ -38,48 +39,26 @@ namespace Octopus.Server.Web.Infrastructure.Api
         public Type Type { get; }
 
         public string Description { get; }
-
-        public bool Required { get; }
     }
 
-    public abstract class OptionalParameterProperty<T> : ParameterProperty<T>, IOptionalParameter
+    public abstract class OptionalParameterProperty<T> : ParameterProperty<T>, IOptionalParameter<T>
     {
-        protected OptionalParameterProperty(string name, string description, bool required) : base(name, description, required)
+        protected OptionalParameterProperty(string name, string description) : base(name, description)
         {
         }
-
-        public abstract T GetValue(OctoRequest request, T defaultValue = default(T));
     }
 
-    public abstract class RequiredParameterProperty<T> : ParameterProperty<T>, IRequiredParameter
+    public abstract class RequiredParameterProperty<T> : ParameterProperty<T>, IRequiredParameter<T>
     {
-        protected RequiredParameterProperty(string name, string description) : base(name, description, true)
+        protected RequiredParameterProperty(string name, string description) : base(name, description)
         {
-        }
-
-        public abstract OctoResponse GetValue(OctoRequest request, Func<T, OctoResponse> successCallback, Func<BadRequestRegistration> badRequestCallback);
-
-        protected BadRequestRegistration BadRequestRegistration()
-        {
-            if (!Required)
-                throw new Exception("Non-required parameters won't return a bad request result");
-
-            return new BadRequestRegistration($"No {Name} parameter was provided.");
         }
     }
 
     public class PathParameterProperty<T> : OptionalParameterProperty<T>, IResponderPathParameter
     {
-        public PathParameterProperty(string name, string description, bool required = true) : base(name, description, required)
+        public PathParameterProperty(string name, string description) : base(name, description)
         {
-        }
-
-        public override T GetValue(OctoRequest request, T defaultValue = default(T))
-        {
-            if (!request.HasPathParameterValue(Name))
-                return defaultValue;
-
-            return request.GetPathParameterValue<T>(Name);
         }
     }
 
@@ -88,31 +67,12 @@ namespace Octopus.Server.Web.Infrastructure.Api
         public RequiredPathParameterProperty(string name, string description) : base(name, description)
         {
         }
-
-        public override OctoResponse GetValue(OctoRequest request, Func<T, OctoResponse> successCallback, Func<BadRequestRegistration> badRequestCallback)
-        {
-            if (!request.HasPathParameterValue(Name))
-            {
-                return badRequestCallback().Response();
-            }
-
-            var value = request.GetPathParameterValue<T>(Name);
-            return successCallback(value);
-        }
     }
 
     public class QueryParameterProperty<T> : OptionalParameterProperty<T>, IResponderQueryParameter
     {
-        public QueryParameterProperty(string name, string description) : base(name, description, false)
+        public QueryParameterProperty(string name, string description) : base(name, description)
         {
-        }
-
-        public override T GetValue(OctoRequest responder, T defaultValue = default(T))
-        {
-            if (!responder.HasQueryValue(Name))
-                return defaultValue;
-
-            return (T)responder.GetQueryValue<T>(Name);
         }
     }
 
@@ -120,17 +80,6 @@ namespace Octopus.Server.Web.Infrastructure.Api
     {
         public RequiredQueryParameterProperty(string name, string description) : base(name, description)
         {
-        }
-
-        public override OctoResponse GetValue(OctoRequest request, Func<T, OctoResponse> successCallback, Func<BadRequestRegistration> badRequestCallback)
-        {
-            if (!request.HasQueryValue(Name))
-            {
-                return badRequestCallback().Response();
-            }
-
-            var value = request.GetQueryValue<T>(Name);
-            return successCallback(value);
         }
     }
 }

@@ -5,6 +5,6 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
 {
     public interface IAsyncApiAction
     {
-        Task<OctoResponse> ExecuteAsync(OctoRequest request);
+        Task<OctoResponse> ExecuteAsync(IOctoRequest request);
     }
 }

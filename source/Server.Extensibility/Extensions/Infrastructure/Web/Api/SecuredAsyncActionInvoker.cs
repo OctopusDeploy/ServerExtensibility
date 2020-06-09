@@ -12,7 +12,7 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
             Action = action;
         }
 
-        public virtual Task<OctoResponse> ExecuteAsync(OctoRequest request)
+        public virtual Task<OctoResponse> ExecuteAsync(IOctoRequest request)
         {
             if (request.User == null)
             {

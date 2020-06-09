@@ -13,7 +13,7 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
         {
         }
 
-        public override Task<OctoResponse> ExecutionPrechecks(OctoRequest request)
+        public override Task<OctoResponse> ExecutionPrechecks(IOctoRequest request)
         {
             var veto = base.ExecutionPrechecks(request);
             if (veto != null)

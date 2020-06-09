@@ -32,16 +32,14 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
 
     public class OctoDataResponse : OctoResponse
     {
-        public OctoDataResponse(HttpStatusCode statusCode = HttpStatusCode.OK) : base(statusCode)
+        public OctoDataResponse(object model, HttpStatusCode statusCode = HttpStatusCode.OK) : base(statusCode)
         {
+            Model = model;
         }
 
         public Stream Body { get; set; }
 
-        public virtual OctoResponse AsOctopusJson(object model)
-        {
-            return this;
-        }
+        public object Model { get; }
     }
 
     public class OctoBadRequestResponse : OctoResponse

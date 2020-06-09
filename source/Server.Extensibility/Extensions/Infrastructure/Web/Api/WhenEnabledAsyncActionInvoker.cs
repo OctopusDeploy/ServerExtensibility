@@ -17,7 +17,7 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
             ConfigurationStore = configurationStore;
         }
 
-        public virtual Task<OctoResponse> ExecutionPrechecks(OctoRequest request)
+        public virtual Task<OctoResponse> ExecutionPrechecks(IOctoRequest request)
         {
             if (!ConfigurationStore.GetIsEnabled())
             {
@@ -27,7 +27,7 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
             return null;
         }
 
-        public Task<OctoResponse> ExecuteAsync(OctoRequest request)
+        public Task<OctoResponse> ExecuteAsync(IOctoRequest request)
         {
             var veto = ExecutionPrechecks(request);
             if (veto != null)
