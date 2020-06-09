@@ -6,15 +6,15 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
 {
     public abstract class OctoRequest
     {
-        string Scheme { get; }
-        bool IsHttps { get; }
-        string Host { get; }
-        string PathBase { get; }
-        string Path { get; }
-        string Protocol { get; }
-        IDictionary<string, IEnumerable<string>> Headers { get; }
-        IDictionary<string, IEnumerable<string>> Form { get; }
-        IDictionary<string, string> Cookies { get; }
+        public abstract string Scheme { get; }
+        public abstract bool IsHttps { get; }
+        public abstract string Host { get; }
+        public abstract string PathBase { get; }
+        public abstract string Path { get; }
+        public abstract string Protocol { get; }
+        public abstract IDictionary<string, IEnumerable<string>> Headers { get; }
+        public abstract IDictionary<string, IEnumerable<string>> Form { get; }
+        public abstract IDictionary<string, string> Cookies { get; }
         public virtual IPrincipal User { get; }
 
         internal abstract T GetQueryValue<T>(string queryParameter);
