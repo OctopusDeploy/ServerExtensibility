@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Text.RegularExpressions;
-using Octopus.Server.Extensibility.TinyTypes;
+using Octopus.TinyTypes;
 
 namespace Octopus.Server.Extensibility.HostServices.Model.TagSets
 {
@@ -9,17 +8,10 @@ namespace Octopus.Server.Extensibility.HostServices.Model.TagSets
     /// </summary>
     public class TagCanonicalName : CaseInsensitiveStringTinyType
     {
-        private static readonly Regex LooksLikeANameRegex = new Regex(@"^\w+\/\w+$", RegexOptions.Compiled);
-
         public TagCanonicalName(string value) : base(value)
         {
-            if (!LooksLikeACanonicalName(value))
+            if (!TagCanonicalIdOrName.LooksLikeACanonicalIdOrName(value))
                 throw new ArgumentException("Value must look like a canonical tag name");
-        }
-
-        internal static bool LooksLikeACanonicalName(string s)
-        {
-            return LooksLikeANameRegex.IsMatch(s);
         }
     }
 }
