@@ -1,4 +1,4 @@
-﻿using Octopus.Server.Extensibility.TinyTypes;
+﻿using Octopus.TinyTypes;
 
 namespace Octopus.Server.Extensibility.HostServices.Model.Channels
 {
