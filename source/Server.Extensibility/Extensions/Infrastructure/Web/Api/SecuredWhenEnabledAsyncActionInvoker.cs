@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration;
 
 namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
@@ -12,15 +13,18 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
         {
         }
 
-        public override Task ExecuteAsync(OctoContext context)
+        public override Task<OctoResponse> ExecutionPrechecks(OctoRequest request)
         {
-            if (context.User == null)
+            var veto = base.ExecutionPrechecks(request);
+            if (veto != null)
+                return veto;
+
+            if (request.User == null)
             {
-                context.Response.StatusCode = 401;
-                return Task.FromResult(0);
+                return Task.FromResult<OctoResponse>(new OctoUnauthorisedResponse());
             }
 
-            return base.ExecuteAsync(context);
+            return null;
         }
     }
 }

@@ -13,22 +13,25 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
 
         public SecuredAdministratorWhenEnabledAsyncActionInvoker(
             TAction action,
-            TConfigurationStore configurationStore, 
+            TConfigurationStore configurationStore,
             Lazy<IAuthorizationChecker> authorizationChecker) : base(action, configurationStore)
         {
             this.authorizationChecker = authorizationChecker;
         }
 
-        public override Task ExecuteAsync(OctoContext context)
+        public override Task<OctoResponse> ExecutionPrechecks(OctoRequest request)
         {
-            if (context.User == null ||
+            var veto = base.ExecutionPrechecks(request);
+            if (veto != null)
+                return veto;
+
+            if (request.User == null ||
                 !authorizationChecker.Value.IsCurrentUserAdministrator())
             {
-                context.Response.StatusCode = 401;
-                return Task.FromResult(0);
+                return Task.FromResult<OctoResponse>(new OctoUnauthorisedResponse());
             }
 
-            return base.ExecuteAsync(context);
+            return null;
         }
     }
 }

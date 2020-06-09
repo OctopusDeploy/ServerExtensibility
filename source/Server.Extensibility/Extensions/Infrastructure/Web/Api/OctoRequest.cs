@@ -1,37 +1,26 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Security.Principal;
 
 namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
 {
-    public class OctoRequest
+    public abstract class OctoRequest
     {
-        public OctoRequest(string scheme, bool isHttps, string host, string pathBase, string path, string protocol, Stream body, IDictionary<string, IEnumerable<string>> headers, IDictionary<string, IEnumerable<string>> query, IDictionary<string, IEnumerable<string>> form, IDictionary<string, string> cookies, IDictionary<string, string> parameters)
-        {
-            Scheme = scheme;
-            IsHttps = isHttps;
-            Host = host;
-            PathBase = pathBase;
-            Path = path;
-            Protocol = protocol;
-            Body = body;
-            Headers = headers;
-            Query = query;
-            Form = form;
-            Cookies = cookies;
-            Parameters = parameters;
-        }
+        string Scheme { get; }
+        bool IsHttps { get; }
+        string Host { get; }
+        string PathBase { get; }
+        string Path { get; }
+        string Protocol { get; }
+        IDictionary<string, IEnumerable<string>> Headers { get; }
+        IDictionary<string, IEnumerable<string>> Form { get; }
+        IDictionary<string, string> Cookies { get; }
+        public virtual IPrincipal User { get; }
 
-        public string Scheme { get; }
-        public bool IsHttps { get; }
-        public string Host { get; }
-        public string PathBase { get; }
-        public string Path { get; }
-        public string Protocol { get; }
-        public Stream Body { get; }
-        public IDictionary<string, IEnumerable<string>> Headers { get; }
-        public IDictionary<string, IEnumerable<string>> Query { get; }
-        public IDictionary<string, IEnumerable<string>> Form { get; }
-        public IDictionary<string, string> Cookies { get; }
-        public IDictionary<string, string> Parameters { get; }
+        internal abstract T GetQueryValue<T>(string queryParameter);
+        internal abstract bool HasQueryValue(string queryParameter);
+        internal abstract T GetPathParameterValue<T>(string pathParameter);
+        internal abstract bool HasPathParameterValue(string pathParameter);
+        internal abstract T GetBody<T>();
     }
 }

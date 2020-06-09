@@ -8,14 +8,14 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
     {
         public List<EndpointRegistration> Registrations { get; } = new List<EndpointRegistration>();
 
-        protected void Add(string method, string path, Func<OctoContext, Task> handler)
+        protected void Add(string method, string path, Func<OctoRequest, Task> handler)
         {
             Registrations.Add(new EndpointRegistration(method, path, handler));
         }
 
         public class EndpointRegistration
         {
-            public EndpointRegistration(string method, string path, Func<OctoContext, Task> handler)
+            public EndpointRegistration(string method, string path, Func<OctoRequest, Task> handler)
             {
                 Method = method;
                 Path = path;
@@ -24,7 +24,7 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
 
             public string Method { get; }
             public string Path { get; }
-            public Func<OctoContext, Task> Handler { get; }
+            public Func<OctoRequest, Task> Handler { get; }
         }
     }
 }

@@ -12,15 +12,14 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
             Action = action;
         }
 
-        public virtual Task ExecuteAsync(OctoContext context)
+        public virtual Task<OctoResponse> ExecuteAsync(OctoRequest request)
         {
-            if (context.User == null)
+            if (request.User == null)
             {
-                context.Response.StatusCode = 401;
-                return Task.FromResult(0);
+                return Task.FromResult<OctoResponse>(new OctoUnauthorisedResponse());
             }
 
-            return Action.ExecuteAsync(context);
+            return Action.ExecuteAsync(request);
         }
     }
 }
