@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Net;
@@ -8,6 +9,7 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
     public abstract class OctoResponse
     {
         readonly List<OctoCookie> cookies = new List<OctoCookie>();
+        readonly IDictionary<string, IEnumerable<string>> headers = new Dictionary<string, IEnumerable<string>>();
 
         protected OctoResponse(HttpStatusCode statusCode)
         {
@@ -15,7 +17,17 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
         }
 
         public HttpStatusCode StatusCode { get; }
-        public IDictionary<string, IEnumerable<string>> Headers { get; } = new Dictionary<string, IEnumerable<string>>();
+
+
+        public IReadOnlyDictionary<string, IEnumerable<string>> GetHeaders()
+        {
+            return new ReadOnlyDictionary<string, IEnumerable<string>>(headers);
+        }
+
+        public IReadOnlyList<OctoCookie> GetCookies()
+        {
+            return cookies;
+        }
 
         public virtual OctoResponse WithCookie(OctoCookie cookie)
         {
@@ -25,7 +37,7 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
 
         public virtual OctoResponse WithHeader(string name, IEnumerable<string> value)
         {
-            Headers[name] = value;
+            headers[name] = value;
             return this;
         }
     }
