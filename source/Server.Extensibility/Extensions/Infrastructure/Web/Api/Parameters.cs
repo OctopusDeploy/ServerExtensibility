@@ -17,8 +17,15 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
     public interface IResponderPathParameter : IResponderParameter
     {}
 
+    public interface IResponderPathParameter<T> : IResponderParameter<T>
+    {}
+
+
     public interface IResponderQueryParameter : IResponderParameter
     {}
+    public interface IResponderQueryParameter<T> : IResponderParameter<T>
+    {}
+
 
     public interface IOptionalParameter : IResponderParameter
     { }
@@ -66,14 +73,14 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
         }
     }
 
-    public class PathParameterProperty<T> : OptionalParameterProperty<T>, IResponderPathParameter
+    public class PathParameterProperty<T> : OptionalParameterProperty<T>, IResponderPathParameter<T>
     {
         public PathParameterProperty(string name, string description) : base(name, description)
         {
         }
     }
 
-    public class RequiredPathParameterProperty<T> : RequiredParameterProperty<T>, IResponderPathParameter
+    public class RequiredPathParameterProperty<T> : RequiredParameterProperty<T>, IResponderPathParameter<T>
     {
         public RequiredPathParameterProperty(string name, string description) : base(name, description)
         {
