@@ -17,8 +17,7 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
         IDictionary<string, string> Form { get; }
         IDictionary<string, string> Cookies { get; }
         IPrincipal User { get; }
-        Task<OctoResponse> GetParameterValue<T>(IRequiredParameter<T> parameter, Func<T, Task<OctoResponse>> onSuccess);
-        T GetParameterValue<T>(IOptionalParameter parameter, T defaultValue);
+        Task<OctoResponse> GetParameterValue<T>(IResponderParameter<T> parameter, Func<T, Task<OctoResponse>> onSuccess);
         T GetBody<T>();
     }
 }
