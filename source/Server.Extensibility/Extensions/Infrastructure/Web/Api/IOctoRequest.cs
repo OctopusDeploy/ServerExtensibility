@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Security.Principal;
+using System.Threading.Tasks;
 
 namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
 {
@@ -13,13 +14,11 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
         string Path { get; }
         string Protocol { get; }
         IDictionary<string, IEnumerable<string>> Headers { get; }
-        IDictionary<string, IEnumerable<string>> Form { get; }
+        IDictionary<string, string> Form { get; }
         IDictionary<string, string> Cookies { get; }
         IPrincipal User { get; }
-        OctoResponse GetQueryValue<T>(IRequiredParameter<T> parameter, Func<T, OctoResponse> onSuccess);
-        T GetQueryValue<T>(IOptionalParameter parameter, T defaultValue);
-        OctoResponse GetPathParameterValue<T>(IRequiredParameter<T> parameter, Func<T, OctoResponse> onSuccess);
-        T GetPathParameterValue<T>(IOptionalParameter parameter, T defaultValue);
+        Task<OctoResponse> GetParameterValue<T>(IRequiredParameter<T> parameter, Func<T, Task<OctoResponse>> onSuccess);
+        T GetParameterValue<T>(IOptionalParameter parameter, T defaultValue);
         T GetBody<T>();
     }
 }

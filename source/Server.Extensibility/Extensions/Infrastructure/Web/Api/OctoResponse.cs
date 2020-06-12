@@ -49,8 +49,6 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
             Model = model;
         }
 
-        public Stream Body { get; set; }
-
         public object Model { get; }
     }
 

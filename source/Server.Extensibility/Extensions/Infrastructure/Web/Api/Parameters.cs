@@ -9,6 +9,11 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
         string Description { get; }
     }
 
+    public interface IResponderParameter<T> : IResponderParameter
+    {
+
+    }
+
     public interface IResponderPathParameter : IResponderParameter
     {}
 
@@ -17,12 +22,12 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
 
     public interface IOptionalParameter : IResponderParameter
     {}
-    public interface IOptionalParameter<T> : IOptionalParameter
+    public interface IOptionalParameter<T> : IResponderParameter<T>, IOptionalParameter
     {}
 
     public interface IRequiredParameter : IResponderParameter
     {}
-    public interface IRequiredParameter<T> : IRequiredParameter
+    public interface IRequiredParameter<T> : IResponderParameter<T>, IRequiredParameter
     {}
 
     public abstract class ParameterProperty<T> : IResponderParameter
