@@ -15,5 +15,6 @@ namespace Octopus.Server.Extensibility.HostServices.Model.TagSets
         }
 
         public TagSetName TagSetName => new TagSetName(Value.Split("/")[0]);
+        public TagName TagName => new TagName(Value.Split("/")[1]);
     }
 }
