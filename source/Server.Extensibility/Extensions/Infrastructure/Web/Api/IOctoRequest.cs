@@ -18,6 +18,6 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
         IDictionary<string, string> Cookies { get; }
         IPrincipal User { get; }
         Task<OctoResponse> GetParameterValue<T>(IResponderParameter<T> parameter, Func<T, Task<OctoResponse>> onSuccess);
-        T GetBody<T>();
+        TResource GetBody<TResource>(RequestBodyRegistration<TResource> requestBodyRegistration);
     }
 }
