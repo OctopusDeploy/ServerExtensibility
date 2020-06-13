@@ -3,9 +3,9 @@ using System.Net;
 
 namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
 {
-    public class BaseResponseRegistration
+    public abstract class BaseResponseRegistration
     {
-        public BaseResponseRegistration(HttpStatusCode statusCode, string description)
+        protected BaseResponseRegistration(HttpStatusCode statusCode, string description)
         {
             StatusCode = statusCode;
             Description = description;
@@ -18,6 +18,13 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
         public Type Type { get; protected set; }
 
         public string[] ContentTypes { get; protected set; }
+
+        protected class WrappedResponse : IOctoResponseProvider
+        {
+            public WrappedResponse(OctoResponse response) => Response = response;
+
+            public OctoResponse Response { get; }
+        }
     }
 
     public class BadRequestRegistration : BaseResponseRegistration
@@ -28,10 +35,33 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
 
         }
 
-        public OctoResponse Response() => new OctoBadRequestResponse(Description);
+        public IOctoResponseProvider Response() => new WrappedResponse(new OctoBadRequestResponse(Description));
 
-        public OctoResponse Response(object details) => new OctoBadRequestWithDetailsResponse(details);
+        public IOctoResponseProvider Response(object details) => new WrappedResponse(new OctoBadRequestWithDetailsResponse(details));
 
-        public OctoResponse Response(params string[] errors) => new OctoBadRequestResponse(errors);
+        public IOctoResponseProvider Response(params string[] errors) => new WrappedResponse(new OctoBadRequestResponse(errors));
+    }
+    
+    public class OctopusJsonRegistration<TResource> : BaseResponseRegistration
+    {
+        public OctopusJsonRegistration(HttpStatusCode statusCode, string description) : base(statusCode, description)
+        {
+            Type = typeof(TResource);
+        }
+
+        public IOctoResponseProvider Response(object model) => new WrappedResponse(new OctoDataResponse(model));
+    }
+    
+    public static class OctoResponseProviderExtensionMethods
+    {
+        public static IOctoResponseProvider WithHeader(this IOctoResponseProvider responseProvider, string header, string value)
+            => new WrappedResponse(responseProvider.Response.WithHeader(header, new []{ value }));
+
+        private class WrappedResponse : IOctoResponseProvider
+        {
+            public WrappedResponse(OctoResponse response) => Response = response;
+
+            public OctoResponse Response { get; }
+        }
     }
 }
