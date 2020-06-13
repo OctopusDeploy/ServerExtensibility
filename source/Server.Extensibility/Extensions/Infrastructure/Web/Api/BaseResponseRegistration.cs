@@ -19,7 +19,7 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
 
         public string[] ContentTypes { get; protected set; }
 
-        protected class WrappedResponse : IOctoResponseProvider
+        internal class WrappedResponse : IOctoResponseProvider
         {
             public WrappedResponse(OctoResponse response) => Response = response;
 
@@ -55,13 +55,6 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
     public static class OctoResponseProviderExtensionMethods
     {
         public static IOctoResponseProvider WithHeader(this IOctoResponseProvider responseProvider, string header, string value)
-            => new WrappedResponse(responseProvider.Response.WithHeader(header, new []{ value }));
-
-        private class WrappedResponse : IOctoResponseProvider
-        {
-            public WrappedResponse(OctoResponse response) => Response = response;
-
-            public OctoResponse Response { get; }
-        }
+            => new BaseResponseRegistration.WrappedResponse(responseProvider.Response.WithHeader(header, new []{ value }));
     }
 }

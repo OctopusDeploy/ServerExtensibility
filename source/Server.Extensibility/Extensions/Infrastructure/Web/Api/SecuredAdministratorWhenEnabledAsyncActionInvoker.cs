@@ -19,7 +19,7 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
             this.authorizationChecker = authorizationChecker;
         }
 
-        public override Task<OctoResponse> ExecutionPrechecks(IOctoRequest request)
+        public override Task<IOctoResponseProvider> ExecutionPrechecks(IOctoRequest request)
         {
             var veto = base.ExecutionPrechecks(request);
             if (veto != null)
@@ -28,7 +28,7 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
             if (request.User == null ||
                 !authorizationChecker.Value.IsCurrentUserAdministrator())
             {
-                return Task.FromResult<OctoResponse>(new OctoUnauthorisedResponse());
+                return Task.FromResult<IOctoResponseProvider>(new BaseResponseRegistration.WrappedResponse(new OctoUnauthorisedResponse()));
             }
 
             return null;

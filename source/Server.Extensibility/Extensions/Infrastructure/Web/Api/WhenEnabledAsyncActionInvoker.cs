@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration;
 
 namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
@@ -17,17 +16,17 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
             ConfigurationStore = configurationStore;
         }
 
-        public virtual Task<OctoResponse> ExecutionPrechecks(IOctoRequest request)
+        public virtual Task<IOctoResponseProvider> ExecutionPrechecks(IOctoRequest request)
         {
             if (!ConfigurationStore.GetIsEnabled())
             {
-                return Task.FromResult<OctoResponse>(new OctoBadRequestResponse("Extension is disabled."));
+                return Task.FromResult<IOctoResponseProvider>(new BaseResponseRegistration.WrappedResponse(new OctoBadRequestResponse("Extension is disabled.")));
             }
 
             return null;
         }
 
-        public Task<OctoResponse> ExecuteAsync(IOctoRequest request)
+        public Task<IOctoResponseProvider> ExecuteAsync(IOctoRequest request)
         {
             var veto = ExecutionPrechecks(request);
             if (veto != null)

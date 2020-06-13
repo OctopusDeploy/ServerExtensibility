@@ -12,11 +12,11 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
             Action = action;
         }
 
-        public virtual Task<OctoResponse> ExecuteAsync(IOctoRequest request)
+        public virtual Task<IOctoResponseProvider> ExecuteAsync(IOctoRequest request)
         {
             if (request.User == null)
             {
-                return Task.FromResult<OctoResponse>(new OctoUnauthorisedResponse());
+                return Task.FromResult<IOctoResponseProvider>(new BaseResponseRegistration.WrappedResponse(new OctoUnauthorisedResponse()));
             }
 
             return Action.ExecuteAsync(request);
