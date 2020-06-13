@@ -44,7 +44,7 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
     
     public class OctopusJsonRegistration<TResource> : BaseResponseRegistration
     {
-        public OctopusJsonRegistration(HttpStatusCode statusCode, string description) : base(statusCode, description)
+        public OctopusJsonRegistration(HttpStatusCode statusCode = HttpStatusCode.OK, string description = "resource returned") : base(statusCode, description)
         {
             Type = typeof(TResource);
         }
