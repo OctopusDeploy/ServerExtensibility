@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Net;
-using System.Threading.Tasks;
 
 namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
 {
@@ -50,7 +49,7 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
             Type = typeof(TResource);
         }
 
-        public Task<IOctoResponseProvider> Response(object model) => Task.FromResult((IOctoResponseProvider)new WrappedResponse(new OctoDataResponse(model)));
+        public IOctoResponseProvider Response(object model) => new WrappedResponse(new OctoDataResponse(model));
     }
     
     public static class OctoResponseProviderExtensionMethods
