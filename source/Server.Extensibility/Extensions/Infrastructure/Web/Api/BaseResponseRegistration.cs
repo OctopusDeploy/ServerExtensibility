@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net;
 
 namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
@@ -23,38 +24,19 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
         {
             public WrappedResponse(OctoResponse response) => Response = response;
 
-            public OctoResponse Response { get; }
+            public OctoResponse Response { get; private set; }
+            
+            public virtual IOctoResponseProvider WithCookie(OctoCookie cookie)
+            {
+                Response = Response.WithCookie(cookie);
+                return this;
+            }
+
+            public virtual IOctoResponseProvider WithHeader(string name, IEnumerable<string> value)
+            {
+                Response = Response.WithHeader(name, value);
+                return this;
+            }
         }
-    }
-
-    public class BadRequestRegistration : BaseResponseRegistration
-    {
-        public BadRequestRegistration(string description)
-            : base(HttpStatusCode.BadRequest, description)
-        {
-
-        }
-
-        public IOctoResponseProvider Response() => new WrappedResponse(new OctoBadRequestResponse(Description));
-
-        public IOctoResponseProvider Response(object details) => new WrappedResponse(new OctoBadRequestWithDetailsResponse(details));
-
-        public IOctoResponseProvider Response(params string[] errors) => new WrappedResponse(new OctoBadRequestResponse(errors));
-    }
-    
-    public class OctopusJsonRegistration<TResource> : BaseResponseRegistration
-    {
-        public OctopusJsonRegistration(HttpStatusCode statusCode = HttpStatusCode.OK, string description = "resource returned") : base(statusCode, description)
-        {
-            Type = typeof(TResource);
-        }
-
-        public IOctoResponseProvider Response(TResource model) => new WrappedResponse(new OctoDataResponse(model));
-    }
-    
-    public static class OctoResponseProviderExtensionMethods
-    {
-        public static IOctoResponseProvider WithHeader(this IOctoResponseProvider responseProvider, string header, string value)
-            => new BaseResponseRegistration.WrappedResponse(responseProvider.Response.WithHeader(header, new []{ value }));
     }
 }
