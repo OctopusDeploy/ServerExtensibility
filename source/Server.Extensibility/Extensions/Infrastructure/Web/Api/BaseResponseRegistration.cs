@@ -49,7 +49,7 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
             Type = typeof(TResource);
         }
 
-        public IOctoResponseProvider Response(object model) => new WrappedResponse(new OctoDataResponse(model));
+        public IOctoResponseProvider Response(TResource model) => new WrappedResponse(new OctoDataResponse(model));
     }
     
     public static class OctoResponseProviderExtensionMethods
