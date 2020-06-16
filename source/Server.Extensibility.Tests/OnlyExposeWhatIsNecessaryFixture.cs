@@ -4,7 +4,7 @@ using System.Linq;
 using FluentAssertions;
 using NUnit.Framework;
 
-namespace Server.Extensibility.Tests
+namespace Octopus.Server.Extensibility.Tests
 {
     /// <summary>
     /// This class is designed to form the base for tests in the extentions/module world, where all classes other than
@@ -17,7 +17,7 @@ namespace Server.Extensibility.Tests
     {
         protected abstract Type EntryPointTypeUnderTest { get; }
         
-        protected virtual IEnumerable<string> KnownClassesWhoAreBendingTheRules => Enumerable.Empty<string>();
+        protected virtual IEnumerable<Type> KnownClassesWhoAreBendingTheRules => Enumerable.Empty<Type>();
         
         [Test]
         public void ServerExtensionsShouldMinimiseWhatIsExposed()
@@ -29,7 +29,7 @@ namespace Server.Extensibility.Tests
                 .Where(t => t != EntryPointTypeUnderTest)
                 .Select(t => t.FullName);
 
-            var publicThingsThatShouldNotBe = allPublicThings.Except(KnownClassesWhoAreBendingTheRules).ToArray();
+            var publicThingsThatShouldNotBe = allPublicThings.Except(KnownClassesWhoAreBendingTheRules.Select(t => t.FullName)).ToArray();
             if (publicThingsThatShouldNotBe.Any())
             {
                 Console.WriteLine("The following classes are public, but are not expected to be:");
