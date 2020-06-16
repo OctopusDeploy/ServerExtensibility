@@ -35,11 +35,11 @@ namespace Server.Extensibility.Tests
                 Console.WriteLine("The following classes are public, but are not expected to be:");
                 foreach (var publicThingThatShouldNotBe in publicThingsThatShouldNotBe)
                 {
-                    Console.WriteLine(publicThingsThatShouldNotBe);
+                    Console.WriteLine(publicThingThatShouldNotBe);
                 }
             }
 
-            publicThingsThatShouldNotBe.Should().BeEmpty();
+            publicThingsThatShouldNotBe.Should().BeEmpty("Unexpected types are public");
         }
     }
 }
