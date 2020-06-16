@@ -17,7 +17,7 @@ namespace Server.Extensibility.Tests
     {
         protected abstract Type EntryPointTypeUnderTest { get; }
         
-        protected abstract IEnumerable<string> KnownClassesWhoAreBendingTheRules { get; }
+        protected virtual IEnumerable<string> KnownClassesWhoAreBendingTheRules => Enumerable.Empty<string>();
         
         [Test]
         public void ServerExtensionsShouldMinimiseWhatIsExposed()
