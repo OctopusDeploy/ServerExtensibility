@@ -1,6 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>netcoreapp3.1</TargetFrameworks>
+    <RootNamespace>Node.Extensibility.Tests</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="NSubstitute" Version="4.2.2" />

@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.1</TargetFramework>
+        <RootNamespace>Octopus.Server.Extensibility.Tests</RootNamespace>
+        <AssemblyName>Octopus.Server.Extensibility.Tests</AssemblyName>
+        <Description>Provides test infrastructure for Octopus Server extensions/modules.</Description>
+        <NeutralLanguage>en-US</NeutralLanguage>
+        <Authors>Octopus Deploy</Authors>
+        <PackageId>Octopus.Server.Extensibility.Tests</PackageId>
+        <PackageIconUrl>http://i.octopusdeploy.com/resources/Avatar3_360.png</PackageIconUrl>
+        <PackageLicenseUrl>https://github.com/OctopusDeploy/ServerExtensibility/blob/master/LICENSE.txt</PackageLicenseUrl>
+        <PackageProjectUrl>https://github.com/OctopusDeploy/ServerExtensibility</PackageProjectUrl>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="FluentAssertions" Version="5.10.3" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.6.1" />
+        <PackageReference Include="NUnit" Version="3.12.0" />
+        <PackageReference Include="NUnit3TestAdapter" Version="3.16.1" />
+        <PackageReference Include="TeamCity.VSTest.TestAdapter" Version="1.0.21" />
+    </ItemGroup>
+
+</Project>

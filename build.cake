@@ -118,6 +118,7 @@ Task("__CopyToLocalPackages")
 {
     CreateDirectory(localPackagesDir);
     CopyFileToDirectory(Path.Combine(artifactsDir, $"Octopus.Server.Extensibility.{nugetVersion}.nupkg"), localPackagesDir);
+    CopyFileToDirectory(Path.Combine(artifactsDir, $"Octopus.Server.Extensibility.Tests.{nugetVersion}.nupkg"), localPackagesDir);
 });
 
 //////////////////////////////////////////////////////////////////////
