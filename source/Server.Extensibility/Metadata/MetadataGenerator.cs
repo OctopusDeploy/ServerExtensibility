@@ -52,7 +52,7 @@ namespace Octopus.Server.Extensibility.Metadata
         public Metadata GetMetadata(Type objectType)
         {
             Generate(objectType);
-            metadata.Description = objectType.GetTypeInfo().GetCustomAttribute<DescriptionAttribute>()?.Description;
+            metadata.Description = objectType.GetTypeInfo().GetCustomAttribute<DescriptionAttribute>()?.Description ?? string.Empty;
             return metadata;
         }
 
@@ -83,7 +83,7 @@ namespace Octopus.Server.Extensibility.Metadata
                         DisplayInfo = new DisplayInfo
                         {
                             Required = prop.IsDefined(typeof(RequiredAttribute)),
-                            Description = prop.GetCustomAttribute<DescriptionAttribute>()?.Description,
+                            Description = prop.GetCustomAttribute<DescriptionAttribute>()?.Description ?? string.Empty,
                             ShowCopyToClipboard = prop.IsDefined(typeof(AllowCopyToClipboardAttribute)),
                         }
                     };
@@ -91,11 +91,11 @@ namespace Octopus.Server.Extensibility.Metadata
                     //accepts [DisplayName()] or [Display(Name=)] -> defaults to property name
                     if (prop.IsDefined(typeof(DisplayNameAttribute)))
                     {
-                        propMetadata.DisplayInfo.Label = prop.GetCustomAttribute<DisplayNameAttribute>()?.DisplayName;
+                        propMetadata.DisplayInfo.Label = prop.GetCustomAttribute<DisplayNameAttribute>()?.DisplayName ?? string.Empty;
                     }
                     else if (prop.IsDefined(typeof(DisplayAttribute)))
                     {
-                        propMetadata.DisplayInfo.Label = prop.GetCustomAttribute<DisplayAttribute>()?.Name;
+                        propMetadata.DisplayInfo.Label = prop.GetCustomAttribute<DisplayAttribute>()?.Name ?? string.Empty;
                     }
                     else
                     {
@@ -139,11 +139,7 @@ namespace Octopus.Server.Extensibility.Metadata
                         {
                             var listApiAttr = prop.GetCustomAttribute<ListApiAttribute>();
 
-                            propMetadata.DisplayInfo.ListApi = new ListApiMetadata
-                            {
-                                SelectMode = listApiAttr.SelectMode.ToString(),
-                                ApiEndpoint = listApiAttr.ApiEndpoint,
-                            };
+                            propMetadata.DisplayInfo.ListApi = new ListApiMetadata(listApiAttr.SelectMode.ToString(), listApiAttr.ApiEndpoint);
                         }
                     }
 
@@ -151,10 +147,8 @@ namespace Octopus.Server.Extensibility.Metadata
                     {
                         var applicableAttr = prop.GetCustomAttribute<PropertyApplicabilityAttribute>();
                         
-                        propMetadata.DisplayInfo.PropertyApplicability = new PropertyApplicability
+                        propMetadata.DisplayInfo.PropertyApplicability = new PropertyApplicability(applicableAttr.Mode, applicableAttr.DependsOnPropertyName)
                         {
-                            Mode = applicableAttr.Mode,
-                            DependsOnPropertyName = applicableAttr.DependsOnPropertyName,
                             DependsOnPropertyValue = applicableAttr.DependsOnPropertyValue
                         };
                     }

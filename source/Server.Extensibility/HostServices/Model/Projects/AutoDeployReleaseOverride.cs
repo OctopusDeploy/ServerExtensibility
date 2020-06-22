@@ -6,7 +6,7 @@ namespace Octopus.Server.Extensibility.HostServices.Model.Projects
     public class AutoDeployReleaseOverride
     {
         public string EnvironmentId { get; }
-        public string TenantId { get; }
+        public string? TenantId { get; }
         public string ReleaseId { get; }
 
         public AutoDeployReleaseOverride(string environmentId, string releaseId)
@@ -15,7 +15,7 @@ namespace Octopus.Server.Extensibility.HostServices.Model.Projects
         }
 
         [JsonConstructor]
-        public AutoDeployReleaseOverride(string environmentId, string tenantId, string releaseId)
+        public AutoDeployReleaseOverride(string environmentId, string? tenantId, string releaseId)
         {
             EnvironmentId = environmentId;
             TenantId = tenantId;

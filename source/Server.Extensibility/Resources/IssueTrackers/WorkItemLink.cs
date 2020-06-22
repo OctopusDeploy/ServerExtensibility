@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
 namespace Octopus.Server.Extensibility.Resources.IssueTrackers
@@ -8,10 +7,10 @@ namespace Octopus.Server.Extensibility.Resources.IssueTrackers
     {
         static readonly Regex LastNumberRegex = new Regex(@"(\d+)$", RegexOptions.Compiled);
 
-        public string Id { get; set; }
-        public string LinkUrl { get; set; }
-        public string Source { get; set; }
-        public string Description { get; set; }
+        public string Id { get; set; } = string.Empty;
+        public string LinkUrl { get; set; } = string.Empty;
+        public string Source { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
 
         public bool Equals(WorkItemLink other)
         {

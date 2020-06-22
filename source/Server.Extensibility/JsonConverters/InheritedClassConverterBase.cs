@@ -13,8 +13,14 @@ namespace Octopus.Server.Extensibility.JsonConverters
         readonly ConcurrentDictionary<TypeInfo, IReadOnlyList<PropertyInfo>> unmappedReadablePropertiesCache = new ConcurrentDictionary<TypeInfo, IReadOnlyList<PropertyInfo>>();
         readonly ConcurrentDictionary<TypeInfo, IReadOnlyList<PropertyInfo>> writeablePropertiesCache = new ConcurrentDictionary<TypeInfo, IReadOnlyList<PropertyInfo>>();
 
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
         {
+            if (value == null)
+            {
+                writer.WriteNull();
+                return;
+            }
+            
             writer.WriteStartObject();
 
             var documentType = value.GetType().GetTypeInfo();
@@ -40,14 +46,14 @@ namespace Octopus.Server.Extensibility.JsonConverters
                 .ToArray();
 
 
-        protected virtual object GetPropertyValue(PropertyInfo property, object instance)
+        protected virtual object? GetPropertyValue(PropertyInfo property, object instance)
         {
             return property.GetValue(instance, null);
         }
 
-        protected virtual Type DefaultType { get; } = null;
+        protected virtual Type? DefaultType { get; } = null;
 
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        public override object? ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer)
         {
             if (reader.TokenType == JsonToken.Null)
                 return null;
@@ -65,7 +71,7 @@ namespace Octopus.Server.Extensibility.JsonConverters
             }
             else
             {
-                var derivedType = designatingProperty.ToObject<string>();
+                var derivedType = designatingProperty.ToObject<string>() ?? string.Empty;
                 typeInfo = GetTypeInfoFromDerivedType(derivedType);
             }
 
@@ -98,7 +104,7 @@ namespace Octopus.Server.Extensibility.JsonConverters
                 .Where(p => p.CanWrite && p.GetCustomAttribute(typeof(JsonIgnoreAttribute)) == null)
                 .ToArray();
 
-        protected virtual void SetPropertyValue(PropertyInfo prop, object instance, object value)
+        protected virtual void SetPropertyValue(PropertyInfo prop, object instance, object? value)
         {
             prop.SetValue(instance, value, null);
         }

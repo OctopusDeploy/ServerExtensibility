@@ -12,10 +12,10 @@ namespace Octopus.Server.Extensibility.HostServices.Model.Projects
         { }
 
         [JsonConstructor]
-        public PackageStepVersion(string actionName, string packageReferenceName, string version)
+        public PackageStepVersion(string actionName, string? packageReferenceName, string version)
         {
             ActionName = actionName;
-            PackageReferenceName = packageReferenceName ?? "";
+            PackageReferenceName = packageReferenceName ?? string.Empty;
             Version = version;
         }
 

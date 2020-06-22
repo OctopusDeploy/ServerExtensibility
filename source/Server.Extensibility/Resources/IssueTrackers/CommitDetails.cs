@@ -4,9 +4,9 @@ namespace Octopus.Server.Extensibility.Resources.IssueTrackers
 {
     public class CommitDetails : IEquatable<CommitDetails>
     {
-        public string Id { get; set; }
-        public string LinkUrl { get; set; }
-        public string Comment { get; set; }
+        public string Id { get; set; } = string.Empty;
+        public string LinkUrl { get; set; } = string.Empty;
+        public string Comment { get; set; } = string.Empty;
 
         public bool Equals(CommitDetails other)
         {

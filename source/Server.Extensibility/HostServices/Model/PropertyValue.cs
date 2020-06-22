@@ -54,7 +54,7 @@ namespace Octopus.Server.Extensibility.HostServices.Model
 
         public static explicit operator string(PropertyValue v)
         {
-            return v?.value;
+            return v.value;
         }
 
         public static explicit operator PropertyValue(string v)

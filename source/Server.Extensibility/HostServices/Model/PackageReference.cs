@@ -19,8 +19,6 @@ namespace Octopus.Server.Extensibility.HostServices.Model
     /// </history>
     public class PackageReference : INamed, IId
     {
-        string name;
-
         /// <summary>
         /// Constructs a named package-reference. 
         /// </summary>
@@ -28,7 +26,7 @@ namespace Octopus.Server.Extensibility.HostServices.Model
         /// <param name="packageId">The package ID or a variable-expression</param>
         /// <param name="feedId">The feed ID or a variable-expression</param>
         /// <param name="acquisitionLocation">The location the package should be acquired</param>
-        public PackageReference(string name, string packageId, string feedId, PackageAcquisitionLocation acquisitionLocation)
+        public PackageReference(string? name, string packageId, string feedId, PackageAcquisitionLocation acquisitionLocation)
             : this(name, packageId, feedId, acquisitionLocation.ToString())
         {
         }
@@ -41,7 +39,7 @@ namespace Octopus.Server.Extensibility.HostServices.Model
         /// <param name="feedId">The feed ID or a variable-expression</param>
         /// <param name="acquisitionLocation">The location the package should be acquired.
         /// May be one <see cref="PackageAcquisitionLocation"/> or a variable-expression.</param>
-        public PackageReference(string name, string packageId, string feedId, string acquisitionLocation)
+        public PackageReference(string? name, string packageId, string feedId, string acquisitionLocation)
             : this(null, name, packageId, feedId, acquisitionLocation)
         {
         }
@@ -50,7 +48,7 @@ namespace Octopus.Server.Extensibility.HostServices.Model
         /// For JSON deserialization only
         /// </summary>
         [JsonConstructor]
-        public PackageReference(string id, string name, string packageId, string feedId, string acquisitionLocation)
+        public PackageReference(string? id, string? name, string packageId, string feedId, string acquisitionLocation)
             : this()
         {
             if (!string.IsNullOrEmpty(id))
@@ -61,7 +59,7 @@ namespace Octopus.Server.Extensibility.HostServices.Model
             PackageId = packageId;
             FeedId = feedId;
             AcquisitionLocation = acquisitionLocation;
-            this.name = name;
+            Name = name ?? string.Empty;
         }
 
         /// <summary>
@@ -107,7 +105,7 @@ namespace Octopus.Server.Extensibility.HostServices.Model
             Properties = new Dictionary<string, string>();
         }
 
-        public string Id { get; private set; }
+        public string Id { get; }
 
         /// <summary>
         /// An name for the package-reference.
@@ -116,27 +114,23 @@ namespace Octopus.Server.Extensibility.HostServices.Model
         /// have multiple references to the same package ID (e.g. if you wanted to use different versions of the same package).
         /// Also, the package ID may be a variable-expression. 
         /// </summary>
-        public string Name
-        {
-            get => name ?? "";
-            set => name = value;
-        }
+        public string Name { get; set; } = string.Empty;
 
         /// <summary>
         /// Package ID or a variable-expression 
         /// </summary>
-        public string PackageId { get; set; }
+        public string PackageId { get; set; } = string.Empty;
 
         /// <summary>
         /// Feed ID or a variable-expression
         /// </summary>
-        public string FeedId { get; set; }
+        public string FeedId { get; set; } = string.Empty;
 
         /// <summary>
         /// The package-acquisition location.
         /// One of <see cref="PackageAcquisitionLocation"/> or a variable-expression 
         /// </summary>
-        public string AcquisitionLocation { get; set; }
+        public string AcquisitionLocation { get; set; } = string.Empty;
 
         [JsonProperty(ObjectCreationHandling = ObjectCreationHandling.Reuse)]
         public IDictionary<string, string> Properties { get; private set; }
@@ -146,7 +140,7 @@ namespace Octopus.Server.Extensibility.HostServices.Model
 
         public PackageReference Clone()
         {
-            return new PackageReference(Id, name, PackageId, FeedId, AcquisitionLocation)
+            return new PackageReference(Id, Name, PackageId, FeedId, AcquisitionLocation)
             {
                 Properties = new Dictionary<string, string>(Properties)
             };

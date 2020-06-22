@@ -6,8 +6,8 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
     public abstract class OctoResponse
     {
         public int StatusCode { get; set; }
-        public Stream Body { get; set; }
-        public IDictionary<string, IEnumerable<string>> Headers { get; set; }
+        public Stream? Body { get; set; }
+        public IDictionary<string, IEnumerable<string>> Headers { get; } = new Dictionary<string, IEnumerable<string>>();
 
         public virtual OctoResponse AsOctopusJson(object model)
         {

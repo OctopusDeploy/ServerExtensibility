@@ -1,16 +1,20 @@
-﻿using Octopus.Server.Extensibility.HostServices.Model.BuildInformation;
+﻿using System;
+using Newtonsoft.Json;
+using Octopus.Server.Extensibility.HostServices.Model.BuildInformation;
 
 namespace Octopus.Server.Extensibility.HostServices.Model.Projects
 {
     public class ReleaseChanges
     {
-        public ReleaseChanges()
+        [JsonConstructor]
+        public ReleaseChanges(string version)
         {
-            VersionBuildInformation = new ReleasePackageVersionBuildInformation[0];
+            Version = version;
         }
 
-        public string Version { get; set; }
-        public string ReleaseNotes { get; set; }
-        public ReleasePackageVersionBuildInformation[] VersionBuildInformation { get; set; }
+        public string Version { get; }
+        public string ReleaseNotes { get; set; } = string.Empty;
+
+        public ReleasePackageVersionBuildInformation[] VersionBuildInformation { get; set; } = Array.Empty<ReleasePackageVersionBuildInformation>();
     }
 }
