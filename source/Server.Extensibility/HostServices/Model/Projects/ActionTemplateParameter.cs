@@ -26,7 +26,7 @@ namespace Octopus.Server.Extensibility.HostServices.Model.Projects
         public IDictionary<string, string> DisplaySettings { get; set; }
 
         [JsonIgnore]
-        public bool HasDefault => DefaultValue != null && DefaultValue.HasValue;
+        public bool HasDefault => DefaultValue?.HasValue ?? false;
 
         [JsonIgnore]
         public string VariableName => string.IsNullOrEmpty(Name) ? Label : Name;
