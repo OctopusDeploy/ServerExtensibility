@@ -1,1 +1,6 @@
 mode: ContinuousDeployment
+
+branches:
+  master:
+    regex: ^(main|master)$
+    source-branches: ["main"]
