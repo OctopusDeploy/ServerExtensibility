@@ -9,7 +9,7 @@
     <Authors>Octopus Deploy</Authors>
     <PackageId>Octopus.Server.Extensibility</PackageId>
     <PackageIconUrl>http://i.octopusdeploy.com/resources/Avatar3_360.png</PackageIconUrl>
-    <PackageLicenseUrl>https://github.com/OctopusDeploy/ServerExtensibility/blob/master/LICENSE.txt</PackageLicenseUrl>
+    <PackageLicenseUrl>https://github.com/OctopusDeploy/ServerExtensibility/blob/main/LICENSE.txt</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/OctopusDeploy/ServerExtensibility</PackageProjectUrl>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
