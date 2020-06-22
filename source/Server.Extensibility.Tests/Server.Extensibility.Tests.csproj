@@ -9,9 +9,8 @@
         <Authors>Octopus Deploy</Authors>
         <PackageId>Octopus.Server.Extensibility.Tests</PackageId>
         <PackageIconUrl>http://i.octopusdeploy.com/resources/Avatar3_360.png</PackageIconUrl>
-        <PackageLicenseUrl>https://github.com/OctopusDeploy/ServerExtensibility/blob/master/LICENSE.txt</PackageLicenseUrl>
+        <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
         <PackageProjectUrl>https://github.com/OctopusDeploy/ServerExtensibility</PackageProjectUrl>
-        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     </PropertyGroup>
 
     <ItemGroup>

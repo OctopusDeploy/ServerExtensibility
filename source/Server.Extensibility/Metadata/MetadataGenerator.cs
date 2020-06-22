@@ -52,7 +52,7 @@ namespace Octopus.Server.Extensibility.Metadata
         public Metadata GetMetadata(Type objectType)
         {
             Generate(objectType);
-            metadata.Description = objectType.GetTypeInfo().GetCustomAttribute<DescriptionAttribute>()?.Description ?? string.Empty;
+            metadata.Description = objectType.GetTypeInfo().GetCustomAttribute<DescriptionAttribute>()?.Description;
             return metadata;
         }
 
@@ -83,7 +83,7 @@ namespace Octopus.Server.Extensibility.Metadata
                         DisplayInfo = new DisplayInfo
                         {
                             Required = prop.IsDefined(typeof(RequiredAttribute)),
-                            Description = prop.GetCustomAttribute<DescriptionAttribute>()?.Description ?? string.Empty,
+                            Description = prop.GetCustomAttribute<DescriptionAttribute>()?.Description,
                             ShowCopyToClipboard = prop.IsDefined(typeof(AllowCopyToClipboardAttribute)),
                         }
                     };
