@@ -29,7 +29,7 @@
     <PackageReference Include="Octopus.TinyTypes" Version="0.1.18" />
     <PackageReference Include="Octopus.Versioning" Version="4.1.8" />
     <PackageReference Include="System.Security.Principal" Version="4.3.0" />
-    <PackageReference Include="Octopus.Data" Version="5.0.4-enh-nullable0004" />
+    <PackageReference Include="Octopus.Data" Version="5.0.4-enh-nullable0006" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
     <PackageReference Include="System.ComponentModel.Primitives" Version="4.3.0" />
   </ItemGroup>
