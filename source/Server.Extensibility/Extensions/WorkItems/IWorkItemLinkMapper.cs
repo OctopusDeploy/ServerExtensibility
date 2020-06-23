@@ -1,6 +1,6 @@
-﻿using Octopus.Data;
-using Octopus.Server.Extensibility.HostServices.Model.BuildInformation;
+﻿using Octopus.Server.Extensibility.HostServices.Model.BuildInformation;
 using Octopus.Server.Extensibility.Resources.IssueTrackers;
+using Octopus.Server.Extensibility.Results;
 
 namespace Octopus.Server.Extensibility.Extensions.WorkItems
 {
@@ -9,6 +9,6 @@ namespace Octopus.Server.Extensibility.Extensions.WorkItems
         string CommentParser { get; }
         bool IsEnabled { get; }
 
-        Result<WorkItemLink[]> Map(OctopusBuildInformation buildInformation);
+        ResultFromExtension<WorkItemLink[]> Map(OctopusBuildInformation buildInformation);
     }
 }
