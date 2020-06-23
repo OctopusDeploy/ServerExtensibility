@@ -20,6 +20,6 @@
         /// <summary>
         /// The base Url to prefix the work item's linkUrl with.
         /// </summary>
-        string BaseUrl { get; }
+        string? BaseUrl { get; }
     }
 }
