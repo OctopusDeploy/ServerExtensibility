@@ -39,7 +39,7 @@ namespace Octopus.Server.Extensibility.Extensions
             return new SuccessOrErrorResult<T> {Succeeded = true, Value = value};
         }
 
-        public static SuccessOrErrorResult<T> Failure(string reason, T partialValue = default(T))
+        public static SuccessOrErrorResult<T> Failure(string reason, T partialValue = default)
         {
             return new SuccessOrErrorResult<T> {Succeeded = false, FailureReason = reason, Value = partialValue};
         }
@@ -57,14 +57,25 @@ namespace Octopus.Server.Extensibility.Extensions
 
     public static class SuccessOrErrorResult
     {
-        public static SuccessOrErrorResult<T> Success<T>(T value) => SuccessOrErrorResult<T>.Success(value);
+        public static SuccessOrErrorResult<T> Success<T>(T value)
+        {
+            return SuccessOrErrorResult<T>.Success(value);
+        }
 
-        public static ErrorResult Failure(string reason) => new ErrorResult(reason);
+        public static ErrorResult Failure(string reason)
+        {
+            return new ErrorResult(reason);
+        }
 
-        public static ErrorResult Failure(ISuccessOrErrorResult result) => new ErrorResult(result.FailureReason);
+        public static ErrorResult Failure(ISuccessOrErrorResult result)
+        {
+            return new ErrorResult(result.FailureReason);
+        }
 
         public static SuccessOrErrorResult<T> Failure<T>(string reason, T partialValue)
-            => SuccessOrErrorResult<T>.Failure(reason, partialValue);
+        {
+            return SuccessOrErrorResult<T>.Failure(reason, partialValue);
+        }
 
         public static SuccessOrErrorResult<T> Conditional<T>(T value, IEnumerable<ISuccessOrErrorResult> dependencies)
         {
@@ -74,10 +85,15 @@ namespace Octopus.Server.Extensibility.Extensions
                 : Failure(anyFailure.FailureReason, value);
         }
 
-        public static SuccessOrErrorResult<T> Conditional<T, TDep>(T value, IEnumerable<SuccessOrErrorResult<TDep>> dependencies)
-            => Conditional(value, dependencies.Cast<ISuccessOrErrorResult>());
+        public static SuccessOrErrorResult<T> Conditional<T, TDep>(T value,
+            IEnumerable<SuccessOrErrorResult<TDep>> dependencies)
+        {
+            return Conditional(value, dependencies.Cast<ISuccessOrErrorResult>());
+        }
 
         public static SuccessOrErrorResult<T> Conditional<T>(T value, params ISuccessOrErrorResult[] dependencies)
-            => Conditional(value, (IEnumerable<ISuccessOrErrorResult>) dependencies);
+        {
+            return Conditional(value, (IEnumerable<ISuccessOrErrorResult>) dependencies);
+        }
     }
 }

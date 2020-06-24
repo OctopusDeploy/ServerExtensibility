@@ -5,10 +5,6 @@ namespace Octopus.Server.Extensibility.HostServices.Model.Projects
 {
     public class AutoDeployReleaseOverride
     {
-        public string EnvironmentId { get; }
-        public string TenantId { get; }
-        public string ReleaseId { get; }
-
         public AutoDeployReleaseOverride(string environmentId, string releaseId)
             : this(environmentId, null, releaseId)
         {
@@ -22,7 +18,14 @@ namespace Octopus.Server.Extensibility.HostServices.Model.Projects
             ReleaseId = releaseId;
         }
 
-        sealed class EnvironmentIdTenantIdEqualityComparer : IEqualityComparer<AutoDeployReleaseOverride>
+        public string EnvironmentId { get; }
+        public string TenantId { get; }
+        public string ReleaseId { get; }
+
+        public static IEqualityComparer<AutoDeployReleaseOverride> EnvironmentIdTenantIdComparer { get; } =
+            new EnvironmentIdTenantIdEqualityComparer();
+
+        private sealed class EnvironmentIdTenantIdEqualityComparer : IEqualityComparer<AutoDeployReleaseOverride>
         {
             public bool Equals(AutoDeployReleaseOverride x, AutoDeployReleaseOverride y)
             {
@@ -41,7 +44,5 @@ namespace Octopus.Server.Extensibility.HostServices.Model.Projects
                 }
             }
         }
-
-        public static IEqualityComparer<AutoDeployReleaseOverride> EnvironmentIdTenantIdComparer { get; } = new EnvironmentIdTenantIdEqualityComparer();
     }
 }

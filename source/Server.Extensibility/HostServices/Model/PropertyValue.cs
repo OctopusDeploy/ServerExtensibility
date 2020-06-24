@@ -4,18 +4,15 @@ namespace Octopus.Server.Extensibility.HostServices.Model
 {
     public class PropertyValue : IEquatable<PropertyValue>
     {
-        readonly string value;
-        readonly bool isSensitive;
-
         public PropertyValue(string value, bool isSensitive = false)
         {
-            this.value = value ?? string.Empty;
-            this.isSensitive = isSensitive;
+            this.Value = value ?? string.Empty;
+            this.IsSensitive = isSensitive;
         }
 
-        public string Value => value;
+        public string Value { get; }
 
-        public bool IsSensitive => isSensitive;
+        public bool IsSensitive { get; }
 
         public bool HasValue => !string.IsNullOrEmpty(Value);
 
@@ -23,7 +20,7 @@ namespace Octopus.Server.Extensibility.HostServices.Model
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            return string.Equals(value, other.value) && isSensitive.Equals(other.isSensitive);
+            return string.Equals(Value, other.Value) && IsSensitive.Equals(other.IsSensitive);
         }
 
         public override bool Equals(object obj)
@@ -31,14 +28,14 @@ namespace Octopus.Server.Extensibility.HostServices.Model
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != GetType()) return false;
-            return Equals((PropertyValue)obj);
+            return Equals((PropertyValue) obj);
         }
 
         public override int GetHashCode()
         {
             unchecked
             {
-                return ((value != null ? value.GetHashCode() : 0) * 397) ^ isSensitive.GetHashCode();
+                return ((Value != null ? Value.GetHashCode() : 0) * 397) ^ IsSensitive.GetHashCode();
             }
         }
 
@@ -54,7 +51,7 @@ namespace Octopus.Server.Extensibility.HostServices.Model
 
         public static explicit operator string(PropertyValue v)
         {
-            return v?.value;
+            return v?.Value;
         }
 
         public static explicit operator PropertyValue(string v)
@@ -69,12 +66,12 @@ namespace Octopus.Server.Extensibility.HostServices.Model
 
         public override string ToString()
         {
-            return value;
+            return Value;
         }
 
         public PropertyValue Clone()
         {
-            return new PropertyValue(value, isSensitive);
+            return new PropertyValue(Value, IsSensitive);
         }
     }
 }

@@ -3,7 +3,7 @@
 namespace Octopus.Server.Extensibility.Resources
 {
     /// <summary>
-    /// Represents the different states a task goes through.
+    ///     Represents the different states a task goes through.
     /// </summary>
     public enum TaskState
     {
@@ -18,9 +18,15 @@ namespace Octopus.Server.Extensibility.Resources
 
     public class TaskStates
     {
-        public static IReadOnlyList<TaskState> CompletedUnsuccessfully = new[] { TaskState.Failed, TaskState.TimedOut, TaskState.Canceled };
-        public static IReadOnlyList<TaskState> Completed = new[] { TaskState.Success, TaskState.Failed, TaskState.TimedOut, TaskState.Canceled };
-        public static IReadOnlyList<TaskState> Incomplete = new[] { TaskState.Queued, TaskState.Executing, TaskState.Cancelling };
-        public static IReadOnlyList<TaskState> Running = new[] { TaskState.Executing, TaskState.Cancelling };
+        public static IReadOnlyList<TaskState> CompletedUnsuccessfully =
+            new[] {TaskState.Failed, TaskState.TimedOut, TaskState.Canceled};
+
+        public static IReadOnlyList<TaskState> Completed = new[]
+            {TaskState.Success, TaskState.Failed, TaskState.TimedOut, TaskState.Canceled};
+
+        public static IReadOnlyList<TaskState> Incomplete = new[]
+            {TaskState.Queued, TaskState.Executing, TaskState.Cancelling};
+
+        public static IReadOnlyList<TaskState> Running = new[] {TaskState.Executing, TaskState.Cancelling};
     }
 }

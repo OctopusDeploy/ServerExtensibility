@@ -2,7 +2,7 @@
 
 namespace Octopus.Server.Extensibility.Extensions
 {
-    [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
+    [AttributeUsage(AttributeTargets.Class)]
     public class OctopusPluginAttribute : Attribute, IOctopusExtensionMetadata
     {
         public OctopusPluginAttribute(string friendlyName, string author)
