@@ -25,7 +25,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Autofac" Version="4.9.4" />
-    <PackageReference Include="Octopus.TinyTypes" Version="0.1.19" />
+    <PackageReference Include="Octopus.TinyTypes" Version="0.1.20" />
     <PackageReference Include="Octopus.Versioning" Version="4.1.8" />
     <PackageReference Include="System.Security.Principal" Version="4.3.0" />
     <PackageReference Include="Octopus.Data" Version="5.0.4" />
