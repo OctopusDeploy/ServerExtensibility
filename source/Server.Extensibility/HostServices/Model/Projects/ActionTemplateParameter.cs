@@ -19,17 +19,16 @@ namespace Octopus.Server.Extensibility.HostServices.Model.Projects
         }
 
         public string Id { get; set; }
-        public string Name { get; set; }
         public string Label { get; set; }
         public string HelpText { get; set; }
         public PropertyValue DefaultValue { get; set; }
         public IDictionary<string, string> DisplaySettings { get; set; }
 
-        [JsonIgnore]
-        public bool HasDefault => DefaultValue != null && DefaultValue.HasValue;
+        [JsonIgnore] public bool HasDefault => DefaultValue != null && DefaultValue.HasValue;
 
-        [JsonIgnore]
-        public string VariableName => string.IsNullOrEmpty(Name) ? Label : Name;
+        [JsonIgnore] public string VariableName => string.IsNullOrEmpty(Name) ? Label : Name;
+
+        public string Name { get; set; }
 
         public ActionTemplateParameter Duplicate()
         {

@@ -13,9 +13,9 @@ namespace Node.Extensibility.Tests.WorkItems
         {
             var listWithDupes = new List<WorkItemLink>
             {
-                new WorkItemLink { Id = "test1" },
-                new WorkItemLink { Id = "test2" },
-                new WorkItemLink { Id = "test1" },
+                new WorkItemLink {Id = "test1"},
+                new WorkItemLink {Id = "test2"},
+                new WorkItemLink {Id = "test1"}
             };
 
             var distinctWorkItems = listWithDupes.Distinct();
@@ -28,9 +28,9 @@ namespace Node.Extensibility.Tests.WorkItems
         {
             var listWithDupes = new List<WorkItemLink>
             {
-                new WorkItemLink { Id = "test1" },
-                new WorkItemLink { Id = "test2" },
-                new WorkItemLink { Id = "Test1" },
+                new WorkItemLink {Id = "test1"},
+                new WorkItemLink {Id = "test2"},
+                new WorkItemLink {Id = "Test1"}
             };
 
             var distinctWorkItems = listWithDupes.Distinct();

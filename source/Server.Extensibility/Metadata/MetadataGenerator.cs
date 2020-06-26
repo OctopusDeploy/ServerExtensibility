@@ -13,34 +13,34 @@ namespace Octopus.Server.Extensibility.Metadata
 {
     public class MetadataGenerator : IGenerateMetadata
     {
-        readonly Metadata metadata;
-
-        //the approved types we will map to metadata, and how to stringify them
-        readonly Dictionary<Type, string> mappings = new Dictionary<Type, string>
-        {
-            {typeof(string), "string"},
-            {typeof(int), "int" },
-            {typeof(DateTime), "DateTime"},
-            {typeof(DateTimeOffset), "DateTimeOffset" },
-            {typeof(bool), "bool" },
-            {typeof(long), "long" },
-            {typeof(SensitiveValue), "SensitiveValue" },
-            {typeof(DeploymentActionPackageResource), "DeploymentActionPackage" }
-        };
-
         //property names to be ignored on any object
-        readonly HashSet<string> ignoreProperties = new HashSet<string>
+        private readonly HashSet<string> ignoreProperties = new HashSet<string>
         {
             "LastModifiedBy",
             "LastModifiedOn",
-            "Id",
+            "Id"
         };
+
+        //the approved types we will map to metadata, and how to stringify them
+        private readonly Dictionary<Type, string> mappings = new Dictionary<Type, string>
+        {
+            {typeof(string), "string"},
+            {typeof(int), "int"},
+            {typeof(DateTime), "DateTime"},
+            {typeof(DateTimeOffset), "DateTimeOffset"},
+            {typeof(bool), "bool"},
+            {typeof(long), "long"},
+            {typeof(SensitiveValue), "SensitiveValue"},
+            {typeof(DeploymentActionPackageResource), "DeploymentActionPackage"}
+        };
+
+        private readonly Metadata metadata;
 
         public MetadataGenerator()
         {
             metadata = new Metadata
             {
-                Types = new List<TypeMetadata>(),
+                Types = new List<TypeMetadata>()
             };
         }
 
@@ -64,7 +64,7 @@ namespace Octopus.Server.Extensibility.Metadata
             var rootType = new TypeMetadata
             {
                 Name = type.Name,
-                Properties = new List<PropertyMetadata>(),
+                Properties = new List<PropertyMetadata>()
             };
 
             metadata.Types.Add(rootType);
@@ -72,7 +72,6 @@ namespace Octopus.Server.Extensibility.Metadata
             var props = type.GetRuntimeProperties();
 
             foreach (var prop in props)
-            {
                 //skip these
                 if (prop.PropertyType != typeof(LinkCollection) && !ignoreProperties.Contains(prop.Name))
                 {
@@ -84,37 +83,25 @@ namespace Octopus.Server.Extensibility.Metadata
                         {
                             Required = prop.IsDefined(typeof(RequiredAttribute)),
                             Description = prop.GetCustomAttribute<DescriptionAttribute>()?.Description,
-                            ShowCopyToClipboard = prop.IsDefined(typeof(AllowCopyToClipboardAttribute)),
+                            ShowCopyToClipboard = prop.IsDefined(typeof(AllowCopyToClipboardAttribute))
                         }
                     };
 
                     //accepts [DisplayName()] or [Display(Name=)] -> defaults to property name
                     if (prop.IsDefined(typeof(DisplayNameAttribute)))
-                    {
                         propMetadata.DisplayInfo.Label = prop.GetCustomAttribute<DisplayNameAttribute>()?.DisplayName;
-                    }
                     else if (prop.IsDefined(typeof(DisplayAttribute)))
-                    {
                         propMetadata.DisplayInfo.Label = prop.GetCustomAttribute<DisplayAttribute>()?.Name;
-                    }
                     else
-                    {
                         propMetadata.DisplayInfo.Label = prop.Name;
-                    }
 
                     //accepts [ReadOnly()] or [Writeable] -> defaults to true (Read Only)
                     if (prop.IsDefined(typeof(ReadOnlyAttribute)))
-                    {
                         propMetadata.DisplayInfo.ReadOnly = prop.GetCustomAttribute<ReadOnlyAttribute>().IsReadOnly;
-                    }
                     else if (prop.IsDefined(typeof(WriteableAttribute)))
-                    {
                         propMetadata.DisplayInfo.ReadOnly = false;
-                    }
                     else
-                    {
                         propMetadata.DisplayInfo.ReadOnly = true;
-                    }
 
                     //selectable metadata is not currently supported in the UI
                     if (prop.IsDefined(typeof(SelectableAttribute)))
@@ -142,7 +129,7 @@ namespace Octopus.Server.Extensibility.Metadata
                             propMetadata.DisplayInfo.ListApi = new ListApiMetadata
                             {
                                 SelectMode = listApiAttr.SelectMode.ToString(),
-                                ApiEndpoint = listApiAttr.ApiEndpoint,
+                                ApiEndpoint = listApiAttr.ApiEndpoint
                             };
                         }
                     }
@@ -150,7 +137,7 @@ namespace Octopus.Server.Extensibility.Metadata
                     if (prop.IsDefined(typeof(PropertyApplicabilityAttribute)))
                     {
                         var applicableAttr = prop.GetCustomAttribute<PropertyApplicabilityAttribute>();
-                        
+
                         propMetadata.DisplayInfo.PropertyApplicability = new PropertyApplicability
                         {
                             Mode = applicableAttr.Mode,
@@ -173,24 +160,17 @@ namespace Octopus.Server.Extensibility.Metadata
                     rootType.Properties.Add(propMetadata);
                 }
 
-            }
-
             return rootType.Name;
         }
 
         private Dictionary<string, string> ProjectEnum(Type enumType)
         {
-            if (!enumType.GetTypeInfo().IsEnum)
-            {
-                throw new Exception("Parameter must be an enum");
-            }
+            if (!enumType.GetTypeInfo().IsEnum) throw new Exception("Parameter must be an enum");
 
             var values = new Dictionary<string, string>();
 
             foreach (var item in Enum.GetValues(enumType))
-            {
                 values.Add(item.ToString(), EnumExtensions.GetDescription(enumType, item));
-            }
 
             return values;
         }
@@ -198,10 +178,7 @@ namespace Octopus.Server.Extensibility.Metadata
         private string GetTypeDescriptor(Type type)
         {
             //Array
-            if (type.IsArray)
-            {
-                return GetTypeDescriptor(type.GetElementType()) + "[]";
-            }
+            if (type.IsArray) return GetTypeDescriptor(type.GetElementType()) + "[]";
 
             if (type.GetTypeInfo().IsGenericType)
             {
@@ -225,44 +202,32 @@ namespace Octopus.Server.Extensibility.Metadata
                         var keyType = GetTypeDescriptor(genericTypes[0]);
                         var valueType = GetTypeDescriptor(genericTypes[1]);
 
-                        return $"Dictionary<{ keyType }, { valueType }>";
+                        return $"Dictionary<{keyType}, {valueType}>";
                     }
 
                     //other generics not supported yet
-
                 }
             }
 
             //Nullable
             var underlyingType = Nullable.GetUnderlyingType(type);
 
-            if (underlyingType != null)
-            {
-                return GetTypeDescriptor(underlyingType) + "?";
-            }
+            if (underlyingType != null) return GetTypeDescriptor(underlyingType) + "?";
 
             //Enum
             if (type.GetTypeInfo().IsEnum)
-            {
                 //for enums, we will map the values into the property itself and assume a
                 // string on the wire
                 return "string";
-            }
 
             //approved primitive / value-type mappings
-            if (mappings.TryGetValue(type, out string descriptor))
-            {
-                return descriptor;
-            }
+            if (mappings.TryGetValue(type, out var descriptor)) return descriptor;
 
             //if we drop down here, first check if the type is already mapped:
             //if not, map the type into the types collection and just
             //return the type name to link them together
 
-            if (metadata.Types.All(t => t.Name != type.Name))
-            {
-                return Generate(type);
-            }
+            if (metadata.Types.All(t => t.Name != type.Name)) return Generate(type);
 
             //otherwise we just return the already mapped name :)
             return type.Name;

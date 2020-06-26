@@ -9,10 +9,10 @@
             InvalidReason = invalidReason;
         }
 
-        public bool IsValid { get; private set; }
-        public string Path { get; private set; }
+        public bool IsValid { get; }
+        public string Path { get; }
 
-        public string InvalidReason { get; private set; }
+        public string InvalidReason { get; }
 
         public static DirectoryPathResult Success(string directoryPath)
         {

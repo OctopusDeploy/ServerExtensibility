@@ -10,8 +10,15 @@ namespace Octopus.Server.Extensibility.JsonConverters
 {
     public abstract class InheritedResourceConverter<TBaseResource> : JsonConverter
     {
-        readonly ConcurrentDictionary<Type, IReadOnlyList<PropertyInfo>> readablePropertiesCache = new ConcurrentDictionary<Type, IReadOnlyList<PropertyInfo>>();
-        readonly ConcurrentDictionary<Type, IReadOnlyList<PropertyInfo>> writeablePropertiesCache = new ConcurrentDictionary<Type, IReadOnlyList<PropertyInfo>>();
+        private readonly ConcurrentDictionary<Type, IReadOnlyList<PropertyInfo>> readablePropertiesCache =
+            new ConcurrentDictionary<Type, IReadOnlyList<PropertyInfo>>();
+
+        private readonly ConcurrentDictionary<Type, IReadOnlyList<PropertyInfo>> writeablePropertiesCache =
+            new ConcurrentDictionary<Type, IReadOnlyList<PropertyInfo>>();
+
+        protected abstract IDictionary<string, Type> DerivedTypeMappings { get; }
+
+        protected abstract string TypeDesignatingPropertyName { get; }
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
@@ -36,9 +43,11 @@ namespace Octopus.Server.Extensibility.JsonConverters
         }
 
         protected virtual void WriteTypeProperty(JsonWriter writer, object value, JsonSerializer serializer)
-        { }
+        {
+        }
 
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue,
+            JsonSerializer serializer)
         {
             if (reader.TokenType == JsonToken.Null)
                 return null;
@@ -48,9 +57,8 @@ namespace Octopus.Server.Extensibility.JsonConverters
 
             var derivedType = designatingProperty.ToObject<string>();
             if (!DerivedTypeMappings.ContainsKey(derivedType))
-            {
-                throw new Exception($"Unable to determine type to deserialize. {TypeDesignatingPropertyName} `{derivedType}` does not map to a known type");
-            }
+                throw new Exception(
+                    $"Unable to determine type to deserialize. {TypeDesignatingPropertyName} `{derivedType}` does not map to a known type");
 
             var type = DerivedTypeMappings[derivedType];
 
@@ -73,6 +81,7 @@ namespace Octopus.Server.Extensibility.JsonConverters
                 if (val != null)
                     prop.SetValue(instance, val.ToObject(prop.PropertyType, serializer), null);
             }
+
             return instance;
         }
 
@@ -80,9 +89,5 @@ namespace Octopus.Server.Extensibility.JsonConverters
         {
             return typeof(TBaseResource).IsAssignableFrom(objectType);
         }
-
-        protected abstract IDictionary<string, Type> DerivedTypeMappings { get; }
-
-        protected abstract string TypeDesignatingPropertyName { get; }
     }
 }

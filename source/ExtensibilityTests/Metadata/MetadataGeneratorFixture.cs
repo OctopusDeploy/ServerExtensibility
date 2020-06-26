@@ -15,106 +15,37 @@ namespace Node.Extensibility.Tests.Metadata
     [TestFixture]
     public class MetadataGeneratorFixture
     {
-        [Test]
-        public void SettingsMetadataShouldBeCorrect()
-        {
-            IGenerateMetadata generator = new MetadataGenerator();
-
-            var metadata = generator.GetMetadata(typeof(TopLevelResource));
-
-            var serializerSettings = new JsonSerializerSettings
-            {
-                Formatting = Formatting.Indented,
-            };
-
-            var json = JsonConvert.SerializeObject(metadata, serializerSettings);
-
-            this.Assent(json);
-
-        }
-
-        [Test]
-        public void MetadataShouldHandleSelfReferences()
-        {
-            IGenerateMetadata generator = new MetadataGenerator();
-
-            var metadata = generator.GetMetadata<SelfReferencingResource>();
-
-            var serializerSettings = new JsonSerializerSettings
-            {
-                Formatting = Formatting.Indented,
-            };
-
-            var json = JsonConvert.SerializeObject(metadata, serializerSettings);
-
-            this.Assent(json);
-        }
-
-        [Test]
-        public void MetadataShouldHandleNavigationalProperties()
-        {
-            IGenerateMetadata generator = new MetadataGenerator();
-
-            var metadata = generator.GetMetadata<ParentResource>();
-
-            var serializerSettings = new JsonSerializerSettings
-            {
-                Formatting = Formatting.Indented,
-            };
-
-            var json = JsonConvert.SerializeObject(metadata, serializerSettings);
-
-            this.Assent(json);
-        }
-
-        [Test]
-        public void MetadataShouldHandleDependentProperties()
-        {
-            IGenerateMetadata generator = new MetadataGenerator();
-
-            var metadata = generator.GetMetadata<DependentPropertiesResource>();
-
-            var serializerSettings = new JsonSerializerSettings
-            {
-                Formatting = Formatting.Indented,
-                Converters = new List<JsonConverter> { new StringEnumConverter() }
-            };
-
-            var json = JsonConvert.SerializeObject(metadata, serializerSettings);
-
-            this.Assent(json);
-        }
-
         public void SettingsValuesShouldBeCorrect()
         {
-            var resource = new TopLevelResource()
+            var resource = new TopLevelResource
             {
-                SecondLevelResource = new SecondLevelResource()
+                SecondLevelResource = new SecondLevelResource
                 {
                     SensitiveStringProperty = "String value",
                     BoolProperty = false,
-                    IntArrayProperty = new[] { 1, 2, 3 },
+                    IntArrayProperty = new[] {1, 2, 3},
                     NullableDateTimeOffsetProperty = null,
-                    StringArrayProperty = new[] { "first", "second" },
+                    StringArrayProperty = new[] {"first", "second"}
                 },
                 DateTimeOffsetProperty = DateTime.Now,
                 IntProperty = 4,
                 NullableDateTimeProperty = null,
                 NullableIntProperty = 5,
-                ListOfStringProperty = new List<string> { "1st", "2nd", "3rd" },
+                ListOfStringProperty = new List<string> {"1st", "2nd", "3rd"}
             };
         }
 
         public enum TestEnum
         {
             First = 5,
+
             [System.ComponentModel.Description("2nd")]
             Second = 7,
             Third = 11,
             Fourth
         }
 
-        public abstract class SettingsResource 
+        public abstract class SettingsResource
         {
             protected SettingsResource()
             {
@@ -154,15 +85,13 @@ namespace Node.Extensibility.Tests.Metadata
             [System.ComponentModel.Description("This 2nd-level resource has been duplicated")]
             public SecondLevelResource DuplicateSecondLevelResource { get; set; }
 
-            [Required]
-            public DateTime? NullableDateTimeProperty { get; set; }
+            [Required] public DateTime? NullableDateTimeProperty { get; set; }
 
             public DateTimeOffset DateTimeOffsetProperty { get; set; }
 
             public int IntProperty { get; set; }
 
-            [HasOptions(SelectMode.Single)]
-            public TestEnum EnumProp { get; set; }
+            [HasOptions(SelectMode.Single)] public TestEnum EnumProp { get; set; }
 
             public int? NullableIntProperty { get; set; }
 
@@ -170,12 +99,11 @@ namespace Node.Extensibility.Tests.Metadata
 
             public DateTime?[] NullableDateTimeArray { get; set; }
 
-            [ReadOnly(true)]
-            public string HandsOff { get; set; }
+            [ReadOnly(true)] public string HandsOff { get; set; }
         }
 
         public class SecondLevelResource
-        { 
+        {
             public SensitiveValue SensitiveStringProperty { get; set; }
 
             public DateTimeOffset? NullableDateTimeOffsetProperty { get; set; }
@@ -190,9 +118,78 @@ namespace Node.Extensibility.Tests.Metadata
         public class DependentPropertiesResource
         {
             public string PropertyA { get; set; }
-            
+
             [ApplicableWhenSpecificValue(nameof(PropertyA), "Foo")]
             public string PropertyB { get; set; }
+        }
+
+        [Test]
+        public void MetadataShouldHandleDependentProperties()
+        {
+            IGenerateMetadata generator = new MetadataGenerator();
+
+            var metadata = generator.GetMetadata<DependentPropertiesResource>();
+
+            var serializerSettings = new JsonSerializerSettings
+            {
+                Formatting = Formatting.Indented,
+                Converters = new List<JsonConverter> {new StringEnumConverter()}
+            };
+
+            var json = JsonConvert.SerializeObject(metadata, serializerSettings);
+
+            this.Assent(json);
+        }
+
+        [Test]
+        public void MetadataShouldHandleNavigationalProperties()
+        {
+            IGenerateMetadata generator = new MetadataGenerator();
+
+            var metadata = generator.GetMetadata<ParentResource>();
+
+            var serializerSettings = new JsonSerializerSettings
+            {
+                Formatting = Formatting.Indented
+            };
+
+            var json = JsonConvert.SerializeObject(metadata, serializerSettings);
+
+            this.Assent(json);
+        }
+
+        [Test]
+        public void MetadataShouldHandleSelfReferences()
+        {
+            IGenerateMetadata generator = new MetadataGenerator();
+
+            var metadata = generator.GetMetadata<SelfReferencingResource>();
+
+            var serializerSettings = new JsonSerializerSettings
+            {
+                Formatting = Formatting.Indented
+            };
+
+            var json = JsonConvert.SerializeObject(metadata, serializerSettings);
+
+            this.Assent(json);
+        }
+
+        [Test]
+        public void SettingsMetadataShouldBeCorrect()
+        {
+            IGenerateMetadata generator = new MetadataGenerator();
+
+            var metadata = generator.GetMetadata(typeof(TopLevelResource));
+
+            var serializerSettings = new JsonSerializerSettings
+            {
+                Formatting = Formatting.Indented
+            };
+
+            var json = JsonConvert.SerializeObject(metadata, serializerSettings);
+
+            this.Assent(json);
         }
     }
 }

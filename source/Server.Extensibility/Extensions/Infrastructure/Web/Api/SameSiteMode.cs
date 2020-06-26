@@ -3,6 +3,6 @@
     public enum SameSiteMode
     {
         Lax,
-        Strict,
+        Strict
     }
 }
