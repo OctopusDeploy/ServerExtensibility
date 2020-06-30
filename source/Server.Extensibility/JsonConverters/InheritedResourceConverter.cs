@@ -42,7 +42,8 @@ namespace Octopus.Server.Extensibility.JsonConverters
         }
 
         protected virtual void WriteTypeProperty(JsonWriter writer, object value, JsonSerializer serializer)
-        { }
+        {
+        }
 
         public override object? ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer)
         {
@@ -83,6 +84,7 @@ namespace Octopus.Server.Extensibility.JsonConverters
                 if (val != null)
                     prop.SetValue(instance, val.ToObject(prop.PropertyType, serializer), null);
             }
+
             return instance;
         }
 

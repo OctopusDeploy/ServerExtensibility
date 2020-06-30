@@ -11,7 +11,8 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration
         {
         }
 
-        protected ExtensionConfigurationDocument(string id, string name, string extensionAuthor, string configurationSchemaVersion) : base(id)
+        protected ExtensionConfigurationDocument(string id, string name, string extensionAuthor,
+            string configurationSchemaVersion) : base(id)
         {
             Name = name;
             ExtensionAuthor = extensionAuthor;

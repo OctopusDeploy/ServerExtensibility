@@ -1,4 +1,3 @@
-
 namespace Octopus.Server.Extensibility.HostServices.Mapping
 {
     public interface IResourceMappingsBuilder

@@ -8,7 +8,7 @@
             LibraryVariableSetId = libraryVariableSetId;
         }
 
-        public string LibraryVariableSetId { get; private set; }
-        public string VariableSetSnapshotId { get; private set; }
+        public string LibraryVariableSetId { get; }
+        public string VariableSetSnapshotId { get; }
     }
 }

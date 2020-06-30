@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 namespace Octopus.Server.Extensibility.HostServices.Model.Projects
 {
     /// <summary>
-    /// Represents a package referenced by a deployment action.
+    ///     Represents a package referenced by a deployment action.
     /// </summary>
     public class DeploymentActionPackage
     {
@@ -30,6 +30,7 @@ namespace Octopus.Server.Extensibility.HostServices.Model.Projects
         }
 
         #region Equality members
+
         protected bool Equals(DeploymentActionPackage other)
         {
             return
@@ -41,16 +42,21 @@ namespace Octopus.Server.Extensibility.HostServices.Model.Projects
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            return obj.GetType() == this.GetType() && Equals((DeploymentActionPackage)obj);
+            return obj.GetType() == GetType() && Equals((DeploymentActionPackage) obj);
         }
 
         public override int GetHashCode()
         {
             unchecked
             {
-                return ((DeploymentActionId != null ? StringComparer.OrdinalIgnoreCase.GetHashCode(DeploymentActionId) : 0) * 397) ^ (PackageReferenceId != null ? StringComparer.OrdinalIgnoreCase.GetHashCode(PackageReferenceId) : 0);
+                return ((DeploymentActionId != null
+                    ? StringComparer.OrdinalIgnoreCase.GetHashCode(DeploymentActionId)
+                    : 0) * 397) ^ (PackageReferenceId != null
+                    ? StringComparer.OrdinalIgnoreCase.GetHashCode(PackageReferenceId)
+                    : 0);
             }
         }
+
         #endregion
     }
 }

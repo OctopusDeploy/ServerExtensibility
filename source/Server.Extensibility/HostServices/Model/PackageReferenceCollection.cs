@@ -7,8 +7,9 @@ namespace Octopus.Server.Extensibility.HostServices.Model
 {
     public class PackageReferenceCollection : ICollection<PackageReference>
     {
-        readonly Dictionary<string, PackageReference> nameMap = new Dictionary<string, PackageReference>(StringComparer.OrdinalIgnoreCase);
         readonly Dictionary<string, PackageReference> idMap = new Dictionary<string, PackageReference>(StringComparer.OrdinalIgnoreCase);
+
+        readonly Dictionary<string, PackageReference> nameMap = new Dictionary<string, PackageReference>(StringComparer.OrdinalIgnoreCase);
 
         public PackageReferenceCollection()
         {
@@ -16,10 +17,7 @@ namespace Octopus.Server.Extensibility.HostServices.Model
 
         public PackageReferenceCollection(IEnumerable<PackageReference> packages)
         {
-            foreach (var package in packages)
-            {
-                Add(package);
-            }
+            foreach (var package in packages) Add(package);
         }
 
         public PackageReference? PrimaryPackage => nameMap.ContainsKey("") ? nameMap[""] : null;
@@ -39,40 +37,6 @@ namespace Octopus.Server.Extensibility.HostServices.Model
 
             nameMap.Add(item.Name, item);
             idMap.Add(item.Id, item);
-        }
-
-        public PackageReference GetById(string id)
-        {
-            return idMap[id];
-        }
-
-        public PackageReference GetByName(string name)
-        {
-            var key = name ?? "";
-            return nameMap[key];
-        }
-
-        public Result<PackageReference> TryGetByName(string name)
-        {
-            var key = name ?? "";
-            return nameMap.ContainsKey(key) ? Result<PackageReference>.Success(nameMap[key]) : Result<PackageReference>.Failed();
-        }
-
-        public Result<PackageReference> TryGetById(string id)
-        {
-            return idMap.ContainsKey(id) ? Result<PackageReference>.Success(idMap[id]) : Result<PackageReference>.Failed();
-        }
-
-        public Result<PackageReference> TryGetByIdOrName(string idOrName)
-        {
-            var result = TryGetById(idOrName);
-            if (result.WasSuccessful)
-            {
-                return result;
-            }
-
-            result = TryGetByName(idOrName);
-            return result;
         }
 
         public bool Contains(PackageReference item)
@@ -109,6 +73,40 @@ namespace Octopus.Server.Extensibility.HostServices.Model
         IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
+        }
+
+        public PackageReference GetById(string id)
+        {
+            return idMap[id];
+        }
+
+        public PackageReference GetByName(string name)
+        {
+            var key = name ?? "";
+            return nameMap[key];
+        }
+
+        public Result<PackageReference> TryGetByName(string name)
+        {
+            var key = name ?? "";
+            return nameMap.ContainsKey(key) ? Result<PackageReference>.Success(nameMap[key]) : Result<PackageReference>.Failed();
+        }
+
+        public Result<PackageReference> TryGetById(string id)
+        {
+            return idMap.ContainsKey(id) ? Result<PackageReference>.Success(idMap[id]) : Result<PackageReference>.Failed();
+        }
+
+        public Result<PackageReference> TryGetByIdOrName(string idOrName)
+        {
+            var result = TryGetById(idOrName);
+            if (result.WasSuccessful)
+            {
+                return result;
+            }
+
+            result = TryGetByName(idOrName);
+            return result;
         }
     }
 }

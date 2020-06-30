@@ -19,13 +19,13 @@ namespace Octopus.Server.Extensibility.Resources.IssueTrackers
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != this.GetType()) return false;
+            if (obj.GetType() != GetType()) return false;
             return Equals((CommitDetails) obj);
         }
 
         public override int GetHashCode()
         {
-            return (Id != null ? Id.GetHashCode() : 0);
+            return Id != null ? Id.GetHashCode() : 0;
         }
     }
 }

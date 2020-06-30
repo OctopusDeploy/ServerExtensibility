@@ -32,7 +32,6 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
 
         public virtual void BadRequest(params string[] errors)
         {
-            
         }
     }
 }
