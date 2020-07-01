@@ -6,8 +6,8 @@ namespace Octopus.Server.Extensibility.HostServices.Model
     {
         public PropertyValue(string value, bool isSensitive = false)
         {
-            this.Value = value ?? string.Empty;
-            this.IsSensitive = isSensitive;
+            Value = value ?? string.Empty;
+            IsSensitive = isSensitive;
         }
 
         public string Value { get; }
