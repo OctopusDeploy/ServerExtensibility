@@ -21,7 +21,7 @@ namespace Octopus.Server.Extensibility.HostServices.Model
     public class PackageReference : IId, INamed
     {
         /// <summary>
-        ///     Constructs a named package-reference. 
+        ///     Constructs a named package-reference.
         /// </summary>
         /// <param name="name">The package-reference name.</param>
         /// <param name="packageId">The package ID or a variable-expression</param>
@@ -39,9 +39,13 @@ namespace Octopus.Server.Extensibility.HostServices.Model
         /// <param name="packageId">The package ID or a variable-expression</param>
         /// <param name="feedId">The feed ID or a variable-expression</param>
         /// <param name="acquisitionLocation">The location the package should be acquired.
-        /// May be one <see cref="PackageAcquisitionLocation"/> or a variable-expression.</param>
+        /// May be one <see cref="PackageAcquisitionLocation" /> or a variable-expression.</param>
         public PackageReference(string? name, string packageId, string feedId, string acquisitionLocation)
-            : this(null, name, packageId, feedId, acquisitionLocation)
+            : this(null,
+                name,
+                packageId,
+                feedId,
+                acquisitionLocation)
         {
         }
 
@@ -49,7 +53,11 @@ namespace Octopus.Server.Extensibility.HostServices.Model
         ///     For JSON deserialization only
         /// </summary>
         [JsonConstructor]
-        public PackageReference(string? id, string? name, string packageId, string feedId, string acquisitionLocation)
+        public PackageReference(string? id,
+            string? name,
+            string packageId,
+            string feedId,
+            string acquisitionLocation)
             : this()
         {
             if (!string.IsNullOrEmpty(id)) Id = id;
@@ -108,12 +116,12 @@ namespace Octopus.Server.Extensibility.HostServices.Model
         ///     This may be empty.
         ///     This is used to discriminate the package-references. Package ID isn't suitable because an action may potentially
         ///     have multiple references to the same package ID (e.g. if you wanted to use different versions of the same package).
-        ///     Also, the package ID may be a variable-expression. 
+        ///     Also, the package ID may be a variable-expression.
         /// </summary>
         public string Name { get; set; } = string.Empty;
 
         /// <summary>
-        ///     Package ID or a variable-expression 
+        ///     Package ID or a variable-expression
         /// </summary>
         public string PackageId { get; set; } = string.Empty;
 
@@ -136,7 +144,11 @@ namespace Octopus.Server.Extensibility.HostServices.Model
 
         public PackageReference Clone()
         {
-            return new PackageReference(Id, Name, PackageId, FeedId, AcquisitionLocation)
+            return new PackageReference(Id,
+                Name,
+                PackageId,
+                FeedId,
+                AcquisitionLocation)
             {
                 Properties = new Dictionary<string, string>(Properties)
             };

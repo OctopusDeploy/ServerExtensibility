@@ -1,4 +1,6 @@
-﻿namespace Octopus.Server.Extensibility.HostServices.Domain.Events
+﻿using System;
+
+namespace Octopus.Server.Extensibility.HostServices.Domain.Events
 {
     public abstract class DomainEvent
     {

@@ -1,4 +1,6 @@
-﻿namespace Octopus.Server.Extensibility.Extensions.WorkItems
+﻿using System;
+
+namespace Octopus.Server.Extensibility.Extensions.WorkItems
 {
     public interface IIssueTracker
     {

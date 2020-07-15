@@ -1,4 +1,6 @@
-﻿namespace Octopus.Server.Extensibility.Metadata
+﻿using System;
+
+namespace Octopus.Server.Extensibility.Metadata
 {
     public class PropertyMetadata
     {

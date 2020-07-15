@@ -1,10 +1,11 @@
+using System;
 using System.Collections.Generic;
 
 namespace Octopus.Server.Extensibility.Resources.Configuration
 {
     public class ConnectivityCheckResponse
     {
-        private readonly List<ConnectivityCheckMessage> messages;
+        readonly List<ConnectivityCheckMessage> messages;
 
         public ConnectivityCheckResponse()
         {

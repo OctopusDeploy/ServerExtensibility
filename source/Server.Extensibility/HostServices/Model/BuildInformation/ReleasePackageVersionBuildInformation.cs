@@ -23,7 +23,7 @@ namespace Octopus.Server.Extensibility.HostServices.Model.BuildInformation
         protected bool Equals(ReleasePackageVersionBuildInformation other)
         {
             return string.Equals(PackageId, other.PackageId, StringComparison.OrdinalIgnoreCase) &&
-                   string.Equals(Version, other.Version, StringComparison.OrdinalIgnoreCase);
+                string.Equals(Version, other.Version, StringComparison.OrdinalIgnoreCase);
         }
 
         public override bool Equals(object obj)
@@ -31,7 +31,7 @@ namespace Octopus.Server.Extensibility.HostServices.Model.BuildInformation
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != GetType()) return false;
-            return Equals((ReleasePackageVersionBuildInformation) obj);
+            return Equals((ReleasePackageVersionBuildInformation)obj);
         }
 
         public override int GetHashCode()
@@ -39,7 +39,7 @@ namespace Octopus.Server.Extensibility.HostServices.Model.BuildInformation
             unchecked
             {
                 return ((PackageId != null ? StringComparer.OrdinalIgnoreCase.GetHashCode(PackageId) : 0) * 397) ^
-                       (Version != null ? StringComparer.OrdinalIgnoreCase.GetHashCode(Version) : 0);
+                    (Version != null ? StringComparer.OrdinalIgnoreCase.GetHashCode(Version) : 0);
             }
         }
     }

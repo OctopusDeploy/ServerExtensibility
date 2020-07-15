@@ -42,7 +42,7 @@ namespace Octopus.Server.Extensibility.HostServices.Model.Projects
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            return obj.GetType() == GetType() && Equals((DeploymentActionPackage) obj);
+            return obj.GetType() == GetType() && Equals((DeploymentActionPackage)obj);
         }
 
         public override int GetHashCode()

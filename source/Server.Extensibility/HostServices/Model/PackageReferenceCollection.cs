@@ -24,6 +24,10 @@ namespace Octopus.Server.Extensibility.HostServices.Model
 
         public bool HasPrimaryPackage => PrimaryPackage != null;
 
+        public int Count => nameMap.Count;
+
+        public bool IsReadOnly => false;
+
         public void Add(PackageReference item)
         {
             if (item == null)
@@ -55,15 +59,11 @@ namespace Octopus.Server.Extensibility.HostServices.Model
             return idMap.Remove(item.Id);
         }
 
-        public int Count => nameMap.Count;
-
         public void Clear()
         {
             idMap.Clear();
             nameMap.Clear();
         }
-
-        public bool IsReadOnly => false;
 
         public IEnumerator<PackageReference> GetEnumerator()
         {
@@ -101,9 +101,7 @@ namespace Octopus.Server.Extensibility.HostServices.Model
         {
             var result = TryGetById(idOrName);
             if (result.WasSuccessful)
-            {
                 return result;
-            }
 
             result = TryGetByName(idOrName);
             return result;

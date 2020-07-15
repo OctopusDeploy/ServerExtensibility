@@ -1,4 +1,5 @@
-﻿using Octopus.Server.Extensibility.HostServices.Model.BuildInformation;
+﻿using System;
+using Octopus.Server.Extensibility.HostServices.Model.BuildInformation;
 using Octopus.Server.Extensibility.Resources.IssueTrackers;
 using Octopus.Server.Extensibility.Results;
 

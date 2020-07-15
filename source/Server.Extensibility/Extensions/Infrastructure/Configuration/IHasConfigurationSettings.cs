@@ -1,4 +1,5 @@
-﻿using Octopus.Server.Extensibility.Extensions.Mappings;
+﻿using System;
+using Octopus.Server.Extensibility.Extensions.Mappings;
 
 namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration
 {

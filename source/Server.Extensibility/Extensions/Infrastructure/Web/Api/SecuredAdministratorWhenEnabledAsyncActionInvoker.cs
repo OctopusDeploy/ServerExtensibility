@@ -11,7 +11,7 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
         where TAction : IAsyncApiAction
         where TConfigurationStore : IExtensionConfigurationStore
     {
-        private readonly Lazy<IAuthorizationChecker> authorizationChecker;
+        readonly Lazy<IAuthorizationChecker> authorizationChecker;
 
         public SecuredAdministratorWhenEnabledAsyncActionInvoker(
             TAction action,

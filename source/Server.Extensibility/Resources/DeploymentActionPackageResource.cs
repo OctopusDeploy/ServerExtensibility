@@ -1,4 +1,6 @@
-﻿namespace Octopus.Server.Extensibility.Resources
+﻿using System;
+
+namespace Octopus.Server.Extensibility.Resources
 {
     public class DeploymentActionPackageResource
     {

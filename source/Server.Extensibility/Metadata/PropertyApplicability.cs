@@ -1,8 +1,9 @@
+using System;
 using Octopus.Data.Resources.Attributes;
 
 namespace Octopus.Server.Extensibility.Metadata
 {
-    public class PropertyApplicability 
+    public class PropertyApplicability
     {
         public PropertyApplicability(PropertyApplicabilityMode mode, string dependsOnPropertyName)
         {
@@ -10,7 +11,7 @@ namespace Octopus.Server.Extensibility.Metadata
             DependsOnPropertyName = dependsOnPropertyName;
         }
 
-        public PropertyApplicabilityMode Mode { get; } 
+        public PropertyApplicabilityMode Mode { get; }
         public string DependsOnPropertyName { get; }
         public object? DependsOnPropertyValue { get; set; }
     }

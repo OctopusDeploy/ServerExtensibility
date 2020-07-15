@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System;
 
 namespace Octopus.Server.Extensibility.HostServices.Model.Projects
 {

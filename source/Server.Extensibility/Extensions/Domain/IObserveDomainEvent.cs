@@ -1,4 +1,5 @@
-﻿using Octopus.Server.Extensibility.HostServices.Domain.Events;
+﻿using System;
+using Octopus.Server.Extensibility.HostServices.Domain.Events;
 
 namespace Octopus.Server.Extensibility.Extensions.Domain
 {

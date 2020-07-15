@@ -13,6 +13,12 @@ namespace Octopus.Server.Extensibility.JsonConverters
         readonly ConcurrentDictionary<TypeInfo, IReadOnlyList<PropertyInfo>> unmappedReadablePropertiesCache = new ConcurrentDictionary<TypeInfo, IReadOnlyList<PropertyInfo>>();
         readonly ConcurrentDictionary<TypeInfo, IReadOnlyList<PropertyInfo>> writeablePropertiesCache = new ConcurrentDictionary<TypeInfo, IReadOnlyList<PropertyInfo>>();
 
+        protected virtual Type? DefaultType { get; } = null;
+
+        protected abstract IDictionary<TDiscriminator, Type> DerivedTypeMappings { get; }
+
+        protected abstract string TypeDesignatingPropertyName { get; }
+
         public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
         {
             if (value == null)
@@ -20,7 +26,7 @@ namespace Octopus.Server.Extensibility.JsonConverters
                 writer.WriteNull();
                 return;
             }
-            
+
             writer.WriteStartObject();
 
             var documentType = value.GetType().GetTypeInfo();
@@ -43,17 +49,14 @@ namespace Octopus.Server.Extensibility.JsonConverters
         {
             return documentType.GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.GetProperty)
                 .Where(p => p.Name != TypeDesignatingPropertyName &&
-                            p.CanRead && p.GetCustomAttribute(typeof(JsonIgnoreAttribute)) == null)
+                    p.CanRead && p.GetCustomAttribute(typeof(JsonIgnoreAttribute)) == null)
                 .ToArray();
         }
-
 
         protected virtual object? GetPropertyValue(PropertyInfo property, object instance)
         {
             return property.GetValue(instance, null);
         }
-
-        protected virtual Type? DefaultType { get; } = null;
 
         public override object? ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer)
         {
@@ -79,7 +82,8 @@ namespace Octopus.Server.Extensibility.JsonConverters
             var ctor = typeInfo.GetConstructors(BindingFlags.Public | BindingFlags.Instance).FirstOrDefault();
             if (ctor == null) throw new Exception($"Type {typeInfo.Name} must have a public constructor");
 
-            var args = ctor.GetParameters().Select(p =>
+            var args = ctor.GetParameters()
+                .Select(p =>
                     jo.GetValue(char.ToUpper(p.Name[0]) + p.Name.Substring(1))?.ToObject(p.ParameterType, serializer))
                 .ToArray();
             var instance = ctor.Invoke(args);
@@ -117,9 +121,5 @@ namespace Octopus.Server.Extensibility.JsonConverters
         {
             return typeof(TBaseClass).GetTypeInfo().IsAssignableFrom(objectType);
         }
-
-        protected abstract IDictionary<TDiscriminator, Type> DerivedTypeMappings { get; }
-
-        protected abstract string TypeDesignatingPropertyName { get; }
     }
 }

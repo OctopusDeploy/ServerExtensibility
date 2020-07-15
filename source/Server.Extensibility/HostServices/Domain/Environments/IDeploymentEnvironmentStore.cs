@@ -1,4 +1,5 @@
-﻿using Octopus.Server.Extensibility.HostServices.Model.Environments;
+﻿using System;
+using Octopus.Server.Extensibility.HostServices.Model.Environments;
 
 namespace Octopus.Server.Extensibility.HostServices.Domain.Environments
 {

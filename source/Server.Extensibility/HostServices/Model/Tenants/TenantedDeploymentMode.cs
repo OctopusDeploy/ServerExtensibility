@@ -1,4 +1,6 @@
-﻿namespace Octopus.Server.Extensibility.HostServices.Model.Tenants
+﻿using System;
+
+namespace Octopus.Server.Extensibility.HostServices.Model.Tenants
 {
     public enum TenantedDeploymentMode
     {

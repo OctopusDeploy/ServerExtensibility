@@ -1,4 +1,6 @@
-﻿namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration
+﻿using System;
+
+namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration
 {
     public interface IExtensionConfigurationStore
     {

@@ -5,7 +5,7 @@ namespace Octopus.Server.Extensibility.Resources.IssueTrackers
 {
     public class WorkItemLink : IEquatable<WorkItemLink>, IComparable<WorkItemLink>
     {
-        private static readonly Regex LastNumberRegex = new Regex(@"(\d+)$", RegexOptions.Compiled);
+        static readonly Regex LastNumberRegex = new Regex(@"(\d+)$", RegexOptions.Compiled);
 
         public string Id { get; set; } = string.Empty;
         public string LinkUrl { get; set; } = string.Empty;
@@ -35,7 +35,7 @@ namespace Octopus.Server.Extensibility.Resources.IssueTrackers
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != GetType()) return false;
-            return Equals((WorkItemLink) obj);
+            return Equals((WorkItemLink)obj);
         }
 
         public override int GetHashCode()

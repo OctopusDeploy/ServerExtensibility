@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using Octopus.Data.Model.Configuration;
 using Octopus.Data.Resources.Attributes;
@@ -11,7 +12,9 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration
         {
         }
 
-        protected ExtensionConfigurationDocument(string id, string name, string extensionAuthor,
+        protected ExtensionConfigurationDocument(string id,
+            string name,
+            string extensionAuthor,
             string configurationSchemaVersion) : base(id)
         {
             Name = name;

@@ -1,3 +1,4 @@
+using System;
 using Octopus.Server.Extensibility.HostServices.Domain.Events;
 using Octopus.Server.Extensibility.HostServices.Model.BuildInformation;
 

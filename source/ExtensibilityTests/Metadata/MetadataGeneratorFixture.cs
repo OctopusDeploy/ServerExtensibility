@@ -15,26 +15,6 @@ namespace Node.Extensibility.Tests.Metadata
     [TestFixture]
     public class MetadataGeneratorFixture
     {
-        public void SettingsValuesShouldBeCorrect()
-        {
-            var resource = new TopLevelResource
-            {
-                SecondLevelResource = new SecondLevelResource
-                {
-                    SensitiveStringProperty = "String value",
-                    BoolProperty = false,
-                    IntArrayProperty = new[] {1, 2, 3},
-                    NullableDateTimeOffsetProperty = null,
-                    StringArrayProperty = new[] {"first", "second"}
-                },
-                DateTimeOffsetProperty = DateTime.Now,
-                IntProperty = 4,
-                NullableDateTimeProperty = null,
-                NullableIntProperty = 5,
-                ListOfStringProperty = new List<string> {"1st", "2nd", "3rd"}
-            };
-        }
-
         public enum TestEnum
         {
             First = 5,
@@ -45,82 +25,24 @@ namespace Node.Extensibility.Tests.Metadata
             Fourth
         }
 
-        public abstract class SettingsResource
+        public void SettingsValuesShouldBeCorrect()
         {
-            protected SettingsResource()
+            var resource = new TopLevelResource
             {
-                Id = GetType().Name;
-            }
-
-            public string Id { get; set; }
-
-            public string SomeValue { get; set; }
-        }
-
-        public class SelfReferencingResource : SettingsResource
-        {
-            public string Name { get; set; }
-
-            public SelfReferencingResource SelfReference { get; set; }
-        }
-
-        public class ParentResource : SettingsResource
-        {
-            public List<ChildResource> Children { get; set; }
-        }
-
-        public class ChildResource
-        {
-            public ParentResource Parent { get; set; }
-
-            public int ChildIntProperty { get; set; }
-        }
-
-        [System.ComponentModel.Description("This is a resource level description")]
-        public class TopLevelResource : SettingsResource
-        {
-            public SecondLevelResource SecondLevelResource { get; set; }
-
-            [DisplayName("Duplicated 2nd Level")]
-            [System.ComponentModel.Description("This 2nd-level resource has been duplicated")]
-            public SecondLevelResource DuplicateSecondLevelResource { get; set; }
-
-            [Required] public DateTime? NullableDateTimeProperty { get; set; }
-
-            public DateTimeOffset DateTimeOffsetProperty { get; set; }
-
-            public int IntProperty { get; set; }
-
-            [HasOptions(SelectMode.Single)] public TestEnum EnumProp { get; set; }
-
-            public int? NullableIntProperty { get; set; }
-
-            public List<string> ListOfStringProperty { get; set; }
-
-            public DateTime?[] NullableDateTimeArray { get; set; }
-
-            [ReadOnly(true)] public string HandsOff { get; set; }
-        }
-
-        public class SecondLevelResource
-        {
-            public SensitiveValue SensitiveStringProperty { get; set; }
-
-            public DateTimeOffset? NullableDateTimeOffsetProperty { get; set; }
-
-            public bool BoolProperty { get; set; }
-
-            public string[] StringArrayProperty { get; set; }
-
-            public int[] IntArrayProperty { get; set; }
-        }
-
-        public class DependentPropertiesResource
-        {
-            public string PropertyA { get; set; }
-
-            [ApplicableWhenSpecificValue(nameof(PropertyA), "Foo")]
-            public string PropertyB { get; set; }
+                SecondLevelResource = new SecondLevelResource
+                {
+                    SensitiveStringProperty = "String value",
+                    BoolProperty = false,
+                    IntArrayProperty = new[] { 1, 2, 3 },
+                    NullableDateTimeOffsetProperty = null,
+                    StringArrayProperty = new[] { "first", "second" }
+                },
+                DateTimeOffsetProperty = DateTime.Now,
+                IntProperty = 4,
+                NullableDateTimeProperty = null,
+                NullableIntProperty = 5,
+                ListOfStringProperty = new List<string> { "1st", "2nd", "3rd" }
+            };
         }
 
         [Test]
@@ -133,7 +55,7 @@ namespace Node.Extensibility.Tests.Metadata
             var serializerSettings = new JsonSerializerSettings
             {
                 Formatting = Formatting.Indented,
-                Converters = new List<JsonConverter> {new StringEnumConverter()}
+                Converters = new List<JsonConverter> { new StringEnumConverter() }
             };
 
             var json = JsonConvert.SerializeObject(metadata, serializerSettings);
@@ -190,6 +112,87 @@ namespace Node.Extensibility.Tests.Metadata
             var json = JsonConvert.SerializeObject(metadata, serializerSettings);
 
             this.Assent(json);
+        }
+
+        public abstract class SettingsResource
+        {
+            protected SettingsResource()
+            {
+                Id = GetType().Name;
+            }
+
+            public string Id { get; set; }
+
+            public string SomeValue { get; set; }
+        }
+
+        public class SelfReferencingResource : SettingsResource
+        {
+            public string Name { get; set; }
+
+            public SelfReferencingResource SelfReference { get; set; }
+        }
+
+        public class ParentResource : SettingsResource
+        {
+            public List<ChildResource> Children { get; set; }
+        }
+
+        public class ChildResource
+        {
+            public ParentResource Parent { get; set; }
+
+            public int ChildIntProperty { get; set; }
+        }
+
+        [System.ComponentModel.Description("This is a resource level description")]
+        public class TopLevelResource : SettingsResource
+        {
+            public SecondLevelResource SecondLevelResource { get; set; }
+
+            [DisplayName("Duplicated 2nd Level")]
+            [System.ComponentModel.Description("This 2nd-level resource has been duplicated")]
+            public SecondLevelResource DuplicateSecondLevelResource { get; set; }
+
+            [Required]
+            public DateTime? NullableDateTimeProperty { get; set; }
+
+            public DateTimeOffset DateTimeOffsetProperty { get; set; }
+
+            public int IntProperty { get; set; }
+
+            [HasOptions(SelectMode.Single)]
+            public TestEnum EnumProp { get; set; }
+
+            public int? NullableIntProperty { get; set; }
+
+            public List<string> ListOfStringProperty { get; set; }
+
+            public DateTime?[] NullableDateTimeArray { get; set; }
+
+            [ReadOnly(true)]
+            public string HandsOff { get; set; }
+        }
+
+        public class SecondLevelResource
+        {
+            public SensitiveValue SensitiveStringProperty { get; set; }
+
+            public DateTimeOffset? NullableDateTimeOffsetProperty { get; set; }
+
+            public bool BoolProperty { get; set; }
+
+            public string[] StringArrayProperty { get; set; }
+
+            public int[] IntArrayProperty { get; set; }
+        }
+
+        public class DependentPropertiesResource
+        {
+            public string PropertyA { get; set; }
+
+            [ApplicableWhenSpecificValue(nameof(PropertyA), "Foo")]
+            public string PropertyB { get; set; }
         }
     }
 }

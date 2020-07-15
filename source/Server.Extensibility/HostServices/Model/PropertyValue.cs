@@ -28,7 +28,7 @@ namespace Octopus.Server.Extensibility.HostServices.Model
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != GetType()) return false;
-            return Equals((PropertyValue) obj);
+            return Equals((PropertyValue)obj);
         }
 
         public override int GetHashCode()

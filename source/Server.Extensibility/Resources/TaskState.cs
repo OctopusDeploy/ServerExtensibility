@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Octopus.Server.Extensibility.Resources
 {
@@ -19,14 +20,14 @@ namespace Octopus.Server.Extensibility.Resources
     public class TaskStates
     {
         public static IReadOnlyList<TaskState> CompletedUnsuccessfully =
-            new[] {TaskState.Failed, TaskState.TimedOut, TaskState.Canceled};
+            new[] { TaskState.Failed, TaskState.TimedOut, TaskState.Canceled };
 
         public static IReadOnlyList<TaskState> Completed = new[]
-            {TaskState.Success, TaskState.Failed, TaskState.TimedOut, TaskState.Canceled};
+            { TaskState.Success, TaskState.Failed, TaskState.TimedOut, TaskState.Canceled };
 
         public static IReadOnlyList<TaskState> Incomplete = new[]
-            {TaskState.Queued, TaskState.Executing, TaskState.Cancelling};
+            { TaskState.Queued, TaskState.Executing, TaskState.Cancelling };
 
-        public static IReadOnlyList<TaskState> Running = new[] {TaskState.Executing, TaskState.Cancelling};
+        public static IReadOnlyList<TaskState> Running = new[] { TaskState.Executing, TaskState.Cancelling };
     }
 }

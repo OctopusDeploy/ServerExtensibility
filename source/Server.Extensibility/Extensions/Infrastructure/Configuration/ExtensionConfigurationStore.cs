@@ -1,3 +1,4 @@
+using System;
 using Octopus.Data.Storage.Configuration;
 
 namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration

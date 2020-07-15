@@ -14,7 +14,7 @@ namespace Octopus.Server.Extensibility.Metadata
     public class MetadataGenerator : IGenerateMetadata
     {
         //property names to be ignored on any object
-        private readonly HashSet<string> ignoreProperties = new HashSet<string>
+        readonly HashSet<string> ignoreProperties = new HashSet<string>
         {
             "LastModifiedBy",
             "LastModifiedOn",
@@ -22,19 +22,19 @@ namespace Octopus.Server.Extensibility.Metadata
         };
 
         //the approved types we will map to metadata, and how to stringify them
-        private readonly Dictionary<Type, string> mappings = new Dictionary<Type, string>
+        readonly Dictionary<Type, string> mappings = new Dictionary<Type, string>
         {
-            {typeof(string), "string"},
-            {typeof(int), "int"},
-            {typeof(DateTime), "DateTime"},
-            {typeof(DateTimeOffset), "DateTimeOffset"},
-            {typeof(bool), "bool"},
-            {typeof(long), "long"},
-            {typeof(SensitiveValue), "SensitiveValue"},
-            {typeof(DeploymentActionPackageResource), "DeploymentActionPackage"}
+            { typeof(string), "string" },
+            { typeof(int), "int" },
+            { typeof(DateTime), "DateTime" },
+            { typeof(DateTimeOffset), "DateTimeOffset" },
+            { typeof(bool), "bool" },
+            { typeof(long), "long" },
+            { typeof(SensitiveValue), "SensitiveValue" },
+            { typeof(DeploymentActionPackageResource), "DeploymentActionPackage" }
         };
 
-        private readonly Metadata metadata;
+        readonly Metadata metadata;
 
         public MetadataGenerator()
         {
@@ -58,7 +58,7 @@ namespace Octopus.Server.Extensibility.Metadata
 
         //will generate a type representing the passed-in type, and return the string
         //name of the type
-        private string Generate(Type type)
+        string Generate(Type type)
         {
             //root type is submitted
             var rootType = new TypeMetadata
@@ -133,7 +133,7 @@ namespace Octopus.Server.Extensibility.Metadata
                     if (prop.IsDefined(typeof(PropertyApplicabilityAttribute)))
                     {
                         var applicableAttr = prop.GetCustomAttribute<PropertyApplicabilityAttribute>();
-                        
+
                         propMetadata.DisplayInfo.PropertyApplicability = new PropertyApplicability(applicableAttr.Mode, applicableAttr.DependsOnPropertyName)
                         {
                             DependsOnPropertyValue = applicableAttr.DependsOnPropertyValue
@@ -157,7 +157,7 @@ namespace Octopus.Server.Extensibility.Metadata
             return rootType.Name;
         }
 
-        private Dictionary<string, string> ProjectEnum(Type enumType)
+        Dictionary<string, string> ProjectEnum(Type enumType)
         {
             if (!enumType.GetTypeInfo().IsEnum) throw new Exception("Parameter must be an enum");
 
@@ -169,7 +169,7 @@ namespace Octopus.Server.Extensibility.Metadata
             return values;
         }
 
-        private string GetTypeDescriptor(Type type)
+        string GetTypeDescriptor(Type type)
         {
             //Array
             if (type.IsArray) return GetTypeDescriptor(type.GetElementType()) + "[]";

@@ -7,7 +7,7 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration
     public abstract class ConfigurationDocumentStore<TConfiguration> : IConfigurationDocumentStore<TConfiguration>
         where TConfiguration : ConfigurationDocument, new()
     {
-        private readonly IConfigurationStore configurationStore;
+        readonly IConfigurationStore configurationStore;
 
         protected ConfigurationDocumentStore(IConfigurationStore configurationStore)
         {
@@ -30,9 +30,9 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration
 
             var existingConfig = configurationStore.Get<TConfiguration>(Id);
             if (existingConfig == null)
-                configurationStore.Create((TConfiguration) config);
+                configurationStore.Create((TConfiguration)config);
             else
-                configurationStore.Update((TConfiguration) config);
+                configurationStore.Update((TConfiguration)config);
 
             OnConfigurationChanged();
         }

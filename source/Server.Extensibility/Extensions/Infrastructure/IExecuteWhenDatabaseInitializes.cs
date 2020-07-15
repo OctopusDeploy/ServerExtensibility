@@ -1,4 +1,6 @@
-﻿namespace Octopus.Server.Extensibility.Extensions.Infrastructure
+﻿using System;
+
+namespace Octopus.Server.Extensibility.Extensions.Infrastructure
 {
     public interface IExecuteWhenDatabaseInitializes
     {

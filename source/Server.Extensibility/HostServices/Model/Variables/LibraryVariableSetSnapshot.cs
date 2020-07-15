@@ -1,4 +1,6 @@
-﻿namespace Octopus.Server.Extensibility.HostServices.Model.Variables
+﻿using System;
+
+namespace Octopus.Server.Extensibility.HostServices.Model.Variables
 {
     public class LibraryVariableSetSnapshot
     {

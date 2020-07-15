@@ -1,13 +1,21 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
 {
     public class OctoRequest
     {
-        public OctoRequest(string scheme, bool isHttps, string host, string pathBase, string path, string protocol,
-            Stream body, IDictionary<string, IEnumerable<string>> headers,
-            IDictionary<string, IEnumerable<string>> query, IDictionary<string, IEnumerable<string>> form,
+        public OctoRequest(string scheme,
+            bool isHttps,
+            string host,
+            string pathBase,
+            string path,
+            string protocol,
+            Stream body,
+            IDictionary<string, IEnumerable<string>> headers,
+            IDictionary<string, IEnumerable<string>> query,
+            IDictionary<string, IEnumerable<string>> form,
             IDictionary<string, string> cookies)
         {
             Scheme = scheme;

@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration;
 
 namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
@@ -10,7 +11,8 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
         where TConfigurationStore : IExtensionConfigurationStore
     {
         public SecuredWhenEnabledAsyncActionInvoker(TAction action, TConfigurationStore configurationStore) : base(
-            action, configurationStore)
+            action,
+            configurationStore)
         {
         }
 

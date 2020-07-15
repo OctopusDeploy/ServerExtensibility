@@ -1,4 +1,6 @@
-﻿namespace Octopus.Server.Extensibility.HostServices.Model.Projects
+﻿using System;
+
+namespace Octopus.Server.Extensibility.HostServices.Model.Projects
 {
     public interface IProvideProjectSettingsValues
     {

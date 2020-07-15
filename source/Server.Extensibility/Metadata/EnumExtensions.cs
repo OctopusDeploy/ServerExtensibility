@@ -12,7 +12,7 @@ namespace Octopus.Server.Extensibility.Metadata
             if (!type.IsEnum) throw new ArgumentException($"{enumType.Name} must be an Enum type", nameof(enumType));
             var info = type.GetDeclaredField(value.ToString());
             var attr = info?.GetCustomAttribute(typeof(DescriptionAttribute), false);
-            if (attr != null) return ((DescriptionAttribute) attr).Description;
+            if (attr != null) return ((DescriptionAttribute)attr).Description;
             return value.ToString();
         }
     }

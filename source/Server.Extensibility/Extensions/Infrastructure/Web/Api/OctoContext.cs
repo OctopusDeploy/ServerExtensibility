@@ -1,4 +1,5 @@
-﻿using System.Security.Principal;
+﻿using System;
+using System.Security.Principal;
 
 namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
 {

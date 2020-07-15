@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 using Octopus.Data.Model;
 
 namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration
@@ -28,6 +29,7 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration
 
         [JsonIgnore]
         public T TypedValue { get; }
+
         public bool ShowInPortalSummary { get; set; }
         public string Description { get; set; }
         public bool IsSensitive { get; }
