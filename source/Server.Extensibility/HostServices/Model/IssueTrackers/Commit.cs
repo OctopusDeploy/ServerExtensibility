@@ -4,8 +4,8 @@ namespace Octopus.Server.Extensibility.HostServices.Model.IssueTrackers
 {
     public class Commit : IEquatable<Commit>
     {
-        public string Id { get; set; }
-        public string Comment { get; set; }
+        public string Id { get; set; } = string.Empty;
+        public string Comment { get; set; } = string.Empty;
 
         public bool Equals(Commit other)
         {

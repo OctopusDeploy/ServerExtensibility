@@ -9,9 +9,10 @@
     <Authors>Octopus Deploy</Authors>
     <PackageId>Octopus.Server.Extensibility</PackageId>
     <PackageIconUrl>http://i.octopusdeploy.com/resources/Avatar3_360.png</PackageIconUrl>
-    <PackageLicenseUrl>https://github.com/OctopusDeploy/ServerExtensibility/blob/main/LICENSE.txt</PackageLicenseUrl>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/OctopusDeploy/ServerExtensibility</PackageProjectUrl>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
     <Compile Remove="Extensions\Infrastructure\Web\Content\**" />
@@ -26,8 +27,9 @@
   <ItemGroup>
     <PackageReference Include="Autofac" Version="4.9.4" />
     <PackageReference Include="Octopus.TinyTypes" Version="0.1.21" />
-    <PackageReference Include="Octopus.Versioning" Version="4.1.8" />
+    <PackageReference Include="Octopus.Versioning" Version="4.2.0" />
     <PackageReference Include="System.Security.Principal" Version="4.3.0" />
+    <PackageReference Include="Octopus.Data" Version="5.0.4-enh-nullable0008" />
     <PackageReference Include="Octopus.Data" Version="5.0.4" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
     <PackageReference Include="System.ComponentModel.Primitives" Version="4.3.0" />

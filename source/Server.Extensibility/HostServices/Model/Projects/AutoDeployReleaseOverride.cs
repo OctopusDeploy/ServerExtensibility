@@ -11,7 +11,7 @@ namespace Octopus.Server.Extensibility.HostServices.Model.Projects
         }
 
         [JsonConstructor]
-        public AutoDeployReleaseOverride(string environmentId, string tenantId, string releaseId)
+        public AutoDeployReleaseOverride(string environmentId, string? tenantId, string releaseId)
         {
             EnvironmentId = environmentId;
             TenantId = tenantId;
@@ -19,13 +19,13 @@ namespace Octopus.Server.Extensibility.HostServices.Model.Projects
         }
 
         public string EnvironmentId { get; }
-        public string TenantId { get; }
+        public string? TenantId { get; }
         public string ReleaseId { get; }
 
         public static IEqualityComparer<AutoDeployReleaseOverride> EnvironmentIdTenantIdComparer { get; } =
             new EnvironmentIdTenantIdEqualityComparer();
 
-        private sealed class EnvironmentIdTenantIdEqualityComparer : IEqualityComparer<AutoDeployReleaseOverride>
+        sealed class EnvironmentIdTenantIdEqualityComparer : IEqualityComparer<AutoDeployReleaseOverride>
         {
             public bool Equals(AutoDeployReleaseOverride x, AutoDeployReleaseOverride y)
             {

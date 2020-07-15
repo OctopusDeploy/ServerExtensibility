@@ -19,15 +19,15 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration
             ConfigurationSchemaVersion = configurationSchemaVersion;
         }
 
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
 
         [DisplayName("Author")]
         [Description("The author of this extension")]
-        public string ExtensionAuthor { get; set; }
+        public string ExtensionAuthor { get; set; } = string.Empty;
 
         [DisplayName("Configuration Schema Version")]
         [Description("The schema version of this configuration document")]
-        public string ConfigurationSchemaVersion { get; set; }
+        public string ConfigurationSchemaVersion { get; set; } = string.Empty;
 
         [DisplayName("Is Enabled")]
         [Description("Whether or not this extension is enabled")]

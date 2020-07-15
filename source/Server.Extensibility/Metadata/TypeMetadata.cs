@@ -4,13 +4,8 @@ namespace Octopus.Server.Extensibility.Metadata
 {
     public class TypeMetadata
     {
-        public TypeMetadata()
-        {
-            Properties = new List<PropertyMetadata>();
-        }
+        public string Name { get; set; } = string.Empty;
 
-        public string Name { get; set; }
-
-        public List<PropertyMetadata> Properties { get; set; }
+        public List<PropertyMetadata> Properties { get; set; } = new List<PropertyMetadata>();
     }
 }

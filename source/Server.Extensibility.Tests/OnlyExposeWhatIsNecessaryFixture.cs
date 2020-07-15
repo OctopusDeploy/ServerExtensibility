@@ -7,7 +7,7 @@ using NUnit.Framework;
 namespace Octopus.Server.Extensibility.Tests
 {
     /// <summary>
-    ///     This class is designed to form the base for tests in the extentions/module world, where all classes other than
+    /// This class is designed to form the base for tests in the extentions/module world, where all classes other than
     ///     the entry point should be private, unless there's a really good reason.
     ///     The entry class will be either an IOctopusExtension or a straight Autofac Module, depending on whether it's
     ///     an extension or module respectively under test.

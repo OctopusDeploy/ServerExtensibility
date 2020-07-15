@@ -10,18 +10,17 @@ namespace Octopus.Server.Extensibility.JsonConverters
 {
     public abstract class InheritedResourceConverter<TBaseResource> : JsonConverter
     {
-        private readonly ConcurrentDictionary<Type, IReadOnlyList<PropertyInfo>> readablePropertiesCache =
-            new ConcurrentDictionary<Type, IReadOnlyList<PropertyInfo>>();
+        readonly ConcurrentDictionary<Type, IReadOnlyList<PropertyInfo>> readablePropertiesCache = new ConcurrentDictionary<Type, IReadOnlyList<PropertyInfo>>();
+        readonly ConcurrentDictionary<Type, IReadOnlyList<PropertyInfo>> writeablePropertiesCache = new ConcurrentDictionary<Type, IReadOnlyList<PropertyInfo>>();
 
-        private readonly ConcurrentDictionary<Type, IReadOnlyList<PropertyInfo>> writeablePropertiesCache =
-            new ConcurrentDictionary<Type, IReadOnlyList<PropertyInfo>>();
-
-        protected abstract IDictionary<string, Type> DerivedTypeMappings { get; }
-
-        protected abstract string TypeDesignatingPropertyName { get; }
-
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
         {
+            if (value == null)
+            {
+                writer.WriteNull();
+                return;
+            }
+            
             writer.WriteStartObject();
 
             var properties = readablePropertiesCache.GetOrAdd(
@@ -46,25 +45,29 @@ namespace Octopus.Server.Extensibility.JsonConverters
         {
         }
 
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue,
-            JsonSerializer serializer)
+        public override object? ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer)
         {
             if (reader.TokenType == JsonToken.Null)
                 return null;
 
             var jo = JObject.Load(reader);
             var designatingProperty = jo.GetValue(TypeDesignatingPropertyName);
+            if (designatingProperty == null)
+            {
+                throw new Exception($"Null value returned for the Type Designator");
+            }
 
-            var derivedType = designatingProperty.ToObject<string>();
+            var derivedType = designatingProperty.ToObject<string>() ?? string.Empty;
             if (!DerivedTypeMappings.ContainsKey(derivedType))
-                throw new Exception(
-                    $"Unable to determine type to deserialize. {TypeDesignatingPropertyName} `{derivedType}` does not map to a known type");
+            {
+                throw new Exception($"Unable to determine type to deserialize. {TypeDesignatingPropertyName} `{derivedType}` does not map to a known type");
+            }
 
             var type = DerivedTypeMappings[derivedType];
 
             var ctor = type.GetConstructors(BindingFlags.Public | BindingFlags.Instance).Single();
             var args = ctor.GetParameters().Select(p =>
-                jo.GetValue(char.ToUpper(p.Name[0]) + p.Name.Substring(1))
+                jo.GetValue(char.ToUpper(p.Name[0]) + p.Name.Substring(1))?
                     .ToObject(p.ParameterType, serializer)).ToArray();
             var instance = ctor.Invoke(args);
 
@@ -89,5 +92,9 @@ namespace Octopus.Server.Extensibility.JsonConverters
         {
             return typeof(TBaseResource).IsAssignableFrom(objectType);
         }
+
+        protected abstract IDictionary<string, Type> DerivedTypeMappings { get; }
+
+        protected abstract string TypeDesignatingPropertyName { get; }
     }
 }

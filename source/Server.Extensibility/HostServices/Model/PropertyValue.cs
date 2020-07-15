@@ -49,7 +49,7 @@ namespace Octopus.Server.Extensibility.HostServices.Model
             return !Equals(left, right);
         }
 
-        public static explicit operator string(PropertyValue v)
+        public static explicit operator string?(PropertyValue v)
         {
             return v?.Value;
         }

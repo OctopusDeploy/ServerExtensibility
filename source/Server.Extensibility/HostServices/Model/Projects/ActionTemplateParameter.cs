@@ -18,17 +18,18 @@ namespace Octopus.Server.Extensibility.HostServices.Model.Projects
             Name = name;
         }
 
-        public string Id { get; set; }
-        public string Label { get; set; }
-        public string HelpText { get; set; }
-        public PropertyValue DefaultValue { get; set; }
+        public string Id { get; set; } = string.Empty;
+        public string Name { get; set; } = string.Empty;
+        public string Label { get; set; } = string.Empty;
+        public string HelpText { get; set; } = string.Empty;
+        public PropertyValue? DefaultValue { get; set; }
         public IDictionary<string, string> DisplaySettings { get; set; }
 
-        [JsonIgnore] public bool HasDefault => DefaultValue != null && DefaultValue.HasValue;
+        [JsonIgnore]
+        public bool HasDefault => DefaultValue?.HasValue ?? false;
 
-        [JsonIgnore] public string VariableName => string.IsNullOrEmpty(Name) ? Label : Name;
-
-        public string Name { get; set; }
+        [JsonIgnore]
+        public string VariableName => string.IsNullOrEmpty(Name) ? Label : Name;
 
         public ActionTemplateParameter Duplicate()
         {

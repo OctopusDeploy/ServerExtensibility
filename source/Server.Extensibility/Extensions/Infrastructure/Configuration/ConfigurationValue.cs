@@ -6,7 +6,7 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration
     public interface IConfigurationValue
     {
         string Key { get; set; }
-        object Value { get; }
+        object? Value { get; }
         bool ShowInPortalSummary { get; set; }
         string Description { get; set; }
         bool IsSensitive { get; }
@@ -14,10 +14,6 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration
 
     public class ConfigurationValue<T> : IConfigurationValue
     {
-        protected ConfigurationValue()
-        {
-        }
-
         public ConfigurationValue(string key, T value, bool showInPortalSummary, string description = "")
         {
             Key = key;
@@ -27,10 +23,11 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration
             IsSensitive = typeof(SensitiveString).IsAssignableFrom(typeof(T));
         }
 
-        [JsonIgnore] public T TypedValue { get; }
-
         public string Key { get; set; }
-        public object Value => IsSensitive ? (object) (TypedValue as SensitiveString)?.Value : TypedValue;
+        public object? Value => IsSensitive ? (object?)(TypedValue as SensitiveString)?.Value : TypedValue;
+
+        [JsonIgnore]
+        public T TypedValue { get; }
         public bool ShowInPortalSummary { get; set; }
         public string Description { get; set; }
         public bool IsSensitive { get; }

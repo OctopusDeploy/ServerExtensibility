@@ -4,6 +4,12 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
 {
     public class OctoCookie
     {
+        public OctoCookie(string name, string value)
+        {
+            Name = name;
+            Value = value;
+        }
+
         /// <summary>Gets or sets the name of the cookie.</summary>
         /// <returns>The name of the cookie.</returns>
         public string Name { get; set; }
@@ -14,7 +20,7 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
 
         /// <summary>Gets or sets the domain to associate the cookie with.</summary>
         /// <returns>The domain to associate the cookie with.</returns>
-        public string Domain { get; set; }
+        public string? Domain { get; set; }
 
         /// <summary>Gets or sets the cookie path.</summary>
         /// <returns>The cookie path.</returns>

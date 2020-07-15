@@ -18,7 +18,7 @@ namespace Octopus.Server.Extensibility.HostServices.Model.Projects
         string ProjectId { get; }
         string ChannelId { get; }
         string EnvironmentId { get; }
-        string TenantId { get; }
+        string? TenantId { get; }
 
         string ReleaseId { get; }
 

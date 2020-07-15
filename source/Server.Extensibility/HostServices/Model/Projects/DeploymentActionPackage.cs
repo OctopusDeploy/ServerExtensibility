@@ -9,7 +9,7 @@ namespace Octopus.Server.Extensibility.HostServices.Model.Projects
     public class DeploymentActionPackage
     {
         [JsonConstructor]
-        public DeploymentActionPackage(string deploymentActionId, string packageReferenceId)
+        public DeploymentActionPackage(string deploymentActionId, string? packageReferenceId)
         {
             DeploymentActionId = deploymentActionId;
             PackageReferenceId = packageReferenceId;
@@ -17,7 +17,7 @@ namespace Octopus.Server.Extensibility.HostServices.Model.Projects
 
         public string DeploymentActionId { get; }
 
-        public string PackageReferenceId { get; }
+        public string? PackageReferenceId { get; }
 
         public DeploymentActionPackage Clone()
         {
@@ -26,7 +26,7 @@ namespace Octopus.Server.Extensibility.HostServices.Model.Projects
 
         public static DeploymentActionPackage ForPrimaryPackage(IDeploymentAction deploymentAction)
         {
-            return new DeploymentActionPackage(deploymentAction.Id, deploymentAction.Packages.PrimaryPackage.Id);
+            return new DeploymentActionPackage(deploymentAction.Id, deploymentAction.Packages.PrimaryPackage?.Id);
         }
 
         #region Equality members

@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Octopus.Data;
 
 namespace Octopus.Server.Extensibility.HostServices.Model
 {
     public class PackageReferenceCollection : ICollection<PackageReference>
     {
-        private readonly Dictionary<string, PackageReference> idMap =
-            new Dictionary<string, PackageReference>(StringComparer.OrdinalIgnoreCase);
+        readonly Dictionary<string, PackageReference> idMap = new Dictionary<string, PackageReference>(StringComparer.OrdinalIgnoreCase);
 
-        private readonly Dictionary<string, PackageReference> nameMap =
-            new Dictionary<string, PackageReference>(StringComparer.OrdinalIgnoreCase);
+        readonly Dictionary<string, PackageReference> nameMap = new Dictionary<string, PackageReference>(StringComparer.OrdinalIgnoreCase);
 
         public PackageReferenceCollection()
         {
@@ -21,7 +20,7 @@ namespace Octopus.Server.Extensibility.HostServices.Model
             foreach (var package in packages) Add(package);
         }
 
-        public PackageReference PrimaryPackage => nameMap.ContainsKey("") ? nameMap[""] : null;
+        public PackageReference? PrimaryPackage => nameMap.ContainsKey("") ? nameMap[""] : null;
 
         public bool HasPrimaryPackage => PrimaryPackage != null;
 
@@ -87,39 +86,27 @@ namespace Octopus.Server.Extensibility.HostServices.Model
             return nameMap[key];
         }
 
-        public bool TryGetByName(string name, out PackageReference package)
+        public Result<PackageReference> TryGetByName(string name)
         {
             var key = name ?? "";
-            if (nameMap.ContainsKey(key))
-            {
-                package = nameMap[key];
-                return true;
-            }
-
-            package = null;
-            return false;
+            return nameMap.ContainsKey(key) ? Result<PackageReference>.Success(nameMap[key]) : Result<PackageReference>.Failed();
         }
 
-        public bool TryGetById(string id, out PackageReference package)
+        public Result<PackageReference> TryGetById(string id)
         {
-            if (!string.IsNullOrEmpty(id) && idMap.ContainsKey(id))
-            {
-                package = idMap[id];
-                return true;
-            }
-
-            package = null;
-            return false;
+            return idMap.ContainsKey(id) ? Result<PackageReference>.Success(idMap[id]) : Result<PackageReference>.Failed();
         }
 
-        public bool TryGetByIdOrName(string idOrName, out PackageReference package)
+        public Result<PackageReference> TryGetByIdOrName(string idOrName)
         {
-            if (TryGetById(idOrName, out package)) return true;
+            var result = TryGetById(idOrName);
+            if (result.WasSuccessful)
+            {
+                return result;
+            }
 
-            if (TryGetByName(idOrName, out package)) return true;
-
-            package = null;
-            return false;
+            result = TryGetByName(idOrName);
+            return result;
         }
     }
 }

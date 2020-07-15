@@ -89,9 +89,9 @@ namespace Octopus.Server.Extensibility.Metadata
 
                     //accepts [DisplayName()] or [Display(Name=)] -> defaults to property name
                     if (prop.IsDefined(typeof(DisplayNameAttribute)))
-                        propMetadata.DisplayInfo.Label = prop.GetCustomAttribute<DisplayNameAttribute>()?.DisplayName;
+                        propMetadata.DisplayInfo.Label = prop.GetCustomAttribute<DisplayNameAttribute>()?.DisplayName ?? string.Empty;
                     else if (prop.IsDefined(typeof(DisplayAttribute)))
-                        propMetadata.DisplayInfo.Label = prop.GetCustomAttribute<DisplayAttribute>()?.Name;
+                        propMetadata.DisplayInfo.Label = prop.GetCustomAttribute<DisplayAttribute>()?.Name ?? string.Empty;
                     else
                         propMetadata.DisplayInfo.Label = prop.Name;
 
@@ -126,22 +126,16 @@ namespace Octopus.Server.Extensibility.Metadata
                         {
                             var listApiAttr = prop.GetCustomAttribute<ListApiAttribute>();
 
-                            propMetadata.DisplayInfo.ListApi = new ListApiMetadata
-                            {
-                                SelectMode = listApiAttr.SelectMode.ToString(),
-                                ApiEndpoint = listApiAttr.ApiEndpoint
-                            };
+                            propMetadata.DisplayInfo.ListApi = new ListApiMetadata(listApiAttr.SelectMode.ToString(), listApiAttr.ApiEndpoint);
                         }
                     }
 
                     if (prop.IsDefined(typeof(PropertyApplicabilityAttribute)))
                     {
                         var applicableAttr = prop.GetCustomAttribute<PropertyApplicabilityAttribute>();
-
-                        propMetadata.DisplayInfo.PropertyApplicability = new PropertyApplicability
+                        
+                        propMetadata.DisplayInfo.PropertyApplicability = new PropertyApplicability(applicableAttr.Mode, applicableAttr.DependsOnPropertyName)
                         {
-                            Mode = applicableAttr.Mode,
-                            DependsOnPropertyName = applicableAttr.DependsOnPropertyName,
                             DependsOnPropertyValue = applicableAttr.DependsOnPropertyValue
                         };
                     }

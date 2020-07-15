@@ -2,8 +2,14 @@
 {
     public class ListApiMetadata
     {
-        public string SelectMode { get; set; }
+        public ListApiMetadata(string selectMode, string apiEndpoint)
+        {
+            SelectMode = selectMode;
+            ApiEndpoint = apiEndpoint;
+        }
 
-        public string ApiEndpoint { get; set; }
+        public string SelectMode { get; }
+
+        public string ApiEndpoint { get; }
     }
 }

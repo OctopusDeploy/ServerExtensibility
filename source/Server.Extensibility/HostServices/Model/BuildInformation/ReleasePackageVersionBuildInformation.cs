@@ -5,26 +5,20 @@ namespace Octopus.Server.Extensibility.HostServices.Model.BuildInformation
 {
     public class ReleasePackageVersionBuildInformation
     {
-        public ReleasePackageVersionBuildInformation()
-        {
-            WorkItems = new WorkItemLink[0];
-            Commits = new CommitDetails[0];
-        }
+        public string PackageId { get; set; } = string.Empty;
+        public string Version { get; set; } = string.Empty;
 
-        public string PackageId { get; set; }
-        public string Version { get; set; }
+        public string BuildEnvironment { get; set; } = string.Empty;
+        public string BuildNumber { get; set; } = string.Empty;
+        public string? BuildUrl { get; set; }
+        public string? Branch { get; set; }
+        public string? VcsType { get; set; }
+        public string? VcsRoot { get; set; }
+        public string? VcsCommitNumber { get; set; }
+        public string? VcsCommitUrl { get; set; }
 
-        public string BuildEnvironment { get; set; }
-        public string BuildNumber { get; set; }
-        public string BuildUrl { get; set; }
-        public string Branch { get; set; }
-        public string VcsType { get; set; }
-        public string VcsRoot { get; set; }
-        public string VcsCommitNumber { get; set; }
-        public string VcsCommitUrl { get; set; }
-
-        public WorkItemLink[] WorkItems { get; set; }
-        public CommitDetails[] Commits { get; set; }
+        public WorkItemLink[] WorkItems { get; set; } = Array.Empty<WorkItemLink>();
+        public CommitDetails[] Commits { get; set; } = Array.Empty<CommitDetails>();
 
         protected bool Equals(ReleasePackageVersionBuildInformation other)
         {
