@@ -86,21 +86,21 @@ namespace Octopus.Server.Extensibility.HostServices.Model
             return nameMap[key];
         }
 
-        public Result<PackageReference> TryGetByName(string name)
+        public IResult<PackageReference> TryGetByName(string name)
         {
             var key = name ?? "";
-            return nameMap.ContainsKey(key) ? Result<PackageReference>.Success(nameMap[key]) : Result<PackageReference>.Failed();
+            return nameMap.ContainsKey(key) ? (IResult<PackageReference>)Result<PackageReference>.Success(nameMap[key]) : Result<PackageReference>.Failed("Name not found");
         }
 
-        public Result<PackageReference> TryGetById(string id)
+        public IResult<PackageReference> TryGetById(string id)
         {
-            return idMap.ContainsKey(id) ? Result<PackageReference>.Success(idMap[id]) : Result<PackageReference>.Failed();
+            return idMap.ContainsKey(id) ? (IResult<PackageReference>)Result<PackageReference>.Success(idMap[id]) : Result<PackageReference>.Failed("Id not found");
         }
 
-        public Result<PackageReference> TryGetByIdOrName(string idOrName)
+        public IResult<PackageReference> TryGetByIdOrName(string idOrName)
         {
             var result = TryGetById(idOrName);
-            if (result.WasSuccessful)
+            if (result is Result<PackageReference>)
                 return result;
 
             result = TryGetByName(idOrName);
