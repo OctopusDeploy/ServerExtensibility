@@ -13,6 +13,7 @@
     <PackageProjectUrl>https://github.com/OctopusDeploy/ServerExtensibility</PackageProjectUrl>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Nullable>enable</Nullable>
+    <WarningsAsErrors>true</WarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
     <Compile Remove="Extensions\Infrastructure\Web\Content\**" />

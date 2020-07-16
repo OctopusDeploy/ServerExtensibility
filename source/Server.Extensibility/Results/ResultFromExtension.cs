@@ -13,10 +13,6 @@ namespace Octopus.Server.Extensibility.Results
     {
     }
 
-    public interface ISuccessResultFromExtension<T> : IResultFromExtension<T>
-    {
-    }
-
     public class ResultFromExtension : Result
     {
         ResultFromExtension()
@@ -28,7 +24,7 @@ namespace Octopus.Server.Extensibility.Results
             return new FailureResultFromDisabledExtension();
         }
 
-        public new static FailureResultFromExtension Failed()
+        public static FailureResultFromExtension Failed()
         {
             return new FailureResultFromExtension(new string[0]);
         }
@@ -38,12 +34,12 @@ namespace Octopus.Server.Extensibility.Results
             return new FailureResultFromExtension(errors);
         }
 
-        public new static FailureResultFromExtension Failed(params FailureResultFromExtension[] becauseOf)
+        public static FailureResultFromExtension Failed(params FailureResultFromExtension[] becauseOf)
         {
             return new FailureResultFromExtension(becauseOf.SelectMany(b => b.Errors) );
         }
 
-        public new static FailureResultFromExtension Failed(IReadOnlyCollection<FailureResultFromExtension> becauseOf)
+        public static FailureResultFromExtension Failed(IReadOnlyCollection<FailureResultFromExtension> becauseOf)
         {
             return new FailureResultFromExtension(becauseOf.SelectMany(b => b.Errors));
         }
@@ -65,7 +61,7 @@ namespace Octopus.Server.Extensibility.Results
             return new ResultFromExtension<T>(value);
         }
 
-        public new static FailureResultFromExtension<T> Failed()
+        public static FailureResultFromExtension<T> Failed()
         {
             return new FailureResultFromExtension<T>(new string[0]);
         }
@@ -75,12 +71,12 @@ namespace Octopus.Server.Extensibility.Results
             return new FailureResultFromExtension<T>(errors);
         }
 
-        public new static FailureResultFromExtension<T> Failed(params FailureResultFromExtension[] becauseOf)
+        public static FailureResultFromExtension<T> Failed(params FailureResultFromExtension[] becauseOf)
         {
             return new FailureResultFromExtension<T>(becauseOf.SelectMany(b => b.Errors) );
         }
 
-        public new static FailureResultFromExtension<T> Failed(IReadOnlyCollection<FailureResultFromExtension> becauseOf)
+        public static FailureResultFromExtension<T> Failed(IReadOnlyCollection<FailureResultFromExtension> becauseOf)
         {
             return new FailureResultFromExtension<T>(becauseOf.SelectMany(b => b.Errors));
         }

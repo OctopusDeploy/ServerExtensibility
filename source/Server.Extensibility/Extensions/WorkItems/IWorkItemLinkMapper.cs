@@ -10,6 +10,6 @@ namespace Octopus.Server.Extensibility.Extensions.WorkItems
         string CommentParser { get; }
         bool IsEnabled { get; }
 
-        ResultFromExtension<WorkItemLink[]> Map(OctopusBuildInformation buildInformation);
+        IResultFromExtension<WorkItemLink[]> Map(OctopusBuildInformation buildInformation);
     }
 }
