@@ -81,7 +81,7 @@ namespace Node.Extensibility.Tests
         public void CheckDisabledIsHandledLikeNormalFailureCheck()
         {
             var result = new TestClassWithResultMethod().DoSomething(TestClassWithResultMethod.Behaviour.Disabled);
-            if (!(result is FailureResultFromExtension<TestObjectBeingReturned>))
+            if (!(result is IFailureResultFromDisabledExtension))
             {
                 Assert.Fail("The result should have indicated the extension was disabled, which should also be treated as a normal failure");
             }

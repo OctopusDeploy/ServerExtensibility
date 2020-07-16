@@ -10,7 +10,11 @@ namespace Octopus.Server.Extensibility.Results
         }
     }
 
-    public class FailureResultFromDisabledExtension : FailureResultFromExtension
+    public interface IFailureResultFromDisabledExtension
+    {
+    }
+
+    public class FailureResultFromDisabledExtension : FailureResultFromExtension, IFailureResultFromDisabledExtension
     {
         internal FailureResultFromDisabledExtension() : base(new[] { "Extension disabled" })
         {
@@ -24,7 +28,7 @@ namespace Octopus.Server.Extensibility.Results
         }
     }
 
-    public class FailureResultFromDisabledExtension<T> : FailureResultFromExtension<T>
+    public class FailureResultFromDisabledExtension<T> : FailureResultFromExtension<T>, IFailureResultFromDisabledExtension
     {
         internal FailureResultFromDisabledExtension() : base(new[] { "Extension disabled" })
         {
