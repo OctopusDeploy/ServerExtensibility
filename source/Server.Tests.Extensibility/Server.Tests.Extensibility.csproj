@@ -2,15 +2,16 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.1</TargetFramework>
-        <RootNamespace>Octopus.Server.Extensibility.Tests</RootNamespace>
-        <AssemblyName>Octopus.Server.Extensibility.Tests</AssemblyName>
+        <RootNamespace>Octopus.Server.Tests.Extensibility</RootNamespace>
+        <AssemblyName>Octopus.Server.Tests.Extensibility</AssemblyName>
         <Description>Provides test infrastructure for Octopus Server extensions/modules.</Description>
         <NeutralLanguage>en-US</NeutralLanguage>
         <Authors>Octopus Deploy</Authors>
-        <PackageId>Octopus.Server.Extensibility.Tests</PackageId>
+        <PackageId>Octopus.Server.Tests.Extensibility</PackageId>
         <PackageIconUrl>http://i.octopusdeploy.com/resources/Avatar3_360.png</PackageIconUrl>
         <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
         <PackageProjectUrl>https://github.com/OctopusDeploy/ServerExtensibility</PackageProjectUrl>
+        <Nullable>enable</Nullable>
     </PropertyGroup>
 
     <ItemGroup>
