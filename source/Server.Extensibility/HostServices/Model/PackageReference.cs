@@ -42,10 +42,10 @@ namespace Octopus.Server.Extensibility.HostServices.Model
         /// May be one <see cref="PackageAcquisitionLocation" /> or a variable-expression.</param>
         public PackageReference(string? name, string packageId, string feedId, string acquisitionLocation)
             : this(null,
-                name,
-                packageId,
-                feedId,
-                acquisitionLocation)
+                   name,
+                   packageId,
+                   feedId,
+                   acquisitionLocation)
         {
         }
 
@@ -54,10 +54,10 @@ namespace Octopus.Server.Extensibility.HostServices.Model
         /// </summary>
         [JsonConstructor]
         public PackageReference(string? id,
-            string? name,
-            string packageId,
-            string feedId,
-            string acquisitionLocation)
+                                string? name,
+                                string packageId,
+                                string feedId,
+                                string acquisitionLocation)
             : this()
         {
             if (!string.IsNullOrEmpty(id)) Id = id;
@@ -145,10 +145,10 @@ namespace Octopus.Server.Extensibility.HostServices.Model
         public PackageReference Clone()
         {
             return new PackageReference(Id,
-                Name,
-                PackageId,
-                FeedId,
-                AcquisitionLocation)
+                                        Name,
+                                        PackageId,
+                                        FeedId,
+                                        AcquisitionLocation)
             {
                 Properties = new Dictionary<string, string>(Properties)
             };

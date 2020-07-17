@@ -9,7 +9,7 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration
     }
 
     public interface IExtensionConfigurationStore<TConfiguration> : IConfigurationDocumentStore<TConfiguration>,
-        IExtensionConfigurationStore
+                                                                    IExtensionConfigurationStore
         where TConfiguration : ExtensionConfigurationDocument, new()
     {
     }

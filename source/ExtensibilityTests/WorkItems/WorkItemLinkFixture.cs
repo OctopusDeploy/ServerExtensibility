@@ -49,7 +49,7 @@ namespace Node.Extensibility.Tests.WorkItems
                 new WorkItemLink { Id = "987" }
             };
             Assert.AreEqual("5,34,987",
-                string.Join(",", workItemLinks.OrderBy(x => x).Select(x => x.Id)));
+                            string.Join(",", workItemLinks.OrderBy(x => x).Select(x => x.Id)));
         }
 
         [Test]
@@ -62,7 +62,7 @@ namespace Node.Extensibility.Tests.WorkItems
                 new WorkItemLink { Id = "JIR7-987" }
             };
             Assert.AreEqual("JIR7-5,JIR7-34,JIR7-987",
-                string.Join(",", workItemLinks.OrderBy(x => x).Select(x => x.Id)));
+                            string.Join(",", workItemLinks.OrderBy(x => x).Select(x => x.Id)));
         }
     }
 }

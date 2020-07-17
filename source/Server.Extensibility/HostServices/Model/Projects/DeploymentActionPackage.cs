@@ -34,8 +34,7 @@ namespace Octopus.Server.Extensibility.HostServices.Model.Projects
         protected bool Equals(DeploymentActionPackage other)
         {
             return
-                string.Equals(DeploymentActionId, other.DeploymentActionId, StringComparison.OrdinalIgnoreCase) &&
-                string.Equals(PackageReferenceId, other.PackageReferenceId, StringComparison.OrdinalIgnoreCase);
+                string.Equals(DeploymentActionId, other.DeploymentActionId, StringComparison.OrdinalIgnoreCase) && string.Equals(PackageReferenceId, other.PackageReferenceId, StringComparison.OrdinalIgnoreCase);
         }
 
         public override bool Equals(object obj)
@@ -50,10 +49,12 @@ namespace Octopus.Server.Extensibility.HostServices.Model.Projects
             unchecked
             {
                 return ((DeploymentActionId != null
-                    ? StringComparer.OrdinalIgnoreCase.GetHashCode(DeploymentActionId)
-                    : 0) * 397) ^ (PackageReferenceId != null
-                    ? StringComparer.OrdinalIgnoreCase.GetHashCode(PackageReferenceId)
-                    : 0);
+                            ? StringComparer.OrdinalIgnoreCase.GetHashCode(DeploymentActionId)
+                            : 0)
+                        * 397)
+                       ^ (PackageReferenceId != null
+                           ? StringComparer.OrdinalIgnoreCase.GetHashCode(PackageReferenceId)
+                           : 0);
             }
         }
 

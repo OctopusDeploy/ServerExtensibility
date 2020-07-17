@@ -14,7 +14,7 @@ namespace Octopus.Server.Extensibility.Domain.BuildInformation
     public class BuildInformationEvent : DomainEvent
     {
         public BuildInformationEvent(BuildInformationEventType eventType,
-            IPackageVersionBuildInformation packageVersionBuildInformation)
+                                     IPackageVersionBuildInformation packageVersionBuildInformation)
         {
             EventType = eventType;
             PackageVersionBuildInformation = packageVersionBuildInformation;

@@ -11,11 +11,11 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration
         }
 
         public ConfigureCommandOption(string prototype,
-            string description,
-            Action<string> action,
-            bool hide = false,
-            bool requiresRestart = false,
-            bool isCached = false)
+                                      string description,
+                                      Action<string> action,
+                                      bool hide = false,
+                                      bool requiresRestart = false,
+                                      bool isCached = false)
         {
             Prototype = prototype;
             Description = description;

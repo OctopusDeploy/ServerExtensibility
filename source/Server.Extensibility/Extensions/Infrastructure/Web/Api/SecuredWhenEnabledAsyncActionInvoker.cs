@@ -10,9 +10,8 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
         where TAction : IAsyncApiAction
         where TConfigurationStore : IExtensionConfigurationStore
     {
-        public SecuredWhenEnabledAsyncActionInvoker(TAction action, TConfigurationStore configurationStore) : base(
-            action,
-            configurationStore)
+        public SecuredWhenEnabledAsyncActionInvoker(TAction action, TConfigurationStore configurationStore) : base(action,
+                                                                                                                   configurationStore)
         {
         }
 

@@ -28,12 +28,12 @@ namespace Octopus.Server.Extensibility.JsonConverters
             writer.WriteStartObject();
 
             var properties = readablePropertiesCache.GetOrAdd(
-                value.GetType(),
-                t => value.GetType()
-                    .GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.GetProperty)
-                    .Where(p => p.CanRead)
-                    .ToArray()
-            );
+                                                              value.GetType(),
+                                                              t => value.GetType()
+                                                                        .GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.GetProperty)
+                                                                        .Where(p => p.CanRead)
+                                                                        .ToArray()
+                                                             );
             foreach (var property in properties)
             {
                 writer.WritePropertyName(property.Name);
@@ -67,19 +67,19 @@ namespace Octopus.Server.Extensibility.JsonConverters
 
             var ctor = type.GetConstructors(BindingFlags.Public | BindingFlags.Instance).Single();
             var args = ctor.GetParameters()
-                .Select(p =>
-                    jo.GetValue(char.ToUpper(p.Name[0]) + p.Name.Substring(1))
-                        ?
-                        .ToObject(p.ParameterType, serializer))
-                .ToArray();
+                           .Select(p =>
+                                       jo.GetValue(char.ToUpper(p.Name[0]) + p.Name.Substring(1))
+                                         ?
+                                         .ToObject(p.ParameterType, serializer))
+                           .ToArray();
             var instance = ctor.Invoke(args);
 
             var properties = writeablePropertiesCache.GetOrAdd(
-                type,
-                t => t.GetProperties(BindingFlags.Public | BindingFlags.SetProperty | BindingFlags.Instance)
-                    .Where(p => p.CanWrite)
-                    .ToArray()
-            );
+                                                               type,
+                                                               t => t.GetProperties(BindingFlags.Public | BindingFlags.SetProperty | BindingFlags.Instance)
+                                                                     .Where(p => p.CanWrite)
+                                                                     .ToArray()
+                                                              );
 
             foreach (var prop in properties)
             {

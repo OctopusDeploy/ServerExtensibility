@@ -23,8 +23,7 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
 
         public override Task ExecuteAsync(OctoContext context)
         {
-            if (context.User == null ||
-                !authorizationChecker.Value.IsCurrentUserAdministrator())
+            if (context.User == null || !authorizationChecker.Value.IsCurrentUserAdministrator())
             {
                 context.Response.StatusCode = 401;
                 return Task.FromResult(0);

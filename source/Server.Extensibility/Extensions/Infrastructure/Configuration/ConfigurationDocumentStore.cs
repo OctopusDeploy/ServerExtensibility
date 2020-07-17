@@ -25,8 +25,7 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration
         public void SetConfiguration(object config)
         {
             if (config is TConfiguration == false)
-                throw new ArgumentException(
-                    $"Given config type is {config.GetType()}, but {typeof(TConfiguration)} was expected");
+                throw new ArgumentException($"Given config type is {config.GetType()}, but {typeof(TConfiguration)} was expected");
 
             var existingConfig = configurationStore.Get<TConfiguration>(Id);
             if (existingConfig == null)

@@ -26,8 +26,8 @@ namespace Octopus.Server.Extensibility.Tests
 
             // get all public types other than the module itself, which is allowed to be public
             var allPublicThings = assembly.GetExportedTypes()
-                .Where(t => t != EntryPointTypeUnderTest)
-                .Select(t => t.FullName);
+                                          .Where(t => t != EntryPointTypeUnderTest)
+                                          .Select(t => t.FullName);
 
             var publicThingsThatShouldNotBe =
                 allPublicThings.Except(KnownClassesWhoAreBendingTheRules.Select(t => t.FullName)).ToArray();

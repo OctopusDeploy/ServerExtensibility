@@ -15,8 +15,7 @@ namespace Octopus.Server.Extensibility.JsonConverters
             {
                 var enumType = (TDiscriminator)Enum.Parse(type, derivedType);
                 if (!DerivedTypeMappings.ContainsKey(enumType))
-                    throw new Exception(
-                        $"Unable to determine type to deserialize. {TypeDesignatingPropertyName} `{enumType}` does not map to a known type");
+                    throw new Exception($"Unable to determine type to deserialize. {TypeDesignatingPropertyName} `{enumType}` does not map to a known type");
 
                 return DerivedTypeMappings[enumType].GetTypeInfo();
             }
@@ -25,14 +24,12 @@ namespace Octopus.Server.Extensibility.JsonConverters
             {
                 var mappings = (Dictionary<string, Type>)DerivedTypeMappings;
                 if (!mappings.ContainsKey(derivedType))
-                    throw new Exception(
-                        $"Unable to determine type to deserialize. {TypeDesignatingPropertyName} `{derivedType}` does not map to a known type");
+                    throw new Exception($"Unable to determine type to deserialize. {TypeDesignatingPropertyName} `{derivedType}` does not map to a known type");
 
                 return mappings[derivedType].GetTypeInfo();
             }
 
-            throw new Exception(
-                "Unable to determine type to deserialize, override GetTypeInfoFromDerivedType to map the derivedType");
+            throw new Exception("Unable to determine type to deserialize, override GetTypeInfoFromDerivedType to map the derivedType");
         }
     }
 

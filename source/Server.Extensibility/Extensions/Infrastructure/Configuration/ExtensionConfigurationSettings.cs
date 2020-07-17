@@ -9,8 +9,7 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration
         where TResource : ExtensionConfigurationResource
         where TDocumentStore : IConfigurationDocumentStore<TConfiguration>
     {
-        protected ExtensionConfigurationSettings(TDocumentStore configurationDocumentStore) : base(
-            configurationDocumentStore)
+        protected ExtensionConfigurationSettings(TDocumentStore configurationDocumentStore) : base(configurationDocumentStore)
         {
         }
     }

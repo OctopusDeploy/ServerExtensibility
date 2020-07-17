@@ -36,7 +36,7 @@ namespace Octopus.Server.Extensibility.Results
 
         public static FailureResultFromExtension Failed(params FailureResultFromExtension[] becauseOf)
         {
-            return new FailureResultFromExtension(becauseOf.SelectMany(b => b.Errors) );
+            return new FailureResultFromExtension(becauseOf.SelectMany(b => b.Errors));
         }
 
         public static FailureResultFromExtension Failed(IReadOnlyCollection<FailureResultFromExtension> becauseOf)
@@ -73,7 +73,7 @@ namespace Octopus.Server.Extensibility.Results
 
         public static FailureResultFromExtension<T> Failed(params FailureResultFromExtension[] becauseOf)
         {
-            return new FailureResultFromExtension<T>(becauseOf.SelectMany(b => b.Errors) );
+            return new FailureResultFromExtension<T>(becauseOf.SelectMany(b => b.Errors));
         }
 
         public static FailureResultFromExtension<T> Failed(IReadOnlyCollection<FailureResultFromExtension> becauseOf)

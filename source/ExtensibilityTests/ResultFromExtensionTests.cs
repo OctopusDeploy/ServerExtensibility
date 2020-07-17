@@ -1,3 +1,4 @@
+using System;
 using NUnit.Framework;
 using Octopus.Data;
 using Octopus.Server.Extensibility.Results;
@@ -12,9 +13,7 @@ namespace Node.Extensibility.Tests
         {
             var result = new TestClassWithResultMethod().DoSomething(TestClassWithResultMethod.Behaviour.Failure);
             if (result is FailureResult fail)
-            {
                 Assert.AreEqual("Some failure reason", fail.ErrorString);
-            }
         }
 
         [Test]
@@ -22,9 +21,7 @@ namespace Node.Extensibility.Tests
         {
             var result = new TestClassWithResultMethod().DoSomething(TestClassWithResultMethod.Behaviour.Failure);
             if (result is Result<TestObjectBeingReturned>)
-            {
                 Assert.Fail("This result wasn't a success case!");
-            }
         }
 
         [Test]
@@ -32,9 +29,7 @@ namespace Node.Extensibility.Tests
         {
             var result = new TestClassWithResultMethod().DoSomething(TestClassWithResultMethod.Behaviour.Success);
             if (result is Result<TestObjectBeingReturned> success)
-            {
                 Assert.AreEqual("Some Name", success.Value.Name);
-            }
         }
 
         [Test]
@@ -42,9 +37,7 @@ namespace Node.Extensibility.Tests
         {
             var result = new TestClassWithResultMethod().DoSomething(TestClassWithResultMethod.Behaviour.Success);
             if (result is FailureResult)
-            {
                 Assert.Fail("This result wasn't a failure case!");
-            }
         }
 
         [Test]
@@ -52,9 +45,7 @@ namespace Node.Extensibility.Tests
         {
             var result = new TestClassWithResultMethod().DoSomething(TestClassWithResultMethod.Behaviour.Success);
             if (result is Result<TestObjectBeingReturned?> success)
-            {
                 Assert.AreEqual("Some Name", success.Value?.Name);
-            }
         }
 
         [Test]
@@ -62,9 +53,7 @@ namespace Node.Extensibility.Tests
         {
             var result = new TestClassWithResultMethod().DoSomething(TestClassWithResultMethod.Behaviour.Disabled);
             if (!(result is FailureResultFromDisabledExtension<TestObjectBeingReturned>))
-            {
                 Assert.Fail("The result should have indicated the extension was disabled");
-            }
         }
 
         [Test]
@@ -72,9 +61,7 @@ namespace Node.Extensibility.Tests
         {
             var result = new TestClassWithResultMethod().DoSomething(TestClassWithResultMethod.Behaviour.Disabled);
             if (result is Result<TestObjectBeingReturned>)
-            {
                 Assert.Fail("This result wasn't a success case!");
-            }
         }
 
         [Test]
@@ -82,9 +69,7 @@ namespace Node.Extensibility.Tests
         {
             var result = new TestClassWithResultMethod().DoSomething(TestClassWithResultMethod.Behaviour.Disabled);
             if (!(result is IFailureResultFromDisabledExtension))
-            {
                 Assert.Fail("The result should have indicated the extension was disabled, which should also be treated as a normal failure");
-            }
         }
 
         class TestClassWithResultMethod
@@ -95,11 +80,12 @@ namespace Node.Extensibility.Tests
                 Failure,
                 Disabled
             }
+
             public IResultFromExtension<TestObjectBeingReturned> DoSomething(Behaviour behaviour)
             {
                 if (behaviour == Behaviour.Failure)
                     return ResultFromExtension<TestObjectBeingReturned>.Failed("Some failure reason");
-                else if (behaviour == Behaviour.Disabled)
+                if (behaviour == Behaviour.Disabled)
                     return ResultFromExtension<TestObjectBeingReturned>.ExtensionDisabled();
                 return ResultFromExtension<TestObjectBeingReturned>.Success(new TestObjectBeingReturned("Some Name"));
             }

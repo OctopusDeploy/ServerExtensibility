@@ -20,9 +20,9 @@ namespace Octopus.Server.Extensibility.HostServices.Mapping
         /// <param name="converter">A function that returns an object with action name</param>
         /// <returns>A list of objects with the action id converted to an action name</returns>
         List<T> GetNamesFromIds<T>(string projectId,
-            IEnumerable<T> source,
-            Func<T, string> actionIds,
-            Func<T, string, T> converter);
+                                   IEnumerable<T> source,
+                                   Func<T, string> actionIds,
+                                   Func<T, string, T> converter);
 
         List<string> GetIdsFromReferences(string projectId, ReferenceCollection actionReferences);
 
@@ -38,8 +38,8 @@ namespace Octopus.Server.Extensibility.HostServices.Mapping
         /// <param name="converter">A function that returns an object with action id</param>
         /// <returns>A list of objects with the action name converted to an action id</returns>
         List<T> GetIdsFromReferences<T>(string projectId,
-            IEnumerable<T> source,
-            Func<T, string> actionReferences,
-            Func<T, string, T> converter);
+                                        IEnumerable<T> source,
+                                        Func<T, string> actionReferences,
+                                        Func<T, string, T> converter);
     }
 }
