@@ -80,8 +80,9 @@ function MD5HashFile([string] $filePath)
     }
 }
 
-Write-Host "Preparing to run build script..."
+[System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12;
 
+Write-Host "Preparing to run build script..."
 if(!$PSScriptRoot){
     $PSScriptRoot = Split-Path $MyInvocation.MyCommand.Path -Parent
 }
@@ -182,6 +183,11 @@ if(-Not $SkipToolPackageRestore.IsPresent) {
 if (!(Test-Path $CAKE_EXE)) {
     Throw "Could not find Cake.exe at $CAKE_EXE"
 }
+
+# We added this so we can use dotnet tools
+# See https://www.gep13.co.uk/blog/introducing-cake.dotnettool.module
+Write-Host "Installing cake modules using the --bootstrap argument"
+&$CAKE_EXE --bootstrap
 
 # Start Cake
 Write-Host "Running build script..."
