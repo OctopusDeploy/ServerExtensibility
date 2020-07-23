@@ -4,25 +4,33 @@ using Octopus.Data;
 
 namespace Octopus.Server.Extensibility.Results
 {
-    public class FailureResultFromExtension : FailureResult
+    public class FailureResultFromExtension : FailureResult, IFailureResultFromExtension
     {
         internal FailureResultFromExtension(IEnumerable<string> errors) : base(errors)
         {
         }
     }
 
-    public interface IFailureResultFromDisabledExtension
+    public interface IFailureResultFromExtension : IResultFromExtension
     {
     }
 
-    public class FailureResultFromDisabledExtension : FailureResultFromExtension, IFailureResultFromDisabledExtension
+    public interface IFailureResultFromDisabledExtension : IFailureResultFromExtension
+    {
+    }
+
+    internal class FailureResultFromDisabledExtension : FailureResultFromExtension, IFailureResultFromDisabledExtension
     {
         internal FailureResultFromDisabledExtension() : base(new[] { "Extension disabled" })
         {
         }
     }
 
-    public class FailureResultFromExtension<T> : FailureResultFromExtension, IResultFromExtension<T>
+    public interface IFailureResultFromDisabledExtension<T> : IFailureResultFromDisabledExtension, IResultFromExtension<T>
+    {
+    }
+
+    public class FailureResultFromExtension<T> : FailureResultFromExtension, IFailureResultFromDisabledExtension<T>
     {
         internal FailureResultFromExtension(IEnumerable<string> errors) : base(errors)
         {
