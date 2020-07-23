@@ -64,32 +64,32 @@ namespace Octopus.Server.Extensibility.Results
         {
         }
 
-        public static FailureResultFromDisabledExtension<T> ExtensionDisabled()
+        public static IFailureResultFromDisabledExtension<T> ExtensionDisabled()
         {
             return new FailureResultFromDisabledExtension<T>();
         }
 
-        public new static ResultFromExtension<T> Success(T value)
+        public new static IResultFromExtension<T> Success(T value)
         {
             return new ResultFromExtension<T>(value);
         }
 
-        public static FailureResultFromExtension<T> Failed()
+        public static IFailureResultFromExtension<T> Failed()
         {
             return new FailureResultFromExtension<T>(new string[0]);
         }
 
-        public new static FailureResultFromExtension<T> Failed(params string[] errors)
+        public new static IFailureResultFromExtension<T> Failed(params string[] errors)
         {
             return new FailureResultFromExtension<T>(errors);
         }
 
-        public static FailureResultFromExtension<T> Failed(params FailureResultFromExtension[] becauseOf)
+        public static IFailureResultFromExtension<T> Failed(params FailureResultFromExtension[] becauseOf)
         {
             return new FailureResultFromExtension<T>(becauseOf.SelectMany(b => b.Errors));
         }
 
-        public static FailureResultFromExtension<T> Failed(IReadOnlyCollection<FailureResultFromExtension> becauseOf)
+        public static IFailureResultFromExtension<T> Failed(IReadOnlyCollection<FailureResultFromExtension> becauseOf)
         {
             return new FailureResultFromExtension<T>(becauseOf.SelectMany(b => b.Errors));
         }

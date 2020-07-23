@@ -30,14 +30,18 @@ namespace Octopus.Server.Extensibility.Results
     {
     }
 
-    public class FailureResultFromExtension<T> : FailureResultFromExtension, IFailureResultFromDisabledExtension<T>
+    public interface IFailureResultFromExtension<T> : IFailureResultFromExtension, IResultFromExtension<T>
+    {
+    }
+
+    public class FailureResultFromExtension<T> : FailureResultFromExtension, IFailureResultFromExtension<T>
     {
         internal FailureResultFromExtension(IEnumerable<string> errors) : base(errors)
         {
         }
     }
 
-    public class FailureResultFromDisabledExtension<T> : FailureResultFromExtension<T>, IFailureResultFromDisabledExtension
+    public class FailureResultFromDisabledExtension<T> : FailureResultFromExtension<T>, IFailureResultFromDisabledExtension, IFailureResultFromDisabledExtension<T>
     {
         internal FailureResultFromDisabledExtension() : base(new[] { "Extension disabled" })
         {
