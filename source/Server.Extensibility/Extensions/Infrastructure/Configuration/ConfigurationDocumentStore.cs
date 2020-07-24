@@ -25,15 +25,13 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration
         public void SetConfiguration(object config)
         {
             if (config is TConfiguration == false)
-            {
                 throw new ArgumentException($"Given config type is {config.GetType()}, but {typeof(TConfiguration)} was expected");
-            }
 
             var existingConfig = configurationStore.Get<TConfiguration>(Id);
             if (existingConfig == null)
-                configurationStore.Create((TConfiguration) config);
+                configurationStore.Create((TConfiguration)config);
             else
-                configurationStore.Update((TConfiguration) config);
+                configurationStore.Update((TConfiguration)config);
 
             OnConfigurationChanged();
         }
@@ -59,6 +57,7 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration
         }
 
         protected virtual void OnConfigurationChanged()
-        { }
+        {
+        }
     }
 }

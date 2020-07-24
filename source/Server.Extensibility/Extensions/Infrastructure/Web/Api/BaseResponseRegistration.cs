@@ -10,13 +10,12 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
         {
             StatusCode = statusCode;
             Description = description;
+            ContentTypes = new string[0];
         }
 
         public HttpStatusCode StatusCode { get; }
 
         public string Description { get; }
-
-        public Type Type { get; protected set; }
 
         public string[] ContentTypes { get; protected set; }
 
@@ -25,7 +24,7 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
             public WrappedResponse(OctoResponse response) => Response = response;
 
             public OctoResponse Response { get; private set; }
-            
+
             public virtual IOctoResponseProvider WithCookie(OctoCookie cookie)
             {
                 Response = Response.WithCookie(cookie);

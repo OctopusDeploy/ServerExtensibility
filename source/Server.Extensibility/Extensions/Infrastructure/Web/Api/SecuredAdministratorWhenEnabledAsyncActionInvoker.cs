@@ -5,11 +5,13 @@ using Octopus.Server.Extensibility.HostServices.Authorization;
 
 namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
 {
-    public class SecuredAdministratorWhenEnabledAsyncActionInvoker<TAction, TConfigurationStore> : WhenEnabledAsyncActionInvoker<TAction, TConfigurationStore>
+    public class
+        SecuredAdministratorWhenEnabledAsyncActionInvoker<TAction, TConfigurationStore> : WhenEnabledAsyncActionInvoker<
+            TAction, TConfigurationStore>
         where TAction : IAsyncApiAction
         where TConfigurationStore : IExtensionConfigurationStore
     {
-        private readonly Lazy<IAuthorizationChecker> authorizationChecker;
+        readonly Lazy<IAuthorizationChecker> authorizationChecker;
 
         public SecuredAdministratorWhenEnabledAsyncActionInvoker(
             TAction action,
@@ -19,16 +21,15 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
             this.authorizationChecker = authorizationChecker;
         }
 
-        public override Task<IOctoResponseProvider> ExecutionPrechecks(IOctoRequest request)
+        public override async Task<IOctoResponseProvider?> ExecutionPrechecks(IOctoRequest request)
         {
-            var veto = base.ExecutionPrechecks(request);
+            var veto = await base.ExecutionPrechecks(request);
             if (veto != null)
                 return veto;
 
-            if (request.User == null ||
-                !authorizationChecker.Value.IsCurrentUserAdministrator())
+            if (request.User == null || !authorizationChecker.Value.IsCurrentUserAdministrator())
             {
-                return Task.FromResult<IOctoResponseProvider>(new BaseResponseRegistration.WrappedResponse(new OctoUnauthorisedResponse()));
+                return new BaseResponseRegistration.WrappedResponse(new OctoUnauthorisedResponse());
             }
 
             return null;

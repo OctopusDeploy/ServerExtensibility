@@ -25,6 +25,7 @@ namespace Node.Extensibility.Tests.Tags
         [TestCase("TagSet-1/Tag-1/")]
         [TestCase("TagSet-1//Tag-1")]
         [TestCase("/TagSet-1/Tag-1")]
+        [TestCase("/TagSet-1/Tag-1/Extra")]
         [TestCase("/TagSet-1")]
         [TestCase("TagSet-1/")]
         public void ShouldThrowForInvalidInputs(string tagCanonicalIdOrName)

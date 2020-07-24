@@ -16,25 +16,23 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
             ConfigurationStore = configurationStore;
         }
 
-        public virtual Task<IOctoResponseProvider> ExecutionPrechecks(IOctoRequest request)
+        public virtual Task<IOctoResponseProvider?> ExecutionPrechecks(IOctoRequest request)
         {
             if (!ConfigurationStore.GetIsEnabled())
             {
-                return Task.FromResult<IOctoResponseProvider>(new BaseResponseRegistration.WrappedResponse(new OctoBadRequestResponse("Extension is disabled.")));
+                return Task.FromResult<IOctoResponseProvider?>(new BaseResponseRegistration.WrappedResponse(new OctoBadRequestResponse("Extension is disabled.")));
             }
 
-            return null;
+            return Task.FromResult<IOctoResponseProvider?>(null);
         }
 
-        public Task<IOctoResponseProvider> ExecuteAsync(IOctoRequest request)
+        public async Task<IOctoResponseProvider> ExecuteAsync(IOctoRequest request)
         {
-            var veto = ExecutionPrechecks(request);
+            var veto = await ExecutionPrechecks(request);
             if (veto != null)
-            {
                 return veto;
-            }
 
-            return Action.ExecuteAsync(request);
+            return await Action.ExecuteAsync(request);
         }
     }
 }

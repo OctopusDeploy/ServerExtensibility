@@ -1,4 +1,5 @@
-﻿
+﻿using System;
+
 namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration
 {
     public interface IExtensionConfigurationStore
@@ -7,9 +8,9 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration
         void SetIsEnabled(bool isEnabled);
     }
 
-    public interface IExtensionConfigurationStore<TConfiguration> : IConfigurationDocumentStore<TConfiguration>, IExtensionConfigurationStore
+    public interface IExtensionConfigurationStore<TConfiguration> : IConfigurationDocumentStore<TConfiguration>,
+                                                                    IExtensionConfigurationStore
         where TConfiguration : ExtensionConfigurationDocument, new()
     {
-        
     }
 }

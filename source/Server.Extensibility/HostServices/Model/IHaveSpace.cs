@@ -1,4 +1,6 @@
-﻿namespace Octopus.Server.Extensibility.HostServices.Model
+﻿using System;
+
+namespace Octopus.Server.Extensibility.HostServices.Model
 {
     public interface IHaveSpace
     {

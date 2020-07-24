@@ -12,6 +12,19 @@ namespace Octopus.Server.Extensibility.HostServices.Model.TagSets
         {
             if (!TagCanonicalIdOrName.LooksLikeACanonicalIdOrName(value))
                 throw new ArgumentException("Value must look like a canonical tag name");
+
+            var tokens = value.Split("/");
+            TagSetName = new TagSetName(tokens[0]);
+            TagName = new TagName(tokens[1]);
         }
+
+        public TagCanonicalName(TagSetName tagSetName, TagName tagName) : base($"{tagSetName.Value}/{tagName.Value}")
+        {
+            TagSetName = tagSetName;
+            TagName = tagName;
+        }
+
+        public TagSetName TagSetName { get; }
+        public TagName TagName { get; }
     }
 }

@@ -16,7 +16,7 @@ namespace Octopus.Server.Extensibility.HostServices.Model.Projects
 
         string ReleaseNotes { get; }
         IList<ReleasePackageVersionBuildInformation> BuildInformation { get; }
-        
+
         string ProjectVariableSetSnapshotId { get; }
         string ProjectDeploymentProcessSnapshotId { get; }
         List<LibraryVariableSetSnapshot> LibraryVariableSetSnapshots { get; }

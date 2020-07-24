@@ -15,56 +15,34 @@ namespace Node.Extensibility.Tests.Metadata
     [TestFixture]
     public class MetadataGeneratorFixture
     {
-        [Test]
-        public void SettingsMetadataShouldBeCorrect()
+        public enum TestEnum
         {
-            IGenerateMetadata generator = new MetadataGenerator();
+            First = 5,
 
-            var metadata = generator.GetMetadata(typeof(TopLevelResource));
-
-            var serializerSettings = new JsonSerializerSettings
-            {
-                Formatting = Formatting.Indented,
-            };
-
-            var json = JsonConvert.SerializeObject(metadata, serializerSettings);
-
-            this.Assent(json);
-
+            [System.ComponentModel.Description("2nd")]
+            Second = 7,
+            Third = 11,
+            Fourth
         }
 
-        [Test]
-        public void MetadataShouldHandleSelfReferences()
+        public void SettingsValuesShouldBeCorrect()
         {
-            IGenerateMetadata generator = new MetadataGenerator();
-
-            var metadata = generator.GetMetadata<SelfReferencingResource>();
-
-            var serializerSettings = new JsonSerializerSettings
+            var resource = new TopLevelResource
             {
-                Formatting = Formatting.Indented,
+                SecondLevelResource = new SecondLevelResource
+                {
+                    SensitiveStringProperty = "String value",
+                    BoolProperty = false,
+                    IntArrayProperty = new[] { 1, 2, 3 },
+                    NullableDateTimeOffsetProperty = null,
+                    StringArrayProperty = new[] { "first", "second" }
+                },
+                DateTimeOffsetProperty = DateTime.Now,
+                IntProperty = 4,
+                NullableDateTimeProperty = null,
+                NullableIntProperty = 5,
+                ListOfStringProperty = new List<string> { "1st", "2nd", "3rd" }
             };
-
-            var json = JsonConvert.SerializeObject(metadata, serializerSettings);
-
-            this.Assent(json);
-        }
-
-        [Test]
-        public void MetadataShouldHandleNavigationalProperties()
-        {
-            IGenerateMetadata generator = new MetadataGenerator();
-
-            var metadata = generator.GetMetadata<ParentResource>();
-
-            var serializerSettings = new JsonSerializerSettings
-            {
-                Formatting = Formatting.Indented,
-            };
-
-            var json = JsonConvert.SerializeObject(metadata, serializerSettings);
-
-            this.Assent(json);
         }
 
         [Test]
@@ -85,36 +63,58 @@ namespace Node.Extensibility.Tests.Metadata
             this.Assent(json);
         }
 
-        public void SettingsValuesShouldBeCorrect()
+        [Test]
+        public void MetadataShouldHandleNavigationalProperties()
         {
-            var resource = new TopLevelResource()
+            IGenerateMetadata generator = new MetadataGenerator();
+
+            var metadata = generator.GetMetadata<ParentResource>();
+
+            var serializerSettings = new JsonSerializerSettings
             {
-                SecondLevelResource = new SecondLevelResource()
-                {
-                    SensitiveStringProperty = "String value",
-                    BoolProperty = false,
-                    IntArrayProperty = new[] { 1, 2, 3 },
-                    NullableDateTimeOffsetProperty = null,
-                    StringArrayProperty = new[] { "first", "second" },
-                },
-                DateTimeOffsetProperty = DateTime.Now,
-                IntProperty = 4,
-                NullableDateTimeProperty = null,
-                NullableIntProperty = 5,
-                ListOfStringProperty = new List<string> { "1st", "2nd", "3rd" },
+                Formatting = Formatting.Indented
             };
+
+            var json = JsonConvert.SerializeObject(metadata, serializerSettings);
+
+            this.Assent(json);
         }
 
-        public enum TestEnum
+        [Test]
+        public void MetadataShouldHandleSelfReferences()
         {
-            First = 5,
-            [System.ComponentModel.Description("2nd")]
-            Second = 7,
-            Third = 11,
-            Fourth
+            IGenerateMetadata generator = new MetadataGenerator();
+
+            var metadata = generator.GetMetadata<SelfReferencingResource>();
+
+            var serializerSettings = new JsonSerializerSettings
+            {
+                Formatting = Formatting.Indented
+            };
+
+            var json = JsonConvert.SerializeObject(metadata, serializerSettings);
+
+            this.Assent(json);
         }
 
-        public abstract class SettingsResource 
+        [Test]
+        public void SettingsMetadataShouldBeCorrect()
+        {
+            IGenerateMetadata generator = new MetadataGenerator();
+
+            var metadata = generator.GetMetadata(typeof(TopLevelResource));
+
+            var serializerSettings = new JsonSerializerSettings
+            {
+                Formatting = Formatting.Indented
+            };
+
+            var json = JsonConvert.SerializeObject(metadata, serializerSettings);
+
+            this.Assent(json);
+        }
+
+        public abstract class SettingsResource
         {
             protected SettingsResource()
             {
@@ -123,24 +123,24 @@ namespace Node.Extensibility.Tests.Metadata
 
             public string Id { get; set; }
 
-            public string SomeValue { get; set; }
+            public string? SomeValue { get; set; }
         }
 
         public class SelfReferencingResource : SettingsResource
         {
-            public string Name { get; set; }
+            public string? Name { get; set; }
 
-            public SelfReferencingResource SelfReference { get; set; }
+            public SelfReferencingResource? SelfReference { get; set; }
         }
 
         public class ParentResource : SettingsResource
         {
-            public List<ChildResource> Children { get; set; }
+            public List<ChildResource>? Children { get; set; }
         }
 
         public class ChildResource
         {
-            public ParentResource Parent { get; set; }
+            public ParentResource? Parent { get; set; }
 
             public int ChildIntProperty { get; set; }
         }
@@ -148,11 +148,11 @@ namespace Node.Extensibility.Tests.Metadata
         [System.ComponentModel.Description("This is a resource level description")]
         public class TopLevelResource : SettingsResource
         {
-            public SecondLevelResource SecondLevelResource { get; set; }
+            public SecondLevelResource? SecondLevelResource { get; set; }
 
             [DisplayName("Duplicated 2nd Level")]
             [System.ComponentModel.Description("This 2nd-level resource has been duplicated")]
-            public SecondLevelResource DuplicateSecondLevelResource { get; set; }
+            public SecondLevelResource? DuplicateSecondLevelResource { get; set; }
 
             [Required]
             public DateTime? NullableDateTimeProperty { get; set; }
@@ -166,33 +166,33 @@ namespace Node.Extensibility.Tests.Metadata
 
             public int? NullableIntProperty { get; set; }
 
-            public List<string> ListOfStringProperty { get; set; }
+            public List<string>? ListOfStringProperty { get; set; }
 
-            public DateTime?[] NullableDateTimeArray { get; set; }
+            public DateTime?[]? NullableDateTimeArray { get; set; }
 
             [ReadOnly(true)]
-            public string HandsOff { get; set; }
+            public string? HandsOff { get; set; }
         }
 
         public class SecondLevelResource
-        { 
-            public SensitiveValue SensitiveStringProperty { get; set; }
+        {
+            public SensitiveValue? SensitiveStringProperty { get; set; }
 
             public DateTimeOffset? NullableDateTimeOffsetProperty { get; set; }
 
             public bool BoolProperty { get; set; }
 
-            public string[] StringArrayProperty { get; set; }
+            public string[]? StringArrayProperty { get; set; }
 
-            public int[] IntArrayProperty { get; set; }
+            public int[]? IntArrayProperty { get; set; }
         }
 
         public class DependentPropertiesResource
         {
-            public string PropertyA { get; set; }
-            
+            public string? PropertyA { get; set; }
+
             [ApplicableWhenSpecificValue(nameof(PropertyA), "Foo")]
-            public string PropertyB { get; set; }
+            public string? PropertyB { get; set; }
         }
     }
 }

@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel.DataAnnotations;
-using System.IO;
 using System.Net;
 
 namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
@@ -43,12 +42,12 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
 
     public class OctoDataResponse : OctoResponse
     {
-        internal OctoDataResponse(object model, HttpStatusCode statusCode = HttpStatusCode.OK) : base(statusCode)
+        internal OctoDataResponse(object? model, HttpStatusCode statusCode = HttpStatusCode.OK) : base(statusCode)
         {
             Model = model;
         }
 
-        public object Model { get; }
+        public object? Model { get; }
     }
 
     public class OctoBadRequestResponse : OctoResponse

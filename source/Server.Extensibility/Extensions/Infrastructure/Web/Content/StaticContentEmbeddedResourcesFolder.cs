@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 
 namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Content
 {
@@ -12,7 +13,7 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Content
         }
 
         public string VirtualDirectory { get; set; }
-        public Assembly Assembly { get; private set; }
-        public string Namespace { get; private set; }
+        public Assembly Assembly { get; }
+        public string Namespace { get; }
     }
 }

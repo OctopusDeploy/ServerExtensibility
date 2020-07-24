@@ -80,6 +80,8 @@ function MD5HashFile([string] $filePath)
     }
 }
 
+[System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12;
+
 Write-Host "Preparing to run build script..."
 if(!$PSScriptRoot){
     $PSScriptRoot = Split-Path $MyInvocation.MyCommand.Path -Parent

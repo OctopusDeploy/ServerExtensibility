@@ -1,4 +1,5 @@
-﻿using Octopus.Server.Extensibility.Extensions.WorkItems;
+﻿using System;
+using Octopus.Server.Extensibility.Extensions.WorkItems;
 
 namespace Octopus.Server.Extensibility.HostServices.Domain.WorkItems
 {

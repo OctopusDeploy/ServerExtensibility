@@ -1,3 +1,4 @@
+using System;
 using System.Net;
 
 namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
@@ -8,6 +9,8 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
         {
             Type = typeof(TResource);
         }
+
+        public Type Type { get; }
 
         public IOctoResponseProvider Response(TResource model) => new WrappedResponse(new OctoDataResponse(model));
     }

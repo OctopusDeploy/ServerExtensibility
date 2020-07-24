@@ -1,4 +1,6 @@
-﻿namespace Octopus.Server.Extensibility.HostServices.Web
+﻿using System;
+
+namespace Octopus.Server.Extensibility.HostServices.Web
 {
     public interface IUrlEncoder
     {

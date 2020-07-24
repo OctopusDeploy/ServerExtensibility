@@ -1,4 +1,6 @@
-﻿namespace Octopus.Server.Extensibility.HostServices.Authorization
+﻿using System;
+
+namespace Octopus.Server.Extensibility.HostServices.Authorization
 {
     public interface IAuthorizationChecker
     {
