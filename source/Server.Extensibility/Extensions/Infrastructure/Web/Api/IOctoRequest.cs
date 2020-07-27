@@ -17,6 +17,8 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
         IDictionary<string, string> Form { get; }
         IDictionary<string, string> Cookies { get; }
         IPrincipal User { get; }
+        TResource GetBody<TResource>(RequestBodyRegistration<TResource> requestBodyRegistration);
+
         Task<IOctoResponseProvider> HandleAsync(
             Func<Task<IOctoResponseProvider>> onSuccess);
         Task<IOctoResponseProvider> HandleAsync<T>(
@@ -44,6 +46,5 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
             IResponderParameter<T4> parameter4,
             IResponderParameter<T5> parameter5,
             Func<T1, T2, T3, T4, T5, Task<IOctoResponseProvider>> onSuccess);
-        TResource GetBody<TResource>(RequestBodyRegistration<TResource> requestBodyRegistration);
     }
 }
