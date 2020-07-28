@@ -8,5 +8,7 @@ namespace Octopus.Server.Extensibility.HostServices.Web
         ///     Returns the web portal configuration for the current Node.
         /// </summary>
         NodeWebPortalConfiguration GetCurrentNodeWebPortalConfiguration();
+        
+        string GetCorsWhitelist();
     }
 }
