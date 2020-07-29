@@ -6,8 +6,8 @@ using Octopus.Server.Extensibility.HostServices.Authorization;
 namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
 {
     public class
-        SecuredAdministratorWhenEnabledAsyncActionInvoker<TAction, TConfigurationStore> : WhenEnabledAsyncActionInvoker<
-            TAction, TConfigurationStore>
+        SecuredAdministratorWhenEnabledAsyncActionInvoker<TAction, TConfigurationStore>
+        : WhenEnabledAsyncActionInvoker<TAction, TConfigurationStore>, IAsyncActionInvoker
         where TAction : IAsyncApiAction
         where TConfigurationStore : IExtensionConfigurationStore
     {

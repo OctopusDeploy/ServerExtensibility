@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
 {
-    public class SecuredAsyncActionInvoker<TAction>
+    public class SecuredAsyncActionInvoker<TAction> : IAsyncActionInvoker
         where TAction : IAsyncApiAction
     {
         protected readonly TAction Action;
