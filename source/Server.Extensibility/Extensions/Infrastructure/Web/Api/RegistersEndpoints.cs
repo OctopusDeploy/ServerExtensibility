@@ -13,6 +13,12 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
             Registrations.Add(new EndpointRegistration(method, path, handler));
         }
 
+        protected void Add<TInvoker>(string method, string path)
+            where TInvoker : IAsyncActionInvoker
+        {
+            Registrations.Add(new EndpointRegistration(method, path, typeof(TInvoker)));
+        }
+
         public class EndpointRegistration
         {
             public EndpointRegistration(string method, string path, Func<IOctoRequest, Task<IOctoResponseProvider>> handler)
@@ -20,11 +26,21 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
                 Method = method;
                 Path = path;
                 Handler = handler;
+                InvokerType = null;
+            }
+
+            public EndpointRegistration(string method, string path, Type invokerType)
+            {
+                Method = method;
+                Path = path;
+                InvokerType = invokerType;
+                Handler = null;
             }
 
             public string Method { get; }
             public string Path { get; }
-            public Func<IOctoRequest, Task<IOctoResponseProvider>> Handler { get; }
+            public Type? InvokerType { get; }
+            public Func<IOctoRequest, Task<IOctoResponseProvider>>? Handler { get; }
         }
     }
 }
