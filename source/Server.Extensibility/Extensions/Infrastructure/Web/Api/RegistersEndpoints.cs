@@ -19,6 +19,11 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
             Registrations.Add(new EndpointRegistration(method, path, typeof(TInvoker)));
         }
 
+        protected void Add(string method, string path, Type invokerType)
+        {
+            Registrations.Add(new EndpointRegistration(method, path, invokerType));
+        }
+
         public class EndpointRegistration
         {
             public EndpointRegistration(string method, string path, Func<IOctoRequest, Task<IOctoResponseProvider>> handler)
