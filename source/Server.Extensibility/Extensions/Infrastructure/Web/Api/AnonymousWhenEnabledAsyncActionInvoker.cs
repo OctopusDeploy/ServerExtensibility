@@ -3,14 +3,14 @@ using Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration;
 
 namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
 {
-    public class WhenEnabledAsyncActionInvoker<TAction, TConfigurationStore> : IAsyncActionInvoker
+    public class AnonymousWhenEnabledAsyncActionInvoker<TAction, TConfigurationStore> : IAsyncActionInvoker
         where TAction : IAsyncApiAction
         where TConfigurationStore : IExtensionConfigurationStore
     {
         protected readonly TAction Action;
         protected readonly TConfigurationStore ConfigurationStore;
 
-        public WhenEnabledAsyncActionInvoker(TAction action, TConfigurationStore configurationStore)
+        public AnonymousWhenEnabledAsyncActionInvoker(TAction action, TConfigurationStore configurationStore)
         {
             Action = action;
             ConfigurationStore = configurationStore;
