@@ -6,9 +6,13 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
 {
     public enum RouteCategory
     {
-        //Routes are prepended with `/api` and applicable space route
+        /// <summary>
+        /// Routes are prepended with `/api` and applicable space route
+        /// </summary>
         Api,
-        //Routes start from the root, used for UI/authentication
+        /// <summary>
+        /// Routes start from the root, used for UI/authentication
+        /// </summary>
         Navigable
     }
 
