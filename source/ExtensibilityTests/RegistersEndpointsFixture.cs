@@ -109,7 +109,7 @@ namespace Node.Extensibility.Tests
         {
             const string Method = "GET123";
             const string Path = "/Path/Blah";
-            const RouteCategory Category = RouteCategory.Navigable;
+            const RouteCategory Category = RouteCategory.Raw;
 
             public EndpointRegistration TestAdd<TAction>(IEndpointInvocation invocation)
                 where TAction : IAsyncApiAction
