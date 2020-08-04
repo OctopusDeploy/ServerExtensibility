@@ -8,7 +8,8 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
 {
     public class OctopusJsonRegistration<TResource> : BaseResponseRegistration
     {
-        public OctopusJsonRegistration(HttpStatusCode statusCode = HttpStatusCode.OK, string descriptionSuffix = "resource returned") : base(statusCode, $"{FriendlyId(typeof(TResource))} {descriptionSuffix}")
+        public OctopusJsonRegistration(HttpStatusCode statusCode = HttpStatusCode.OK, string descriptionSuffix = "resource returned")
+            : base(statusCode, $"{FriendlyId(typeof(TResource))} {descriptionSuffix}")
         {
             Type = typeof(TResource);
 

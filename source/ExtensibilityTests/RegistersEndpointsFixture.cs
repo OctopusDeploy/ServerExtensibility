@@ -22,6 +22,13 @@ namespace Node.Extensibility.Tests
         }
 
         [Test]
+        public void blah()
+        {
+            OctopusJsonRegistration<string[]> sut = new OctopusJsonRegistration<string[]>();
+            sut.Description.ShouldBe("");
+        }
+
+        [Test]
         public void AddWithType_InvalidType_Throws()
         {
             Action action = () => registersEndpoints.TestAdd(typeof(string), new AnonymousWhenEnabledEndpointInvocation<TestStore>());
@@ -109,24 +116,25 @@ namespace Node.Extensibility.Tests
         {
             const string Method = "GET123";
             const string Path = "/Path/Blah";
+            const string Description = "Blah Foo Woo";
             const RouteCategory Category = RouteCategory.Raw;
 
             public EndpointRegistration TestAdd<TAction>(IEndpointInvocation invocation)
                 where TAction : IAsyncApiAction
             {
-                Add<TAction>(Method, Path, Category, invocation);
+                Add<TAction>(Method, Path, Category, invocation, Description);
                 return GetRegistration();
             }
 
             public EndpointRegistration TestAdd(Type actionType, IEndpointInvocation invocation)
             {
-                Add(Method, Path, Category, actionType, invocation);
+                Add(Method, Path, Category, actionType, invocation, Description);
                 return GetRegistration();
             }
 
             EndpointRegistration GetRegistration()
             {
-                return Registrations.Single(r => r.Path == Path && r.Method == Method && r.Category == Category);
+                return Registrations.Single(r => r.Path == Path && r.Method == Method && r.Category == Category && r.Description == Description);
             }
         }
 

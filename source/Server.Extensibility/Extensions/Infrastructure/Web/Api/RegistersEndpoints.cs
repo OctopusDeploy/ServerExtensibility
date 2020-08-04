@@ -20,16 +20,16 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
     {
         public List<EndpointRegistration> Registrations { get; } = new List<EndpointRegistration>();
 
-        protected void Add<TAction>(string method, string path, RouteCategory category, IEndpointInvocation invocation)
+        protected void Add<TAction>(string method, string path, RouteCategory category, IEndpointInvocation invocation, string description)
             where TAction : IAsyncApiAction
         {
-            Registrations.Add(new EndpointRegistration(method, path, category, GetInvokerType(typeof(TAction), invocation)));
+            Registrations.Add(new EndpointRegistration(method, path, category, GetInvokerType(typeof(TAction), invocation), description));
         }
 
-        protected void Add(string method, string path, RouteCategory category, Type actionType, IEndpointInvocation invocation)
+        protected void Add(string method, string path, RouteCategory category, Type actionType, IEndpointInvocation invocation, string description)
         {
 
-            Registrations.Add(new EndpointRegistration(method, path, category, GetInvokerType(actionType, invocation)));
+            Registrations.Add(new EndpointRegistration(method, path, category, GetInvokerType(actionType, invocation), description));
         }
 
         static Type GetInvokerType(Type actionType, IEndpointInvocation invocation)
@@ -65,18 +65,20 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
 
         public class EndpointRegistration
         {
-            public EndpointRegistration(string method, string path, RouteCategory category, Type invokerType)
+            public EndpointRegistration(string method, string path, RouteCategory category, Type invokerType, string description)
             {
                 Method = method;
                 Path = path;
                 Category = category;
                 InvokerType = invokerType;
+                Description = description;
             }
 
             public string Method { get; }
             public string Path { get; }
             public RouteCategory Category { get; }
             public Type InvokerType { get; }
+            public string Description { get; }
         }
     }
 }
