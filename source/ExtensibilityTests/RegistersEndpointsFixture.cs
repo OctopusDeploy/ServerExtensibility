@@ -22,13 +22,6 @@ namespace Node.Extensibility.Tests
         }
 
         [Test]
-        public void blah()
-        {
-            OctopusJsonRegistration<string[]> sut = new OctopusJsonRegistration<string[]>();
-            sut.Description.ShouldBe("");
-        }
-
-        [Test]
         public void AddWithType_InvalidType_Throws()
         {
             Action action = () => registersEndpoints.TestAdd(typeof(string), new AnonymousWhenEnabledEndpointInvocation<TestStore>());

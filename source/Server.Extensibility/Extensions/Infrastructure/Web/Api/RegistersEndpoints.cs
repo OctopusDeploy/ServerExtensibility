@@ -20,6 +20,12 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
     {
         public List<EndpointRegistration> Registrations { get; } = new List<EndpointRegistration>();
 
+        protected void Add<TAction>(string method, string path, RouteCategory category, IEndpointInvocation invocation)
+            where TAction : IAsyncApiAction
+        {
+            Registrations.Add(new EndpointRegistration(method, path, category, GetInvokerType(typeof(TAction), invocation), null));
+        }
+
         protected void Add<TAction>(string method, string path, RouteCategory category, IEndpointInvocation invocation, string description)
             where TAction : IAsyncApiAction
         {
