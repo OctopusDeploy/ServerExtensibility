@@ -22,5 +22,7 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
 
             return Action.ExecuteAsync(request);
         }
+
+        public Type ActionType => typeof(TAction);
     }
 }

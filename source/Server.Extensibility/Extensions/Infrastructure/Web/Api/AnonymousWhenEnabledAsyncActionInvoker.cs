@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration;
 
 namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
@@ -34,5 +35,7 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
 
             return await Action.ExecuteAsync(request);
         }
+
+        public Type ActionType => typeof(TAction);
     }
 }

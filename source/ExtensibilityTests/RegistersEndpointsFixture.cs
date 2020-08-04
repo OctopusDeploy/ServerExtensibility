@@ -110,24 +110,25 @@ namespace Node.Extensibility.Tests
             const string Method = "GET123";
             const string Path = "/Path/Blah";
             const string Description = "Blah Foo Woo";
+            const string Tag = "Accounts";
             const RouteCategory Category = RouteCategory.Raw;
 
             public EndpointRegistration TestAdd<TAction>(IEndpointInvocation invocation)
                 where TAction : IAsyncApiAction
             {
-                Add<TAction>(Method, Path, Category, invocation, Description);
+                Add<TAction>(Method, Path, Category, invocation, Description, Tag);
                 return GetRegistration();
             }
 
             public EndpointRegistration TestAdd(Type actionType, IEndpointInvocation invocation)
             {
-                Add(Method, Path, Category, actionType, invocation, Description);
+                Add(Method, Path, Category, actionType, invocation, Description, Tag);
                 return GetRegistration();
             }
 
             EndpointRegistration GetRegistration()
             {
-                return Registrations.Single(r => r.Path == Path && r.Method == Method && r.Category == Category && r.Description == Description);
+                return Registrations.Single(r => r.Path == Path && r.Method == Method && r.Category == Category && r.Description == Description && r.Tag == Tag);
             }
         }
 
