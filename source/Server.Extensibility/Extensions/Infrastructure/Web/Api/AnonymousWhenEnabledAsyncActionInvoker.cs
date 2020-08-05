@@ -4,7 +4,7 @@ using Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration;
 
 namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
 {
-    public class AnonymousWhenEnabledAsyncActionInvoker<TAction, TConfigurationStore> : IAsyncActionInvoker
+    public class AnonymousWhenEnabledAsyncActionInvoker<TAction, TConfigurationStore> : IAsyncActionInvoker, IActionWrapper<TAction>
         where TAction : IAsyncApiAction
         where TConfigurationStore : IExtensionConfigurationStore
     {

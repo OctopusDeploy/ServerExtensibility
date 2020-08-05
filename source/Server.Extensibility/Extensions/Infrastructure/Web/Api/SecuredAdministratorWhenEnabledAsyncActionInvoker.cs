@@ -7,7 +7,7 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
 {
     public class
         SecuredAdministratorWhenEnabledAsyncActionInvoker<TAction, TConfigurationStore>
-        : AnonymousWhenEnabledAsyncActionInvoker<TAction, TConfigurationStore>, IAsyncActionInvoker
+        : AnonymousWhenEnabledAsyncActionInvoker<TAction, TConfigurationStore>
         where TAction : IAsyncApiAction
         where TConfigurationStore : IExtensionConfigurationStore
     {

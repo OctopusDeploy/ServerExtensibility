@@ -2,8 +2,7 @@ using System;
 
 namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
 {
-    public interface IActionWrapper
+    public interface IActionWrapper<TAction>
     {
-        Type ActionType { get; }
     }
 }
