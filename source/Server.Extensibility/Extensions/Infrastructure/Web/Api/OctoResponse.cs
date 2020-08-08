@@ -42,7 +42,7 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
 
     public class OctoDataResponse : OctoResponse
     {
-        internal OctoDataResponse(object? model, HttpStatusCode statusCode = HttpStatusCode.OK) : base(statusCode)
+        public OctoDataResponse(object? model, HttpStatusCode statusCode = HttpStatusCode.OK) : base(statusCode)
         {
             Model = model;
         }
@@ -52,7 +52,7 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
 
     public class OctoBadRequestResponse : OctoResponse
     {
-        internal OctoBadRequestResponse(params string[] errorMessages) : base(HttpStatusCode.BadRequest)
+        public OctoBadRequestResponse(params string[] errorMessages) : base(HttpStatusCode.BadRequest)
         {
             ErrorMessages = errorMessages;
         }
@@ -62,7 +62,7 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
 
     public class OctoBadRequestWithDetailsResponse : OctoBadRequestResponse
     {
-        internal OctoBadRequestWithDetailsResponse(object details) : base("Request failed. Please check Details property for more information.")
+        public OctoBadRequestWithDetailsResponse(object details) : base("Request failed. Please check Details property for more information.")
         {
             Details = details;
         }
@@ -72,7 +72,7 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
 
     public class OctoRedirectResponse : OctoResponse
     {
-        internal OctoRedirectResponse(string url) : base(HttpStatusCode.Redirect)
+        public OctoRedirectResponse(string url) : base(HttpStatusCode.Redirect)
         {
             Url = url;
         }
@@ -82,7 +82,7 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
 
     public class OctoUnauthorisedResponse : OctoResponse
     {
-        internal OctoUnauthorisedResponse() : base(HttpStatusCode.Unauthorized)
+        public OctoUnauthorisedResponse() : base(HttpStatusCode.Unauthorized)
         {
         }
     }
