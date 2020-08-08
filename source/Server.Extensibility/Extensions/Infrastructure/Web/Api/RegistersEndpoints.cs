@@ -32,9 +32,9 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
             Registrations.Add(new EndpointRegistration(method,
                                                        path,
                                                        category,
-                                                       GetInvokerType(typeof(TAction), invocation),
+                                                       invocation,
                                                        description,
-                                                       tag));
+                                                       tag, typeof(TAction)));
         }
 
         protected void Add(string method,
@@ -48,62 +48,36 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
             Registrations.Add(new EndpointRegistration(method,
                                                        path,
                                                        category,
-                                                       GetInvokerType(actionType, invocation),
-                                                       description, tag));
+                                                       invocation,
+                                                       description, tag, actionType));
         }
 
-        static Type GetInvokerType(Type actionType, IEndpointInvocation invocation)
-        {
-            if (!typeof(IAsyncApiAction).IsAssignableFrom(actionType))
-                throw new ArgumentException($"The action type must implement {nameof(IAsyncApiAction)}", nameof(actionType));
 
-            var invocationType = invocation.GetType();
-            if (invocationType.IsGenericType)
-            {
-                var invocationTypeDefinition = invocationType.GetGenericTypeDefinition();
-
-                if (invocationTypeDefinition == typeof(AnonymousWhenEnabledEndpointInvocation<>))
-                    return typeof(AnonymousWhenEnabledAsyncActionInvoker<,>).MakeGenericType(actionType, invocationType.GenericTypeArguments.Single());
-
-                if (invocationTypeDefinition == typeof(SecuredWhenEnabledEndpointInvocation<>))
-                    return typeof(SecuredWhenEnabledAsyncActionInvoker<,>).MakeGenericType(actionType, invocationType.GenericTypeArguments.Single());
-
-                if (invocationTypeDefinition == typeof(SecuredAdministratorWhenEnabledEndpointInvocation<>))
-                    return typeof(SecuredAdministratorWhenEnabledAsyncActionInvoker<,>).MakeGenericType(actionType, invocationType.GenericTypeArguments.Single());
-            }
-            else
-            {
-                if (invocation is AnonymousEndpointInvocation)
-                    return typeof(AnonymousAsyncActionInvoker<>).MakeGenericType(actionType);
-
-                if (invocation is SecuredEndpointInvocation)
-                    return typeof(SecuredAsyncActionInvoker<>).MakeGenericType(actionType);
-            }
-
-            throw new ArgumentException($"Unrecognized invocation type: '{invocation.GetType()}'", nameof(invocation));
-        }
 
         public class EndpointRegistration
         {
             public EndpointRegistration(string method,
                                         string path,
                                         RouteCategory category,
-                                        Type invokerType,
+                                        IEndpointInvocation invocation,
                                         string? description,
-                                        string? tag)
+                                        string? tag,
+                                        Type actionType)
             {
                 Method = method;
                 Path = path;
                 Category = category;
-                InvokerType = invokerType;
+                Invocation = invocation;
                 Description = description;
                 Tag = tag;
+                ActionType = actionType;
             }
 
             public string Method { get; }
             public string Path { get; }
             public RouteCategory Category { get; }
-            public Type InvokerType { get; }
+            public IEndpointInvocation Invocation { get; }
+            public Type ActionType { get; }
             public string? Description { get; }
             public string? Tag { get; }
         }
