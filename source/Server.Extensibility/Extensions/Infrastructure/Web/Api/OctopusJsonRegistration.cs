@@ -5,6 +5,7 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
 {
     public interface IRegistrationWithResource
     {
+        Type ResourceType { get; }
         string GetDescription(string friendlyTypeName);
     }
 
@@ -16,10 +17,10 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
             : base(statusCode)
         {
             this.descriptionSuffix = descriptionSuffix;
-            Type = typeof(TResource);
+            ResourceType = typeof(TResource);
         }
 
-        public Type Type { get; }
+        public Type ResourceType { get; }
 
         public string GetDescription(string friendlyTypeName)
         {
