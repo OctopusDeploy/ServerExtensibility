@@ -4,9 +4,12 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
 {
     public class BadRequestRegistration : BaseResponseRegistration
     {
+        public string Description { get; }
+
         public BadRequestRegistration(string description)
-            : base(HttpStatusCode.BadRequest, description)
+            : base(HttpStatusCode.BadRequest)
         {
+            Description = description;
         }
 
         public IOctoResponseProvider Response() => new WrappedResponse(new OctoBadRequestResponse(Description));

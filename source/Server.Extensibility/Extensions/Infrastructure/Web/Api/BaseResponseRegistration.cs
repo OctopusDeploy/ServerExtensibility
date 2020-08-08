@@ -6,16 +6,13 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
 {
     public abstract class BaseResponseRegistration
     {
-        protected BaseResponseRegistration(HttpStatusCode statusCode, string description)
+        protected BaseResponseRegistration(HttpStatusCode statusCode)
         {
             StatusCode = statusCode;
-            Description = description;
             ContentTypes = new string[0];
         }
 
         public HttpStatusCode StatusCode { get; }
-
-        public string Description { get; }
 
         public string[] ContentTypes { get; protected set; }
 
