@@ -2,7 +2,7 @@ using System.Net;
 
 namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
 {
-    public class RedirectRegistration : BaseResponseRegistration
+    public class RedirectRegistration : BaseResponseRegistration, IRegistrationDescription
     {
         public string Description { get; }
 
