@@ -19,7 +19,7 @@ namespace Octopus.Server.Extensibility.Results
     {
     }
 
-    internal class FailureResultFromDisabledExtension : FailureResultFromExtension, IFailureResultFromDisabledExtension
+    class FailureResultFromDisabledExtension : FailureResultFromExtension, IFailureResultFromDisabledExtension
     {
         internal FailureResultFromDisabledExtension() : base(new[] { "Extension disabled" })
         {

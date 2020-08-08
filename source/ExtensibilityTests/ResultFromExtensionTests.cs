@@ -90,7 +90,6 @@ namespace Node.Extensibility.Tests
                 Assert.Fail("This result wasn't a failure case!");
         }
 
-
         [Test]
         public void CheckDisabledNoObjectWithDisabledCheck()
         {
