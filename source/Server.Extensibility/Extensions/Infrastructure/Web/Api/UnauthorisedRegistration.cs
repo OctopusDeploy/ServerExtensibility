@@ -12,6 +12,6 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
             Description = description;
         }
 
-        public IOctoResponseProvider Response(string url) => new WrappedResponse(new OctoUnauthorisedResponse());
+        public IOctoResponseProvider Response() => new WrappedResponse(new OctoUnauthorisedResponse());
     }
 }
