@@ -3,13 +3,7 @@ using System.Net;
 
 namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
 {
-    public interface IRegistrationWithResource
-    {
-        Type ResourceType { get; }
-        string GetDescription(string friendlyTypeName);
-    }
-
-    public class OctopusJsonRegistration<TResource> : BaseResponseRegistration, IRegistrationWithResource
+    public class OctopusJsonRegistration<TResource> : BaseResponseRegistration, IRegistrationDescriptionWithResource
     {
         readonly string descriptionSuffix;
 

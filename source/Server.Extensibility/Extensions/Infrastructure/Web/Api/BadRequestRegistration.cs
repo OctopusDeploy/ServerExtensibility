@@ -2,11 +2,6 @@ using System.Net;
 
 namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
 {
-    public interface IRegistrationDescription
-    {
-        string Description { get; }
-    }
-
     public class BadRequestRegistration : BaseResponseRegistration, IRegistrationDescription
     {
         public string Description { get; }
