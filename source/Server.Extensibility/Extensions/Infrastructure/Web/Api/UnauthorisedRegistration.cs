@@ -5,11 +5,10 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
 {
     public class UnauthorisedRegistration : BaseResponseRegistration, IRegistrationDescription
     {
-        public string Description { get; }
+        public string Description => "Unauthorized";
 
-        public UnauthorisedRegistration(string description) : base(HttpStatusCode.Unauthorized)
+        public UnauthorisedRegistration() : base(HttpStatusCode.Unauthorized)
         {
-            Description = description;
         }
 
         public IOctoResponseProvider Response() => new WrappedResponse(new OctoUnauthorisedResponse());
