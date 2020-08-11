@@ -123,24 +123,24 @@ namespace Node.Extensibility.Tests.Metadata
 
             public string Id { get; set; }
 
-            public string SomeValue { get; set; }
+            public string? SomeValue { get; set; }
         }
 
         public class SelfReferencingResource : SettingsResource
         {
-            public string Name { get; set; }
+            public string? Name { get; set; }
 
-            public SelfReferencingResource SelfReference { get; set; }
+            public SelfReferencingResource? SelfReference { get; set; }
         }
 
         public class ParentResource : SettingsResource
         {
-            public List<ChildResource> Children { get; set; }
+            public List<ChildResource>? Children { get; set; }
         }
 
         public class ChildResource
         {
-            public ParentResource Parent { get; set; }
+            public ParentResource? Parent { get; set; }
 
             public int ChildIntProperty { get; set; }
         }
@@ -148,11 +148,11 @@ namespace Node.Extensibility.Tests.Metadata
         [System.ComponentModel.Description("This is a resource level description")]
         public class TopLevelResource : SettingsResource
         {
-            public SecondLevelResource SecondLevelResource { get; set; }
+            public SecondLevelResource? SecondLevelResource { get; set; }
 
             [DisplayName("Duplicated 2nd Level")]
             [System.ComponentModel.Description("This 2nd-level resource has been duplicated")]
-            public SecondLevelResource DuplicateSecondLevelResource { get; set; }
+            public SecondLevelResource? DuplicateSecondLevelResource { get; set; }
 
             [Required]
             public DateTime? NullableDateTimeProperty { get; set; }
@@ -166,33 +166,33 @@ namespace Node.Extensibility.Tests.Metadata
 
             public int? NullableIntProperty { get; set; }
 
-            public List<string> ListOfStringProperty { get; set; }
+            public List<string>? ListOfStringProperty { get; set; }
 
-            public DateTime?[] NullableDateTimeArray { get; set; }
+            public DateTime?[]? NullableDateTimeArray { get; set; }
 
             [ReadOnly(true)]
-            public string HandsOff { get; set; }
+            public string? HandsOff { get; set; }
         }
 
         public class SecondLevelResource
         {
-            public SensitiveValue SensitiveStringProperty { get; set; }
+            public SensitiveValue? SensitiveStringProperty { get; set; }
 
             public DateTimeOffset? NullableDateTimeOffsetProperty { get; set; }
 
             public bool BoolProperty { get; set; }
 
-            public string[] StringArrayProperty { get; set; }
+            public string[]? StringArrayProperty { get; set; }
 
-            public int[] IntArrayProperty { get; set; }
+            public int[]? IntArrayProperty { get; set; }
         }
 
         public class DependentPropertiesResource
         {
-            public string PropertyA { get; set; }
+            public string? PropertyA { get; set; }
 
             [ApplicableWhenSpecificValue(nameof(PropertyA), "Foo")]
-            public string PropertyB { get; set; }
+            public string? PropertyB { get; set; }
         }
     }
 }
