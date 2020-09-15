@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
 {
@@ -34,7 +33,8 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
                                                        category,
                                                        invocation,
                                                        description,
-                                                       tag, typeof(TAction)));
+                                                       tag,
+                                                       typeof(TAction)));
         }
 
         protected void Add(string method,
@@ -49,10 +49,10 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
                                                        path,
                                                        category,
                                                        invocation,
-                                                       description, tag, actionType));
+                                                       description,
+                                                       tag,
+                                                       actionType));
         }
-
-
 
         public class EndpointRegistration
         {

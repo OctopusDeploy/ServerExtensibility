@@ -21,6 +21,9 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
             return $"{friendlyTypeName} {descriptionSuffix}";
         }
 
-        public IOctoResponseProvider Response(TResource model) => new WrappedResponse(new OctoDataResponse(model));
+        public IOctoResponseProvider Response(TResource model)
+        {
+            return new WrappedResponse(new OctoDataResponse(model));
+        }
     }
 }

@@ -18,7 +18,10 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
 
         internal class WrappedResponse : IOctoResponseProvider
         {
-            public WrappedResponse(OctoResponse response) => Response = response;
+            public WrappedResponse(OctoResponse response)
+            {
+                Response = response;
+            }
 
             public OctoResponse Response { get; private set; }
 
