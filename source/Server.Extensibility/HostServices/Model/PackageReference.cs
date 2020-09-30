@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using Octopus.Data.Model;
+using Octopus.Server.Extensibility.HostServices.Model.Feeds;
 using Octopus.Server.Extensibility.Resources;
 
 namespace Octopus.Server.Extensibility.HostServices.Model
@@ -25,10 +26,10 @@ namespace Octopus.Server.Extensibility.HostServices.Model
         /// </summary>
         /// <param name="name">The package-reference name.</param>
         /// <param name="packageId">The package ID or a variable-expression</param>
-        /// <param name="feedId">The feed ID or a variable-expression</param>
+        /// <param name="feedIdOrName">The feed ID or a variable-expression</param>
         /// <param name="acquisitionLocation">The location the package should be acquired</param>
-        public PackageReference(string? name, string packageId, string feedId, PackageAcquisitionLocation acquisitionLocation)
-            : this(name, packageId, feedId, acquisitionLocation.ToString())
+        public PackageReference(string? name, string packageId, FeedIdOrName feedIdOrName, PackageAcquisitionLocation acquisitionLocation)
+            : this(name, packageId, feedIdOrName, acquisitionLocation.ToString())
         {
         }
 
@@ -37,14 +38,14 @@ namespace Octopus.Server.Extensibility.HostServices.Model
         /// </summary>
         /// <param name="name">The package-reference name.</param>
         /// <param name="packageId">The package ID or a variable-expression</param>
-        /// <param name="feedId">The feed ID or a variable-expression</param>
+        /// <param name="feedIdOrName">The feed ID or a variable-expression</param>
         /// <param name="acquisitionLocation">The location the package should be acquired.
         /// May be one <see cref="PackageAcquisitionLocation" /> or a variable-expression.</param>
-        public PackageReference(string? name, string packageId, string feedId, string acquisitionLocation)
+        public PackageReference(string? name, string packageId, FeedIdOrName feedIdOrName, string acquisitionLocation)
             : this(null,
                    name,
                    packageId,
-                   feedId,
+                   feedIdOrName,
                    acquisitionLocation)
         {
         }
@@ -56,14 +57,14 @@ namespace Octopus.Server.Extensibility.HostServices.Model
         public PackageReference(string? id,
                                 string? name,
                                 string packageId,
-                                string feedId,
+                                FeedIdOrName feedIdOrName,
                                 string acquisitionLocation)
             : this()
         {
             if (!string.IsNullOrEmpty(id)) Id = id;
 
             PackageId = packageId;
-            FeedId = feedId;
+            FeedIdOrName = feedIdOrName;
             AcquisitionLocation = acquisitionLocation;
             Name = name ?? string.Empty;
         }
@@ -71,31 +72,31 @@ namespace Octopus.Server.Extensibility.HostServices.Model
         /// <summary>
         ///     Constructs a primary package (an un-named package reference)
         /// </summary>
-        public PackageReference(string packageId, string feedId, PackageAcquisitionLocation acquisitionLocation)
-            : this(null, packageId, feedId, acquisitionLocation)
+        public PackageReference(string packageId, FeedIdOrName feedIdOrName, PackageAcquisitionLocation acquisitionLocation)
+            : this(null, packageId, feedIdOrName, acquisitionLocation)
         {
         }
 
         /// <summary>
         ///     Constructs a primary package (an un-named package reference)
         /// </summary>
-        public PackageReference(string packageId, string feedId, string acquisitionLocation)
-            : this(null, packageId, feedId, acquisitionLocation)
+        public PackageReference(string packageId, FeedIdOrName feedIdOrName, string acquisitionLocation)
+            : this(null, packageId, feedIdOrName, acquisitionLocation)
         {
         }
 
         /// <summary>
         ///     Constructs a primary package (an un-named package reference)
         /// </summary>
-        public PackageReference(string packageId, string feedId)
-            : this(packageId, feedId, PackageAcquisitionLocation.Server)
+        public PackageReference(string packageId, FeedIdOrName feedIdOrName)
+            : this(packageId, feedIdOrName, PackageAcquisitionLocation.Server)
         {
         }
 
         /// <summary>
         ///     In the scenario where we are migrating from 2.6 instances, we set the ID of the package-reference
         ///     to the same ID as the deployment-action.
-        ///     This was the least-bad option that let the migrator do it's thing when migrating project
+        ///     This was the least-bad option that let the migrator do its thing when migrating project
         ///     release-creation-strategy and versioning-strategy.
         /// </summary>
         public PackageReference(string id) : this()
@@ -126,9 +127,10 @@ namespace Octopus.Server.Extensibility.HostServices.Model
         public string PackageId { get; set; } = string.Empty;
 
         /// <summary>
-        ///     Feed ID or a variable-expression
+        /// Feed ID, name or a variable-expression
         /// </summary>
-        public string FeedId { get; set; } = string.Empty;
+        [JsonProperty("FeedId")] // This is named FeedId for backward-compatibility as we don't yet want to change the underlying database JSON/schema.
+        public FeedIdOrName? FeedIdOrName { get; set; }
 
         /// <summary>
         ///     The package-acquisition location.
@@ -147,7 +149,7 @@ namespace Octopus.Server.Extensibility.HostServices.Model
             return new PackageReference(Id,
                                         Name,
                                         PackageId,
-                                        FeedId,
+                                        FeedIdOrName,
                                         AcquisitionLocation)
             {
                 Properties = new Dictionary<string, string>(Properties)
