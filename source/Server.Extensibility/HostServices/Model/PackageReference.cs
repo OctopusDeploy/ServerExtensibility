@@ -130,7 +130,7 @@ namespace Octopus.Server.Extensibility.HostServices.Model
         /// Feed ID, name or a variable-expression
         /// </summary>
         [JsonProperty("FeedId")] // This is named FeedId for backward-compatibility as we don't yet want to change the underlying database JSON/schema.
-        public FeedIdOrName FeedIdOrName { get; set; }
+        public FeedIdOrName? FeedIdOrName { get; set; }
 
         /// <summary>
         ///     The package-acquisition location.
