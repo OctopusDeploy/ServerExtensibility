@@ -4,5 +4,6 @@
     {
         Lax,
         Strict,
+        None,
     }
 }
