@@ -1,3 +1,5 @@
+using System;
+
 namespace Octopus.Server.Extensibility.Extensions.Infrastructure
 {
     public abstract class ExecuteWhenDatabaseInitializes : IExecuteWhenDatabaseInitializes

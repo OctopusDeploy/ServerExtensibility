@@ -1,3 +1,4 @@
+using System;
 using Octopus.Versioning;
 
 namespace Octopus.Server.Extensibility.HostServices.Model.BuildInformation

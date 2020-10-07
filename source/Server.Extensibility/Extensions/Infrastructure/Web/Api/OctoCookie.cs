@@ -4,6 +4,12 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
 {
     public class OctoCookie
     {
+        public OctoCookie(string name, string value)
+        {
+            Name = name;
+            Value = value;
+        }
+
         /// <summary>Gets or sets the name of the cookie.</summary>
         /// <returns>The name of the cookie.</returns>
         public string Name { get; set; }
@@ -14,7 +20,7 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
 
         /// <summary>Gets or sets the domain to associate the cookie with.</summary>
         /// <returns>The domain to associate the cookie with.</returns>
-        public string Domain { get; set; }
+        public string? Domain { get; set; }
 
         /// <summary>Gets or sets the cookie path.</summary>
         /// <returns>The cookie path.</returns>
@@ -27,13 +33,15 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
         public DateTimeOffset? Expires { get; set; }
 
         /// <summary>
-        /// Gets or sets a value that indicates whether to transmit the cookie using Secure Sockets Layer (SSL)--that is, over HTTPS only.
+        /// Gets or sets a value that indicates whether to transmit the cookie using Secure Sockets Layer (SSL)--that is, over
+        /// HTTPS only.
         /// </summary>
         /// <returns>true to transmit the cookie only over an SSL connection (HTTPS); otherwise, false.</returns>
         public bool Secure { get; set; }
 
         /// <summary>
-        /// Gets or sets the value for the SameSite attribute of the cookie. The default value is <see cref="SameSiteMode.Lax" />
+        /// Gets or sets the value for the SameSite attribute of the cookie. The default value is
+        /// <see cref="SameSiteMode.Lax" />
         /// </summary>
         /// <returns>The <see cref="SameSiteMode" /> representing the enforcement mode of the cookie.</returns>
         public SameSiteMode SameSite { get; set; } = SameSiteMode.Lax;

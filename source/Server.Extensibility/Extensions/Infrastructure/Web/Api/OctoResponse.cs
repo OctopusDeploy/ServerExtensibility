@@ -1,38 +1,89 @@
-﻿using System.Collections.Generic;
-using System.IO;
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Net;
 
 namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
 {
     public abstract class OctoResponse
     {
-        public int StatusCode { get; set; }
-        public Stream Body { get; set; }
-        public IDictionary<string, IEnumerable<string>> Headers { get; set; }
+        readonly List<OctoCookie> cookies = new List<OctoCookie>();
+        readonly IDictionary<string, IEnumerable<string>> headers = new Dictionary<string, IEnumerable<string>>();
 
-        public virtual OctoResponse AsOctopusJson(object model)
+        protected OctoResponse(HttpStatusCode statusCode)
         {
-            return this;
+            StatusCode = statusCode;
         }
 
-        public virtual OctoResponse Redirect(string location)
+        public HttpStatusCode StatusCode { get; }
+
+        public IReadOnlyDictionary<string, IEnumerable<string>> GetHeaders()
         {
-            return this;
+            return new ReadOnlyDictionary<string, IEnumerable<string>>(headers);
+        }
+
+        public IReadOnlyList<OctoCookie> GetCookies()
+        {
+            return cookies;
         }
 
         public virtual OctoResponse WithCookie(OctoCookie cookie)
         {
+            cookies.Add(cookie);
             return this;
         }
 
         public virtual OctoResponse WithHeader(string name, IEnumerable<string> value)
         {
-            Headers[name] = value;
+            headers[name] = value;
             return this;
         }
+    }
 
-        public virtual void BadRequest(params string[] errors)
+    public class OctoDataResponse : OctoResponse
+    {
+        internal OctoDataResponse(object? model, HttpStatusCode statusCode = HttpStatusCode.OK) : base(statusCode)
         {
-            
+            Model = model;
+        }
+
+        public object? Model { get; }
+    }
+
+    public class OctoBadRequestResponse : OctoResponse
+    {
+        internal OctoBadRequestResponse(params string[] errorMessages) : base(HttpStatusCode.BadRequest)
+        {
+            ErrorMessages = errorMessages;
+        }
+
+        public string[] ErrorMessages { get; }
+    }
+
+    public class OctoBadRequestWithDetailsResponse : OctoBadRequestResponse
+    {
+        internal OctoBadRequestWithDetailsResponse(object details) : base("Request failed. Please check Details property for more information.")
+        {
+            Details = details;
+        }
+
+        public object Details { get; }
+    }
+
+    public class OctoRedirectResponse : OctoResponse
+    {
+        internal OctoRedirectResponse(string url) : base(HttpStatusCode.Redirect)
+        {
+            Url = url;
+        }
+
+        public string Url { get; }
+    }
+
+    public class OctoUnauthorisedResponse : OctoResponse
+    {
+        internal OctoUnauthorisedResponse() : base(HttpStatusCode.Unauthorized)
+        {
         }
     }
 }

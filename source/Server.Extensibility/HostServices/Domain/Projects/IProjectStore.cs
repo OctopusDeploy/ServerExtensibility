@@ -1,4 +1,5 @@
-﻿using Octopus.Server.Extensibility.HostServices.Model.Projects;
+﻿using System;
+using Octopus.Server.Extensibility.HostServices.Model.Projects;
 
 namespace Octopus.Server.Extensibility.HostServices.Domain.Projects
 {

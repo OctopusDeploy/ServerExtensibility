@@ -1,3 +1,5 @@
+using System;
+
 namespace Octopus.Server.Extensibility.HostServices.Mapping
 {
     public interface IResourceEnricher<in TResource, in TModel>

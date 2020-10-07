@@ -4,9 +4,9 @@ namespace Octopus.Server.Extensibility.Resources.IssueTrackers
 {
     public class CommitDetails : IEquatable<CommitDetails>
     {
-        public string Id { get; set; }
-        public string LinkUrl { get; set; }
-        public string Comment { get; set; }
+        public string Id { get; set; } = string.Empty;
+        public string LinkUrl { get; set; } = string.Empty;
+        public string Comment { get; set; } = string.Empty;
 
         public bool Equals(CommitDetails other)
         {
@@ -19,13 +19,13 @@ namespace Octopus.Server.Extensibility.Resources.IssueTrackers
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != this.GetType()) return false;
-            return Equals((CommitDetails) obj);
+            if (obj.GetType() != GetType()) return false;
+            return Equals((CommitDetails)obj);
         }
 
         public override int GetHashCode()
         {
-            return (Id != null ? Id.GetHashCode() : 0);
+            return Id != null ? Id.GetHashCode() : 0;
         }
     }
 }

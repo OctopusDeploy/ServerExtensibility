@@ -1,20 +1,22 @@
-﻿namespace Octopus.Server.Extensibility.Resources
+﻿using System;
+
+namespace Octopus.Server.Extensibility.Resources
 {
     public enum PackageAcquisitionLocation
     {
         /// <summary>
-        /// Package is acquired on the Octopus Server
+        ///     Package is acquired on the Octopus Server
         /// </summary>
         Server,
 
         /// <summary>
-        /// Package is acquired on the execution-target, which may be a deployment-target
-        /// or a Worker
+        ///     Package is acquired on the execution-target, which may be a deployment-target
+        ///     or a Worker
         /// </summary>
         ExecutionTarget,
 
         /// <summary>
-        /// Package is not acquired
+        ///     Package is not acquired
         /// </summary>
         NotAcquired
     }

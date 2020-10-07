@@ -1,9 +1,11 @@
-﻿namespace Octopus.Server.Extensibility.HostServices.Model.Projects
+﻿using System;
+
+namespace Octopus.Server.Extensibility.HostServices.Model.Projects
 {
     public class ReleaseCreationStrategy
     {
-        public DeploymentActionPackage ReleaseCreationPackage { get; set; }
+        public DeploymentActionPackage? ReleaseCreationPackage { get; set; }
 
-        public string ChannelId { get; set; }
+        public string? ChannelId { get; set; }
     }
 }

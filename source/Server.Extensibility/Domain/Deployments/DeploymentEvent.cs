@@ -1,4 +1,5 @@
-﻿using Octopus.Server.Extensibility.HostServices.Domain.Events;
+﻿using System;
+using Octopus.Server.Extensibility.HostServices.Domain.Events;
 using Octopus.Server.Extensibility.HostServices.Model.Projects;
 
 namespace Octopus.Server.Extensibility.Domain.Deployments

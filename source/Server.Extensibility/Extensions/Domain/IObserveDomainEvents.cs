@@ -1,4 +1,6 @@
-﻿namespace Octopus.Server.Extensibility.Extensions.Domain
+﻿using System;
+
+namespace Octopus.Server.Extensibility.Extensions.Domain
 {
     public interface IObserveDomainEvents
     {

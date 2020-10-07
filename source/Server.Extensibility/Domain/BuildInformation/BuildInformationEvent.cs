@@ -1,3 +1,4 @@
+using System;
 using Octopus.Server.Extensibility.HostServices.Domain.Events;
 using Octopus.Server.Extensibility.HostServices.Model.BuildInformation;
 
@@ -12,7 +13,8 @@ namespace Octopus.Server.Extensibility.Domain.BuildInformation
 
     public class BuildInformationEvent : DomainEvent
     {
-        public BuildInformationEvent(BuildInformationEventType eventType, IPackageVersionBuildInformation packageVersionBuildInformation)
+        public BuildInformationEvent(BuildInformationEventType eventType,
+                                     IPackageVersionBuildInformation packageVersionBuildInformation)
         {
             EventType = eventType;
             PackageVersionBuildInformation = packageVersionBuildInformation;

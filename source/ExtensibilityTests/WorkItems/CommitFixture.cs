@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
 using Octopus.Server.Extensibility.HostServices.Model.IssueTrackers;
@@ -15,7 +16,7 @@ namespace Node.Extensibility.Tests.WorkItems
             {
                 new Commit { Id = "test1" },
                 new Commit { Id = "test2" },
-                new Commit { Id = "test1" },
+                new Commit { Id = "test1" }
             };
 
             var distinctWorkItems = listWithDupes.Distinct();
@@ -30,7 +31,7 @@ namespace Node.Extensibility.Tests.WorkItems
             {
                 new Commit { Id = "test1" },
                 new Commit { Id = "test2" },
-                new Commit { Id = "Test1" },
+                new Commit { Id = "Test1" }
             };
 
             var distinctWorkItems = listWithDupes.Distinct();

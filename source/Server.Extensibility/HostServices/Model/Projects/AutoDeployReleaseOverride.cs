@@ -1,26 +1,30 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace Octopus.Server.Extensibility.HostServices.Model.Projects
 {
     public class AutoDeployReleaseOverride
     {
-        public string EnvironmentId { get; }
-        public string TenantId { get; }
-        public string ReleaseId { get; }
-
         public AutoDeployReleaseOverride(string environmentId, string releaseId)
             : this(environmentId, null, releaseId)
         {
         }
 
         [JsonConstructor]
-        public AutoDeployReleaseOverride(string environmentId, string tenantId, string releaseId)
+        public AutoDeployReleaseOverride(string environmentId, string? tenantId, string releaseId)
         {
             EnvironmentId = environmentId;
             TenantId = tenantId;
             ReleaseId = releaseId;
         }
+
+        public string EnvironmentId { get; }
+        public string? TenantId { get; }
+        public string ReleaseId { get; }
+
+        public static IEqualityComparer<AutoDeployReleaseOverride> EnvironmentIdTenantIdComparer { get; } =
+            new EnvironmentIdTenantIdEqualityComparer();
 
         sealed class EnvironmentIdTenantIdEqualityComparer : IEqualityComparer<AutoDeployReleaseOverride>
         {
@@ -41,7 +45,5 @@ namespace Octopus.Server.Extensibility.HostServices.Model.Projects
                 }
             }
         }
-
-        public static IEqualityComparer<AutoDeployReleaseOverride> EnvironmentIdTenantIdComparer { get; } = new EnvironmentIdTenantIdEqualityComparer();
     }
 }

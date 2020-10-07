@@ -1,4 +1,5 @@
-﻿using Octopus.Data.Model.User;
+﻿using System;
+using Octopus.Data.Model.User;
 
 namespace Octopus.Server.Extensibility.HostServices.Web
 {
