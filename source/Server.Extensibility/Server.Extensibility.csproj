@@ -31,7 +31,7 @@
     <PackageReference Include="Octopus.Versioning" Version="4.3.1" />
     <PackageReference Include="System.Security.Principal" Version="4.3.0" />
     <PackageReference Include="Octopus.Data" Version="5.2.0" />
-    <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
     <PackageReference Include="System.ComponentModel.Primitives" Version="4.3.0" />
   </ItemGroup>
 </Project>
