@@ -27,7 +27,6 @@ namespace Octopus.Server.Extensibility.HostServices.Model.Projects
         IList<ActionTemplateParameter> Templates { get; }
         ReleaseCreationStrategy ReleaseCreationStrategy { get; }
         ISet<AutoDeployReleaseOverride> AutoDeployReleaseOverrides { get; }
-        string ReleaseNotesTemplate { get; set; }
 
         IList<ExtensionSettingsValues> ExtensionSettings { get; }
     }
