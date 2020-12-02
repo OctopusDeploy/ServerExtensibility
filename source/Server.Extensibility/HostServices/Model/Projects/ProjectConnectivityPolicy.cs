@@ -9,9 +9,9 @@ namespace Octopus.Server.Extensibility.HostServices.Model.Projects
         SkipUnavailableMachines
     }
 
-    public class ProjectConnectivityPolicy
+    public class DeploymentConnectivityPolicy
     {
-        public ProjectConnectivityPolicy()
+        public DeploymentConnectivityPolicy()
         {
             TargetRoles = new ReferenceCollection();
         }
