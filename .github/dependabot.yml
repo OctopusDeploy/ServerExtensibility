@@ -4,4 +4,4 @@ updates:
   - package-ecosystem: "nuget"
     directory: "/source/"
     schedule:
-      interval: "daily"
+      interval: "weekly"
