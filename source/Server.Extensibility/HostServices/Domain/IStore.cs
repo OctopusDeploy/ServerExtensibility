@@ -10,7 +10,7 @@ namespace Octopus.Server.Extensibility.HostServices.Domain
         TDocument Get(string id);
     }
 
-    public interface IStore<out TDocument, TId>
+    public interface IStore<out TDocument, in TId>
         where TDocument : IDocument<TId>
         where TId : CaseInsensitiveStringTinyType
     {

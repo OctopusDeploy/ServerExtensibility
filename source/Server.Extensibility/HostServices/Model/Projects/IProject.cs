@@ -5,7 +5,7 @@ using Octopus.Server.Extensibility.HostServices.Model.Tenants;
 
 namespace Octopus.Server.Extensibility.HostServices.Model.Projects
 {
-    public interface IProject : IDocument, IHaveSpace
+    public interface IProject : IDocument<ProjectId>, IHaveSpace
     {
         string Slug { get; }
 
