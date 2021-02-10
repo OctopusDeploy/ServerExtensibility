@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Octopus.Data.Model;
+using Octopus.Server.Extensibility.HostServices.Model.Environments;
 
 namespace Octopus.Server.Extensibility.HostServices.Model.Projects
 {
@@ -15,9 +16,9 @@ namespace Octopus.Server.Extensibility.HostServices.Model.Projects
         ReferenceCollection ExcludedMachineIds { get; }
         bool UseGuidedFailure { get; }
 
-        string ProjectId { get; }
+        ProjectId ProjectId { get; }
         string ChannelId { get; }
-        string EnvironmentId { get; }
+        DeploymentEnvironmentId EnvironmentId { get; }
         string? TenantId { get; }
 
         string ReleaseId { get; }
