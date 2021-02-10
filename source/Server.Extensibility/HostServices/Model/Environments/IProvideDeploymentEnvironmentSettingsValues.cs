@@ -4,6 +4,6 @@ namespace Octopus.Server.Extensibility.HostServices.Model.Environments
 {
     public interface IProvideDeploymentEnvironmentSettingsValues
     {
-        T GetSettings<T>(string extensionId, string deploymentEnvironmentId);
+        T GetSettings<T>(string extensionId, DeploymentEnvironmentId deploymentEnvironmentId);
     }
 }
