@@ -9,4 +9,11 @@ namespace Octopus.Server.Extensibility.HostServices.Model.Environments
         {
         }
     }
-}
+
+    public static class DeploymentEnvironmentIdExtensionMethods
+    {
+        public static DeploymentEnvironmentId ToDeploymentEnvironmentId(this string value)
+        {
+            return new DeploymentEnvironmentId(value);
+        }
+    }}

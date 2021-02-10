@@ -9,4 +9,12 @@ namespace Octopus.Server.Extensibility.HostServices.Model.Projects
         {
         }
     }
+
+    public static class ProjectIdExtensionMethods
+    {
+        public static ProjectId ToProjectId(this string value)
+        {
+            return new ProjectId(value);
+        }
+    }
 }
