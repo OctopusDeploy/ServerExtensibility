@@ -6,7 +6,7 @@ namespace Octopus.Server.Extensibility.HostServices.Model.TagSets
     /// <summary>
     ///     This will look something like: TagSet-1/Tag-1
     /// </summary>
-    public class TagCanonicalId : CaseInsensitiveStringTinyType
+    public class TagCanonicalId : CaseInsensitiveStringTinyType, IIdTinyType
     {
         public TagCanonicalId(string value) : base(value)
         {
