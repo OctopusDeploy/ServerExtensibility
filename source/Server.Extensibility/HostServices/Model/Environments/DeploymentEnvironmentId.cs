@@ -18,4 +18,5 @@ namespace Octopus.Server.Extensibility.HostServices.Model.Environments
         {
             return value == null ? null : new DeploymentEnvironmentId(value);
         }
-    }}
+    }
+}
