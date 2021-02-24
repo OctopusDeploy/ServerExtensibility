@@ -27,7 +27,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Autofac" Version="6.1.0" />
-    <PackageReference Include="Octopus.Diagnostics" Version="1.4.2-enh-logwithconte0006" />
+    <PackageReference Include="Octopus.Diagnostics" Version="1.4.2-enh-logwithconte0009" />
     <PackageReference Include="Octopus.TinyTypes" Version="0.1.345" />
     <PackageReference Include="Octopus.Versioning" Version="4.3.3" />
     <PackageReference Include="System.Security.Principal" Version="4.3.0" />
