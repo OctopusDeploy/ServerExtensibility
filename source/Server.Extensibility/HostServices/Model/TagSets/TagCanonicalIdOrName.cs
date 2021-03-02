@@ -4,7 +4,7 @@ using Octopus.TinyTypes;
 
 namespace Octopus.Server.Extensibility.HostServices.Model.TagSets
 {
-    public class TagCanonicalIdOrName : CaseInsensitiveStringTinyType
+    public class TagCanonicalIdOrName : CaseInsensitiveStringTinyType, IIdOrNameTinyType
     {
         public TagCanonicalIdOrName(string value) : base(value)
         {
