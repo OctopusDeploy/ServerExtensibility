@@ -3,7 +3,7 @@ using Octopus.Diagnostics;
 
 namespace Octopus.Server.Extensibility.HostServices.Diagnostics
 {
-    public interface ITaskLog : ILog, IDisposable
+    public interface ITaskLog : ILog
     {
         bool IsVerboseEnabled { get; }
         bool IsErrorEnabled { get; }
