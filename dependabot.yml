@@ -3,3 +3,4 @@ updates:
   - package-ecosystem: "nuget"
     ignore:
       - dependency-name: "Autofac*"
+      - dependency-name: "Octopus*"
