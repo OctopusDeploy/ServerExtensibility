@@ -17,6 +17,8 @@ namespace Octopus.Server.Extensibility.Diagnostics
         public string Id { get; }
 
         public override string ToString()
-            => Id;
+        {
+            return Id;
+        }
     }
 }

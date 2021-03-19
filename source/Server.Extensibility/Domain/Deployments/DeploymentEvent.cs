@@ -1,5 +1,4 @@
 ﻿using System;
-using Octopus.Diagnostics;
 using Octopus.Server.Extensibility.HostServices.Diagnostics;
 using Octopus.Server.Extensibility.HostServices.Domain.Events;
 using Octopus.Server.Extensibility.HostServices.Model.Projects;
