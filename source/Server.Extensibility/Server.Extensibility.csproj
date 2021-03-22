@@ -33,6 +33,12 @@
     <PackageReference Include="Octopus.TinyTypes" Version="0.1.459" />
     <PackageReference Include="Octopus.TinyTypes" Version="0.1.459" />
     <PackageReference Include="Octopus.Versioning" Version="5.0.2" />
+    <PackageReference Include="Octopus.Diagnostics" Version="2.0.0" />
+    <PackageReference Include="Octopus.Server.MessageContracts" Version="0.1.0-ci0003" />
+    <PackageReference Include="Octopus.TinyTypes" Version="0.1.411" />
+    <PackageReference Include="Octopus.TinyTypes" Version="0.1.418" />
+    <PackageReference Include="Octopus.TinyTypes" Version="0.1.425" />
+    <PackageReference Include="Octopus.Versioning" Version="5.0.1" />
     <PackageReference Include="System.Security.Principal" Version="4.3.0" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
     <PackageReference Include="System.ComponentModel.Primitives" Version="4.3.0" />

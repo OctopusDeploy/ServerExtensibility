@@ -1,7 +1,7 @@
 using System;
 using NUnit.Framework;
 using Octopus.Data;
-using Octopus.Server.Extensibility.Results;
+using Octopus.Server.MessageContracts;
 
 namespace Node.Extensibility.Tests
 {
@@ -52,7 +52,7 @@ namespace Node.Extensibility.Tests
         public void CheckDisabledWithDisabledCheck()
         {
             var result = new TestClassWithResultMethod().DoSomething(TestClassWithResultMethod.Behaviour.Disabled);
-            if (!(result is IFailureResultFromDisabledExtension<TestObjectBeingReturned>))
+            if (!(result is IFailureResponseFromDisabledExtension<TestObjectBeingReturned>))
                 Assert.Fail("The result should have indicated the extension was disabled");
         }
 
@@ -68,7 +68,7 @@ namespace Node.Extensibility.Tests
         public void CheckDisabledIsHandledLikeNormalFailureCheck()
         {
             var result = new TestClassWithResultMethod().DoSomething(TestClassWithResultMethod.Behaviour.Disabled);
-            if (!(result is IFailureResultFromDisabledExtension))
+            if (!(result is IFailureResponseFromDisabledExtension))
                 Assert.Fail("The result should have indicated the extension was disabled, which should also be treated as a normal failure");
         }
 
@@ -94,7 +94,7 @@ namespace Node.Extensibility.Tests
         public void CheckDisabledNoObjectWithDisabledCheck()
         {
             var result = new TestClassWithResultMethod().DoSomethingWithNoObjectToReturn(TestClassWithResultMethod.Behaviour.Disabled);
-            if (!(result is IFailureResultFromDisabledExtension))
+            if (!(result is IFailureResponseFromDisabledExtension))
                 Assert.Fail("The result should have indicated the extension was disabled");
         }
 
@@ -131,22 +131,22 @@ namespace Node.Extensibility.Tests
                 Disabled
             }
 
-            public IResultFromExtension<TestObjectBeingReturned> DoSomething(Behaviour behaviour)
+            public IResponseFromExtension<TestObjectBeingReturned> DoSomething(Behaviour behaviour)
             {
                 if (behaviour == Behaviour.Failure)
-                    return ResultFromExtension<TestObjectBeingReturned>.Failed("Some failure reason");
+                    return ResponseFromExtension<TestObjectBeingReturned>.Failed("Some failure reason");
                 if (behaviour == Behaviour.Disabled)
-                    return ResultFromExtension<TestObjectBeingReturned>.ExtensionDisabled();
-                return ResultFromExtension<TestObjectBeingReturned>.Success(new TestObjectBeingReturned("Some Name"));
+                    return ResponseFromExtension<TestObjectBeingReturned>.ExtensionDisabled();
+                return ResponseFromExtension<TestObjectBeingReturned>.Success(new TestObjectBeingReturned("Some Name"));
             }
 
-            public IResultFromExtension DoSomethingWithNoObjectToReturn(Behaviour behaviour)
+            public IResponseFromExtension DoSomethingWithNoObjectToReturn(Behaviour behaviour)
             {
                 if (behaviour == Behaviour.Failure)
-                    return ResultFromExtension.Failed("Some failure reason");
+                    return ResponseFromExtension.Failed("Some failure reason");
                 if (behaviour == Behaviour.Disabled)
-                    return ResultFromExtension.ExtensionDisabled();
-                return ResultFromExtension.Success();
+                    return ResponseFromExtension.ExtensionDisabled();
+                return ResponseFromExtension.Success();
             }
         }
 
