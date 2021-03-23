@@ -7,7 +7,7 @@ using System.Reflection;
 using Octopus.Data.Model;
 using Octopus.Data.Resources;
 using Octopus.Data.Resources.Attributes;
-using Octopus.Server.Extensibility.Resources;
+using Octopus.Server.MessageContracts.Projects;
 
 namespace Octopus.Server.Extensibility.Metadata
 {

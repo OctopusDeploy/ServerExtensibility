@@ -1,4 +1,5 @@
 ﻿using System;
+using Octopus.Server.MessageContracts;
 
 namespace Octopus.Server.Extensibility.HostServices.Model
 {
@@ -72,6 +73,14 @@ namespace Octopus.Server.Extensibility.HostServices.Model
         public PropertyValue Clone()
         {
             return new PropertyValue(Value, IsSensitive);
+        }
+    }
+
+    public static class PropertyValueExtensionMethods
+    {
+        public static PropertyValue ToModel(this PropertyValueResource resource)
+        {
+            return new PropertyValue(resource.IsSensitive ? resource.SensitiveValue.NewValue : resource.Value, resource.IsSensitive);
         }
     }
 }
