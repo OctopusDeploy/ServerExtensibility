@@ -15,10 +15,6 @@ namespace Octopus.Server.Extensibility.Mediator
             where TRequest : IRequest<TRequest, TResponse>
             where TResponse : IResponse;
 
-        Task<TResponse[]> MulticastRequest<TRequest, TResponse>(IRequest<TRequest, TResponse> request, CancellationToken cancellationToken)
-            where TRequest : IRequest<TRequest, TResponse>
-            where TResponse : IMulticastResponse;
-
         Task Publish<TEvent>(TEvent @event, CancellationToken cancellationToken)
             where TEvent : IEvent;
     }
