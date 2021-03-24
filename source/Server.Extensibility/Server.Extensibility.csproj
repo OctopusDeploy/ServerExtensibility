@@ -39,6 +39,7 @@
     <PackageReference Include="Octopus.TinyTypes" Version="0.1.418" />
     <PackageReference Include="Octopus.TinyTypes" Version="0.1.425" />
     <PackageReference Include="Octopus.Server.MessageContracts" Version="0.1.0-ci0008" />
+    <PackageReference Include="Octopus.Server.MessageContracts" Version="0.1.0-ci0012" />
     <PackageReference Include="Octopus.TinyTypes" Version="0.1.434" />
     <PackageReference Include="Octopus.Versioning" Version="5.0.1" />
     <PackageReference Include="System.Security.Principal" Version="4.3.0" />
@@ -46,6 +47,6 @@
     <PackageReference Include="System.ComponentModel.Primitives" Version="4.3.0" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="HostServices\Model\Tenants" />
+    <Folder Include="Diagnostics" />
   </ItemGroup>
 </Project>
