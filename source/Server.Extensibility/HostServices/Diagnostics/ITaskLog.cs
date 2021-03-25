@@ -71,12 +71,6 @@ namespace Octopus.Server.Extensibility.HostServices.Diagnostics
         /// </summary>
         void Reinstate();
 
-        /// <summary>
-        /// Marks the current block as finished. If there were any errors, it will be finished with errors. If there were no
-        /// errors, it will be assumed to be successful.
-        /// </summary>
-        void Finish();
-
         bool IsEnabled(LogCategory category);
 
         void UpdateProgress(int progressPercentage, string messageText);
