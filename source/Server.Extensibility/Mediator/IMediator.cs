@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Octopus.Server.MessageContracts;
@@ -15,7 +16,7 @@ namespace Octopus.Server.Extensibility.Mediator
             where TRequest : IRequest<TRequest, TResponse>
             where TResponse : IResponse;
 
-        Task<TResponse[]> MulticastRequest<TRequest, TResponse>(IRequest<TRequest, TResponse> request, CancellationToken cancellationToken)
+        IAsyncEnumerable<TResponse> MulticastRequest<TRequest, TResponse>(IRequest<TRequest, TResponse> request, CancellationToken cancellationToken)
             where TRequest : IRequest<TRequest, TResponse>
             where TResponse : IResponse;
 

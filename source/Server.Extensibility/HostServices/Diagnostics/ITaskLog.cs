@@ -13,6 +13,13 @@ namespace Octopus.Server.Extensibility.HostServices.Diagnostics
         bool IsWarnEnabled { get; }
 
         /// <summary>
+        /// Creates a child context with the same correlationId and additional sensitive values.
+        /// </summary>
+        /// <param name="sensitiveValues">Additional sensitive values.</param>
+        /// <returns>A new child task log</returns>
+        ITaskLog ChildContext(string[] sensitiveValues);
+
+        /// <summary>
         /// Marks the current block as abandoned. Abandoned blocks won't be shown in the task log.
         /// </summary>
         void Abandon();
