@@ -1,12 +1,13 @@
 ﻿using System;
 using Octopus.Diagnostics;
+using Octopus.Server.MessageContracts.Diagnostics;
 
 namespace Octopus.Server.Extensibility.HostServices.Diagnostics
 {
     public interface ITaskLogFactory
     {
-        ITaskLog Get(string correlationId);
-        ITaskLog Create(string correlationId, string[]? sensitiveValues = null);
+        ITaskLog Get(CorrelationId correlationId);
+        ITaskLog Create(CorrelationId correlationId, string[]? sensitiveValues = null);
 
         /// <summary>
         /// Opens a new child block for logging.
