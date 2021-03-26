@@ -42,6 +42,7 @@
     <PackageReference Include="Octopus.Server.MessageContracts" Version="0.1.0-ci0012" />
     <PackageReference Include="Octopus.Server.MessageContracts" Version="0.1.0-ci0015" />
     <PackageReference Include="Octopus.Server.MessageContracts" Version="0.1.0-ci0019" />
+    <PackageReference Include="Octopus.Server.MessageContracts" Version="0.1.0-ci0030" />
     <PackageReference Include="Octopus.TinyTypes" Version="0.1.434" />
     <PackageReference Include="Octopus.Versioning" Version="5.0.1" />
     <PackageReference Include="System.Security.Principal" Version="4.3.0" />
