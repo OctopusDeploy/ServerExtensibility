@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using Octopus.Data.Model;
 using Octopus.Server.Extensibility.Resources;
-using Octopus.Server.MessageContracts.Feeds;
+using Octopus.Server.MessageContracts.Features.Feeds;
 
 namespace Octopus.Server.Extensibility.HostServices.Model
 {

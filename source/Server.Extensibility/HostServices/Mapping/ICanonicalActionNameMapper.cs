@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Octopus.Data.Model;
-using Octopus.Server.MessageContracts.Projects;
+using Octopus.Server.MessageContracts.Features.Projects;
 
 namespace Octopus.Server.Extensibility.HostServices.Mapping
 {

@@ -1,5 +1,5 @@
 ﻿using System;
-using Octopus.Server.MessageContracts.Projects;
+using Octopus.Server.MessageContracts.Features.Projects;
 
 namespace Octopus.Server.Extensibility.HostServices.Model.Projects
 {
