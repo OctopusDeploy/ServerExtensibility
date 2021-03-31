@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 using Octopus.Data.Model.Configuration;
-using Octopus.Data.Resources;
 using Octopus.Server.Extensibility.HostServices.Mapping;
+using Octopus.Server.MessageContracts;
 
 namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration
 {

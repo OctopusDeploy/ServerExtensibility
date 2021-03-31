@@ -1,5 +1,5 @@
 using System;
-using Octopus.Data.Resources.Attributes;
+using Octopus.Server.MessageContracts.Attributes;
 
 namespace Octopus.Server.Extensibility.Metadata
 {

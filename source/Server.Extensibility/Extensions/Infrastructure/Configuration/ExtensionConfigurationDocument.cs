@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using Octopus.Data.Model.Configuration;
-using Octopus.Data.Resources.Attributes;
+using Octopus.Server.MessageContracts.Attributes;
 
 namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration
 {
