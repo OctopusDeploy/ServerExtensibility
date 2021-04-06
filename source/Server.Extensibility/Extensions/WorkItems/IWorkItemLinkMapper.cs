@@ -1,7 +1,7 @@
 ﻿using System;
-using Octopus.Server.Extensibility.HostServices.Model.BuildInformation;
-using Octopus.Server.Extensibility.Resources.IssueTrackers;
 using Octopus.Server.Extensibility.Results;
+using Octopus.Server.MessageContracts.Features.BuildInformation;
+using Octopus.Server.MessageContracts.Features.IssueTrackers;
 
 namespace Octopus.Server.Extensibility.Extensions.WorkItems
 {

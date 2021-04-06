@@ -6,9 +6,9 @@ using Assent;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using NUnit.Framework;
-using Octopus.Data.Resources;
-using Octopus.Data.Resources.Attributes;
 using Octopus.Server.Extensibility.Metadata;
+using Octopus.Server.MessageContracts;
+using Octopus.Server.MessageContracts.Attributes;
 
 namespace Node.Extensibility.Tests.Metadata
 {
