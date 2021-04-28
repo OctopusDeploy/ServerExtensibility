@@ -5,3 +5,6 @@ updates:
     directory: "/source/"
     schedule:
       interval: "weekly"
+    ignore:
+      - dependency-name: "Autofac*"
+      - dependency-name: "Octopus*"
