@@ -108,7 +108,7 @@ namespace Octopus.Server.Extensibility.HostServices.Model
         {
             Id = Guid.NewGuid().ToString();
             Properties = new Dictionary<string, string>();
-            FeedIdOrName = new FeedIdOrName("feeds-builtin");
+            FeedIdOrName = "feeds-builtin".ToFeedIdOrName();
         }
 
         public string Id { get; }
