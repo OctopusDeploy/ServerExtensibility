@@ -2,6 +2,12 @@
 
 namespace Octopus.Server.Extensibility.HostServices.Web
 {
+    public enum WebServer
+    {
+        HTTPsys,
+        Kestrel
+    }
+
     public interface IWebPortalConfigurationStore
     {
         /// <summary>
@@ -10,5 +16,7 @@ namespace Octopus.Server.Extensibility.HostServices.Web
         NodeWebPortalConfiguration GetCurrentNodeWebPortalConfiguration();
 
         string GetCorsWhitelist();
+
+        WebServer GetWebServer();
     }
 }
