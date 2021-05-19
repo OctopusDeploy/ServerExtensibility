@@ -4,7 +4,7 @@ namespace Octopus.Server.Extensibility.HostServices.Web
 {
     public enum WebServer
     {
-        HTTPsys,
+        HttpSys,
         Kestrel
     }
 
