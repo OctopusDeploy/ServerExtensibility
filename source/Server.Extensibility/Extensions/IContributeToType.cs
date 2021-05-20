@@ -2,6 +2,6 @@
 {
     public interface IContributeToType<T>
     {
-        void ContributeTo(T instance);
+        void ContributeTo(T instance); 
     }
 }
