@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 using Octopus.Server.Extensibility.Results;
 using Octopus.Server.MessageContracts.Features.BuildInformation;
@@ -12,6 +13,6 @@ namespace Octopus.Server.Extensibility.Extensions.WorkItems
         string CommentParser { get; }
         bool IsEnabled { get; }
 
-        Task<IResultFromExtension<WorkItemLink[]>> Map(SpaceId spaceId, OctopusBuildInformation buildInformation);
+        Task<IResultFromExtension<WorkItemLink[]>> Map(SpaceId spaceId, OctopusBuildInformation buildInformation, CancellationToken cancellationToken);
     }
 }
