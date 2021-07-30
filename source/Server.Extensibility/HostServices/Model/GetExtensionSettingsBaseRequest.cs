@@ -3,8 +3,7 @@ using Octopus.Server.MessageContracts;
 
 namespace Octopus.Server.Extensibility.HostServices.Model
 {
-    public class GetExtensionSettingsBaseRequest<TRequest, TId, TValues> : IRequest<TRequest, GetExtensionSettingsResponse<TValues>>
-        where TRequest : GetExtensionSettingsBaseRequest<TRequest, TId, TValues>
+    public class GetExtensionSettingsBaseRequest<TId, TValues> : IRequest<GetExtensionSettingsBaseRequest<TId, TValues>, GetExtensionSettingsResponse<TValues>>
         where TId : class, IIdOrNameTinyType
         where TValues : class
     {
