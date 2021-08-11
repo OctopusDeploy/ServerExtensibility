@@ -12,7 +12,7 @@ namespace Octopus.Server.Extensibility.Extensions.Model
         List<PropertyMetadata> Properties { get; }
         
         Type Resource { get; }
-        Type Mapping { get; }
+        Type Model { get; }
         
     }
 }
