@@ -129,7 +129,7 @@ namespace Octopus.Server.Extensibility.HostServices.Model
         public string PackageId { get; set; } = string.Empty;
 
         /// <summary>
-        /// Feed ID, name or a variable-expression
+        ///     Feed ID, name or a variable-expression
         /// </summary>
         [JsonProperty("FeedId")] // This is named FeedId for backward-compatibility as we don't yet want to change the underlying database JSON/schema.
         [OclName("feed")]
@@ -140,6 +140,13 @@ namespace Octopus.Server.Extensibility.HostServices.Model
         ///     One of <see cref="PackageAcquisitionLocation" /> or a variable-expression
         /// </summary>
         public string AcquisitionLocation { get; set; } = string.Empty;
+
+        /// <summary>
+        ///     This reference identifier is populated when a step package step contains a package reference
+        ///     It allows us to correlate the reference within the step package inputs to this Server package reference
+        /// </summary>
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string? StepPackageInputsReferenceId { get; set; }
 
         [JsonProperty(ObjectCreationHandling = ObjectCreationHandling.Reuse)]
         public IDictionary<string, string> Properties { get; private set; }
@@ -155,7 +162,8 @@ namespace Octopus.Server.Extensibility.HostServices.Model
                                         FeedIdOrName,
                                         AcquisitionLocation)
             {
-                Properties = new Dictionary<string, string>(Properties)
+                Properties = new Dictionary<string, string>(Properties),
+                StepPackageInputsReferenceId = StepPackageInputsReferenceId
             };
         }
 
