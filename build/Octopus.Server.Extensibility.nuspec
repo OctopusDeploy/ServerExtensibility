@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd" xmlns:octopus="http://octopus.org">
+  <metadata>
+    <id>Octopus.Server.Extensibility</id>
+    <title>Octopus Server Extensibility</title>
+    <version>$version$</version>
+    <authors>Octopus Deploy</authors>
+    <owners>Octopus Deploy Pty. Ltd.</owners>
+    <summary>Octopus Deploy Server Extensibility</summary>
+    <description>
+      Server Extensibility
+    </description>
+    <language>en-US</language>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="file">LICENSE.txt</license>
+    <projectUrl>https://github.com/OctopusDeploy/ServerExtensibility</projectUrl>
+    <repository type="git" url="https://github.com/OctopusDeploy/ServerExtensibility" />
+    <icon>Avatar.png</icon>
+    <tags>automation deployment</tags>
+    <developmentDependency>true</developmentDependency>
+  </metadata>
+  <files>
+    <file src="..\source\Server.Extensibility\bin\Release\net5.0\*.dll" target="tools" />
+    <file src="..\LICENSE.txt" target=""/>
+    <file src=".\Avatar.png" target=""/>
+  </files>
+</package>
