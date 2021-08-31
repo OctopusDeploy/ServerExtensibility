@@ -7,6 +7,6 @@ namespace Octopus.Server.Extensibility.Metadata
     {
         public string SelectMode { get; set; } = string.Empty;
 
-        public Dictionary<string, string> Values { get; set; } = new Dictionary<string, string>();
+        public Dictionary<string, string> Values { get; set; } = new();
     }
 }

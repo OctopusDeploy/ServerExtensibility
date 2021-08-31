@@ -25,7 +25,7 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration
         }
 
         public string Key { get; set; }
-        public object? Value => IsSensitive ? (object?)(TypedValue as SensitiveString)?.Value : TypedValue;
+        public object? Value => IsSensitive ? (TypedValue as SensitiveString)?.Value : TypedValue;
 
         [JsonIgnore]
         public T TypedValue { get; }

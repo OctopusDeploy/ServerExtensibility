@@ -7,9 +7,9 @@ namespace Octopus.Server.Extensibility.HostServices.Model
 {
     public class PackageReferenceCollection : ICollection<PackageReference>
     {
-        readonly Dictionary<string, PackageReference> idMap = new Dictionary<string, PackageReference>(StringComparer.OrdinalIgnoreCase);
+        readonly Dictionary<string, PackageReference> idMap = new(StringComparer.OrdinalIgnoreCase);
 
-        readonly Dictionary<string, PackageReference> nameMap = new Dictionary<string, PackageReference>(StringComparer.OrdinalIgnoreCase);
+        readonly Dictionary<string, PackageReference> nameMap = new(StringComparer.OrdinalIgnoreCase);
 
         public PackageReferenceCollection()
         {
@@ -89,12 +89,12 @@ namespace Octopus.Server.Extensibility.HostServices.Model
         public IResult<PackageReference> TryGetByName(string name)
         {
             var key = name ?? "";
-            return nameMap.ContainsKey(key) ? (IResult<PackageReference>)Result<PackageReference>.Success(nameMap[key]) : Result<PackageReference>.Failed("Name not found");
+            return nameMap.ContainsKey(key) ? Result<PackageReference>.Success(nameMap[key]) : Result<PackageReference>.Failed("Name not found");
         }
 
         public IResult<PackageReference> TryGetById(string id)
         {
-            return idMap.ContainsKey(id) ? (IResult<PackageReference>)Result<PackageReference>.Success(idMap[id]) : Result<PackageReference>.Failed("Id not found");
+            return idMap.ContainsKey(id) ? Result<PackageReference>.Success(idMap[id]) : Result<PackageReference>.Failed("Id not found");
         }
 
         public IResult<PackageReference> TryGetByIdOrName(string idOrName)

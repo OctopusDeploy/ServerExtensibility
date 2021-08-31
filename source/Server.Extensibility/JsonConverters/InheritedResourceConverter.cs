@@ -10,8 +10,8 @@ namespace Octopus.Server.Extensibility.JsonConverters
 {
     public abstract class InheritedResourceConverter<TBaseResource> : JsonConverter
     {
-        readonly ConcurrentDictionary<Type, IReadOnlyList<PropertyInfo>> readablePropertiesCache = new ConcurrentDictionary<Type, IReadOnlyList<PropertyInfo>>();
-        readonly ConcurrentDictionary<Type, IReadOnlyList<PropertyInfo>> writeablePropertiesCache = new ConcurrentDictionary<Type, IReadOnlyList<PropertyInfo>>();
+        readonly ConcurrentDictionary<Type, IReadOnlyList<PropertyInfo>> readablePropertiesCache = new();
+        readonly ConcurrentDictionary<Type, IReadOnlyList<PropertyInfo>> writeablePropertiesCache = new();
 
         protected abstract IDictionary<string, Type> DerivedTypeMappings { get; }
 

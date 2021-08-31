@@ -5,7 +5,7 @@ namespace Octopus.Server.Extensibility.Metadata
 {
     public class Metadata
     {
-        public List<TypeMetadata> Types { get; set; } = new List<TypeMetadata>();
+        public List<TypeMetadata> Types { get; set; } = new();
         public string? Description { get; set; }
     }
 }

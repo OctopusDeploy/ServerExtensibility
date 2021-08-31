@@ -13,7 +13,7 @@ namespace Octopus.Server.Extensibility.Metadata
     public class MetadataGenerator : IGenerateMetadata
     {
         //property names to be ignored on any object
-        readonly HashSet<string> ignoreProperties = new HashSet<string>
+        readonly HashSet<string> ignoreProperties = new()
         {
             "LastModifiedBy",
             "LastModifiedOn",
@@ -21,7 +21,7 @@ namespace Octopus.Server.Extensibility.Metadata
         };
 
         //the approved types we will map to metadata, and how to stringify them
-        readonly Dictionary<Type, string> mappings = new Dictionary<Type, string>
+        readonly Dictionary<Type, string> mappings = new()
         {
             { typeof(string), "string" },
             { typeof(int), "int" },
