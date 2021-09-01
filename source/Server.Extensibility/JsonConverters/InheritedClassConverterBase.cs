@@ -84,7 +84,7 @@ namespace Octopus.Server.Extensibility.JsonConverters
 
             var args = ctor.GetParameters()
                            .Select(p =>
-                                       jo.GetValue(char.ToUpper(p.Name[0]) + p.Name.Substring(1))?.ToObject(p.ParameterType, serializer))
+                                       jo.GetValue(char.ToUpper(p.Name![0]) + p.Name.Substring(1))?.ToObject(p.ParameterType, serializer))
                            .ToArray();
             var instance = ctor.Invoke(args);
 

@@ -96,7 +96,7 @@ namespace Octopus.Server.Extensibility.Metadata
 
                     //accepts [ReadOnly()] or [Writeable] -> defaults to true (Read Only)
                     if (prop.IsDefined(typeof(ReadOnlyAttribute)))
-                        propMetadata.DisplayInfo.ReadOnly = prop.GetCustomAttribute<ReadOnlyAttribute>().IsReadOnly;
+                        propMetadata.DisplayInfo.ReadOnly = prop.GetCustomAttribute<ReadOnlyAttribute>()?.IsReadOnly == true;
                     else if (prop.IsDefined(typeof(WriteableAttribute)))
                         propMetadata.DisplayInfo.ReadOnly = false;
                     else
@@ -111,7 +111,7 @@ namespace Octopus.Server.Extensibility.Metadata
 
                             propMetadata.DisplayInfo.Options = new OptionsMetadata
                             {
-                                SelectMode = optionsAttr.SelectMode.ToString()
+                                SelectMode = optionsAttr?.SelectMode.ToString()
                             };
 
                             if (prop.PropertyType.GetTypeInfo().IsEnum)
@@ -125,7 +125,7 @@ namespace Octopus.Server.Extensibility.Metadata
                         {
                             var listApiAttr = prop.GetCustomAttribute<ListApiAttribute>();
 
-                            propMetadata.DisplayInfo.ListApi = new ListApiMetadata(listApiAttr.SelectMode.ToString(), listApiAttr.ApiEndpoint);
+                            propMetadata.DisplayInfo.ListApi = new ListApiMetadata(listApiAttr!.SelectMode.ToString(), listApiAttr!.ApiEndpoint);
                         }
                     }
 
@@ -133,7 +133,7 @@ namespace Octopus.Server.Extensibility.Metadata
                     {
                         var applicableAttr = prop.GetCustomAttribute<PropertyApplicabilityAttribute>();
 
-                        propMetadata.DisplayInfo.PropertyApplicability = new PropertyApplicability(applicableAttr.Mode, applicableAttr.DependsOnPropertyName)
+                        propMetadata.DisplayInfo.PropertyApplicability = new PropertyApplicability(applicableAttr!.Mode, applicableAttr.DependsOnPropertyName)
                         {
                             DependsOnPropertyValue = applicableAttr.DependsOnPropertyValue
                         };
@@ -144,7 +144,7 @@ namespace Octopus.Server.Extensibility.Metadata
                         var allowConnectivityCheckAttr = prop.GetCustomAttribute<AllowConnectivityCheckAttribute>();
                         propMetadata.DisplayInfo.ConnectivityCheck = new ConnectivityCheck
                         {
-                            Title = allowConnectivityCheckAttr.ConnectivityCheckTitle,
+                            Title = allowConnectivityCheckAttr!.ConnectivityCheckTitle,
                             Url = allowConnectivityCheckAttr.ApiEndpoint,
                             DependsOnPropertyNames = allowConnectivityCheckAttr.DependsOnPropertyNames
                         };
@@ -163,7 +163,7 @@ namespace Octopus.Server.Extensibility.Metadata
             var values = new Dictionary<string, string>();
 
             foreach (var item in Enum.GetValues(enumType))
-                values.Add(item.ToString(), EnumExtensions.GetDescription(enumType, item));
+                values.Add(item.ToString()!, EnumExtensions.GetDescription(enumType, item));
 
             return values;
         }
@@ -171,35 +171,32 @@ namespace Octopus.Server.Extensibility.Metadata
         string GetTypeDescriptor(Type type)
         {
             //Array
-            if (type.IsArray) return GetTypeDescriptor(type.GetElementType()) + "[]";
+            if (type.IsArray) return GetTypeDescriptor(type.GetElementType()!) + "[]";
 
             if (type.GetTypeInfo().IsGenericType)
             {
                 var genericTypeDefinition = type.GetGenericTypeDefinition();
 
-                if (genericTypeDefinition != null)
+                //List<>
+                if (genericTypeDefinition.GetTypeInfo().IsAssignableFrom(typeof(List<>).GetTypeInfo()))
                 {
-                    //List<>
-                    if (genericTypeDefinition.GetTypeInfo().IsAssignableFrom(typeof(List<>).GetTypeInfo()))
-                    {
-                        var genericType = type.GetTypeInfo().GenericTypeArguments[0];
+                    var genericType = type.GetTypeInfo().GenericTypeArguments[0];
 
-                        return GetTypeDescriptor(genericType) + "[]";
-                    }
-
-                    //Dictionary<>
-                    if (genericTypeDefinition.GetTypeInfo().IsAssignableFrom(typeof(Dictionary<,>).GetTypeInfo()))
-                    {
-                        var genericTypes = type.GetTypeInfo().GenericTypeArguments;
-
-                        var keyType = GetTypeDescriptor(genericTypes[0]);
-                        var valueType = GetTypeDescriptor(genericTypes[1]);
-
-                        return $"Dictionary<{keyType}, {valueType}>";
-                    }
-
-                    //other generics not supported yet
+                    return GetTypeDescriptor(genericType) + "[]";
                 }
+
+                //Dictionary<>
+                if (genericTypeDefinition.GetTypeInfo().IsAssignableFrom(typeof(Dictionary<,>).GetTypeInfo()))
+                {
+                    var genericTypes = type.GetTypeInfo().GenericTypeArguments;
+
+                    var keyType = GetTypeDescriptor(genericTypes[0]);
+                    var valueType = GetTypeDescriptor(genericTypes[1]);
+
+                    return $"Dictionary<{keyType}, {valueType}>";
+                }
+
+                //other generics not supported yet
             }
 
             //Nullable

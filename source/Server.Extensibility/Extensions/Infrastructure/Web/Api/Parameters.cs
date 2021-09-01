@@ -35,7 +35,7 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
 
     public interface IOptionalParameter<T> : IResponderParameter<T>, IOptionalParameter
     {
-        T DefaultValue { get; }
+        T? DefaultValue { get; }
     }
 
     public interface IRequiredParameter : IResponderParameter
@@ -64,12 +64,12 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
 
     public abstract class OptionalParameterProperty<T> : ParameterProperty<T>, IOptionalParameter<T>
     {
-        protected OptionalParameterProperty(string name, string description, T defaultValue = default) : base(name, description)
+        protected OptionalParameterProperty(string name, string description, T? defaultValue = default) : base(name, description)
         {
             DefaultValue = defaultValue;
         }
 
-        public T DefaultValue { get; }
+        public T? DefaultValue { get; }
     }
 
     public abstract class RequiredParameterProperty<T> : ParameterProperty<T>, IRequiredParameter<T>

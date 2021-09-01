@@ -5,7 +5,7 @@ namespace Octopus.Server.Extensibility.HostServices.Model
 {
     public class PropertyValue : IEquatable<PropertyValue>
     {
-        public PropertyValue(string value, bool isSensitive = false)
+        public PropertyValue(string? value, bool isSensitive = false)
         {
             Value = value ?? string.Empty;
             IsSensitive = isSensitive;
@@ -17,14 +17,14 @@ namespace Octopus.Server.Extensibility.HostServices.Model
 
         public bool HasValue => !string.IsNullOrEmpty(Value);
 
-        public bool Equals(PropertyValue other)
+        public bool Equals(PropertyValue? other)
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
             return string.Equals(Value, other.Value) && IsSensitive.Equals(other.IsSensitive);
         }
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
