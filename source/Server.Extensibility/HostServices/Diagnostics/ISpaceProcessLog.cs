@@ -2,6 +2,6 @@ using System;
 
 namespace Octopus.Server.Extensibility.HostServices.Diagnostics
 {
-    public interface ISpaceProcessLog : IProcessLog
+    public interface ISpaceProcessLog : IProcessLog<ISpaceProcessLog>
     {}
 }

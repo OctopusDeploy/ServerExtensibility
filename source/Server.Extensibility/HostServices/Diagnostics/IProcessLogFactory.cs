@@ -1,11 +1,14 @@
 using System;
 using Octopus.Diagnostics;
+using Octopus.Server.MessageContracts.Diagnostics;
 
 namespace Octopus.Server.Extensibility.HostServices.Diagnostics
 {
     public interface IProcessLogFactory<TProcessLog>
-        where TProcessLog : IProcessLog
+        where TProcessLog : IProcessLog<TProcessLog>
     {
+        TProcessLog Get(CorrelationId correlationId);
+
         /// <summary>
         /// Opens a new child block for logging.
         /// </summary>
