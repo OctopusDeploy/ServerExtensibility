@@ -26,5 +26,11 @@ namespace Octopus.Server.Extensibility.HostServices.Diagnostics
         /// <returns>A child <see cref="IProcessLog" />.</returns>
         [StringFormatMethod("messageFormat")]
         TProcessLog CreateBlock(TProcessLog processLog, string messageFormat, params object[] args);
+
+        /// <summary>
+        /// Completes the given logging block
+        /// </summary>
+        /// <param name="processLog"></param>
+        void Finish(TProcessLog processLog);
     }
 }
