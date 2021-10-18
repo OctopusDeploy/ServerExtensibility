@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Octopus.Server.Extensibility.Results;
 using Octopus.Server.MessageContracts.Features.BuildInformation;
 using Octopus.Server.MessageContracts.Features.IssueTrackers;
@@ -10,6 +11,6 @@ namespace Octopus.Server.Extensibility.Extensions.WorkItems
         string CommentParser { get; }
         bool IsEnabled { get; }
 
-        IResultFromExtension<WorkItemLink[]> Map(OctopusBuildInformation buildInformation);
+        Task<IResultFromExtension<WorkItemLink[]>> Map(OctopusBuildInformation buildInformation);
     }
 }

@@ -39,7 +39,7 @@ namespace Octopus.Server.Extensibility.Results
 
         public static IFailureResultFromExtension Failed()
         {
-            return new FailureResultFromExtension(new string[0]);
+            return new FailureResultFromExtension(Array.Empty<string>());
         }
 
         public new static IFailureResultFromExtension Failed(params string[] errors)
@@ -76,7 +76,7 @@ namespace Octopus.Server.Extensibility.Results
 
         public static IFailureResultFromExtension<T> Failed()
         {
-            return new FailureResultFromExtension<T>(new string[0]);
+            return new FailureResultFromExtension<T>(Array.Empty<string>());
         }
 
         public new static IFailureResultFromExtension<T> Failed(params string[] errors)
