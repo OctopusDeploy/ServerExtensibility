@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration
 {
@@ -13,6 +14,6 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration
 
         Type MetadataResourceType { get; }
 
-        IAsyncEnumerable<IConfigurationValue> GetConfigurationValues();
+        IAsyncEnumerable<IConfigurationValue> GetConfigurationValues(CancellationToken cancellationToken = default);
     }
 }

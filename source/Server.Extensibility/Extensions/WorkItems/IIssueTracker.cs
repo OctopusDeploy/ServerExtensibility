@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Octopus.Server.Extensibility.Extensions.WorkItems
@@ -13,7 +14,7 @@ namespace Octopus.Server.Extensibility.Extensions.WorkItems
         /// <summary>
         ///     Gets whether the issue tracker is currently enabled
         /// </summary>
-        Task<bool> IsEnabled();
+        Task<bool> IsEnabled(CancellationToken cancellationToken);
 
         /// <summary>
         ///     The CommentParser of this tracker, used by the build extensions to identify which baseUrl to prefix the linkUrl
@@ -24,6 +25,6 @@ namespace Octopus.Server.Extensibility.Extensions.WorkItems
         /// <summary>
         ///     The base Url to prefix the work item's linkUrl with.
         /// </summary>
-        Task<string?> BaseUrl();
+        Task<string?> BaseUrl(CancellationToken cancellationToken);
     }
 }

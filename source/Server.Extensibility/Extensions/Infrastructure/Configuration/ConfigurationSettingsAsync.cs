@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using Octopus.Data.Model.Configuration;
 using Octopus.Server.Extensibility.HostServices.Mapping;
@@ -24,17 +25,17 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration
         public abstract string Description { get; }
         public Type MetadataResourceType => typeof(TResource);
 
-        public virtual async Task<object> GetConfiguration()
+        public virtual async Task<object> GetConfiguration(CancellationToken cancellationToken)
         {
-            return await ConfigurationDocumentStore.GetConfiguration();
+            return await ConfigurationDocumentStore.GetConfiguration(cancellationToken);
         }
 
-        public virtual async Task SetConfiguration(object config)
+        public virtual async Task SetConfiguration(object config, CancellationToken cancellationToken)
         {
-            await ConfigurationDocumentStore.SetConfiguration(config);
+            await ConfigurationDocumentStore.SetConfiguration(config, cancellationToken);
         }
 
-        public abstract IAsyncEnumerable<IConfigurationValue> GetConfigurationValues();
+        public abstract IAsyncEnumerable<IConfigurationValue> GetConfigurationValues(CancellationToken cancellationToken = default);
 
         public abstract void BuildMappings(IResourceMappingsBuilder builder);
     }
@@ -50,8 +51,8 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration
 
         public Type MetadataResourceType => typeof(TResource);
 
-        public abstract IAsyncEnumerable<IConfigurationValue> GetConfigurationValues();
+        public abstract IAsyncEnumerable<IConfigurationValue> GetConfigurationValues(CancellationToken cancellationToken = default);
 
-        public abstract Task<object> GetConfigurationResource();
+        public abstract Task<object> GetConfigurationResource(CancellationToken cancellationToken);
     }
 }

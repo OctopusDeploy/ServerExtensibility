@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration
@@ -11,14 +12,14 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration
         {
         }
 
-        public async Task<bool> GetIsEnabled()
+        public async Task<bool> GetIsEnabled(CancellationToken cancellationToken)
         {
-            return await GetProperty(doc => doc.IsEnabled);
+            return await GetProperty(doc => doc.IsEnabled, cancellationToken);
         }
 
-        public virtual async Task SetIsEnabled(bool isEnabled)
+        public virtual async Task SetIsEnabled(bool isEnabled, CancellationToken cancellationToken)
         {
-            await SetProperty(doc => doc.IsEnabled = isEnabled);
+            await SetProperty(doc => doc.IsEnabled = isEnabled, cancellationToken);
         }
     }
 }
