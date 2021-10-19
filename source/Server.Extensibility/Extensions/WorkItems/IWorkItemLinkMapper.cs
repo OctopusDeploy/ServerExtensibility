@@ -9,7 +9,7 @@ namespace Octopus.Server.Extensibility.Extensions.WorkItems
     public interface IWorkItemLinkMapper
     {
         string CommentParser { get; }
-        bool IsEnabled { get; }
+        Task<bool> IsEnabled { get; }
 
         Task<IResultFromExtension<WorkItemLink[]>> Map(OctopusBuildInformation buildInformation);
     }
