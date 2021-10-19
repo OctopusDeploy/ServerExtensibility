@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 using Octopus.Server.Extensibility.Metadata;
 
 namespace Octopus.Server.Extensibility.Extensions.Model.Environments
@@ -8,6 +9,6 @@ namespace Octopus.Server.Extensibility.Extensions.Model.Environments
     {
         string ExtensionId { get; }
         string ExtensionName { get; }
-        IAsyncEnumerable<PropertyMetadata> Properties();
+        IAsyncEnumerable<PropertyMetadata> Properties(CancellationToken cancellationToken = default);
     }
 }
