@@ -8,7 +8,6 @@ namespace Octopus.Server.Extensibility.Extensions.Model.Environments
     {
         string ExtensionId { get; }
         string ExtensionName { get; }
-
-        List<PropertyMetadata> Properties { get; }
+        IAsyncEnumerable<PropertyMetadata> Properties { get; }
     }
 }
