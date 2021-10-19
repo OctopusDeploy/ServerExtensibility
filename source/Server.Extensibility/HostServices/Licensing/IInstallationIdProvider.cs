@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Octopus.Server.Extensibility.HostServices.Licensing
@@ -7,6 +8,6 @@ namespace Octopus.Server.Extensibility.HostServices.Licensing
     {
         Guid GetInstallationId();
 
-        Task<Guid> GetInstallationIdAsync();
+        Task<Guid> GetInstallationIdAsync(CancellationToken cancellationToken);
     }
 }
