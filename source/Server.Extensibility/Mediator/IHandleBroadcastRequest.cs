@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
-using Octopus.Server.MessageContracts;
+using Octopus.Server.MessageContracts.Base;
 
 namespace Octopus.Server.Extensibility.Mediator
 {
