@@ -1,10 +1,11 @@
+using System.Threading.Tasks;
 using Octopus.Server.Extensibility.HostServices.Model.ServerTasks;
 
 namespace Octopus.Server.Extensibility.Extensions.Tasks
 {
     public interface ITaskPrecondition
     {
-        PreconditionCheckResult Check(IServerTask task);
+        Task<PreconditionCheckResult> CheckAsync(IServerTask task);
     }
 
     public enum TaskPreconditionExecutionOutcome
