@@ -16,13 +16,13 @@ namespace Octopus.Server.Extensibility.Extensions.Tasks
 
     public class PreconditionCheckResult
     {
-        public PreconditionCheckResult(TaskPreconditionExecutionOutcome executionOutcomeOutcome, string reason = null)
+        public PreconditionCheckResult(TaskPreconditionExecutionOutcome executionOutcome, string reason = null)
         {
-            ExecutionOutcomeOutcome = executionOutcomeOutcome;
+            ExecutionOutcome = executionOutcome;
             Reason = reason;
         }
 
-        public TaskPreconditionExecutionOutcome ExecutionOutcomeOutcome { get; }
+        public TaskPreconditionExecutionOutcome ExecutionOutcome { get; }
         public string Reason { get; }
     }
 }
