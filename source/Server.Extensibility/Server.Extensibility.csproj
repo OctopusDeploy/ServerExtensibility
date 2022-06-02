@@ -32,7 +32,7 @@
     <PackageReference Include="Octopus.Ocl" Version="0.4.843" />
     <PackageReference Include="Octopus.Server.MessageContracts.Base" Version="3.0.592" />
     <PackageReference Include="Octopus.Server.MessageContracts.Base.HttpRoutes" Version="3.0.592" />
-    <PackageReference Include="Octopus.Server.MessageContracts" Version="3.0.592" />
+    <PackageReference Include="Octopus.Server.MessageContracts" Version="3.1.621-dylan-git-variables-references" />
     <PackageReference Include="Octopus.TinyTypes" Version="2.2.118" />
     <PackageReference Include="Octopus.Versioning" Version="5.1.163" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
