@@ -11,7 +11,7 @@ namespace Octopus.Server.Extensibility.Metadata
         public string Label { get; set; } = string.Empty;
 
         public string? Description { get; set; }
-        
+
         public string? ExtendedDescription { get; set; }
 
         public OptionsMetadata? Options { get; set; }

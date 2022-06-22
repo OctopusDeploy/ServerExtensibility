@@ -7,7 +7,7 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
 {
     public abstract class OctoResponse
     {
-        readonly List<OctoCookie> cookies = new List<OctoCookie>();
+        readonly List<OctoCookie> cookies = new();
         readonly IDictionary<string, IEnumerable<string>> headers = new Dictionary<string, IEnumerable<string>>();
 
         protected OctoResponse(HttpStatusCode statusCode)

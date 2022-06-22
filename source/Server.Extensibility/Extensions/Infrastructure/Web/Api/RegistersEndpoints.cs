@@ -18,7 +18,7 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Web.Api
 
     public abstract class RegistersEndpoints
     {
-        public List<EndpointRegistration> Registrations { get; } = new List<EndpointRegistration>();
+        public List<EndpointRegistration> Registrations { get; } = new();
 
         protected void Add<TAction>(string method,
                                     string path,

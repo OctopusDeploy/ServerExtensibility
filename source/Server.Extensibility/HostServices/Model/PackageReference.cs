@@ -5,7 +5,6 @@ using Octopus.Data.Model;
 using Octopus.Ocl.Converters;
 using Octopus.Server.Extensibility.Resources;
 using Octopus.Server.MessageContracts.Features.Feeds;
-using IId = Octopus.Data.Model.IId;
 
 namespace Octopus.Server.Extensibility.HostServices.Model
 {

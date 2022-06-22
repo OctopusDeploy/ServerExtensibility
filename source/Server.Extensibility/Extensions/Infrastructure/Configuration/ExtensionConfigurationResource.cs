@@ -16,6 +16,6 @@ namespace Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration
         [Writeable]
         public bool IsEnabled { get; set; }
 
-        public LinkCollection Links { get; set; } = new LinkCollection();
+        public LinkCollection Links { get; set; } = new();
     }
 }

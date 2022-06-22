@@ -1,3 +1,5 @@
+using System;
+
 namespace Octopus.Server.Extensibility.Resources
 {
     public enum PackageAcquisitionLocation
