@@ -96,15 +96,5 @@ namespace Octopus.Server.Extensibility.HostServices.Model
         {
             return idMap.ContainsKey(id) ? (IResult<PackageReference>)Result<PackageReference>.Success(idMap[id]) : Result<PackageReference>.Failed("Id not found");
         }
-
-        public IResult<PackageReference> TryGetByIdOrName(string idOrName)
-        {
-            var result = TryGetById(idOrName);
-            if (result is Result<PackageReference>)
-                return result;
-
-            result = TryGetByName(idOrName);
-            return result;
-        }
     }
 }
