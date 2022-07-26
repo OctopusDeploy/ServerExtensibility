@@ -6,6 +6,10 @@
     "build": {
       "type": "object",
       "properties": {
+        "AutoDetectBranch": {
+          "type": "boolean",
+          "description": "Whether to auto-detect the branch name - this is okay for a local build, but should not be used under CI"
+        },
         "Continue": {
           "type": "boolean",
           "description": "Indicates to continue a previously failed build attempt"
@@ -21,6 +25,7 @@
             "AppVeyor",
             "AzurePipelines",
             "Bamboo",
+            "Bitbucket",
             "Bitrise",
             "GitHubActions",
             "GitLab",
@@ -37,6 +42,10 @@
         "NoLogo": {
           "type": "boolean",
           "description": "Disables displaying the NUKE logo"
+        },
+        "OCTOVERSION_CurrentBranch": {
+          "type": "string",
+          "description": "Branch name for OctoVersion to use to calculate the version number. Can be set via the environment variable OCTOVERSION_CurrentBranch"
         },
         "Partition": {
           "type": "string",
@@ -66,9 +75,6 @@
               "CalculateVersion",
               "Clean",
               "Compile",
-              "CopyToLocalPackages",
-              "Default",
-              "OutputPackagesToPush",
               "Pack",
               "Restore",
               "Test"
@@ -88,9 +94,6 @@
               "CalculateVersion",
               "Clean",
               "Compile",
-              "CopyToLocalPackages",
-              "Default",
-              "OutputPackagesToPush",
               "Pack",
               "Restore",
               "Test"
