@@ -35,14 +35,29 @@ jobs:
         shell: bash
         run: ./build.sh --verbosity verbose
 
-      - name: Push package to feed 🐙
-        id: push-feed
-        if: github.actor != 'dependabot[bot]' && github.actor != 'dependabot-preview[bot]' && github.event_name != 'schedule'
-        shell: bash
-        env:
-          FEED_API_KEY: ${{ secrets.FEED_API_KEY }}
-          FEED_SOURCE: ${{ secrets.FEED_SOURCE }}
-        run: dotnet nuget push artifacts/**/*.nupkg --api-key "$FEED_API_KEY" --source "$FEED_SOURCE"
+      - name: Install Octopus CLI 🐙
+        uses: OctopusDeploy/install-octopus-cli-action@v1
+        with:
+          version: latest
+        
+      - name: Push to Octopus 🐙
+        uses: OctopusDeploy/push-package-action@v1
+        with:
+          server: ${{ secrets.DEPLOY_URL }}
+          space: Core Platform
+          api_key: ${{ secrets.DEPLOY_API_KEY }}
+          packages: |
+            ./artifacts/Octopus.Server.Extensibility.${{ steps.build.outputs.octoversion_fullsemver }}.nupkg          
+
+      - name: Create Release in Octopus 🐙
+        uses: OctopusDeploy/create-release-action@v1
+        with:
+          server: ${{ secrets.DEPLOY_URL }}
+          space: Core Platform
+          api_key: ${{ secrets.DEPLOY_API_KEY }}
+          project: "ServerExtensibility"
+          packages: |
+            Octopus.Server.Extensibility:${{ steps.build.outputs.octoversion_fullsemver }}
         
       - name: GitHub Tag 🏷
         id: github-tag
