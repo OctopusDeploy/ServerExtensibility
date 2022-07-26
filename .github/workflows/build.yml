@@ -59,16 +59,15 @@ jobs:
           packages: |
             Octopus.Server.Extensibility:${{ steps.build.outputs.octoversion_fullsemver }}
         
-      - name: GitHub Tag 🏷
-        id: github-tag
+      - name: Tag release (when not pre-release) 🏷️
+        if: ${{ !contains( steps.build.outputs.octoversion_fullsemver, '-' ) }}
         uses: actions/github-script@v3
-        if: github.actor != 'dependabot[bot]' && github.actor != 'dependabot-preview[bot]' && github.event_name != 'schedule' && steps.build.outputs.prerelease_tag == ''
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ github.token }}
           script: |
             github.git.createRef({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              ref: "refs/tags/${{ steps.build.outputs.semver }}",
+              ref: "refs/tags/${{ steps.build.outputs.octoversion_fullsemver }}",
               sha: context.sha
             })
