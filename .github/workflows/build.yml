@@ -94,7 +94,7 @@ jobs:
           server: ${{ secrets.DEPLOY_URL }}
           space: ${{ env.OCTOPUSDEPLOY_Space }}
           api_key: ${{ secrets.DEPLOY_API_KEY }}
-          project: ${{ env.OCTOPUSDEPLOY_Space }}
+          project: ${{ env.OCTOPUSDEPLOY_Project }}
           packages: |
             ${{ env.OCTOPUSDEPLOY_Package }}:${{ steps.build.outputs.octoversion_fullsemver }}
   
