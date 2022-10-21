@@ -28,10 +28,10 @@ namespace Octopus.Server.Extensibility.HostServices.Model
         /// </summary>
         /// <param name="name">The package-reference name.</param>
         /// <param name="packageId">The package ID or a variable-expression</param>
-        /// <param name="feedIdOrName">The feed ID or a variable-expression</param>
+        /// <param name="feedId">The feed ID or a variable-expression</param>
         /// <param name="acquisitionLocation">The location the package should be acquired</param>
-        public PackageReference(string? name, string packageId, FeedIdOrName feedIdOrName, PackageAcquisitionLocation acquisitionLocation)
-            : this(name, packageId, feedIdOrName, acquisitionLocation.ToString())
+        public PackageReference(string? name, string packageId, FeedId feedId, PackageAcquisitionLocation acquisitionLocation)
+            : this(name, packageId, feedId, acquisitionLocation.ToString())
         {
         }
 
@@ -40,14 +40,14 @@ namespace Octopus.Server.Extensibility.HostServices.Model
         /// </summary>
         /// <param name="name">The package-reference name.</param>
         /// <param name="packageId">The package ID or a variable-expression</param>
-        /// <param name="feedIdOrName">The feed ID or a variable-expression</param>
+        /// <param name="feedId">The feed ID or a variable-expression</param>
         /// <param name="acquisitionLocation">The location the package should be acquired.
         /// May be one <see cref="PackageAcquisitionLocation" /> or a variable-expression.</param>
-        public PackageReference(string? name, string packageId, FeedIdOrName feedIdOrName, string acquisitionLocation)
+        public PackageReference(string? name, string packageId, FeedId feedId, string acquisitionLocation)
             : this(null,
                    name,
                    packageId,
-                   feedIdOrName,
+                   feedId,
                    acquisitionLocation)
         {
         }
@@ -59,14 +59,14 @@ namespace Octopus.Server.Extensibility.HostServices.Model
         public PackageReference(string? id,
                                 string? name,
                                 string packageId,
-                                FeedIdOrName feedIdOrName,
+                                FeedId feedId,
                                 string acquisitionLocation)
             : this()
         {
             if (!string.IsNullOrEmpty(id)) Id = id;
 
             PackageId = packageId;
-            FeedIdOrName = feedIdOrName;
+            FeedId = feedId;
             AcquisitionLocation = acquisitionLocation;
             Name = name ?? string.Empty;
         }
@@ -74,24 +74,24 @@ namespace Octopus.Server.Extensibility.HostServices.Model
         /// <summary>
         ///     Constructs a primary package (an un-named package reference)
         /// </summary>
-        public PackageReference(string packageId, FeedIdOrName feedIdOrName, PackageAcquisitionLocation acquisitionLocation)
-            : this(null, packageId, feedIdOrName, acquisitionLocation)
+        public PackageReference(string packageId, FeedId feedId, PackageAcquisitionLocation acquisitionLocation)
+            : this(null, packageId, feedId, acquisitionLocation)
         {
         }
 
         /// <summary>
         ///     Constructs a primary package (an un-named package reference)
         /// </summary>
-        public PackageReference(string packageId, FeedIdOrName feedIdOrName, string acquisitionLocation)
-            : this(null, packageId, feedIdOrName, acquisitionLocation)
+        public PackageReference(string packageId, FeedId feedId, string acquisitionLocation)
+            : this(null, packageId, feedId, acquisitionLocation)
         {
         }
 
         /// <summary>
         ///     Constructs a primary package (an un-named package reference)
         /// </summary>
-        public PackageReference(string packageId, FeedIdOrName feedIdOrName)
-            : this(packageId, feedIdOrName, PackageAcquisitionLocation.Server)
+        public PackageReference(string packageId, FeedId feedId)
+            : this(packageId, feedId, PackageAcquisitionLocation.Server)
         {
         }
 
@@ -110,7 +110,7 @@ namespace Octopus.Server.Extensibility.HostServices.Model
         {
             Id = Guid.NewGuid().ToString();
             Properties = new Dictionary<string, string>();
-            FeedIdOrName = "feeds-builtin".ToFeedIdOrName();
+            FeedId = "feeds-builtin".ToFeedId();
         }
 
         public string Id { get; }
@@ -132,9 +132,8 @@ namespace Octopus.Server.Extensibility.HostServices.Model
         /// <summary>
         ///     Feed ID, name or a variable-expression
         /// </summary>
-        [JsonProperty("FeedId")] // This is named FeedId for backward-compatibility as we don't yet want to change the underlying database JSON/schema.
         [OclName("feed")]
-        public FeedIdOrName FeedIdOrName { get; set; }
+        public FeedId FeedId { get; set; }
 
         /// <summary>
         ///     The package-acquisition location.
@@ -160,7 +159,7 @@ namespace Octopus.Server.Extensibility.HostServices.Model
             return new PackageReference(Id,
                                         Name,
                                         PackageId,
-                                        FeedIdOrName,
+                                        FeedId,
                                         AcquisitionLocation)
             {
                 Properties = new Dictionary<string, string>(Properties),
